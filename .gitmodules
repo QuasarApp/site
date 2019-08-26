@@ -1,0 +1,6 @@
+[submodule "client"]
+	path = client
+	url = git@github.com:QuasarApp/site-client.git
+[submodule "server"]
+	path = server
+	url = git@github.com:QuasarApp/site-server.git

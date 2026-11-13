@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuasarApp Group</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-cube"></i>
+                <span>QuasarApp</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" data-lang="nav.home">Home</a></li>
+                <li><a href="#projects" data-lang="nav.projects">Projects</a></li>
+                <li><a href="#about" data-lang="nav.about">About</a></li>
+                <li><a href="#contact" data-lang="nav.contact">Contact</a></li>
+                <li><a href="#" class="lang-btn" onclick="toggleLanguage()"><i class="fas fa-globe"></i> EN</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="parallax-bg"></div>
+        <div class="hero-content">
+            <h1 class="glow-text">QuasarApp Group</h1>
+            <p class="subtitle" data-lang="hero.subtitle">Building the Future of Software</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary" data-lang="hero.explore">Explore Projects</a>
+                <a href="#about" class="btn btn-secondary" data-lang="hero.learn">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title" data-lang="projects.title">Our Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card parallax-card" data-project="quasarapp">
+                    <div class="card-icon"><i class="fas fa-code"></i></div>
+                    <h3>QuasarApp</h3>
+                    <p class="lang-badge">Multi-Language</p>
+                    <p data-lang="projects.quasarapp.desc">A powerful framework for building cross-platform desktop applications with Qt</p>
+                    <a href="https://github.com/QuasarApp/QuasarApp" target="_blank" class="card-link"><i class="fab fa-github"></i></a>
+                </div>
+                <div class="project-card parallax-card" data-project="platforms">
+                    <div class="card-icon"><i class="fas fa-network-wired"></i></div>
+                    <h3>Platforms</h3>
+                    <p class="lang-badge">Multi-Language</p>
+                    <p data-lang="projects.platforms.desc">Platform abstraction layer for cross-platform development</p>
+                    <a href="https://github.com/QuasarApp/Platforms" target="_blank" class="card-link"><i class="fab fa-github"></i></a>
+                </div>
+                <div class="project-card parallax-card" data-project="opensimplex2">
+                    <div class="card-icon"><i class="fas fa-wave-square"></i></div>
+                    <h3>OpenSimplex2</h3>
+                    <p class="lang-badge">Multi-Language</p>
+                    <p data-lang="projects.opensimplex2.desc">Fast noise implementation for procedural generation</p>
+                    <a href="https://github.com/QuasarApp/OpenSimplex2" target="_blank" class="card-link"><i class="fab fa-github"></i></a>
+                </div>
+                <div class="project-card parallax-card" data-project="quasar-framework">
+                    <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Quasar Framework</h3>
+                    <p class="lang-badge">Multi-Language</p>
+                    <p data-lang="projects.quasar-framework.desc">Full-Stack Web Framework with Vue.js</p>
+                    <a href="https://github.com/quasarframework/quasar" target="_blank" class="card-link"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title" data-lang="about.title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text parallax-text">
+                    <p data-lang="about.text">QuasarApp is an open-source organization dedicated to creating innovative software solutions. We believe in the power of open collaboration and building tools that empower developers worldwide.</p>
+                    <p data-lang="about.text2">Our team consists of passionate engineers who work on cutting-edge technologies, from desktop frameworks to web applications and game development tools.</p>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label" data-lang="stats.projects">Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5k+</span>
+                        <span class="stat-label" data-lang="stats.stars">Stars</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">20+</span>
+                        <span class="stat-label" data-lang="stats.contributors">Contributors</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title" data-lang="contact.title">Get in Touch</h2>
+            <div class="contact-content">
+                <a href="https://github.com/QuasarApp" class="contact-link">
+                    <i class="fab fa-github fa-2x"></i>
+                    <span data-lang="contact.github">GitHub</span>
+                </a>
+                <a href="https://twitter.com/QuasarApp" class="contact-link">
+                    <i class="fab fa-twitter fa-2x"></i>
+                    <span data-lang="contact.twitter">Twitter</span>
+                </a>
+                <a href="mailto:info@quasarapp.com" class="contact-link">
+                    <i class="fas fa-envelope fa-2x"></i>
+                    <span data-lang="contact.email">Email</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 QuasarApp Group. All rights reserved.</p>
+            <p class="made-with"><i class="fas fa-heart"></i> Made with <span class="glow">passion</span></p>
+        </div>
+    </footer>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/parallax.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+EOF"

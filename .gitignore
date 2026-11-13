@@ -14,3 +14,26 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+
+# Unnecessary files
+.agents/
+.bash_history
+.bash_logout
+.bashrc
+.cache/
+.cline/
+.clinerules
+.config/
+.gitconfig
+.gnupg/
+.local/
+.npm/
+.profile
+.ssh/
+.wget-hsts
+OpenSimplex2/
+Worker/
+llama-b12202/
+loop.sh
+snap/
+llama-prompts/

@@ -14,8 +14,8 @@ const translations = {
         },
         projects: {
             title: 'Наши проекты',
-            quasarapp: {
-                desc: 'Мощный фреймворк для создания кроссплатформенных десктопных приложений на Qt'
+            cqtdeployer: {
+                desc: 'Мощный инструмент для переноса кроссплатформенных приложений на Qt'
             },
             platforms: {
                 desc: 'Слой абстракции платформы для кроссплатформенной разработки'
@@ -23,8 +23,8 @@ const translations = {
             opensimplex2: {
                 desc: 'Быстрая реализация шума для процедурной генерации'
             },
-            quasar_framework: {
-                desc: 'Полнофункциональный веб-фреймворк на Vue.js'
+            qt_secret: {
+                desc: 'Библиотека шифрования с поддержкой RSA и AES алгоритмов'
             }
         },
         about: {
@@ -58,8 +58,8 @@ const translations = {
         },
         projects: {
             title: 'Unsere Projekte',
-            quasarapp: {
-                desc: 'Ein leistungsfähiger Framework zur Erstellung von plattformübergreifenden Desktop-Anwendungen mit Qt'
+            cqtdeployer: {
+                desc: 'Leistungsstarkes Tool zum Deployment von plattformübergreifenden Qt-Anwendungen'
             },
             platforms: {
                 desc: 'Plattformabstraktionsschicht für plattformübergreifende Entwicklung'
@@ -67,8 +67,8 @@ const translations = {
             opensimplex2: {
                 desc: 'Schnelle Noise-Implementierung für prozedurale Generierung'
             },
-            quasar_framework: {
-                desc: 'Full-Stack Web-Framework mit Vue.js'
+            qt_secret: {
+                desc: 'Verschlüsselungs-Bibliothek mit Unterstützung für RSA und AES-Algorithmen'
             }
         },
         about: {
@@ -102,8 +102,8 @@ const translations = {
         },
         projects: {
             title: 'Nuestros proyectos',
-            quasarapp: {
-                desc: 'Un marco de trabajo potente para crear aplicaciones de escritorio multiplataforma con Qt'
+            cqtdeployer: {
+                desc: 'Potente herramienta para el despliegue de aplicaciones multiplataforma con Qt'
             },
             platforms: {
                 desc: 'Capa de abstracción de plataforma para desarrollo multiplataforma'
@@ -111,8 +111,8 @@ const translations = {
             opensimplex2: {
                 desc: 'Implementación rápida de ruido para generación procedural'
             },
-            quasar_framework: {
-                desc: 'Marco web Full-Stack con Vue.js'
+            qt_secret: {
+                desc: 'Biblioteca de encriptación con soporte para algoritmos RSA y AES'
             }
         },
         about: {

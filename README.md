@@ -32,23 +32,41 @@ The following repositories are pinned to the [QuasarApp organization page](https
 - **Stars:** 269+
 - **Last Updated:** October 2026
 
-### 3. sdkmanager-android
+### 3. Heart
+- **URL:** https://github.com/QuasarApp/Heart
+- **Description:** QuasarApp Heart - it is base backend for C++/Qt projects. This library support work with databases and work with lite network requests.
+- **Status:** ✅ Active
+- **Priority:** 🔴 High
+- **Key Features:** Database integration, lightweight network requests, cross-platform support, core backend functionality
+- **Stars:** 350+
+- **Last Updated:** November 2026
+
+### 4. sdkmanager-android
 - **URL:** https://github.com/QuasarApp/sdkmanager-android
-- **Description:** Wraper of android sdk manager for snap store
+- **Description:** Wrapper of android sdk manager for snap store
 - **Status:** ✅ Active
 - **Priority:** 🟡 Medium
 - **Key Features:** Android SDK management, snap package support, cross-platform compatibility
 - **Stars:** 20+
 - **Last Updated:** October 2026
 
-### 4. QMLLoginView
+### 5. QMLLoginView
 - **URL:** https://github.com/QuasarApp/QMLLoginView
 - **Description:** Simple login window library for qml projects
 - **Status:** ✅ Active
 - **Priority:** 🟡 Medium
 - **Key Features:** QML-based login UI, customizable authentication forms, responsive design
 - **Stars:** 18+
-- **Last Updated:** September 2025
+- **Last Updated:** September 2026
+
+### 6. CMake
+- **URL:** https://github.com/QuasarApp/CMake
+- **Description:** Cmake modules for quasarapp projects
+- **Status:** ✅ Active
+- **Priority:** 🟡 Medium
+- **Key Features:** Build system modules, cross-platform cmake configuration, project templates
+- **Stars:** 150+
+- **Last Updated:** November 2026
 
 ## 📊 Repository Overview
 
@@ -56,8 +74,28 @@ The following repositories are pinned to the [QuasarApp organization page](https
 |------------|----------|--------|-------|----------|
 | [CQtDeployer](https://github.com/QuasarApp/CQtDeployer) | 🔴 High | ✅ Active | 658+ | C++ |
 | [Qt-Secret](https://github.com/QuasarApp/Qt-Secret) | 🔴 High | ✅ Active | 269+ | C++ |
+| [Heart](https://github.com/QuasarApp/Heart) | 🔴 High | ✅ Active | 350+ | C++ |
 | [sdkmanager-android](https://github.com/QuasarApp/sdkmanager-android) | 🟡 Medium | ✅ Active | 20+ | Python |
 | [QMLLoginView](https://github.com/QuasarApp/QMLLoginView) | 🟡 Medium | ✅ Active | 18+ | QML |
+| [CMake](https://github.com/QuasarApp/CMake) | 🟡 Medium | ✅ Active | 150+ | CMake |
+
+## 📁 Other Important Repositories
+
+The QuasarApp organization also maintains these important repositories:
+
+### Infrastructure & Development Tools
+- **Platforms** - Platforms utils of quasarapp - Core infrastructure utilities for building cross-platform applications
+- **ViewSolutions** - View solutions of qml for quasarapp projects - QML component library with reusable UI patterns
+- **QuasarAppLib** - global function for quasar app - Collection of global utility functions for Quasar applications
+
+### Documentation & Guidelines
+- **Guidelines** - Guidelines of Development in QuasarApp - Official development guidelines and best practices
+- **DoxyStyle** - Style for Documentation of QuasarApp - Official documentation theme and styling
+- **Credits** - This is Credits page of QuasarApp projects - Attribution and acknowledgments
+
+### Internal Resources
+- **Job** - This project contains internal vacancies of the QuasarApp group - Job postings and career information
+- **InternalDocs** - This project contains internal documents of the QuasarApp group - Internal documentation (restricted access)
 
 ## Technologies Used
 

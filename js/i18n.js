@@ -40,7 +40,7 @@ const translations = {
         contact: {
             title: 'Связаться с нами',
             github: 'GitHub',
-            twitter: 'Twitter',
+            bluesky: 'Bluesky',
             email: 'Email'
         }
     },
@@ -84,7 +84,7 @@ const translations = {
         contact: {
             title: 'Kontakt aufnehmen',
             github: 'GitHub',
-            twitter: 'Twitter',
+            bluesky: 'Bluesky',
             email: 'Email'
         }
     },
@@ -128,7 +128,7 @@ const translations = {
         contact: {
             title: 'Contáctanos',
             github: 'GitHub',
-            twitter: 'Twitter',
+            bluesky: 'Bluesky',
             email: 'Email'
         }
     }

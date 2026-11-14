@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120">
   <defs>
     <linearGradient id="quasarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#00bcd4;stop-opacity:1" />
@@ -6,34 +7,25 @@
       <stop offset="100%" style="stop-color:#ff9800;stop-opacity:1" />
     </linearGradient>
     <filter id="glow">
-      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-      <feMerge>
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>:
         <feMergeNode in="coloredBlur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
   </defs>
-  
-  <!-- Quasar App Icon - Stylized Q with cosmic elements -->
-  <g transform="translate(30, 15)">
-    <!-- Outer glow effect -->
-    <circle cx="80" cy="60" r="55" fill="none" stroke="url(#quasarGradient)" stroke-width="3" opacity="0.5"/>
-    
-    <!-- Main Q shape -->
-    <path d="M 60 60 L 25 25 L 85 25 L 85 55 L 25 55 Z" 
-          fill="url(#quasarGradient)" 
-          filter="url(#glow)"/>
-    
-    <!-- Inner circle -->
-    <circle cx="60" cy="50" r="15" fill="#1a1a2e" opacity="0.9"/>
-    
-    <!-- Starburst effect -->
-    <g fill="#00bcd4" opacity="0.6">
-      <circle cx="55" cy="45" r="3"/>
-      <circle cx="65" cy="45" r="3"/>
-      <circle cx="60" cy="55" r="3"/>
-      <circle cx="50" cy="55" r="3"/>
-      <circle cx="70" cy="55" r="3"/>
+  <rect width="400" height="120" rx="10" fill="#1a1a2e"/>
+  <g transform="translate(80, 20)">
+    <circle cx="80" cy="80" r="60" fill="none" stroke="url(#quasarGradient)" stroke-width="4" opacity="0.3"/>
+    <path d="M 60 60 L 30 30 L 90 30 L 90 70 L 30 70 Z" fill="url(#quasarGradient)" filter="url(#glow)" opacity="0.9"/>
+    <circle cx="60" cy="60" r="20" fill="#0f0f1a" opacity="0.95"/>
+    <g fill="#00bcd4" opacity="0.8">
+      <circle cx="50" cy="50" r="4"/>
+      <circle cx="70" cy="50" r="4"/>
+      <circle cx="60" cy="60" r="4"/>
+      <circle cx="50" cy="70" r="4"/>
+      <circle cx="70" cy="70" r="4"/>
     </g>
   </g>
+  <text x="220" y="75" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="url(#quasarGradient)" letter-spacing="2">QuasarApp</text>
 </svg>

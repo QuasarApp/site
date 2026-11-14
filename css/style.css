@@ -92,6 +92,21 @@ body {
     height: 100%;
     display: block;
 }
+.hero-banner {
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 188, 212, 0.2);
+    animation: fadeInUp 0.8s ease-out;
+    display: block;
+}
+@media (max-width: 768px) {
+    .hero-banner {
+        max-width: 90%;
+        height: 120px;
+    }
+}
 .glow-text {
     font-size: 4rem; font-weight: 900; margin-bottom: 20px;
     background: var(--gradient-1); -webkit-background-clip: text;
@@ -193,6 +208,12 @@ body {
     box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
 }
 .contact-link i { color: var(--primary-color); }
+/* Custom social icons */
+.contact-link i.fa-bluesky { 
+    font-family: 'Brands'; 
+    content: '\f17d';  /* Bluesky icon */
+    color: #1d9bf0;
+}
 
 .footer {
     padding: 40px 0; background: var(--dark-bg);

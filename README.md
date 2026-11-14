@@ -16,40 +16,48 @@ The following repositories are pinned to the [QuasarApp organization page](https
 
 ### 1. CQtDeployer
 - **URL:** https://github.com/QuasarApp/CQtDeployer
-- **Description:** A powerful cross-platform deployment tool for Qt applications
+- **Description:** This project is used to deploy applications written using QML, qt or other С / С++ frameworks
 - **Status:** ✅ Active
 - **Priority:** 🔴 High
 - **Key Features:** Cross-platform support, automated dependency management, CI/CD integration, extensive testing
+- **Stars:** 658+
+- **Last Updated:** November 2026
 
-### 2. Platforms
-- **URL:** https://github.com/QuasarApp/Platforms
-- **Description:** Platform abstraction layer for cross-platform development
-- **Status:** ✅ Active
-- **Priority:** 🟡 Medium
-- **Key Features:** OS abstraction, file system operations, process management, cross-platform utilities
-
-### 3. OpenSimplex2
-- **URL:** https://github.com/QuasarApp/OpenSimplex2
-- **Description:** Fast noise implementation for procedural generation
-- **Status:** ✅ Active
-- **Priority:** 🟡 Medium
-- **Key Features:** High-quality noise generation, optimized performance, GPU support, header-only implementation
-
-### 4. Qt-Secret
+### 2. Qt-Secret
 - **URL:** https://github.com/QuasarApp/Qt-Secret
 - **Description:** Simple encryption library supporting RSA and AES algorithms
 - **Status:** ✅ Active
-- **Priority:** 🟡 Medium
+- **Priority:** 🔴 High
 - **Key Features:** RSA encryption, AES encryption, secure key management, native Qt implementation
+- **Stars:** 269+
+- **Last Updated:** October 2026
+
+### 3. sdkmanager-android
+- **URL:** https://github.com/QuasarApp/sdkmanager-android
+- **Description:** Wraper of android sdk manager for snap store
+- **Status:** ✅ Active
+- **Priority:** 🟡 Medium
+- **Key Features:** Android SDK management, snap package support, cross-platform compatibility
+- **Stars:** 20+
+- **Last Updated:** October 2026
+
+### 4. QMLLoginView
+- **URL:** https://github.com/QuasarApp/QMLLoginView
+- **Description:** Simple login window library for qml projects
+- **Status:** ✅ Active
+- **Priority:** 🟡 Medium
+- **Key Features:** QML-based login UI, customizable authentication forms, responsive design
+- **Stars:** 18+
+- **Last Updated:** September 2025
 
 ## 📊 Repository Overview
 
 | Repository | Priority | Status | Stars | Language |
 |------------|----------|--------|-------|----------|
 | [CQtDeployer](https://github.com/QuasarApp/CQtDeployer) | 🔴 High | ✅ Active | 658+ | C++ |
-| [Platforms](https://github.com/QuasarApp/Platforms) | 🟡 Medium | ✅ Active | Active | C++ |
-| [OpenSimplex2](https://github.com/QuasarApp/OpenSimplex2) | 🟡 Medium | ✅ Active | Active | C++, Python |
-| [Qt-Secret](https://github.com/QuasarApp/Qt-Secret) | 🟡 Medium | ✅ Active | 269+ | C++ |
+| [Qt-Secret](https://github.com/QuasarApp/Qt-Secret) | 🔴 High | ✅ Active | 269+ | C++ |
+| [sdkmanager-android](https://github.com/QuasarApp/sdkmanager-android) | 🟡 Medium | ✅ Active | 20+ | Python |
+| [QMLLoginView](https://github.com/QuasarApp/QMLLoginView) | 🟡 Medium | ✅ Active | 18+ | QML |
 
 ## Technologies Used
 

@@ -37,6 +37,26 @@ body {
     display: flex; align-items: center; gap: 10px; font-size: 1.5rem;
     font-weight: 700; color: var(--primary-color); text-decoration: none;
 }
+.nav-brand img,
+.nav-brand svg {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
+    transition: transform 0.3s ease;
+}
+.nav-brand img:hover {
+    transform: scale(1.1);
+}
+@keyframes logoPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+.nav-brand a {
+    display: flex; align-items: center; gap: 10px;
+}
 .nav-brand i { font-size: 1.8rem; }
 .nav-brand span {
     background: var(--gradient-1); -webkit-background-clip: text;
@@ -70,6 +90,37 @@ body {
                 radial-gradient(circle at 40% 40%, rgba(255, 152, 0, 0.05) 0%, transparent 50%);
 }
 .hero-content { text-align: center; z-index: 1; padding: 0 20px; }
+.hero-logo {
+    width: 220px;
+    height: auto;
+    margin-bottom: 30px;
+    animation: fadeInDown 0.8s ease-out, logoFloat 3s ease-in-out infinite;
+    display: block;
+    filter: drop-shadow(0 4px 20px rgba(0, 188, 212, 0.4));
+    transition: transform 0.3s ease;
+}
+.hero-logo:hover {
+    transform: scale(1.05);
+}
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+.hero-banner {
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 188, 212, 0.2);
+    animation: fadeInUp 0.8s ease-out;
+    display: block;
+}
+@media (max-width: 768px) {
+    .hero-banner {
+        max-width: 90%;
+        height: 120px;
+    }
+}
 .glow-text {
     font-size: 4rem; font-weight: 900; margin-bottom: 20px;
     background: var(--gradient-1); -webkit-background-clip: text;
@@ -171,6 +222,12 @@ body {
     box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
 }
 .contact-link i { color: var(--primary-color); }
+/* Custom social icons */
+.contact-link i.fa-bluesky { 
+    font-family: 'Brands'; 
+    content: '\f17d';  /* Bluesky icon */
+    color: #1d9bf0;
+}
 
 .footer {
     padding: 40px 0; background: var(--dark-bg);
@@ -204,6 +261,10 @@ body {
 
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
     to { opacity: 1; transform: translateY(0); }
 }
 .animate-in { animation: fadeInUp 0.6s ease-out forwards; }

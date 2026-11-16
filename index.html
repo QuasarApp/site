@@ -13,8 +13,7 @@
         <div class="container">
             <div class="nav-brand">
                 <a href="/">
-                    <img src="logo.png" alt="QuasarApp Logo" class="logo-icon">
-                    <i class="fas fa-cube"></i>
+                    <img src="logo.png" alt="QuasarApp" class="nav-logo">
                     <span>QuasarApp</span>
                 </a>
             </div>
@@ -29,16 +28,42 @@
     </nav>
 
     <section id="home" class="hero-section">
-        <div class="parallax-bg"></div>
+        <div class="parallax-bg">
+            <div class="parallax-bg-overlay" style="background: linear-gradient(to bottom, rgba(10, 14, 23, 0.35), rgba(10, 14, 23, 0.55));"></div>
+            <img src="ecliptica_background.jpg" class="parallax-bg-img blur-bg" alt="Ecliptica Background" style="position: absolute; top: 50%; left: 50%; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; filter: blur(6px); transform: translate(-50%, -50%) scale(1.07);">
+        </div>
         <div class="hero-content">
-            <img src="logo.png" alt="QuasarApp Logo" class="hero-logo">
-            <img src="banner.png" alt="QuasarApp Banner" class="hero-banner">
-            <h1 class="glow-text">QuasarApp Group</h1>
-            <p class="subtitle" data-lang="hero.subtitle">Building the Future of Software</p>
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary" data-lang="hero.explore">Explore Projects</a>
-                <a href="#about" class="btn btn-secondary" data-lang="hero.learn">Learn More</a>
+            <!-- Ecliptica Featured Banner - Using Steam header image -->
+            <div class="ecliptica-featured">
+                <div class="ecliptica-header-content">
+                    <img src="ecliptica_icon_logo.png" alt="Ecliptica Logo" class="ecliptica-logo">
+                    <div class="ecliptica-header-info">
+                        <h1 class="ecliptica-title">Ecliptica</h1>
+                        <p class="ecliptica-subtitle">Command the Final Space Station - Explore, Build, and Survive</p>
+                        <p class="ecliptica-description">Command the last space station and terraform distant planets. Build futuristic habitats, manage advanced resources, and lead your crew through deep space challenges. Your legacy among the stars awaits.</p>
+                    </div>
+                </div>
+
+                            <!-- Ecliptica Capsule Image on the Right -->
+                <div class="ecliptica-capsule">
+                    <img src="ecliptica_capsule.jpg" alt="Ecliptica Capsule" class="ecliptica-capsule-img">
+                </div>
+                
+                <div class="ecliptica-features">
+                    <div class="feature-item"><i class="fas fa-rocket"></i> Space Exploration</div>
+                    <div class="feature-item"><i class="fas fa-globe-americas"></i> Planet Building</div>
+                    <div class="feature-item"><i class="fas fa-cogs"></i> Resource Management</div>
+                </div>
+                <div class="ecliptica-buttons">
+                    <a href="https://store.steampowered.com/app/3723390/Ecliptica/" target="_blank" class="btn btn-steam-primary">
+                        <i class="fab fa-steam"></i> Play on Steam
+                    </a>
+                    <a href="https://store.steampowered.com/wishlist/add/item?appid=3723390" target="_blank" class="btn btn-wishlist">
+                        <i class="fas fa-heart"></i> Add to Wishlist
+                    </a>
+                </div>
             </div>
+
         </div>
     </section>
 
@@ -46,6 +71,27 @@
         <div class="container">
             <h2 class="section-title" data-lang="projects.title">Our Projects</h2>
             <div class="projects-grid">
+                <div class="project-card parallax-card ecliptica-card" style="background: linear-gradient(135deg, rgba(102, 192, 244, 0.15) 0%, rgba(10, 14, 23, 0.9) 100%); position: relative; overflow: hidden; border-color: #66c0f4; box-shadow: 0 10px 30px rgba(102, 192, 244, 0.3);">
+                    <img src="ecliptica_icon_logo.png" alt="Ecliptica Logo" class="game-logo" style="width: 120px; height: 120px; object-fit: contain; margin-bottom: 20px; position: relative; z-index: 1;">
+                    <h3>Ecliptica</h3>
+                    <p class="lang-badge">Game</p>
+                    <p><strong>Ecliptica</strong> is a space exploration game where you command a space station and terraform planets. Build habitats, manage resources, and lead your crew through deep space challenges.</p>
+                    <div class="features-badges" style="display: flex; gap: 10px; margin: 10px 0; flex-wrap: wrap; justify-content: center;">
+                        <span class="lang-badge">Space Station</span>
+                        <span class="lang-badge">Planet Building</span>
+                        <span class="lang-badge">Resource Management</span>
+                        <span class="lang-badge">Multiplayer</span>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="https://store.steampowered.com/app/3723390/Ecliptica/" target="_blank" class="btn btn-sm btn-steam-primary">
+                            <i class="fab fa-steam"></i> Play on Steam
+                        </a>
+                        <a href="https://store.steampowered.com/wishlist/add/item?appid=3723390" target="_blank" class="btn btn-sm btn-wishlist">
+                            <i class="fas fa-heart"></i> Add to Wishlist
+                        </a>
+                    </div>
+                    <img src="ecliptica_background.jpg" class="ecliptica-card-bg" alt="Ecliptica Background" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; object-fit: cover; opacity: 0.25; filter: blur(5px); z-index: 0;">
+                </div>
                 <div class="project-card parallax-card" data-project="cqtdeployer">
                     <div class="card-icon"><i class="fas fa-tools"></i></div>
                     <h3>CQtDeployer</h3>
@@ -134,13 +180,23 @@
                         <span class="stat-label" data-lang="stats.projects">Projects</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">1,084</span>
+                        <span class="stat-number">1000+</span>
                         <span class="stat-label" data-lang="stats.stars">Stars</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">3</span>
+                        <span class="stat-number">100+</span>
                         <span class="stat-label" data-lang="stats.contributors">Contributors</span>
                     </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/QuasarApp" class="social-link">
+                        <i class="fab fa-github fa-2x"></i>
+                        <span data-lang="social.github">GitHub</span>
+                    </a>
+                    <a href="https://bsky.app/profile/quasarapp.bsky.social" class="social-link">
+                        <i class="fab fa-bluesky fa-2x"></i>
+                        <span data-lang="social.bluesky">Bluesky</span>
+                    </a>
                 </div>
             </div>
         </div>

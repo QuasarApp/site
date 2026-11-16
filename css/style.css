@@ -131,8 +131,8 @@ body {
 }
 
 .blur-bg {
-    filter: blur(12px);
-    transform: scale(1.15);
+    filter: blur(2px);
+    transform: scale(1.02);
 }
 .hero-content { text-align: center; z-index: 1; padding: 0 20px; }
 .hero-logo {

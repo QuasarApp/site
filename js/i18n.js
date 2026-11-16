@@ -73,7 +73,7 @@ const translations = {
         },
         about: {
             title: 'Über uns',
-            text: 'QuasarApp ist eine Open-Source-Organisation, die sich der Erstellung innovativer Softwarelösungen widmet. Wir glauben an die Kraft der offenen Zusammenarbeit und an Werkzeuge, die Entwicklern auf der ganzen Welt empower.',
+            text: 'QuasarApp ist eine Open-Source-Organisation, die sich der Erstellung innovativer Softwarelösungen widmet. Wir glauben an die Kraft der offenen Zusammenarbeit und an Werkzeuge, die Entwicklern auf der ganzen Welt ermächtigen.',
             text2: 'Unser Team besteht aus leidenschaftlichen Ingenieuren, die an modernsten Technologien arbeiten - von Desktop-Frameworks bis hin zu Web-Anwendungen und Spielentwicklungs-Tools.'
         },
         stats: {

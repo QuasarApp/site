@@ -256,6 +256,49 @@ body {
     color: #1d9bf0;
 }
 
+/* Social Links in About Section */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
+}
+
+.social-link i {
+    color: var(--primary-color);
+}
+
+.social-link i.fa-github {
+    color: #333;
+}
+
+.social-link i.fa-bluesky {
+    font-family: 'Font Awesome 6 Brands';
+    content: '\f17e';
+    color: #1d9bf0;
+}
+
 .footer {
     padding: 40px 0; background: var(--dark-bg);
     border-top: 1px solid var(--card-border); text-align: center; color: #888;

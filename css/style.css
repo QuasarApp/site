@@ -515,13 +515,6 @@ body {
     align-items: center;
     gap: 20px;
 }
-.footer .footer-top {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 20px;
-}
 .footer .footer-social {
     display: flex;
     gap: 15px;

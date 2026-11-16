@@ -116,17 +116,17 @@ body {
 
 .parallax-bg-img {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 0;
+    left: 0;
     width: auto;
     height: auto;
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     z-index: 0;
     /* Blur effect to hide artifacts from image stretching */
-    filter: blur(12px);
-    transform: translate(-50%, -50%) scale(1.15);
+    filter: blur(6px);
+    transform: scale(1.07);
     will-change: transform;
     /* Proper centering */
 }
@@ -269,7 +269,7 @@ body {
     z-index: 1;
     width: 120px;
     height: 120px;
-    object-fit: contain;
+    object-fit: cover;
     margin-bottom: 20px;
     border-radius: 50%;
     box-shadow: 0 5px 30px rgba(102, 192, 244, 0.4);

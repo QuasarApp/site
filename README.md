@@ -99,99 +99,100 @@ The following repositories are pinned to the [QuasarApp organization page](https
 - **Description:** Hanoi Towers Game
 - **Status:** ✅ Active
 - **Priority:** 🟢 Low
-- **Key Features:** Educational game implementation, C++ game development, algorithm implementation
+- **Key Features:** Educational game, puzzle implementation, simple UI
 - **Stars:** 15+
-- **Last Updated:** October 22, 2026
-
-### 11. ViewSolutions
-- **URL:** https://github.com/QuasarApp/ViewSolutions
-- **Description:** View solutions of qml for quasarapp projects
-- **Status:** ✅ Active
-- **Priority:** 🟡 Medium
-- **Key Features:** QML component library with reusable UI patterns, view solutions implementation
-- **Stars:** 15+
-- **Last Updated:** September 10, 2025
-
-### 12. QuasarAppLib
-- **URL:** https://github.com/QuasarApp/QuasarAppLib
-- **Description:** Global function for quasar app
-- **Status:** ✅ Active
-- **Priority:** 🟡 Medium
-- **Key Features:** Collection of global utility functions, cross-platform support
-- **Stars:** 5+
 - **Last Updated:** November 12, 2026
 
-### 13. QuasarAppScripts
-- **URL:** https://github.com/QuasarApp/QuasarAppScripts
-- **Description:** Work scripts for QuasarApp projects
+### 11. Crawl
+- **URL:** https://github.com/QuasarApp/Crawl
+- **Description:** Crawl is a web crawling and scraping library for C++ projects.
+- **Status:** ✅ Active
+- **Priority:** 🟢 Low
+- **Key Features:** Web scraping, multi-threaded crawling, efficient data extraction
+- **Stars:** 4+
+- **Last Updated:** November 15, 2026
+
+### 12. DesktopInstaller
+- **URL:** https://github.com/QuasarApp/DesktopInstaller
+- **Description:** Desktop Installer for QuasarApp projects
 - **Status:** ✅ Active
 - **Priority:** 🟡 Medium
-- **Key Features:** Shell scripts for automation and development, build automation
-- **Stars:** 20+
-- **Last Updated:** October 22, 2026
+- **Key Features:** Qt installer framework, cross-platform installation support
+- **Stars:** 1+
+- **Last Updated:** January 28, 2023
 
-### 14. Guidelines
-- **URL:** https://github.com/QuasarApp/Guidelines
-- **Description:** Guidelines of Development in QuasarApp
+### 13. DocsSite
+- **URL:** https://github.com/QuasarApp/DocsSite
+- **Description:** Documentation site for QuasarApp projects
 - **Status:** ✅ Active
 - **Priority:** 🟡 Medium
-- **Key Features:** Official development guidelines, best practices documentation
-- **Stars:** 18+
-- **Last Updated:** October 22, 2026
-
-### 15. DoxyStyle
-- **URL:** https://github.com/QuasarApp/DoxyStyle
-- **Description:** Style for Documentation of QuasarApp
-- **Status:** ✅ Active
-- **Priority:** 🟡 Medium
-- **Key Features:** Documentation theme, styling for Doxygen
-- **Stars:** 18+
-- **Last Updated:** November 12, 2026
-
-### 16. Qt-AES
-- **URL:** https://github.com/QuasarApp/Qt-AES
-- **Description:** Native Qt AES encryption class
-- **Status:** ✅ Active
-- **Priority:** 🔴 High
-- **Key Features:** AES encryption implementation, native Qt implementation, security utilities
-- **Stars:** 658+
+- **Key Features:** Centralized documentation platform, multi-language support
+- **Stars:** 1+
 - **Last Updated:** November 13, 2026
 
-### 17. pe-parse
-- **URL:** https://github.com/QuasarApp/pe-parse
-- **Description:** Principled, lightweight C/C++ PE parser
+### 14. ELFIO
+- **URL:** https://github.com/QuasarApp/ELFIO
+- **Description:** ELFIO - ELF (Executable and Linkable Format) reader and producer implemented as a header only C++ library
 - **Status:** ✅ Active
-- **Priority:** 🟡 Medium
-- **Key Features:** PE file format parsing, C/C++ implementation, lightweight design
-- **Stars:** 14+
-- **Last Updated:** October 14, 2026
+- **Priority:** 🔴 High
+- **Key Features:** Header-only implementation, ELF parsing, cross-platform support, MIT license
+- **Stars:** 899+
+- **Last Updated:** November 11, 2026
 
-### 18. QStyleSheet
-- **URL:** https://github.com/QuasarApp/QStyleSheet
-- **Description:** StyleSheet for qt apps
+### 15. installer-framework
+- **URL:** https://github.com/QuasarApp/installer-framework
+- **Description:** Installer framework for QuasarApp applications
 - **Status:** ✅ Active
 - **Priority:** 🟡 Medium
-- **Key Features:** Qt stylesheet parser and implementation, CSS parsing
-- **Stars:** 14+
-- **Last Updated:** October 14, 2026
+- **Key Features:** Cross-platform installation, package management, dependency handling
+- **Stars:** 207+
+- **Last Updated:** November 13, 2026
 
-### 19. QtDeployTemplate
-- **URL:** https://github.com/QuasarApp/QtDeployTemplate
-- **Description:** Qt deployment templates
+### 16. openssl-cmake
+- **URL:** https://github.com/QuasarApp/openssl-cmake
+- **Description:** OpenSSL CMake integration for QuasarApp projects
+- **Status:** ✅ Active
+- **Priority:** 🔴 High
+- **Key Features:** CMake modules, OpenSSL integration, secure communication support
+- **Stars:** 314+
+- **Last Updated:** November 13, 2026
+
+### 17. QtDeployer
+- **URL:** https://github.com/QuasarApp/QtDeployer
+- **Description:** Qt Deployer for C++ applications
 - **Status:** ✅ Active
 - **Priority:** 🟡 Medium
-- **Key Features:** Qt deployment templates, build system integration
+- **Key Features:** Qt deployment utilities, C++ implementation, automated deployment
+- **Stars:** 4+
+- **Last Updated:** June 21, 2023
+
+### 18. QuasarAppCoin
+- **URL:** https://github.com/QuasarApp/QuasarAppCoin
+- **Description:** Cryptocurrency project (Bitcoin fork)
+- **Status:** ✅ Active
+- **Priority:** 🟡 Medium
+- **Key Features:** Bitcoin implementation, cryptocurrency, P2P networking
+- **Stars:** 90687+
+- **Last Updated:** November 13, 2026
+
+### 19. qt-solutions
+- **URL:** https://github.com/QuasarApp/qt-solutions
+- **Description:** Solution examples and reference implementations for common tasks
+- **Status:** ✅ Active
+- **Priority:** 🟡 Medium
+- **Key Features:** Code examples, best practices, reference implementations
+- **Stars:** 1346+
+- **Last Updated:** November 13, 2026
+
+
+### 20. SoundBand
+- **URL:** https://github.com/QuasarApp/SoundBand
+- **Description:** Mobile and desktop song sync audio player
+- **Status:** ✅ Active
+- **Priority:** 🟡 Medium
+- **Key Features:** Audio player, mobile and desktop support, wifi sync
 - **Stars:** 12+
-- **Last Updated:** October 14, 2026
-
-### 20. DeskTube
-- **URL:** https://github.com/QuasarApp/DeskTube
-- **Description:** Desktop crossplatform application for YouTube
-- **Status:** ✅ Active
-- **Priority:** 🟡 Medium
-- **Key Features:** YouTube desktop client, cross-platform support, video streaming
-- **Stars:** 18+
-- **Last Updated:** September 10, 2025
+- **Last Updated:** April 17, 2026
 
 ### 21. Job
 - **URL:** https://github.com/QuasarApp/Job
@@ -229,59 +230,58 @@ The following repositories are pinned to the [QuasarApp organization page](https
 - **Stars:** 1346+
 - **Last Updated:** November 11, 2026
 
-### 25. Crawl
-- **URL:** https://github.com/QuasarApp/Crawl
-- **Description:** Cool game
+### 25. QStyleSheet
+- **URL:** https://github.com/QuasarApp/QStyleSheet
+- **Description:** StyleSheet for qt apps
 - **Status:** ✅ Active
-- **Priority:** 🟢 Low
-- **Key Features:** Game development, C++ implementation
-- **Stars:** 4+
+- **Priority:** 🟡 Medium
+- **Key Features:** Qt stylesheet parser and implementation, CSS parsing
+- **Stars:** 14+
+- **Last Updated:** October 14, 2026
+
+### 26. QtDeployTemplate
+- **URL:** https://github.com/QuasarApp/QtDeployTemplate
+- **Description:** Qt deployment templates
+- **Status:** ✅ Active
+- **Priority:** 🟡 Medium
+- **Key Features:** Qt deployment templates, build system integration
+- **Stars:** 12+
+- **Last Updated:** October 14, 2026
+
+### 27. DeskTube
+- **URL:** https://github.com/QuasarApp/DeskTube
+- **Description:** Desktop crossplatform application for YouTube
+- **Status:** ✅ Active
+- **Priority:** 🟡 Medium
+- **Key Features:** YouTube desktop client, cross-platform support, video streaming
+- **Stars:** 18+
 - **Last Updated:** September 10, 2025
 
-### 26. DesktopInstaller
+### 28. Crawl
+- **URL:** https://github.com/QuasarApp/Crawl
+- **Description:** Crawl is a web crawling and scraping library for C++ projects.
+- **Status:** ✅ Active
+- **Priority:** 🟢 Low
+- **Key Features:** Web scraping, multi-threaded crawling, efficient data extraction
+- **Stars:** 4+
+- **Last Updated:** November 15, 2026
+
+### 29. DesktopInstaller
 - **URL:** https://github.com/QuasarApp/DesktopInstaller
-- **Description:** Desktop Installer of QuasaApp projects
+- **Description:** Desktop Installer for QuasaApp projects
 - **Status:** ✅ Active
 - **Priority:** 🟡 Medium
 - **Key Features:** Qt installer framework, cross-platform installation support
 - **Stars:** 1+
 - **Last Updated:** January 28, 2023
 
-### 27. ELFIO
+### 30. ELFIO
 - **URL:** https://github.com/QuasarApp/ELFIO
 - **Description:** ELFIO - ELF (Executable and Linkable Format) reader and producer implemented as a header only C++ library
 - **Status:** ✅ Active
 - **Priority:** 🔴 High
 - **Key Features:** Header-only implementation, ELF parsing, cross-platform support, MIT license
 - **Stars:** 899+
-- **Last Updated:** November 11, 2026
-
-### 28. QtDeployer
-- **URL:** https://github.com/QuasarApp/QtDeployer
-- **Description:** qt Deployer
-- **Status:** ✅ Active
-- **Priority:** 🟡 Medium
-- **Key Features:** Qt deployment utilities, C++ implementation
-- **Stars:** 4+
-- **Last Updated:** June 21, 2023
-
-### 29. QuasarAppCoin
-- **URL:** https://github.com/QuasarApp/QuasarAppCoin
-- **Description:** Cryptocurrency project (Bitcoin fork)
-- **Status:** ✅ Active
-- **Priority:** 🟡 Medium
-- **Key Features:** Bitcoin implementation, cryptocurrency, P2P networking
-- **Stars:** 90687+
-- **Last Updated:** November 13, 2026
-
-### 30. SoundBand
-- **URL:** https://github.com/QuasarApp/SoundBand
-- **Description:** Mobile and desktop song sync audio player. working on wifi.
-- **Status:** ✅ Active
-- **Priority:** 🟡 Medium
-- **Key Features:** Audio player, mobile and desktop support, wifi sync
-- **Stars:** 12+
-- **Last Updated:** April 17, 2026
 
 ## 📊 Repository Overview
 
@@ -297,6 +297,16 @@ The following repositories are pinned to the [QuasarApp organization page](https
 | [Patronum](https://github.com/QuasarApp/Patronum) | 🟡 Medium | ✅ Active | 5+ | C++ |
 | [CMake](https://github.com/QuasarApp/CMake) | 🟡 Medium | ✅ Active | 5+ | CMake |
 | [Hanoi-Towers](https://github.com/QuasarApp/Hanoi-Towers) | 🟢 Low | ✅ Active | 15+ | C++ |
+| [Crawl](https://github.com/QuasarApp/Crawl) | 🟢 Low | ✅ Active | 4+ | C++ |
+| [DesktopInstaller](https://github.com/QuasarApp/DesktopInstaller) | 🟡 Medium | ✅ Active | 1+ | QMake |
+| [DocsSite](https://github.com/QuasarApp/DocsSite) | 🟡 Medium | ✅ Active | 1+ | C++ |
+| [ELFIO](https://github.com/QuasarApp/ELFIO) | 🔴 High | ✅ Active | 899+ | C++ |
+| [installer-framework](https://github.com/QuasarApp/installer-framework) | 🟡 Medium | ✅ Active | 207+ | C++ |
+| [openssl-cmake](https://github.com/QuasarApp/openssl-cmake) | 🔴 High | ✅ Active | 314+ | C |
+| [QtDeployer](https://github.com/QuasarApp/QtDeployer) | 🟡 Medium | ✅ Active | 4+ | C++ |
+| [QuasarAppCoin](https://github.com/QuasarApp/QuasarAppCoin) | 🟡 Medium | ✅ Active | 90687+ | C++ |
+| [qt-solutions](https://github.com/QuasarApp/qt-solutions) | 🟡 Medium | ✅ Active | 1346+ | C++ |
+| [SoundBand](https://github.com/QuasarApp/SoundBand) | 🟡 Medium | ✅ Active | 12+ | C++ |
 
 | [ViewSolutions](https://github.com/QuasarApp/ViewSolutions) | 🟡 Medium | ✅ Active | 15+ | C++ |
 | [QuasarAppLib](https://github.com/QuasarApp/QuasarAppLib) | 🟡 Medium | ✅ Active | 5+ | C++ |
@@ -310,17 +320,6 @@ The following repositories are pinned to the [QuasarApp organization page](https
 | [DeskTube](https://github.com/QuasarApp/DeskTube) | 🟡 Medium | ✅ Active | 18+ | C++ |
 | [Job](https://github.com/QuasarApp/Job) | 🟢 Low | ✅ Active | 15+ | Shell |
 | [InternalDocs](https://github.com/QuasarApp/InternalDocs) | 🟢 Low | ✅ Active | 15+ | Shell |
-| [DocsSite](https://github.com/QuasarApp/DocsSite) | 🟡 Medium | ✅ Active | 1+ | C++ |
-| [qt-solutions](https://github.com/QuasarApp/qt-solutions) | 🟡 Medium | ✅ Active | 1346+ | C++ |
-| [Crawl](https://github.com/QuasarApp/Crawl) | 🟢 Low | ✅ Active | 4+ | C++ |
-| [DesktopInstaller](https://github.com/QuasarApp/DesktopInstaller) | 🟡 Medium | ✅ Active | 1+ | QMake |
-| [ELFIO](https://github.com/QuasarApp/ELFIO) | 🔴 High | ✅ Active | 899+ | C++ |
-| [QtDeployer](https://github.com/QuasarApp/QtDeployer) | 🟡 Medium | ✅ Active | 4+ | C++ |
-| [QuasarAppCoin](https://github.com/QuasarApp/QuasarAppCoin) | 🟡 Medium | ✅ Active | 90687+ | C++ |
-| [SoundBand](https://github.com/QuasarApp/SoundBand) | 🟡 Medium | ✅ Active | 12+ | C++ |
-| [installer-framework](https://github.com/QuasarApp/installer-framework) | 🟡 Medium | ✅ Active | 207+ | C++ |
-| [openssl-cmake](https://github.com/QuasarApp/openssl-cmake) | 🔴 High | ✅ Active | 314+ | C |
-
 ## 📁 Other Important Repositories
 
 The QuasarApp organization also maintains these important repositories:

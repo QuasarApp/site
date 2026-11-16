@@ -518,3 +518,104 @@ body {
 .btn-steam i.fa-steam {
     color: #66c0f4;
 }
+
+/* ========================================
+   Ecliptica Focused Design Styles
+   ======================================== */
+
+/* Navbar - Ecliptica Brand */
+.nav-brand span {
+    color: var(--text-color);
+}
+
+.ecliptica-logo {
+    width: 80px;
+    height: auto;
+    max-height: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(102, 192, 244, 0.4);
+    object-fit: cover;
+}
+
+/* Hero Section - Ecliptica Featured Banner */
+.ecliptica-featured {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.ecliptica-featured-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 40px rgba(102, 192, 244, 0.2);
+    margin-bottom: 30px;
+    display: block;
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.ecliptica-info {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.ecliptica-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #66c0f4;
+    margin-bottom: 15px;
+    text-shadow: 0 0 30px rgba(102, 192, 244, 0.5);
+    letter-spacing: 2px;
+}
+
+.ecliptica-description {
+    font-size: 1.2rem;
+    color: var(--muted-text);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.ecliptica-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-steam-primary {
+    background: linear-gradient(135deg, #171a21 0%, #171a21 100%);
+    border: 2px solid #66c0f4;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.btn-steam-primary:hover {
+    background: #171a21;
+    border-color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(102, 192, 244, 0.4);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .ecliptica-featured-image {
+        max-height: 300px;
+    }
+    
+    .ecliptica-title {
+        font-size: 2rem;
+    }
+    
+    .ecliptica-description {
+        font-size: 1rem;
+    }
+    
+    .ecliptica-logo {
+        width: 60px;
+        height: auto;
+        max-height: 30px;
+    }
+}

@@ -103,6 +103,18 @@ body {
                 radial-gradient(circle at 80% 20%, rgba(33, 150, 243, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 40% 40%, rgba(255, 152, 0, 0.05) 0%, transparent 50%);
 }
+.parallax-bg-img {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover; background-position: center;
+    background-image: url('ecliptica_header.jpg');
+    opacity: 0.2;
+    animation: slowZoom 60s ease-in-out infinite;
+    filter: brightness(0.6) saturate(1.2);
+}
+@keyframes slowZoom {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
 .hero-content { text-align: center; z-index: 1; padding: 0 20px; }
 .hero-logo {
     width: 220px;
@@ -190,14 +202,26 @@ body {
 .project-card[data-project="ecliptica"] {
     border-color: var(--primary-color);
     box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
+    overflow: hidden;
 }
-
+.project-card[data-project="ecliptica"]::before {
+    background: linear-gradient(135deg, #00bcd4 0%, #2196f3 100%);
+}
 .project-card[data-project="ecliptica"]:hover {
     box-shadow: 0 20px 50px rgba(0, 188, 212, 0.5);
 }
-
-.project-card[data-project="ecliptica"]::before {
-    background: linear-gradient(135deg, #00bcd4 0%, #2196f3 100%);
+.game-logo {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    box-shadow: 0 5px 30px rgba(102, 192, 244, 0.4);
+    transition: transform 0.3s ease;
+}
+.game-logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 40px rgba(102, 192, 244, 0.6);
 }
 .project-card:hover::before { transform: scaleX(1); }
 .project-card:hover {
@@ -265,6 +289,24 @@ body {
     border: 2px solid transparent;
     color: white;
     cursor: pointer;
+}
+.btn-sm.btn-wishlist:hover {
+    background: #ff1a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
+}
+.btn-wishlist {
+    background: #171a21;
+    border: 2px solid #66c0f4;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 5px 20px rgba(102, 192, 244, 0.3);
+}
+.btn-wishlist:hover {
+    background: #171a21;
+    border-color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(102, 192, 244, 0.4);
 }
 
 .btn-sm.btn-wishlist:hover {
@@ -477,15 +519,6 @@ body {
     color: var(--text-color);
 }
 
-.ecliptica-logo {
-    width: 80px;
-    height: auto;
-    max-height: 40px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(102, 192, 244, 0.4);
-    object-fit: cover;
-}
-
 /* Hero Section - Ecliptica Featured Banner */
 .ecliptica-featured {
     max-width: 1200px;
@@ -527,12 +560,50 @@ body {
     text-shadow: 0 0 30px rgba(102, 192, 244, 0.5);
     letter-spacing: 2px;
 }
-
+.ecliptica-subtitle {
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-shadow: 0 0 20px rgba(102, 192, 244, 0.4);
+}
 .ecliptica-description {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--muted-text);
     margin-bottom: 30px;
-    line-height: 1.6;
+    line-height: 1.8;
+    text-align: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.ecliptica-features {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background: rgba(102, 192, 244, 0.1);
+    border: 1px solid rgba(102, 192, 244, 0.3);
+    border-radius: 25px;
+    color: #66c0f4;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+.feature-item:hover {
+    background: rgba(102, 192, 244, 0.2);
+    border-color: #66c0f4;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(102, 192, 244, 0.3);
+}
+.feature-item i {
+    font-size: 1.1rem;
 }
 
 .ecliptica-buttons {
@@ -566,13 +637,17 @@ body {
         font-size: 2rem;
     }
     
-    .ecliptica-description {
-        font-size: 1rem;
+    .ecliptica-subtitle {
+        font-size: 1.1rem;
     }
     
-    .ecliptica-logo {
-        width: 60px;
-        height: auto;
-        max-height: 30px;
+    .game-logo {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .feature-item {
+        font-size: 0.85rem;
+        padding: 8px 15px;
     }
 }

@@ -102,6 +102,18 @@ body {
     background: radial-gradient(circle at 20% 80%, rgba(0, 188, 212, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(33, 150, 243, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 40% 40%, rgba(255, 152, 0, 0.05) 0%, transparent 50%);
+    overflow: hidden;
+}
+.parallax-bg-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    z-index: 0;
 }
 .hero-content { text-align: center; z-index: 1; padding: 0 20px; }
 .hero-logo {
@@ -650,10 +662,13 @@ body {
 .ecliptica-featured {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 60px 20px;
     text-align: center;
     z-index: 2;
     position: relative;
+    background: rgba(10, 14, 23, 0.85);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 188, 212, 0.3);
 }
 
 .ecliptica-header-content {
@@ -670,8 +685,8 @@ body {
 }
 
 .ecliptica-logo {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     box-shadow: 0 10px 40px rgba(102, 192, 244, 0.4);
     display: block;
@@ -729,6 +744,12 @@ body {
     box-shadow: 0 5px 20px rgba(0, 188, 212, 0.2);
 }
 
+.feature-item:hover {
+    background: rgba(0, 188, 212, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 188, 212, 0.2);
+}
+
 .ecliptica-buttons {
     display: flex;
     gap: 12px;
@@ -766,12 +787,12 @@ body {
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .ecliptica-featured {
-        padding: 40px 20px;
+        padding: 40px 15px;
     }
     
     .ecliptica-logo {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
         margin: 0 auto 15px;
         border-radius: 50%;
     }
@@ -801,6 +822,16 @@ body {
         transform: translateY(-1px);
     }
     
+    .ecliptica-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-steam-primary, .btn-wishlist {
+        width: 100%;
+        text-align: center;
+    }
+    
     /* Mobile styles for Ecliptica project card */
     .ecliptica-card .game-logo {
         width: 100px;
@@ -815,6 +846,16 @@ body {
     .ecliptica-card p {
         font-size: 0.85rem;
         margin-bottom: 10px;
+    }
+    
+    .ecliptica-card .features-badges {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    .ecliptica-card .features-badges .lang-badge {
+        font-size: 0.7rem;
+        padding: 3px 8px;
     }
     
     .ecliptica-card .card-buttons {

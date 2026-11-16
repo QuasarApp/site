@@ -42,6 +42,11 @@ const translations = {
             github: 'GitHub',
             bluesky: 'Bluesky',
             email: 'Email'
+        },
+        footer: {
+            github: 'GitHub',
+            bluesky: 'Bluesky',
+            email: 'Email'
         }
     },
     ru: {
@@ -83,6 +88,11 @@ const translations = {
         },
         contact: {
             title: 'Связаться с нами',
+            github: 'GitHub',
+            bluesky: 'Bluesky',
+            email: 'Email'
+        },
+        footer: {
             github: 'GitHub',
             bluesky: 'Bluesky',
             email: 'Email'
@@ -130,6 +140,11 @@ const translations = {
             github: 'GitHub',
             bluesky: 'Bluesky',
             email: 'Email'
+        },
+        footer: {
+            github: 'GitHub',
+            bluesky: 'Bluesky',
+            email: 'Email'
         }
     },
     es: {
@@ -171,6 +186,11 @@ const translations = {
         },
         contact: {
             title: 'Contáctanos',
+            github: 'GitHub',
+            bluesky: 'Bluesky',
+            email: 'Email'
+        },
+        footer: {
             github: 'GitHub',
             bluesky: 'Bluesky',
             email: 'Email'

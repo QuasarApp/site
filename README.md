@@ -164,7 +164,6 @@ The QuasarApp organization also maintains these important repositories:
 
 ### Games & Applications
 
-- **Ecliptica** - Space exploration game - Immersive space exploration and strategy game
 - **Hanoi-Towers** - Hanoi Towers game - Classic puzzle game implementation
 
 ### Internal Resources

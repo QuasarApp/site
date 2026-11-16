@@ -65,7 +65,7 @@ class ParallaxHandler {
     }
 
     updateMouseParallax(e) {
-        const rect = this.hero.getBoundingClientRect();
+        const rect = hero.getBoundingClientRect();
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
         

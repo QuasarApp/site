@@ -27,7 +27,7 @@ body {
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
 .navbar {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 10000;
     background: rgba(10, 14, 23, 0.95); backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--card-border); padding: 15px 0;
 }
@@ -46,6 +46,13 @@ body {
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
     transition: transform 0.3s ease;
+}
+@media (max-width: 768px) {
+    .nav-brand img,
+    .nav-brand svg {
+        width: 40px;
+        height: 40px;
+    }
 }
 .nav-brand img:hover {
     transform: scale(1.1);
@@ -224,8 +231,8 @@ body {
 .contact-link i { color: var(--primary-color); }
 /* Custom social icons */
 .contact-link i.fa-bluesky { 
-    font-family: 'Brands'; 
-    content: '\f17d';  /* Bluesky icon */
+    font-family: 'Font Awesome 6 Brands'; 
+    content: '\f17e';  /* Bluesky icon */
     color: #1d9bf0;
 }
 
@@ -268,7 +275,10 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 .animate-in { animation: fadeInUp 0.6s ease-out forwards; }
-.stat-item { animation-delay: calc(var(--item-index) * 0.1s); --item-index: 0; }
+.stat-item:nth-child(1) { --item-index: 0; }
+.stat-item:nth-child(2) { --item-index: 1; }
+.stat-item:nth-child(3) { --item-index: 2; }
+.stat-item { animation-delay: calc(var(--item-index) * 0.15s); }
 
 .scroll-progress {
     position: fixed; top: 0; left: 0; height: 3px;

@@ -116,8 +116,8 @@ body {
 
 .parallax-bg-img {
     position: absolute;
-    top: 90%;
-    left: 90%;
+    top: 50%;
+    left: 50%;
     width: auto;
     height: auto;
     max-width: 100%;
@@ -126,7 +126,7 @@ body {
     z-index: 0;
     /* Blur effect to hide artifacts from image stretching */
     filter: blur(6px);
-    transform: scale(1.07);
+    transform: translate(-50%, -50%) scale(1.07);
     will-change: transform;
     /* Proper centering */
 }

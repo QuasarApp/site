@@ -104,6 +104,15 @@ body {
                 radial-gradient(circle at 40% 40%, rgba(255, 152, 0, 0.05) 0%, transparent 50%);
     overflow: hidden;
 }
+.parallax-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(10, 14, 23, 0.85), rgba(10, 14, 23, 0.95));
+    z-index: 1;
+}
 .parallax-bg-img {
     position: absolute;
     top: 0;
@@ -113,13 +122,14 @@ body {
     object-fit: cover;
     z-index: 0;
     /* Blur effect to hide artifacts from image stretching */
-    filter: blur(10px);
-    transform: scale(1.1);
+    filter: blur(12px);
+    transform: scale(1.15);
+    will-change: transform;
 }
 
 .blur-bg {
-    filter: blur(10px);
-    transform: scale(1.1);
+    filter: blur(12px);
+    transform: scale(1.15);
 }
 .hero-content { text-align: center; z-index: 1; padding: 0 20px; }
 .hero-logo {
@@ -224,6 +234,13 @@ body {
     box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3) !important;
     overflow: hidden;
     position: relative;
+    transition: all 0.4s ease;
+}
+
+.ecliptica-card:hover {
+    box-shadow: 0 20px 50px rgba(0, 188, 212, 0.5) !important;
+    transform: translateY(-5px);
+    border-color: #66c0f4 !important;
 }
 
 .ecliptica-card::before {
@@ -234,8 +251,13 @@ body {
     right: 0;
     bottom: 0;
     background: url('ecliptica_background.jpg') center/cover no-repeat;
-    opacity: 0.12;
+    opacity: 0.15;
     z-index: 0;
+    transition: opacity 0.4s ease;
+}
+
+.ecliptica-card:hover::before {
+    opacity: 0.25;
 }
 
 .ecliptica-card .game-logo {
@@ -247,7 +269,7 @@ body {
     margin-bottom: 20px;
     border-radius: 50%;
     box-shadow: 0 5px 30px rgba(102, 192, 244, 0.4);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .ecliptica-card .game-logo:hover {
@@ -262,13 +284,13 @@ body {
     right: 0;
     bottom: 0;
     background: url('ecliptica_background.jpg') center/cover no-repeat;
-    opacity: 0.12;
+    opacity: 0.15;
     z-index: 0;
+    transition: opacity 0.4s ease;
 }
 
-.ecliptica-card:hover {
-    box-shadow: 0 20px 50px rgba(0, 188, 212, 0.5);
-    transform: translateY(-5px);
+.ecliptica-card:hover .card-background {
+    opacity: 0.25;
 }
 .card-link {
     display: inline-flex; align-items: center; justify-content: center;
@@ -672,13 +694,21 @@ body {
     text-align: center;
     z-index: 2;
     position: relative;
-    background: rgba(10, 14, 23, 0.85);
+    background: rgba(10, 14, 23, 0.92);
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0, 188, 212, 0.3);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 188, 212, 0.2);
+    transition: all 0.3s ease;
+}
+
+.ecliptica-featured:hover {
+    box-shadow: 0 15px 50px rgba(0, 188, 212, 0.4);
+    border-color: rgba(0, 188, 212, 0.3);
 }
 
 .ecliptica-header-content {

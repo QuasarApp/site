@@ -163,7 +163,6 @@ The QuasarApp organization also maintains these important repositories:
 - **QStyleSheet** - StyleSheet for qt apps - Qt stylesheet parser and implementation
 
 ### Games & Applications
-
 - **Hanoi-Towers** - Hanoi Towers game - Classic puzzle game implementation
 
 ### Internal Resources

@@ -9,6 +9,18 @@ A modern, multi-language website for the QuasarApp organization showcasing our p
 - 📱 **Responsive Design** - Works perfectly on all devices
 - 🚀 **Fast & Lightweight** - Pure HTML, CSS, and JavaScript
 
+## About Our Project
+
+QuasarApp is an open-source organization dedicated to creating innovative software solutions. We believe in the power of open collaboration and building tools that empower developers worldwide.
+
+**Our team consists of passionate engineers working on cutting-edge technologies, from desktop frameworks to web applications and game development tools.**
+
+### 📊 Statistics
+
+- **Projects:** 50+ repositories
+- **Stars:** 1K+ total stars
+- **Contributors:** 100+ public members
+
 ## 📌 Pinned Repositories
 
 The following repositories are pinned to the [QuasarApp organization page](https://github.com/QuasarApp):

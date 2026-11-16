@@ -250,11 +250,6 @@ body {
 .hero-content { z-index: 10; }
 .stat-item { z-index: 5; }
 .contact-link { z-index: 5; }
-.contact-link i.fa-bluesky { 
-    font-family: 'Font Awesome 6 Brands'; 
-    content: '\f17e';
-    color: #1d9bf0;
-}
 
 /* Social Links in About Section */
 .social-links {
@@ -295,7 +290,6 @@ body {
 
 .social-link i.fa-bluesky {
     font-family: 'Font Awesome 6 Brands';
-    content: '\f17e';
     color: #1d9bf0;
 }
 

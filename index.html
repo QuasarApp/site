@@ -32,6 +32,27 @@
         <div class="parallax-bg"></div>
         <div class="hero-content">
             <img src="logo.png" alt="QuasarApp Logo" class="hero-logo">
+            
+            <!-- Ecliptica Main Game Banner -->
+            <div class="ecliptica-banner">
+                <div class="banner-content">
+                    <div class="banner-icon"><i class="fas fa-rocket"></i></div>
+                    <h2 class="banner-title">Ecliptica</h2>
+                    <p class="banner-subtitle">A space exploration and terraforming game built with Qt/QML</p>
+                    <div class="banner-buttons">
+                        <a href="https://github.com/QuasarApp/Ecliptica" target="_blank" class="btn btn-primary">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                        <a href="https://store.steampowered.com/app/" target="_blank" class="btn btn-steam">
+                            <i class="fab fa-steam"></i> Play on Steam
+                        </a>
+                        <button class="btn btn-wishlist" onclick="addToWishlist()">
+                            <i class="fas fa-heart"></i> Add to Wishlist
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
             <img src="banner.png" alt="QuasarApp Banner" class="hero-banner">
             <h1 class="glow-text">QuasarApp Group</h1>
             <p class="subtitle" data-lang="hero.subtitle">Building the Future of Software</p>
@@ -46,6 +67,23 @@
         <div class="container">
             <h2 class="section-title" data-lang="projects.title">Our Projects</h2>
             <div class="projects-grid">
+                <div class="project-card parallax-card" data-project="ecliptica">
+                    <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Ecliptica</h3>
+                    <p class="lang-badge">Game</p>
+                    <p>A space exploration and terraforming game built with Qt/QML. Players manage resources, build structures, and terraform planets.</p>
+                    <div class="card-buttons">
+                        <a href="https://github.com/QuasarApp/Ecliptica" target="_blank" class="btn btn-sm btn-primary">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="https://store.steampowered.com/app/" target="_blank" class="btn btn-sm btn-steam">
+                            <i class="fab fa-steam"></i> Steam
+                        </a>
+                        <button class="btn btn-sm btn-wishlist" onclick="addToWishlist()">
+                            <i class="fas fa-heart"></i> Wishlist
+                        </button>
+                    </div>
+                </div>
                 <div class="project-card parallax-card" data-project="cqtdeployer">
                     <div class="card-icon"><i class="fas fa-tools"></i></div>
                     <h3>CQtDeployer</h3>

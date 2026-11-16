@@ -135,6 +135,23 @@ body {
     filter: blur(6px);
     transform: scale(1.07);
 }
+
+.ecliptica-card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: cover;
+    opacity: 0.25;
+    filter: blur(5px);
+    z-index: 0;
+    transition: opacity 0.3s ease;
+}
+
+.ecliptica-card:hover .ecliptica-card-bg {
+    opacity: 0.35;
+}
 .hero-content { text-align: center; z-index: 1; padding: 0 20px; }
 .hero-logo {
     width: 220px;

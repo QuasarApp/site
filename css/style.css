@@ -122,7 +122,7 @@ body {
     height: auto;
     max-width: 100%;
     max-height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     z-index: 0;
     /* Blur effect to hide artifacts from image stretching */
     filter: blur(6px);

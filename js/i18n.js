@@ -236,6 +236,7 @@ function updateTranslations() {
 // Initialize language on page load
 document.addEventListener('DOMContentLoaded', function() {
     updateLanguageButton();
+    updateTranslations();
     
     // Smooth scrolling for navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

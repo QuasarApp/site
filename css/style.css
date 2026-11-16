@@ -400,24 +400,6 @@ body {
     .stats { grid-template-columns: 1fr; }
     .contact-content { gap: 20px; }
     .section-title { font-size: 2rem; }
-    .ecliptica-banner {
-        padding: 25px 20px;
-        margin: 20px auto 30px;
-        max-width: 100%;
-    }
-    .ecliptica-banner .banner-title {
-        font-size: 1.8rem;
-    }
-    .ecliptica-banner .banner-subtitle {
-        font-size: 0.95rem;
-    }
-    .ecliptica-banner .banner-buttons {
-        flex-direction: column;
-    }
-    .btn-steam, .btn-wishlist {
-        width: 100%;
-    }
-}
 
 .parallax-card { will-change: transform; }
 .parallax-text { transition: transform 0.3s ease; }
@@ -440,96 +422,6 @@ body {
     position: fixed; top: 0; left: 0; height: 3px;
     background: var(--gradient-1); z-index: 9999; width: 0;
     transition: width 0.1s ease;
-}
-
-/* Ecliptica Banner Styles */
-.ecliptica-banner {
-    background: linear-gradient(135deg, rgba(0, 188, 212, 0.15) 0%, rgba(33, 150, 243, 0.1) 50%, rgba(10, 14, 23, 0.8) 100%);
-    border: 2px solid rgba(0, 188, 212, 0.4);
-    border-radius: 20px;
-    padding: 40px;
-    margin: 30px auto 50px;
-    max-width: 700px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0, 188, 212, 0.3);
-    animation: fadeInDown 0.8s ease-out, bannerGlow 3s ease-in-out infinite;
-}
-
-.ecliptica-banner::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(0, 188, 212, 0.1) 0%, transparent 70%);
-    animation: rotate 10s linear infinite;
-    opacity: 0.5;
-}
-
-.ecliptica-banner .banner-content {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-}
-
-.ecliptica-banner .banner-icon {
-    font-size: 4rem;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    animation: float 3s ease-in-out infinite;
-}
-
-.ecliptica-banner .banner-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #00bcd4 0%, #2196f3 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 10px;
-    text-shadow: 0 0 30px rgba(0, 188, 212, 0.5);
-}
-
-.ecliptica-banner .banner-subtitle {
-    font-size: 1.1rem;
-    color: var(--muted-text);
-    margin-bottom: 25px;
-    line-height: 1.6;
-}
-
-.ecliptica-banner .banner-buttons {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.btn-steam {
-    background: linear-gradient(135deg, #171a21 0%, #171a21 100%);
-    border: 2px solid #66c0f4;
-    color: #ffffff;
-}
-
-.btn-steam:hover {
-    background: #171a21;
-    border-color: #ffffff;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 20px rgba(102, 192, 244, 0.4);
-}
-
-.btn-wishlist {
-    background: linear-gradient(135deg, #ff4d4d 0%, #ff1a1a 100%);
-    border: 2px solid transparent;
-    color: white;
-    cursor: pointer;
-}
-
-.btn-wishlist:hover {
-    background: linear-gradient(135deg, #ff1a1a 0%, #cc0000 100%);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 20px rgba(255, 77, 77, 0.4);
 }
 
 .wishlist-toast {

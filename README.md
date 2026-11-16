@@ -1,6 +1,19 @@
 A modern, multi-language website for the QuasarApp organization showcasing our projects and services.
 
+## About Our Project
+
+QuasarApp is an open-source organization dedicated to creating innovative software solutions. We believe in the power of open collaboration and building tools that empower developers worldwide.
+
+**Our team consists of passionate engineers working on cutting-edge technologies, from desktop frameworks to web applications and game development tools.**
+
+### 📊 Statistics
+
+- **Projects:** 30 repositories
+- **Stars:** 1,084 total stars
+- **Contributors:** 3 public members
+
 ## Features
+
 
 - ✨ **Multi-language Support** - Available in English, Russian, German, and Spanish
 - 🎨 **Material + Sci-Fi Design** - Futuristic UI with glowing effects and modern aesthetics
@@ -127,6 +140,14 @@ The QuasarApp organization also maintains these important repositories:
 ### Infrastructure & Development Tools
 - **Platforms** - Platforms utils of quasarapp - Core infrastructure utilities for building cross-platform applications
 - **ViewSolutions** - View solutions of qml for quasarapp projects - QML component library with reusable UI patterns
+- **Crawl** - Web crawling and scraping framework - Advanced web crawling and data extraction tools
+- **DesktopInstaller** - Desktop application installer - Cross-platform desktop application installer framework
+- **ELFIO** - ELF file format parser - ELF binary file format parsing library
+- **installer-framework** - Universal installer framework - Modular installer framework for various platforms
+- **openssl-cmake** - OpenSSL CMake wrapper - CMake integration for OpenSSL library
+- **QtDeployer** - Qt deployment tool - Advanced deployment tool for Qt applications
+- **QuasarAppCoin** - QuasarApp cryptocurrency - Cryptocurrency project by QuasarApp
+- **SoundBand** - Audio streaming application - Real-time audio streaming and broadcasting application
 - **QuasarAppLib** - global function for quasar app - Collection of global utility functions for Quasar applications
 - **QuasarAppScripts** - Work scripts for QuasarApp projects - Shell scripts for automation and development
 
@@ -142,6 +163,9 @@ The QuasarApp organization also maintains these important repositories:
 - **QStyleSheet** - StyleSheet for qt apps - Qt stylesheet parser and implementation
 
 ### Games & Applications
+
+- **Ecliptica** - Space exploration game - Immersive space exploration and strategy game
+- **Hanoi-Towers** - Hanoi Towers game - Classic puzzle game implementation
 
 ### Internal Resources
 - **Job** - This project contains internal vacancies of the QuasarApp group - Job postings and career information
@@ -191,10 +215,11 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 **Website:** https://quasarapp.github.io/site/  
 **GitHub:** https://github.com/QuasarApp  
 **Email:** info@quasarapp.com  
+**Bluesky:** https://bsky.app/profile/quasarapp.bsky.social  
 **Twitter:** @QuasarApp  
 
 **Support Channels:**
-- GitHub Issues: https://github.com/QuasarApp/QuasarApp/issues
+- GitHub Issues: https://github.com/QuasarApp/issues
 - Documentation: https://quasarapp.github.io/
 - Community: Join our community
 

@@ -229,10 +229,30 @@ body {
     box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
 }
 .contact-link i { color: var(--primary-color); }
-/* Custom social icons */
+
+/* Responsive logo sizing */
+@media (max-width: 768px) {
+    .nav-brand img,
+    .nav-brand svg {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Stat animation timing */
+.stat-item:nth-child(1) { animation-delay: 0s; }
+.stat-item:nth-child(2) { animation-delay: 0.15s; }
+.stat-item:nth-child(3) { animation-delay: 0.3s; }
+
+/* Z-index management for proper layering */
+.navbar { z-index: 1000; }
+.navbar .container { z-index: 1001; }
+.hero-content { z-index: 10; }
+.stat-item { z-index: 5; }
+.contact-link { z-index: 5; }
 .contact-link i.fa-bluesky { 
     font-family: 'Font Awesome 6 Brands'; 
-    content: '\f17e';  /* Bluesky icon */
+    content: '\f17e';
     color: #1d9bf0;
 }
 

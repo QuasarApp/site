@@ -369,6 +369,16 @@ body {
     animation: fadeInUp 1s ease-out;
 }
 
+.ecliptica-capsule-link {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.ecliptica-capsule-link:hover {
+    text-decoration: none;
+}
+
 .ecliptica-capsule-img {
     max-width: 300px;
     width: 300px;

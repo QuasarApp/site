@@ -1,58 +1,53 @@
-## Task Checklist - PR #45 / task_29 Branch
+## Task Checklist - Issue #46 / task_46 Branch
 
 ### Current Status:
-- Branch: task_29 (current working branch)
-- PR URL: https://github.com/QuasarApp/site/pull/45
-- Status: IN PROGRESS - Changes pushed to remote, awaiting final review
+- Branch: task_46 (current working branch)
+- PR URL: https://github.com/QuasarApp/site/pull/47
+- Status: COMPLETE - Changes pushed to remote, PR created and announced
 
-### Issues Fixed (from EndrII's feedback):
-1. **Hero Section Background** - FIXED:
-   - Added proper centering for parallax background image using `position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)`
-   - Updated CSS class `.parallax-bg-img` to center the image properly
-   - Added blur effect (6px) to hide artifacts from image stretching
-   - Used `object-fit: contain` to prevent image distortion
-   - Changed background image from `ecliptica_background.jpg` to `ecliptica_header.jpg`
+### Issue Fixed (from EndrII's request):
+1. **Footer Structure** - FIXED:
+   - Added proper footer layout with social media links section
+   - Added footer with social media links (GitHub, Bluesky, Email)
+   - Added footer-bottom section with copyright and "Made with passion" message
+   - Enhanced footer styling with proper spacing, colors, and hover effects
+   - Added responsive design for mobile devices
+   - Added multi-language support for footer text (English, Russian, German, Spanish)
 
-2. **Ecliptica Project Card** - FIXED:
-   - Added game logo (ecliptica_icon_logo.png) with proper styling
-   - Added background image (ecliptica_background.jpg) with `ecliptica-card-bg` class
-   - Card has proper glow effect with hover transitions
-   - No GitHub link (as Ecliptica is not available on GitHub)
-   - Updated wishlist button to point to Steam wishlist API URL
+### Changes Made:
+1. **HTML Structure** (`index.html`):
+   - Restructured footer with two sections: footer-top (social links) and footer-bottom (copyright)
+   - Added social media links with icons (GitHub, Bluesky, Email)
+   - Maintained copyright and "Made with passion" text
 
-3. **Wishlist Button** - FIXED:
-   - Changed wishlist button URL from `https://store.steampowered.com/app/3723390/Ecliptica/` to `https://store.steampowered.com/wishlist/add/item?appid=3723390`
-   - Fixed in both hero section and project card
+2. **CSS Styling** (`css/style.css`):
+   - Enhanced `.footer` class with proper spacing and layout
+   - Added `.footer .container` for flexible column layout
+   - Added `.footer .footer-top` and `.footer .footer-social` classes
+   - Added `.footer .social-link` with hover effects and transitions
+   - Added responsive styles for mobile devices
 
-4. **Hero Section Content** - VERIFIED:
-   - Contains game information about Ecliptica
-   - Ecliptica featured banner with proper integration
-   - Ecliptica capsule image included
-
-### Assets Available:
-- ecliptica_header.jpg - Hero background
-- ecliptica_icon_logo.png - Game logo
-- ecliptica_capsule.jpg - Game capsule (horizontal)
-- ecliptica_capsula_vertical.png - Game capsule (vertical)
-- ecliptica_background.jpg - Project card background
-
-### Notes:
-- Ecliptica is NOT available on GitHub - all GitHub links removed from Ecliptica cards
-- EndrII suggested checking the game website: https://ecliptica.me/ for animations/elements
+3. **Translations** (`js/i18n.js`):
+   - Added `footer` section to all language translations (en, ru, de, es)
+   - Added translations for GitHub, Bluesky, and Email labels
 
 ### Summary of Changes:
-1. **Hero Section**: Fixed parallax background image centering with proper positioning and blur effects
-2. **Ecliptica Project Card**: Added game logo and background image, removed redundant HTML div
-3. **Wishlist Button**: Fixed URL to point to Steam wishlist API URL
-4. **CSS Enhancement**: Added `.ecliptica-card-bg` class for background image with blur effect
+1. Fixed incorrect footer by adding proper structure
+2. Added social media links with icons and hover effects
+3. Enhanced footer styling with modern design
+4. Added responsive design for mobile devices
+5. Added multi-language support for footer content
 
 ### Files Modified:
-- `/home/andrei/site/index.html` - Fixed parallax background centering, added background image to Ecliptica card, fixed wishlist button URLs
-- `/home/andrei/site/css/style.css` - Added `.ecliptica-card-bg` class styling
+- `/home/andrei/site/index.html` - Restructured footer with social media links
+- `/home/andrei/site/css/style.css` - Enhanced footer styling
+- `/home/andrei/site/js/i18n.js` - Added footer translations
 
 ### Verification:
-- ✅ Parallax background image is properly centered (top: 50%, left: 50%, transform: translate(-50%, -50%))
-- ✅ Ecliptica project card has game logo and background image with blur effect
-- ✅ No GitHub link in Ecliptica cards
-- ✅ Wishlist button links to Steam wishlist API URL
-- ✅ All changes pushed to remote branch task_29
+- ✅ Footer has proper structure with social media links
+- ✅ Social media links include icons and hover effects
+- ✅ Footer styling is modern and consistent with site design
+- ✅ Responsive design for mobile devices
+- ✅ Multi-language support for footer content
+- ✅ All changes pushed to remote branch task_46
+- ✅ PR created and issue comment posted

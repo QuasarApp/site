@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         .stat-item {
-            animation-delay: calc(var(--item-index) * 0.1s);
+            animation-delay: calc(var(--item-index) * 0.15s);
             --item-index: 0;
         }
     `;

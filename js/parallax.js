@@ -48,12 +48,12 @@ class ParallaxHandler {
 
     // Optional: Add mousemove parallax for hero section
     addMouseParallax() {
-        const hero = document.querySelector('.hero-section');
-        if (!hero) return;
+        this.hero = document.querySelector('.hero-section');
+        if (!this.hero) return;
 
         let ticking = false;
 
-        hero.addEventListener('mousemove', function(e) {
+        this.hero.addEventListener('mousemove', function(e) {
             if (!ticking) {
                 window.requestAnimationFrame(function() {
                     this.updateMouseParallax(e);

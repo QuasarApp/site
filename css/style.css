@@ -47,6 +47,13 @@ body {
     box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
     transition: transform 0.3s ease;
 }
+@media (max-width: 768px) {
+    .nav-brand img,
+    .nav-brand svg {
+        width: 40px;
+        height: 40px;
+    }
+}
 .nav-brand img:hover {
     transform: scale(1.1);
 }
@@ -284,10 +291,30 @@ body {
     box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
 }
 .contact-link i { color: var(--primary-color); }
-/* Custom social icons */
+
+/* Responsive logo sizing */
+@media (max-width: 768px) {
+    .nav-brand img,
+    .nav-brand svg {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Stat animation timing */
+.stat-item:nth-child(1) { animation-delay: 0s; }
+.stat-item:nth-child(2) { animation-delay: 0.15s; }
+.stat-item:nth-child(3) { animation-delay: 0.3s; }
+
+/* Z-index management for proper layering */
+.navbar { z-index: 1000; }
+.navbar .container { z-index: 1001; }
+.hero-content { z-index: 10; }
+.stat-item { z-index: 5; }
+.contact-link { z-index: 5; }
 .contact-link i.fa-bluesky { 
-    font-family: 'Brands'; 
-    content: '\f17d';  /* Bluesky icon */
+    font-family: 'Font Awesome 6 Brands'; 
+    content: '\f17e';
     color: #1d9bf0;
 }
 
@@ -347,7 +374,10 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 .animate-in { animation: fadeInUp 0.6s ease-out forwards; }
-.stat-item { animation-delay: calc(var(--item-index) * 0.1s); --item-index: 0; }
+.stat-item:nth-child(1) { --item-index: 0; }
+.stat-item:nth-child(2) { --item-index: 1; }
+.stat-item:nth-child(3) { --item-index: 2; }
+.stat-item { animation-delay: calc(var(--item-index) * 0.15s); }
 
 .scroll-progress {
     position: fixed; top: 0; left: 0; height: 3px;

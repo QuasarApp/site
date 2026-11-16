@@ -116,18 +116,19 @@ body {
 
 .parallax-bg-img {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
     z-index: 0;
     /* Blur effect to hide artifacts from image stretching */
     filter: blur(12px);
-    transform: scale(1.15);
+    transform: translate(-50%, -50%) scale(1.15);
     will-change: transform;
     /* Proper centering */
-    object-position: center;
 }
 
 .blur-bg {
@@ -280,21 +281,6 @@ body {
     box-shadow: 0 8px 40px rgba(102, 192, 244, 0.6);
 }
 
-.ecliptica-card .card-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('ecliptica_background.jpg') center/cover no-repeat;
-    opacity: 0.15;
-    z-index: 0;
-    transition: opacity 0.4s ease;
-}
-
-.ecliptica-card:hover .card-background {
-    opacity: 0.25;
-}
 .card-link {
     display: inline-flex; align-items: center; justify-content: center;
     width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-1);

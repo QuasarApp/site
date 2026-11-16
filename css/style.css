@@ -730,28 +730,6 @@ body {
     line-height: 1.5;
 }
 
-/* Ecliptica Capsule on the right side */
-.ecliptica-capsule {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 20px;
-    width: 100%;
-}
-
-.ecliptica-capsule-img {
-    max-width: 280px;
-    width: 280px;
-    height: auto;
-    display: block;
-    filter: drop-shadow(0 10px 30px rgba(102, 192, 244, 0.3));
-    transition: transform 0.3s ease;
-}
-
-.ecliptica-capsule-img:hover {
-    transform: scale(1.03) translateY(-5px);
-}
-
 .ecliptica-features {
     display: flex;
     justify-content: center;
@@ -897,21 +875,5 @@ body {
     .ecliptica-card .btn-sm {
         width: 100%;
         text-align: center;
-    }
-    
-    /* Mobile: Stack content vertically, capsule below */
-    .ecliptica-header-content {
-        order: 1;
-    }
-    
-    .ecliptica-capsule {
-        order: 3;
-        justify-content: center;
-        margin-top: 15px;
-    }
-    
-    .ecliptica-capsule-img {
-        max-width: 180px;
-        width: 180px;
     }
 }

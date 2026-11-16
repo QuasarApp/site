@@ -13,7 +13,16 @@ A modern, multi-language website for the QuasarApp organization showcasing our p
 
 The following repositories are pinned to the [QuasarApp organization page](https://github.com/QuasarApp):
 
-### 1. CQtDeployer
+### 1. Ecliptica
+- **URL:** https://github.com/QuasarApp/Ecliptica
+- **Description:** A space exploration and terraforming game built with Qt/QML. Players manage resources, build structures, and terraform planets.
+- **Status:** ✅ Active
+- **Priority:** 🔴 High
+- **Key Features:** Space exploration, terraforming mechanics, resource management, QML-based UI
+- **Stars:** 1+
+- **Last Updated:** November 15, 2026
+
+### 2. CQtDeployer
 - **URL:** https://github.com/QuasarApp/CQtDeployer
 - **Description:** This project is used to deploy applications written using QML, qt or other С / С++ frameworks.
 - **Status:** ✅ Active
@@ -287,6 +296,7 @@ The following repositories are pinned to the [QuasarApp organization page](https
 
 | Repository | Priority | Status | Stars | Language |
 |------------|----------|--------|-------|----------|
+| [Ecliptica](https://github.com/QuasarApp/Ecliptica) | 🔴 High | ✅ Active | 1+ | QML |
 | [CQtDeployer](https://github.com/QuasarApp/CQtDeployer) | 🔴 High | ✅ Active | 658+ | C++ |
 | [Qt-Secret](https://github.com/QuasarApp/Qt-Secret) | 🔴 High | ✅ Active | 269+ | C++ |
 | [Heart](https://github.com/QuasarApp/Heart) | 🔴 High | ✅ Active | 5+ | C++ |

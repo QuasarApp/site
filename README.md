@@ -68,7 +68,7 @@ The following repositories are pinned to the [QuasarApp organization page](https
 
 ### 7. Heart
 - **URL:** https://github.com/QuasarApp/Heart
-- **Description:** QuasarApp Heart - it is base backend for C++/Qt projects. This library support work with databases and work with lite network requests.
+- **Description:** QuasarApp Heart - it is base backend for C++/Qt projects. This library supports work with databases and work with lite network requests.
 - **Status:** ✅ Active
 - **Priority:** 🔴 High
 - **Key Features:** Cross-platform support, automated dependency management, CI/CD integration
@@ -77,7 +77,7 @@ The following repositories are pinned to the [QuasarApp organization page](https
 
 ### 8. sdkmanager-android
 - **URL:** https://github.com/QuasarApp/sdkmanager-android
-- **Description:** Wraper of  android sdk manager for snap store
+- **Description:** Wrapper of  android sdk manager for snap store
 - **Status:** ✅ Active
 - **Priority:** 🔴 High
 - **Key Features:** Cross-platform support, automated dependency management, CI/CD integration
@@ -95,7 +95,7 @@ The following repositories are pinned to the [QuasarApp organization page](https
 
 ### 10. Patronum
 - **URL:** https://github.com/QuasarApp/Patronum
-- **Description:** This is extension libraries for control your daemons.
+- **Description:** These are extension libraries for control your daemons.
 - **Status:** ✅ Active
 - **Priority:** 🔴 High
 - **Key Features:** Cross-platform support, automated dependency management, CI/CD integration
@@ -138,8 +138,10 @@ The QuasarApp organization also maintains these important repositories:
 - **Qt-AES** - Native Qt AES encryption class - AES encryption implementation for Qt applications
 - **pe-parse** - Principled, lightweight C/C++ PE parser - PE file format parsing library
 
-### Games & Applications
+### CSS Libraries
 - **QStyleSheet** - StyleSheet for qt apps - Qt stylesheet parser and implementation
+
+### Games & Applications
 
 ### Internal Resources
 - **Job** - This project contains internal vacancies of the QuasarApp group - Job postings and career information

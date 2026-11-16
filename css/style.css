@@ -96,12 +96,61 @@ body {
 .hero-section {
     height: 100vh; display: flex; align-items: center; justify-content: center;
     position: relative; background: var(--gradient-2); overflow: hidden;
+    padding: 60px 20px;
 }
+
 .parallax-bg {
     position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(circle at 20% 80%, rgba(0, 188, 212, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(33, 150, 243, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(255, 152, 0, 0.05) 0%, transparent 50%);
+    overflow: hidden;
+}
+
+.parallax-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(10, 14, 23, 0.35), rgba(10, 14, 23, 0.55));
+    z-index: 1;
+}
+
+.parallax-bg-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    z-index: 0;
+    /* Blur effect to hide artifacts from image stretching */
+    filter: blur(6px);
+    transform: translate(-50%, -50%) scale(1.07);
+    will-change: transform;
+    /* Proper centering */
+}
+
+.blur-bg {
+    filter: blur(6px);
+    transform: scale(1.07);
+}
+
+.ecliptica-card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: cover;
+    opacity: 0.25;
+    filter: blur(5px);
+    z-index: 0;
+    transition: opacity 0.3s ease;
+}
+
+.ecliptica-card:hover .ecliptica-card-bg {
+    opacity: 0.35;
 }
 .hero-content { text-align: center; z-index: 1; padding: 0 20px; }
 .hero-logo {
@@ -197,6 +246,58 @@ body {
     display: inline-block; padding: 4px 12px; background: rgba(0, 188, 212, 0.2);
     color: var(--primary-color); border-radius: 15px; font-size: 0.8rem; margin-bottom: 15px;
 }
+
+/* Ecliptica Project Card - Enhanced with background image and glow effect */
+.project-card[data-project="ecliptica"],
+.ecliptica-card {
+    background: linear-gradient(135deg, rgba(102, 192, 244, 0.15) 0%, rgba(10, 14, 23, 0.9) 100%) !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3) !important;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.ecliptica-card:hover {
+    box-shadow: 0 20px 50px rgba(0, 188, 212, 0.5) !important;
+    transform: translateY(-5px);
+    border-color: #66c0f4 !important;
+}
+
+.ecliptica-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('ecliptica_background.jpg') center/cover no-repeat;
+    opacity: 0.15;
+    z-index: 0;
+    transition: opacity 0.4s ease;
+}
+
+.ecliptica-card:hover::before {
+    opacity: 0.25;
+}
+
+.ecliptica-card .game-logo {
+    position: relative;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    box-shadow: 0 5px 30px rgba(102, 192, 244, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ecliptica-card .game-logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 40px rgba(102, 192, 244, 0.6);
+}
+
 .card-link {
     display: inline-flex; align-items: center; justify-content: center;
     width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-1);
@@ -257,6 +358,46 @@ body {
     background: #ff1a1a;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
+}
+
+/* Ecliptica Capsule in Hero Section */
+.ecliptica-capsule {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    margin: 20px 0 0 0;
+    animation: fadeInUp 1s ease-out;
+}
+
+.ecliptica-capsule-img {
+    max-width: 300px;
+    width: 300px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 15px 50px rgba(102, 192, 244, 0.4), 0 0 0 1px rgba(102, 192, 244, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+.ecliptica-capsule-img:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 20px 60px rgba(102, 192, 244, 0.6), 0 0 0 2px rgba(102, 192, 244, 0.3);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .about-section { padding: 100px 0; background: var(--darker-bg); }
@@ -571,65 +712,133 @@ body {
     color: var(--text-color);
 }
 
+/* Ecliptica Hero Logo - Circular logo at the top of the banner */
+.ecliptica-header-logo {
+    margin-bottom: 20px;
+}
+
 .ecliptica-logo {
-    width: 80px;
-    height: auto;
-    max-height: 40px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(102, 192, 244, 0.4);
-    object-fit: cover;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0 10px 40px rgba(102, 192, 244, 0.4);
+    display: block;
+    margin: 0 auto 20px;
+    transition: transform 0.3s ease;
+}
+
+.ecliptica-logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 50px rgba(102, 192, 244, 0.6);
 }
 
 /* Hero Section - Ecliptica Featured Banner */
 .ecliptica-featured {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 60px 20px;
     text-align: center;
+    z-index: 2;
+    position: relative;
+    background: rgba(10, 14, 23, 0.92);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 188, 212, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 188, 212, 0.2);
+    transition: all 0.3s ease;
 }
 
-.ecliptica-featured-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 40px rgba(102, 192, 244, 0.2);
-    margin-bottom: 30px;
-    display: block;
-    width: 100%;
-    max-height: 500px;
-    object-fit: cover;
+.ecliptica-featured:hover {
+    box-shadow: 0 15px 50px rgba(0, 188, 212, 0.4);
+    border-color: rgba(0, 188, 212, 0.3);
 }
 
-.ecliptica-info {
+.ecliptica-header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.ecliptica-header-info {
+    text-align: center;
     max-width: 800px;
-    margin: 0 auto;
+}
+
+.ecliptica-logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0 10px 40px rgba(102, 192, 244, 0.4);
+    display: block;
+    margin: 0 auto 15px;
+    transition: transform 0.3s ease;
+}
+
+.ecliptica-logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 50px rgba(102, 192, 244, 0.6);
 }
 
 .ecliptica-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 800;
     color: #66c0f4;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     text-shadow: 0 0 30px rgba(102, 192, 244, 0.5);
     letter-spacing: 2px;
 }
 
-.ecliptica-description {
-    font-size: 1.2rem;
+.ecliptica-subtitle {
+    font-size: 1.1rem;
     color: var(--muted-text);
-    margin-bottom: 30px;
-    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.ecliptica-description {
+    font-size: 0.95rem;
+    color: var(--muted-text);
+    line-height: 1.5;
+}
+
+.ecliptica-features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.feature-item {
+    background: rgba(0, 188, 212, 0.1);
+    border: 1px solid rgba(0, 188, 212, 0.3);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    background: rgba(0, 188, 212, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 188, 212, 0.2);
 }
 
 .ecliptica-buttons {
     display: flex;
-    gap: 15px;
+    gap: 12px;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .btn-steam-primary {
-    background: linear-gradient(135deg, #171a21 0%, #171a21 100%);
+    background: #171a21;
     border: 2px solid #66c0f4;
     color: #ffffff;
     font-weight: 600;
@@ -642,23 +851,116 @@ body {
     box-shadow: 0 5px 20px rgba(102, 192, 244, 0.4);
 }
 
+.btn-wishlist {
+    background: linear-gradient(135deg, #ff4d4d 0%, #ff1a1a 100%);
+    border: 2px solid transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-wishlist:hover {
+    background: linear-gradient(135deg, #ff1a1a 0%, #cc0000 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(255, 77, 77, 0.4);
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
-    .ecliptica-featured-image {
-        max-height: 300px;
+    .ecliptica-featured {
+        padding: 40px 15px;
+        flex-direction: column;
+    }
+    
+    .ecliptica-header-content {
+        order: 2;
+    }
+    
+    .ecliptica-logo {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 15px;
+        border-radius: 50%;
     }
     
     .ecliptica-title {
         font-size: 2rem;
     }
     
-    .ecliptica-description {
+    .ecliptica-subtitle {
         font-size: 1rem;
     }
     
-    .ecliptica-logo {
-        width: 60px;
-        height: auto;
-        max-height: 30px;
+    .ecliptica-description {
+        font-size: 0.9rem;
+    }
+    
+    .ecliptica-features {
+        gap: 10px;
+    }
+    
+    .feature-item {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+    
+    .feature-item:hover {
+        transform: translateY(-1px);
+    }
+    
+    .ecliptica-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-steam-primary, .btn-wishlist {
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Mobile styles for Ecliptica capsule */
+    .ecliptica-capsule {
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .ecliptica-capsule-img {
+        max-width: 100%;
+        width: 200px;
+    }
+    
+    .ecliptica-card .game-logo {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 15px;
+    }
+    
+    .ecliptica-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .ecliptica-card p {
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+    }
+    
+    .ecliptica-card .features-badges {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    .ecliptica-card .features-badges .lang-badge {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+    }
+    
+    .ecliptica-card .card-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .ecliptica-card .btn-sm {
+        width: 100%;
+        text-align: center;
     }
 }

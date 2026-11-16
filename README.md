@@ -17,9 +17,9 @@ QuasarApp is an open-source organization dedicated to creating innovative softwa
 
 ### 📊 Statistics
 
-- **Projects:** 50+ repositories
-- **Stars:** 1K+ total stars
-- **Contributors:** 100+ public members
+- **Projects:** 30 repositories
+- **Stars:** 1,084 total stars
+- **Contributors:** 3 public members
 
 ## 📌 Pinned Repositories
 

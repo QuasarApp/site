@@ -116,8 +116,8 @@ body {
 
 .parallax-bg-img {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 90%;
+    left: 90%;
     width: auto;
     height: auto;
     max-width: 100%;

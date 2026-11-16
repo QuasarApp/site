@@ -106,14 +106,20 @@ body {
 }
 .parallax-bg-img {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.6;
     z-index: 0;
+    /* Blur effect to hide artifacts from image stretching */
+    filter: blur(10px);
+    transform: scale(1.1);
+}
+
+.blur-bg {
+    filter: blur(10px);
+    transform: scale(1.1);
 }
 .hero-content { text-align: center; z-index: 1; padding: 0 20px; }
 .hero-logo {
@@ -669,6 +675,10 @@ body {
     background: rgba(10, 14, 23, 0.85);
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0, 188, 212, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
 .ecliptica-header-content {
@@ -720,6 +730,28 @@ body {
     line-height: 1.5;
 }
 
+/* Ecliptica Capsule on the right side */
+.ecliptica-capsule {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.ecliptica-capsule-img {
+    max-width: 280px;
+    width: 280px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 10px 30px rgba(102, 192, 244, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.ecliptica-capsule-img:hover {
+    transform: scale(1.03) translateY(-5px);
+}
+
 .ecliptica-features {
     display: flex;
     justify-content: center;
@@ -736,12 +768,6 @@ body {
     font-size: 0.85rem;
     color: var(--text-color);
     transition: all 0.3s ease;
-}
-
-.feature-item:hover {
-    background: rgba(0, 188, 212, 0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(0, 188, 212, 0.2);
 }
 
 .feature-item:hover {
@@ -788,6 +814,11 @@ body {
 @media (max-width: 768px) {
     .ecliptica-featured {
         padding: 40px 15px;
+        flex-direction: column;
+    }
+    
+    .ecliptica-header-content {
+        order: 2;
     }
     
     .ecliptica-logo {
@@ -866,5 +897,21 @@ body {
     .ecliptica-card .btn-sm {
         width: 100%;
         text-align: center;
+    }
+    
+    /* Mobile: Stack content vertically, capsule below */
+    .ecliptica-header-content {
+        order: 1;
+    }
+    
+    .ecliptica-capsule {
+        order: 3;
+        justify-content: center;
+        margin-top: 15px;
+    }
+    
+    .ecliptica-capsule-img {
+        max-width: 180px;
+        width: 180px;
     }
 }

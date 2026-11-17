@@ -39,9 +39,14 @@ const translations = {
         },
         contact: {
             title: 'Contact Us',
+            message: 'Contact us through our official channels - links are available in the footer.'
+        },
+        footer: {
             github: 'GitHub',
             bluesky: 'Bluesky',
-            email: 'Email'
+            email: 'Email',
+            youtube: 'YouTube',
+            steam: 'Steam'
         }
     },
     ru: {
@@ -83,9 +88,14 @@ const translations = {
         },
         contact: {
             title: 'Связаться с нами',
+            message: 'Свяжитесь с нами через наши официальные каналы - ссылки доступны в подвале.'
+        },
+        footer: {
             github: 'GitHub',
             bluesky: 'Bluesky',
-            email: 'Email'
+            email: 'Email',
+            youtube: 'YouTube',
+            steam: 'Steam'
         }
     },
     de: {
@@ -127,9 +137,14 @@ const translations = {
         },
         contact: {
             title: 'Kontakt aufnehmen',
+            message: 'Kontaktieren Sie uns über unsere offiziellen Kanäle - Links sind im Footer verfügbar.'
+        },
+        footer: {
             github: 'GitHub',
             bluesky: 'Bluesky',
-            email: 'Email'
+            email: 'Email',
+            youtube: 'YouTube',
+            steam: 'Steam'
         }
     },
     es: {
@@ -171,9 +186,14 @@ const translations = {
         },
         contact: {
             title: 'Contáctanos',
+            message: 'Contáctanos a través de nuestros canales oficiales - los enlaces están disponibles en el pie de página.'
+        },
+        footer: {
             github: 'GitHub',
             bluesky: 'Bluesky',
-            email: 'Email'
+            email: 'Email',
+            youtube: 'YouTube',
+            steam: 'Steam'
         }
     }
 };
@@ -216,6 +236,7 @@ function updateTranslations() {
 // Initialize language on page load
 document.addEventListener('DOMContentLoaded', function() {
     updateLanguageButton();
+    updateTranslations();
     
     // Smooth scrolling for navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

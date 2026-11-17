@@ -532,6 +532,11 @@ body {
 .footer .social-link i {
     font-size: 1.5rem;
 }
+
+.bsky-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
 .footer .social-link:hover {
     color: var(--primary-color);
     transform: translateY(-2px);

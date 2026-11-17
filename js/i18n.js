@@ -44,7 +44,9 @@ const translations = {
         footer: {
             github: 'GitHub',
             bluesky: 'Bluesky',
-            email: 'Email'
+            email: 'Email',
+            youtube: 'YouTube',
+            steam: 'Steam'
         }
     },
     ru: {
@@ -91,7 +93,9 @@ const translations = {
         footer: {
             github: 'GitHub',
             bluesky: 'Bluesky',
-            email: 'Email'
+            email: 'Email',
+            youtube: 'YouTube',
+            steam: 'Steam'
         }
     },
     de: {
@@ -138,7 +142,9 @@ const translations = {
         footer: {
             github: 'GitHub',
             bluesky: 'Bluesky',
-            email: 'Email'
+            email: 'Email',
+            youtube: 'YouTube',
+            steam: 'Steam'
         }
     },
     es: {
@@ -185,7 +191,9 @@ const translations = {
         footer: {
             github: 'GitHub',
             bluesky: 'Bluesky',
-            email: 'Email'
+            email: 'Email',
+            youtube: 'YouTube',
+            steam: 'Steam'
         }
     }
 };

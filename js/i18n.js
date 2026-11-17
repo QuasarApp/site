@@ -39,9 +39,7 @@ const translations = {
         },
         contact: {
             title: 'Contact Us',
-            github: 'GitHub',
-            bluesky: 'Bluesky',
-            email: 'Email'
+            message: 'Contact us through our official channels - links are available in the footer.'
         },
         footer: {
             github: 'GitHub',
@@ -88,9 +86,7 @@ const translations = {
         },
         contact: {
             title: 'Связаться с нами',
-            github: 'GitHub',
-            bluesky: 'Bluesky',
-            email: 'Email'
+            message: 'Свяжитесь с нами через наши официальные каналы - ссылки доступны в подвале.'
         },
         footer: {
             github: 'GitHub',
@@ -137,9 +133,7 @@ const translations = {
         },
         contact: {
             title: 'Kontakt aufnehmen',
-            github: 'GitHub',
-            bluesky: 'Bluesky',
-            email: 'Email'
+            message: 'Kontaktieren Sie uns über unsere offiziellen Kanäle - Links sind im Footer verfügbar.'
         },
         footer: {
             github: 'GitHub',
@@ -186,9 +180,7 @@ const translations = {
         },
         contact: {
             title: 'Contáctanos',
-            github: 'GitHub',
-            bluesky: 'Bluesky',
-            email: 'Email'
+            message: 'Contáctanos a través de nuestros canales oficiales - los enlaces están disponibles en el pie de página.'
         },
         footer: {
             github: 'GitHub',

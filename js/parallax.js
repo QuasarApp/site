@@ -8,7 +8,9 @@ class ParallaxHandler {
     }
 
     init() {
-        this.cards = document.querySelectorAll('.parallax-card, .parallax-text, .about-section');
+        // Note: about-text intentionally excluded from parallax to prevent text spilling
+        // Only target parallax-text elements that are NOT about-text (i.e., project cards)
+        this.cards = document.querySelectorAll('.parallax-card, .about-section, .parallax-text:not(.about-text)');
         
         if (this.cards.length > 0) {
             this.bindEvents();

@@ -21,7 +21,7 @@ jobs:
       
       - name: Install lychee (link checker)
         run: |
-          npm install -g lychee
+          curl -sSL https://github.com/lycheeverse/lychee/releases/latest/download/lychee-x86_64-unknown-linux-musl.tar.gz | tar xz -C /usr/local/bin lychee
       
       - name: Check JavaScript syntax
         run: |
@@ -46,7 +46,6 @@ jobs:
       - name: Check image sizes
         run: |
           echo "Checking image file sizes (max 200KB)..."
-          MAX_SIZE=2097152  # 200KB in bytes
           OVERSIZE=0
           for img in *.png *.jpg *.jpeg *.gif *.webp *.avif; do
             if [ -f "$img" ]; then
@@ -61,7 +60,8 @@ jobs:
             fi
           done
           if [ "$OVERSIZE" -eq 1 ]; then
-            echo "Note: Large images detected. Consider optimizing or compressing them."
+            echo "ERROR: Images over 200KB detected."
+            exit 1
           fi
           echo "Image size check complete."
       
@@ -85,35 +85,36 @@ jobs:
             fi
           done
           
-          # Check CSS files for url() references
+          # Check CSS files for url() references (handle both '...' and "..." quotes)
           for file in css/*.css; do
             if [ -f "$file" ]; then
-              REFERENCED="$REFERENCED $(grep -oE 'url\([^)]+\.[a-zA-Z]+' "$file" 2>/dev/null | sort -u || true)"
+              REFERENCED="$REFERENCED $(grep -oE "url\(['\"][^'\"]+['\"]\)" "$file" 2>/dev/null | sed "s/url(['\"]//;s/['\"])/\n/" | sed "s/^\s*$//" | sort -u || true)"
             fi
           done
           
           # Check JS files for src= references
-          for file in css/*.js js/*.js; do
+          for file in js/*.js; do
             if [ -f "$file" ]; then
               REFERENCED="$REFERENCED $(grep -oE 'src=["'\'']?[^"'\'']+' "$file" 2>/dev/null | sort -u || true)"
             fi
           done
           
-          # Check each image
-          FOUND=0
+          # Check each image for exact match (case-insensitive, whole word)
+          UNREFERENCED=""
           for img in $IMAGES; do
             FILENAME=$(basename "$img")
-            # Check if the full filename (with or without src=" prefix) is in the referenced list
-            if echo "$REFERENCED" | grep -qi "$FILENAME"; then
+            # Check if the exact filename is in the referenced list (case-insensitive, word boundary)
+            if echo "$REFERENCED" | grep -qiE "(^|[^a-zA-Z0-9_/-])${FILENAME}([^a-zA-Z0-9_/-]|$)"; then
               echo "✓ $img is referenced"
-              FOUND=1
             else
               echo "⚠ WARNING: $img may not be referenced in any HTML/JS/CSS file"
+              UNREFERENCED="$UNREFERENCED $img"
             fi
           done
           
-          if [ "$FOUND" -eq 0 ]; then
-            echo "ERROR: No images appear to be referenced!"
+          # Exit with error if any unreferenced images were found
+          if [ -n "$UNREFERENCED" ]; then
+            echo "ERROR: Unreferenced images detected:$UNREFERENCED"
             exit 1
           fi
           

@@ -6,18 +6,21 @@ Guidance for AI agents (and humans) working in this repository.
 
 Static single-page website for the QuasarApp organization. Pure HTML5 +
 CSS3 + vanilla JS — no framework, no build step, no dependencies.
-Multi-language: English (default, in the markup) plus Russian, German and
-Spanish. Merging into `main` deploys the repo root to
-`https://quasarapp.github.io/site/` via the GitHub Pages workflow
-(`.github/workflows/pages.yml`).
+Multi-language: English, Russian, German and Spanish. Hosted on GitHub
+Pages: the `main` branch root is served at
+`https://quasarapp.github.io/site/` (custom domain via `CNAME`).
 
 ## Architecture
 
-- `index.html` — single page: navbar, hero, 4 project cards, about + stats,
-  contact, footer.
-- `css/style.css` — the only stylesheet; reuse the CSS design tokens on `:root`.
-- `js/i18n.js` (load 1st) — translations + language switch via `data-lang`
-  dot-path keys; keep the `ru`/`de`/`es` keys in sync with the markup.
+- `index.html` — single page: navbar, hero (with Ecliptica featured
+  banner), project-card grid, about + stats, contact, footer with social
+  links.
+- `css/style.css` — the only stylesheet; reuse the CSS design tokens on
+  `:root`.
+- `js/i18n.js` (load 1st) — `translations` object for `en`/`ru`/`de`/`es`;
+  elements carry `data-lang` dot-path keys. When adding or changing a
+  string, update the key in the markup and all four language blocks
+  together.
 - `js/parallax.js` (load 2nd) — global `ParallaxHandler` class.
 - `js/main.js` (load 3rd) — scroll animations, card tilt, particles.
 

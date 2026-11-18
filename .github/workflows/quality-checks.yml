@@ -1,0 +1,99 @@
+name: Site Quality Checks
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  quality-checks:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install lychee (link checker)
+        run: |
+          npm install -g lychee
+      
+      - name: Check JavaScript syntax
+        run: |
+          echo "Checking JavaScript files for syntax errors..."
+          for file in js/*.js; do
+            if [ -f "$file" ]; then
+              echo "Checking $file..."
+              node --check "$file" || (echo "Syntax error in $file" && exit 1)
+            fi
+          done
+          echo "All JavaScript files passed syntax check."
+      
+      - name: Check HTML links
+        run: |
+          echo "Checking HTML links..."
+          lychee index.html \
+            --exclude 'https://fonts.googleapis.com' \
+            --exclude 'https://cdnjs.cloudflare.com' \
+            --verbose || exit 1
+          echo "All links in index.html are valid."
+      
+      - name: Check image sizes
+        run: |
+          echo "Checking image file sizes (max 200KB)..."
+          MAX_SIZE=2097152  # 200KB in bytes
+          for img in *.png *.jpg *.jpeg *.gif *.webp *.avif; do
+            if [ -f "$img" ]; then
+              SIZE=$(stat -c%s "$img")
+              if [ "$SIZE" -gt "$MAX_SIZE" ]; then
+                echo "ERROR: Image $img exceeds 200KB (current size: $((SIZE / 1024)) KB)"
+                exit 1
+              fi
+              echo "✓ $img: $((SIZE / 1024)) KB (OK)"
+            fi
+          done
+          echo "All images are within the 200KB size limit."
+      
+      - name: Check for unreferenced images
+        run: |
+          echo "Checking for unreferenced images in repo root..."
+          
+          # Get list of images in repo root
+          IMAGES=$(ls -1 *.png *.jpg *.jpeg *.gif *.webp *.avif 2>/dev/null || true)
+          
+          if [ -z "$IMAGES" ]; then
+            echo "No images found in repo root."
+            exit 0
+          fi
+          
+          # Get all references in HTML/CSS/JS files
+          REFERENCED=""
+          for file in index.html css/*.js js/*.js; do
+            if [ -f "$file" ]; then
+              REFERENCED="$REFERENCED $(grep -oE 'src=[\"'"'"']?[^\"'"'"' >\s]+' "$file" 2>/dev/null | grep -oE '\.[a-zA-Z]{2,5}$' | sort -u || true)"
+            fi
+          done
+          
+          # Check each image
+          FOUND=0
+          for img in $IMAGES; do
+            BASENAME=$(basename "$img")
+            if echo "$REFERENCED" | grep -qi "$BASENAME\|${BASENAME%.*}"; then
+              echo "✓ $img is referenced"
+              FOUND=1
+            else
+              echo "⚠ WARNING: $img may not be referenced in any HTML/JS/CSS file"
+            fi
+          done
+          
+          if [ "$FOUND" -eq 0 ]; then
+            echo "ERROR: No images appear to be referenced!"
+            exit 1
+          fi
+          
+          echo "Image reference check complete."

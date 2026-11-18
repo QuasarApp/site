@@ -1,6 +1,9 @@
 // QuasarApp Group - Main JavaScript
 // Additional functionality and animations
 
+// Accessibility: Check if reduced motion is preferred
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 document.addEventListener('DOMContentLoaded', function() {
     // Animate elements on scroll
     const observerOptions = {
@@ -46,32 +49,36 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
 
-    // Add tilt effect to project cards
-    const cards = document.querySelectorAll('.project-card');
-    cards.forEach((card, index) => {
-        card.style.setProperty('--item-index', index);
-        
-        card.addEventListener('mousemove', function(e) {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+    // Add tilt effect to project cards (disabled if reduced motion is preferred)
+    if (!prefersReducedMotion) {
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach((card, index) => {
+            card.style.setProperty('--item-index', index);
             
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
+            card.addEventListener('mousemove', function(e) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+            });
             
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
-            
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+            card.addEventListener('mouseleave', function() {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
         });
-        
-        card.addEventListener('mouseleave', function() {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-        });
-    });
+    }
 
-    // Floating particles effect
-    createParticles();
+    // Floating particles effect (disabled if reduced motion is preferred)
+    if (!prefersReducedMotion) {
+        createParticles();
+    }
 });
 
 // Create floating particle effects

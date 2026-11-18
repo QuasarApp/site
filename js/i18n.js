@@ -251,9 +251,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
-    // Add parallax effect to cards
-    if (window.ParallaxHandler) {
-        window.ParallaxHandler.init();
-    }
 });

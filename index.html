@@ -9,7 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <nav class="navbar">
+    <!-- Skip to main content link for keyboard navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <nav class="navbar" role="banner">
         <div class="container">
             <div class="nav-brand">
                 <a href="/">
@@ -17,7 +20,7 @@
                     <span>QuasarApp</span>
                 </a>
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" role="navigation" aria-label="Main navigation">
                 <li><a href="#home" data-lang="nav.home">Home</a></li>
                 <li><a href="#projects" data-lang="nav.projects">Projects</a></li>
                 <li><a href="#about" data-lang="nav.about">About</a></li>
@@ -27,7 +30,7 @@
         </div>
     </nav>
 
-    <section id="home" class="hero-section">
+    <main id="main-content" role="main">
         <div class="parallax-bg">
             <div class="parallax-bg-overlay" style="background: linear-gradient(to bottom, rgba(10, 14, 23, 0.35), rgba(10, 14, 23, 0.55));"></div>
             <img src="ecliptica_background.jpg" class="parallax-bg-img blur-bg" alt="Ecliptica Background" style="position: absolute; top: 50%; left: 50%; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; filter: blur(6px); transform: translate(-50%, -50%) scale(1.07);">
@@ -199,7 +202,7 @@
         </div>
     </section>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-social">
                 <a href="https://github.com/QuasarApp" class="social-link">
@@ -233,6 +236,7 @@
     <script src="js/i18n.js"></script>
     <script src="js/parallax.js"></script>
     <script src="js/main.js"></script>
+</main>
 </body>
 </html>
 

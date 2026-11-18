@@ -65,6 +65,7 @@ const translations = {
             contributors: 'Contributors'
         },
         contact: {
+            title: 'Get in Touch',
             message: 'Contact us through our official channels - links are available in the footer.'
         },
         footer: {
@@ -73,6 +74,9 @@ const translations = {
             email: 'Email',
             youtube: 'YouTube',
             steam: 'Steam'
+        },
+        aria: {
+            toggleLanguage: 'Toggle language'
         }
     },
     ru: {
@@ -149,6 +153,9 @@ const translations = {
             email: 'Email',
             youtube: 'YouTube',
             steam: 'Steam'
+        },
+        aria: {
+            toggleLanguage: 'Переключить язык'
         }
     },
     de: {
@@ -161,7 +168,7 @@ const translations = {
         hero: {
             subtitle: 'Die Zukunft der Software gestalten',
             explore: 'Projekte entdecken',
-                desc: "Este proyecto se utiliza para implementar aplicaciones escritas en QML, qt u otros marcos C / C ++."
+            learn: 'Mehr erfahren'
         },
         projects: {
             title: 'Unsere Projekte',
@@ -225,6 +232,9 @@ const translations = {
             email: 'Email',
             youtube: 'YouTube',
             steam: 'Steam'
+        },
+        aria: {
+            toggleLanguage: 'Sprache umschalten'
         }
     },
     es: {
@@ -301,7 +311,10 @@ const translations = {
             email: 'Email',
             youtube: 'YouTube',
             steam: 'Steam'
-        }
+            },
+            aria: {
+                toggleLanguage: 'Cambiar idioma'
+            }
     }
 };
 
@@ -309,7 +322,9 @@ let currentLanguage = 'en';
 
 function getStoredLanguage() {
     if (typeof Storage !== 'undefined' && localStorage.getItem('quasarapp_language')) {
-        return localStorage.getItem('quasarapp_language');
+        const stored = localStorage.getItem('quasarapp_language');
+        const validLangs = ['en', 'ru', 'de', 'es'];
+        return validLangs.includes(stored) ? stored : null;
     }
     return null;
 }
@@ -348,7 +363,8 @@ function getLanguageFromBrowserCode(browserLang) {
 function toggleLanguage() {
     const languages = ['en', 'ru', 'de', 'es'];
     const currentIndex = languages.indexOf(currentLanguage);
-    currentLanguage = languages[(currentIndex + 1) % languages.length];
+    const nextLang = languages[(currentIndex + 1) % languages.length];
+    setLanguage(nextLang);
     updateTranslations();
     updateLanguageButton();
 }
@@ -357,6 +373,8 @@ function updateLanguageButton() {
     const langBtn = document.querySelector('.lang-btn');
     if (langBtn) {
         langBtn.innerHTML = '<i class="fas fa-globe"></i> ' + currentLanguage.toUpperCase();
+        const ariaLabel = translations[currentLanguage]?.aria?.toggleLanguage || 'Toggle language';
+        langBtn.setAttribute('aria-label', ariaLabel);
     }
 }
 
@@ -373,7 +391,17 @@ function updateTranslations() {
         }
         
         if (value) {
-            element.textContent = value;
+            if (element.hasAttribute('aria-label')) {
+                // For aria-label elements with icons, use innerHTML
+                const icon = element.innerHTML.match(/<i[^>]*>.*<\/i>/s);
+                if (icon) {
+                    element.innerHTML = icon[0] + ' ' + value;
+                } else {
+                    element.textContent = value;
+                }
+            } else {
+                element.textContent = value;
+            }
         }
     });
     
@@ -397,9 +425,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     if (initialLang) {
-        currentLanguage = initialLang;
+        setLanguage(initialLang);
     } else {
-        currentLanguage = 'en';
+        setLanguage('en');
     }
     
     updateLanguageButton();

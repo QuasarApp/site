@@ -1,5 +1,54 @@
 // QuasarApp Group - English translations
 const translations = {
+    en: {
+        nav: {
+            home: 'Home',
+            projects: 'Projects',
+            about: 'About',
+            contact: 'Contact'
+        },
+        hero: {
+            subtitle: 'Building the Future of Software',
+            explore: 'Explore Projects',
+            learn: 'Learn More'
+        },
+        projects: {
+            title: 'Our Projects',
+            cqtdeployer: {
+                desc: 'Powerful tool for deploying cross-platform Qt applications'
+            },
+            platforms: {
+                desc: 'Platform abstraction layer for cross-platform development'
+            },
+            opensimplex2: {
+                desc: 'Fast noise implementation for procedural generation'
+            },
+            qt_secret: {
+                desc: 'Encryption library with RSA and AES algorithm support'
+            }
+        },
+        about: {
+            title: 'About Us',
+            text: 'QuasarApp is an open-source organization dedicated to creating innovative software solutions. We believe in the power of open collaboration and building tools that empower developers worldwide.',
+            text2: 'Our team consists of passionate engineers working on cutting-edge technologies, from desktop frameworks to web applications and game development tools.'
+        },
+        stats: {
+            projects: 'Projects',
+            stars: 'Stars',
+            contributors: 'Contributors'
+        },
+        contact: {
+            title: 'Contact Us',
+            message: 'Contact us through our official channels - links are available in the footer.'
+        },
+        footer: {
+            github: 'GitHub',
+            bluesky: 'Bluesky',
+            email: 'Email',
+            youtube: 'YouTube',
+            steam: 'Steam'
+        }
+    },
     ru: {
         nav: {
             home: 'Главная',
@@ -14,8 +63,8 @@ const translations = {
         },
         projects: {
             title: 'Наши проекты',
-            quasarapp: {
-                desc: 'Мощный фреймворк для создания кроссплатформенных десктопных приложений на Qt'
+            cqtdeployer: {
+                desc: 'Мощный инструмент для переноса кроссплатформенных приложений на Qt'
             },
             platforms: {
                 desc: 'Слой абстракции платформы для кроссплатформенной разработки'
@@ -23,8 +72,8 @@ const translations = {
             opensimplex2: {
                 desc: 'Быстрая реализация шума для процедурной генерации'
             },
-            quasar_framework: {
-                desc: 'Полнофункциональный веб-фреймворк на Vue.js'
+            qt_secret: {
+                desc: 'Библиотека шифрования с поддержкой RSA и AES алгоритмов'
             }
         },
         about: {
@@ -39,9 +88,14 @@ const translations = {
         },
         contact: {
             title: 'Связаться с нами',
+            message: 'Свяжитесь с нами через наши официальные каналы - ссылки доступны в подвале.'
+        },
+        footer: {
             github: 'GitHub',
-            twitter: 'Twitter',
-            email: 'Email'
+            bluesky: 'Bluesky',
+            email: 'Email',
+            youtube: 'YouTube',
+            steam: 'Steam'
         }
     },
     de: {
@@ -58,8 +112,8 @@ const translations = {
         },
         projects: {
             title: 'Unsere Projekte',
-            quasarapp: {
-                desc: 'Ein leistungsfähiger Framework zur Erstellung von plattformübergreifenden Desktop-Anwendungen mit Qt'
+            cqtdeployer: {
+                desc: 'Leistungsstarkes Tool zum Deployment von plattformübergreifenden Qt-Anwendungen'
             },
             platforms: {
                 desc: 'Plattformabstraktionsschicht für plattformübergreifende Entwicklung'
@@ -67,13 +121,13 @@ const translations = {
             opensimplex2: {
                 desc: 'Schnelle Noise-Implementierung für prozedurale Generierung'
             },
-            quasar_framework: {
-                desc: 'Full-Stack Web-Framework mit Vue.js'
+            qt_secret: {
+                desc: 'Verschlüsselungs-Bibliothek mit Unterstützung für RSA und AES-Algorithmen'
             }
         },
         about: {
             title: 'Über uns',
-            text: 'QuasarApp ist eine Open-Source-Organisation, die sich der Erstellung innovativer Softwarelösungen widmet. Wir glauben an die Kraft der offenen Zusammenarbeit und an Werkzeuge, die Entwicklern auf der ganzen Welt empower.',
+            text: 'QuasarApp ist eine Open-Source-Organisation, die sich der Erstellung innovativer Softwarelösungen widmet. Wir glauben an die Kraft der offenen Zusammenarbeit und an Werkzeuge, die Entwicklern auf der ganzen Welt ermöglichen.',
             text2: 'Unser Team besteht aus leidenschaftlichen Ingenieuren, die an modernsten Technologien arbeiten - von Desktop-Frameworks bis hin zu Web-Anwendungen und Spielentwicklungs-Tools.'
         },
         stats: {
@@ -83,9 +137,14 @@ const translations = {
         },
         contact: {
             title: 'Kontakt aufnehmen',
+            message: 'Kontaktieren Sie uns über unsere offiziellen Kanäle - Links sind im Footer verfügbar.'
+        },
+        footer: {
             github: 'GitHub',
-            twitter: 'Twitter',
-            email: 'Email'
+            bluesky: 'Bluesky',
+            email: 'Email',
+            youtube: 'YouTube',
+            steam: 'Steam'
         }
     },
     es: {
@@ -102,8 +161,8 @@ const translations = {
         },
         projects: {
             title: 'Nuestros proyectos',
-            quasarapp: {
-                desc: 'Un marco de trabajo potente para crear aplicaciones de escritorio multiplataforma con Qt'
+            cqtdeployer: {
+                desc: 'Potente herramienta para el despliegue de aplicaciones multiplataforma con Qt'
             },
             platforms: {
                 desc: 'Capa de abstracción de plataforma para desarrollo multiplataforma'
@@ -111,8 +170,8 @@ const translations = {
             opensimplex2: {
                 desc: 'Implementación rápida de ruido para generación procedural'
             },
-            quasar_framework: {
-                desc: 'Marco web Full-Stack con Vue.js'
+            qt_secret: {
+                desc: 'Biblioteca de encriptación con soporte para algoritmos RSA y AES'
             }
         },
         about: {
@@ -127,9 +186,14 @@ const translations = {
         },
         contact: {
             title: 'Contáctanos',
+            message: 'Contáctanos a través de nuestros canales oficiales - los enlaces están disponibles en el pie de página.'
+        },
+        footer: {
             github: 'GitHub',
-            twitter: 'Twitter',
-            email: 'Email'
+            bluesky: 'Bluesky',
+            email: 'Email',
+            youtube: 'YouTube',
+            steam: 'Steam'
         }
     }
 };
@@ -172,6 +236,7 @@ function updateTranslations() {
 // Initialize language on page load
 document.addEventListener('DOMContentLoaded', function() {
     updateLanguageButton();
+    updateTranslations();
     
     // Smooth scrolling for navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

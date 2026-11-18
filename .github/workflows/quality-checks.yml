@@ -79,17 +79,32 @@ jobs:
           
           # Get all references in HTML/CSS/JS files
           REFERENCED=""
-          for file in index.html css/*.js js/*.js; do
+          for file in index.html; do
             if [ -f "$file" ]; then
-              REFERENCED="$REFERENCED $(grep -oE 'src=["'\'']?[^"'\'']+' "$file" 2>/dev/null | grep -oE '\.[a-zA-Z]{2,5}$' | sort -u || true)"
+              REFERENCED="$REFERENCED $(grep -oE 'src=["'\'']?[^"'\'']+' "$file" 2>/dev/null | sort -u || true)"
+            fi
+          done
+          
+          # Check CSS files for url() references
+          for file in css/*.css; do
+            if [ -f "$file" ]; then
+              REFERENCED="$REFERENCED $(grep -oE 'url\([^)]+\.[a-zA-Z]+' "$file" 2>/dev/null | sort -u || true)"
+            fi
+          done
+          
+          # Check JS files for src= references
+          for file in css/*.js js/*.js; do
+            if [ -f "$file" ]; then
+              REFERENCED="$REFERENCED $(grep -oE 'src=["'\'']?[^"'\'']+' "$file" 2>/dev/null | sort -u || true)"
             fi
           done
           
           # Check each image
           FOUND=0
           for img in $IMAGES; do
-            BASENAME=$(basename "$img")
-            if echo "$REFERENCED" | grep -qi "$BASENAME\|${BASENAME%.*}"; then
+            FILENAME=$(basename "$img")
+            # Check if the full filename (with or without src=" prefix) is in the referenced list
+            if echo "$REFERENCED" | grep -qi "$FILENAME"; then
               echo "✓ $img is referenced"
               FOUND=1
             else

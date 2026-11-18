@@ -15,7 +15,7 @@ const translations = {
         projects: {
             title: 'Our Projects',
             cqtdeployer: {
-                desc: 'Powerful tool for deploying cross-platform Qt applications'
+                desc: 'This project is used to deploy applications written using QML, qt or other C / C++ frameworks.'
             },
             platforms: {
                 desc: 'Platform abstraction layer for cross-platform development'
@@ -25,12 +25,39 @@ const translations = {
             },
             qt_secret: {
                 desc: 'Encryption library with RSA and AES algorithm support'
+            },
+            heart: {
+                desc: 'QuasarApp Heart - base backend for C++/Qt projects. This library supports work with databases and lightweight network requests.'
+            },
+            cmake: {
+                desc: 'CMake modules for QuasarApp projects'
+            },
+            sdkmanager_android: {
+                desc: 'Wrapper of Android SDK manager for Snap Store'
+            },
+            qml_login_view: {
+                desc: 'Simple login window library for QML projects.'
+            },
+            qt_bignum: {
+                desc: 'QtBigInt - Arbitrary-sized integer class for C++ and build system of Qt, powered by GMP 6.3.0'
+            },
+            simple_qml_notify: {
+                desc: 'Simple QML notification service for QML applications.'
+            },
+            patronum: {
+                desc: 'Extension library for controlling your daemons.'
+            },
+            hanoi: {
+                desc: 'Hanoi Towers Game'
+            },
+            ecliptica: {
+                desc: 'Ecliptica is a space exploration game where you command a space station and terraform planets. Build habitats, manage resources, and lead your crew through deep space challenges.'
             }
         },
         about: {
             title: 'About Us',
             text: 'QuasarApp is an open-source organization dedicated to creating innovative software solutions. We believe in the power of open collaboration and building tools that empower developers worldwide.',
-            text2: 'Our team consists of passionate engineers working on cutting-edge technologies, from desktop frameworks to web applications and game development tools.'
+            text2: 'Our team consists of passionate engineers who work on cutting-edge technologies, from desktop frameworks to web applications and game development tools.'
         },
         stats: {
             projects: 'Projects',
@@ -38,7 +65,6 @@ const translations = {
             contributors: 'Contributors'
         },
         contact: {
-            title: 'Contact Us',
             message: 'Contact us through our official channels - links are available in the footer.'
         },
         footer: {
@@ -74,6 +100,33 @@ const translations = {
             },
             qt_secret: {
                 desc: 'Библиотека шифрования с поддержкой RSA и AES алгоритмов'
+            },
+            heart: {
+                desc: 'QuasarApp Heart - базовый бэкенд для C++/Qt проектов. Эта библиотека поддерживает работу с базами данных и легковесные сетевые запросы.'
+            },
+            cmake: {
+                desc: 'Модули CMake для проектов QuasarApp'
+            },
+            sdkmanager_android: {
+                desc: 'Обертка менеджера Android SDK для Snap Store'
+            },
+            qml_login_view: {
+                desc: 'Простая библиотека окна входа для проектов QML.'
+            },
+            qt_bignum: {
+                desc: 'QtBigInt - класс целых чисел произвольной величины для C++ и системы сборки Qt, основанный на GMP 6.3.0'
+            },
+            simple_qml_notify: {
+                desc: 'Простая служба уведомлений QML для приложений QML.'
+            },
+            patronum: {
+                desc: 'Расширенная библиотека для управления вашими демонами.'
+            },
+            hanoi: {
+                desc: 'Игра Башни Ханоя'
+            },
+            ecliptica: {
+                desc: 'Ecliptica - космическая игра, где вы управляете космической станцией и терраформируете планеты. Стройте базы, управляйте ресурсами и возглавляйте команду в глубоком космосе.'
             }
         },
         about: {
@@ -108,7 +161,7 @@ const translations = {
         hero: {
             subtitle: 'Die Zukunft der Software gestalten',
             explore: 'Projekte entdecken',
-            learn: 'Mehr erfahren'
+                desc: "Este proyecto se utiliza para implementar aplicaciones escritas en QML, qt u otros marcos C / C ++."
         },
         projects: {
             title: 'Unsere Projekte',
@@ -123,6 +176,33 @@ const translations = {
             },
             qt_secret: {
                 desc: 'Verschlüsselungs-Bibliothek mit Unterstützung für RSA und AES-Algorithmen'
+            },
+            heart: {
+                desc: 'QuasarApp Heart - Basis-Backend für C++/Qt-Projekte. Diese Bibliothek unterstützt die Arbeit mit Datenbanken und leichte Netzwerkabfragen.'
+            },
+            cmake: {
+                desc: 'CMake-Module für QuasarApp-Projekte'
+            },
+            sdkmanager_android: {
+                desc: 'Wrapper für den Android SDK-Manager für Snap Store'
+            },
+            qml_login_view: {
+                desc: 'Einfache Login-Fenster-Bibliothek für QML-Projekte.'
+            },
+            qt_bignum: {
+                desc: 'QtBigInt - Klasse für Ganzzahlen beliebiger Größe für C++ und Build-System von Qt, angetrieben von GMP 6.3.0'
+            },
+            simple_qml_notify: {
+                desc: 'Einfache Benachrichtigungsdienst für QML-Anwendungen.'
+            },
+            patronum: {
+                desc: 'Erweiterungs-Bibliothek zur Steuerung Ihrer Demons.'
+            },
+            hanoi: {
+                desc: 'Hanoi-Türme Spiel'
+            },
+            ecliptica: {
+                desc: 'Ecliptica ist ein Weltraum-Abenteuerspiel, in dem Sie eine Raumstation kommandieren und Planeten terraformieren. Erstellen Sie Habitate, verwalten Sie Ressourcen und führen Sie Ihre Crew durch tiefe Raumaufgaben.'
             }
         },
         about: {
@@ -172,6 +252,33 @@ const translations = {
             },
             qt_secret: {
                 desc: 'Biblioteca de encriptación con soporte para algoritmos RSA y AES'
+            },
+            heart: {
+                desc: 'QuasarApp Heart - backend base para proyectos C++/Qt. Esta biblioteca soporta trabajo con bases de datos y solicitudes de red ligeras.'
+            },
+            cmake: {
+                desc: 'Módulos de CMake para proyectos de QuasarApp'
+            },
+            sdkmanager_android: {
+                desc: 'Envoltorio del administrador de SDK de Android para Snap Store'
+            },
+            qml_login_view: {
+                desc: 'Biblioteca simple de ventana de inicio de sesión para proyectos QML.'
+            },
+            qt_bignum: {
+                desc: 'QtBigInt - Clase de enteros de tamaño arbitrario para C++ y sistema de construcción de Qt, impulsado por GMP 6.3.0'
+            },
+            simple_qml_notify: {
+                desc: 'Servicio de notificación simple para aplicaciones QML.'
+            },
+            patronum: {
+                desc: 'Biblioteca de extensión para controlar tus demonios.'
+            },
+            hanoi: {
+                desc: 'Juego de Torres de Hanoi'
+            },
+            ecliptica: {
+                desc: 'Ecliptica es un juego de exploración espacial donde comandas una estación espacial y terraformas planetas. Construye hábitats, gestiona recursos y lidera a tu tripulación a través de desafíos del espacio profundo.'
             }
         },
         about: {
@@ -199,6 +306,44 @@ const translations = {
 };
 
 let currentLanguage = 'en';
+
+function getStoredLanguage() {
+    if (typeof Storage !== 'undefined' && localStorage.getItem('quasarapp_language')) {
+        return localStorage.getItem('quasarapp_language');
+    }
+    return null;
+}
+
+function setLanguage(lang) {
+    currentLanguage = lang;
+    localStorage.setItem('quasarapp_language', lang);
+}
+
+function getBrowserLanguage() {
+    if (navigator.languages && navigator.languages.length) {
+        return navigator.languages[0];
+    }
+    if (navigator.language) {
+        return navigator.language;
+    }
+    return null;
+}
+
+function getLanguageFromBrowserCode(browserLang) {
+    if (!browserLang) return 'en';
+    const langMap = {
+        'ru-RU': 'ru',
+        'ru': 'ru',
+        'de-DE': 'de',
+        'de': 'de',
+        'es-ES': 'es',
+        'es': 'es',
+        'en-US': 'en',
+        'en-GB': 'en',
+        'en': 'en'
+    };
+    return langMap[browserLang] || 'en';
+}
 
 function toggleLanguage() {
     const languages = ['en', 'ru', 'de', 'es'];
@@ -231,10 +376,32 @@ function updateTranslations() {
             element.textContent = value;
         }
     });
+    
+    // Update HTML lang attribute
+    const html = document.documentElement;
+    html.setAttribute('lang', currentLanguage);
 }
 
 // Initialize language on page load
 document.addEventListener('DOMContentLoaded', function() {
+    // Check for stored language preference
+    let initialLang = getStoredLanguage();
+    
+    // If no stored preference, use browser language
+    if (!initialLang) {
+        const browserLang = getBrowserLanguage();
+        if (browserLang) {
+            const detectedLang = getLanguageFromBrowserCode(browserLang);
+            initialLang = detectedLang;
+        }
+    }
+    
+    if (initialLang) {
+        currentLanguage = initialLang;
+    } else {
+        currentLanguage = 'en';
+    }
+    
     updateLanguageButton();
     updateTranslations();
     

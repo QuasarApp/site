@@ -135,33 +135,3 @@ function createParticles() {
 console.log('%c QuasarApp Group ', 'background: #00bcd4; color: white; font-size: 20px; padding: 10px;');
 console.log('%c Building the Future of Software ', 'color: #00bcd4; font-size: 14px;');
 
-// Wishlist functionality
-function addToWishlist() {
-    const btn = document.querySelector('.btn-wishlist');
-    if (!btn) return;
-    
-    // Create a toast notification
-    const toast = document.createElement('div');
-    toast.className = 'wishlist-toast';
-    toast.innerHTML = `
-        <i class="fas fa-heart"></i>
-        <span>Added to Wishlist!</span>
-    `;
-    
-    document.body.appendChild(toast);
-    
-    // Animate toast
-    requestAnimationFrame(() => {
-        toast.style.opacity = '1';
-        toast.style.transform = 'translateY(0)';
-    });
-    
-    // Remove after 3 seconds
-    setTimeout(() => {
-        toast.style.opacity = '0';
-        toast.style.transform = 'translateY(-20px)';
-        setTimeout(() => {
-            toast.remove();
-        }, 300);
-    }, 3000);
-}

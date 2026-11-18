@@ -72,8 +72,8 @@ class ParallaxHandler {
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         
-        const rotateX = (mouseY - centerY) / 20;
-        const rotateY = (mouseX - centerX) / 20;
+        const rotateX = (mouseY - centerY) / 100;
+        const rotateY = (mouseX - centerX) / 100;
         
         const heroContent = document.querySelector('.hero-content');
         if (heroContent) {

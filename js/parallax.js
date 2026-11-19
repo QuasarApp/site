@@ -92,4 +92,3 @@ document.addEventListener('DOMContentLoaded', function() {
     parallax.init();
     parallax.addMouseParallax();
 });
-

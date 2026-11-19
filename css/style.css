@@ -291,24 +291,7 @@ body {
     box-shadow: 0 8px 40px rgba(102, 192, 244, 0.6);
 }
 
-/* Ecliptica Card Styles - Applied at all widths */
-.ecliptica-card-style {
-    background: linear-gradient(135deg, rgba(102, 192, 244, 0.15) 0%, rgba(10, 14, 23, 0.9) 100%);
-    position: relative;
-    overflow: hidden;
-    border-color: #66c0f4;
-    box-shadow: 0 10px 30px rgba(102, 192, 244, 0.3);
-}
-
-.ecliptica-logo-style {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-    margin-bottom: 20px;
-    position: relative;
-    z-index: 1;
-}
-
+/* Ecliptica Card Features Badges - Flex layout for badges */
 .ecliptica-features-badges {
     display: flex;
     gap: 10px;
@@ -316,37 +299,6 @@ body {
     flex-wrap: wrap;
     justify-content: center;
 }
-
-.ecliptica-card-bg-style {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    object-fit: cover;
-    opacity: 0.25;
-    filter: blur(5px);
-    z-index: 0;
-}
-
-/* Hero Overlay Styles */
-.hero-overlay-style {
-    background: linear-gradient(to bottom, rgba(10, 14, 23, 0.35), rgba(10, 14, 23, 0.55));
-}
-
-.hero-bg-style {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    filter: blur(6px);
-    transform: translate(-50%, -50%) scale(1.07);
-}
-
 
 .card-link {
     display: inline-flex; align-items: center; justify-content: center;

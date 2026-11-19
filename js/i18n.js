@@ -229,7 +229,12 @@ function setLanguage(lang) {
     try {
         currentLanguage = lang;
         if (typeof Storage !== 'undefined') {
-            localStorage.setItem('quasarapp_language', lang);
+            try {
+                localStorage.setItem('quasarapp_language', lang);
+            } catch (setItemError) {
+                // Storage might not be available or might be read-only
+                currentLanguage = lang;
+            }
         }
     } catch (e) {
         // Storage might not be available or might be read-only

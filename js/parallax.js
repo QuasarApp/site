@@ -1,7 +1,7 @@
 // QuasarApp Group - Parallax Effects
 // Smooth parallax animations for cards and sections
 
-class ParallaxHandler {
+class ParallaxManager {
     constructor() {
         this.cards = [];
         this.isAnimating = false;
@@ -84,7 +84,8 @@ class ParallaxHandler {
 }
 
 // Initialize parallax when DOM is ready
-let ParallaxHandler = new ParallaxHandler();
+const ParallaxHandler = new ParallaxManager();
+window.ParallaxManager = ParallaxHandler;
 document.addEventListener('DOMContentLoaded', function() {
     ParallaxHandler.init();
     ParallaxHandler.addMouseParallax();

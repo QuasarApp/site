@@ -86,9 +86,9 @@ class ParallaxHandler {
 }
 
 // Initialize parallax when DOM is ready
-var parallaxInstance = new ParallaxHandler();
-window.ParallaxHandler = parallaxInstance; // Expose for i18n.js
+const parallax = new ParallaxHandler();
+window.ParallaxHandler = ParallaxHandler; // Expose class globally for i18n.js compatibility
 document.addEventListener('DOMContentLoaded', function() {
-    parallaxInstance.init();
-    parallaxInstance.addMouseParallax();
+    parallax.init();
+    parallax.addMouseParallax();
 });

@@ -14,45 +14,19 @@ const translations = {
         },
         projects: {
             title: 'Our Projects',
-            cqtdeployer: {
-                desc: 'This project is used to deploy applications written using QML, qt or other C / C++ frameworks.'
-            },
-            platforms: {
-                desc: 'Platform abstraction layer for cross-platform development'
-            },
-            opensimplex2: {
-                desc: 'Fast noise implementation for procedural generation'
-            },
-            qt_secret: {
-                desc: 'Encryption library with RSA and AES algorithm support'
-            },
-            heart: {
-                desc: 'QuasarApp Heart - base backend for C++/Qt projects. This library supports work with databases and lightweight network requests.'
-            },
-            cmake: {
-                desc: 'CMake modules for QuasarApp projects'
-            },
-            sdkmanager_android: {
-                desc: 'Wrapper of Android SDK manager for Snap Store'
-            },
-            qml_login_view: {
-                desc: 'Simple login window library for QML projects.'
-            },
-            qt_bignum: {
-                desc: 'QtBigInt - Arbitrary-sized integer class for C++ and build system of Qt, powered by GMP 6.3.0'
-            },
-            simple_qml_notify: {
-                desc: 'Simple QML notification service for QML applications.'
-            },
-            patronum: {
-                desc: 'Extension library for controlling your daemons.'
-            },
-            hanoi: {
-                desc: 'Hanoi Towers Game'
-            },
-            ecliptica: {
-                desc: 'Ecliptica is a space exploration game where you command a space station and terraform planets. Build habitats, manage resources, and lead your crew through deep space challenges.'
-            }
+            cqtdeployer: 'This project is used to deploy applications written using QML, qt or other C / C++ frameworks.',
+            platforms: 'Platform abstraction layer for cross-platform development',
+            opensimplex2: 'Fast noise implementation for procedural generation',
+            qt_secret: 'Encryption library with RSA and AES algorithm support',
+            heart: 'QuasarApp Heart - base backend for C++/Qt projects. This library supports work with databases and lightweight network requests.',
+            cmake: 'CMake modules for QuasarApp projects',
+            sdkmanager_android: 'Wrapper of Android SDK manager for Snap Store',
+            qml_login_view: 'Simple login window library for QML projects.',
+            qt_bignum: 'QtBigInt - Arbitrary-sized integer class for C++ and build system of Qt, powered by GMP 6.3.0',
+            simple_qml_notify: 'Simple QML notification service for QML applications.',
+            patronum: 'Extension library for controlling your daemons.',
+            hanoi: 'Hanoi Towers Game',
+            ecliptica: 'Ecliptica is a space exploration game where you command a space station and terraform planets. Build habitats, manage resources, and lead your crew through deep space challenges.'
         },
         about: {
             title: 'About Us',
@@ -93,45 +67,19 @@ const translations = {
         },
         projects: {
             title: 'Наши проекты',
-            cqtdeployer: {
-                desc: 'Мощный инструмент для переноса кроссплатформенных приложений на Qt'
-            },
-            platforms: {
-                desc: 'Слой абстракции платформы для кроссплатформенной разработки'
-            },
-            opensimplex2: {
-                desc: 'Быстрая реализация шума для процедурной генерации'
-            },
-            qt_secret: {
-                desc: 'Библиотека шифрования с поддержкой RSA и AES алгоритмов'
-            },
-            heart: {
-                desc: 'QuasarApp Heart - базовый бэкенд для C++/Qt проектов. Эта библиотека поддерживает работу с базами данных и легковесные сетевые запросы.'
-            },
-            cmake: {
-                desc: 'Модули CMake для проектов QuasarApp'
-            },
-            sdkmanager_android: {
-                desc: 'Обертка менеджера Android SDK для Snap Store'
-            },
-            qml_login_view: {
-                desc: 'Простая библиотека окна входа для проектов QML.'
-            },
-            qt_bignum: {
-                desc: 'QtBigInt - класс целых чисел произвольной величины для C++ и системы сборки Qt, основанный на GMP 6.3.0'
-            },
-            simple_qml_notify: {
-                desc: 'Простая служба уведомлений QML для приложений QML.'
-            },
-            patronum: {
-                desc: 'Расширенная библиотека для управления вашими демонами.'
-            },
-            hanoi: {
-                desc: 'Игра Башни Ханоя'
-            },
-            ecliptica: {
-                desc: 'Ecliptica - космическая игра, где вы управляете космической станцией и терраформируете планеты. Стройте базы, управляйте ресурсами и возглавляйте команду в глубоком космосе.'
-            }
+            cqtdeployer: 'Мощный инструмент для переноса кроссплатформенных приложений на Qt',
+            platforms: 'Слой абстракции платформы для кроссплатформенной разработки',
+            opensimplex2: 'Быстрая реализация шума для процедурной генерации',
+            qt_secret: 'Библиотека шифрования с поддержкой RSA и AES алгоритмов',
+            heart: 'QuasarApp Heart - базовый бэкенд для C++/Qt проектов. Эта библиотека поддерживает работу с базами данных и легковесные сетевые запросы.',
+            cmake: 'Модули CMake для проектов QuasarApp',
+            sdkmanager_android: 'Обертка менеджера Android SDK для Snap Store',
+            qml_login_view: 'Простая библиотека окна входа для проектов QML.',
+            qt_bignum: 'QtBigInt - класс целых чисел произвольной величины для C++ и системы сборки Qt, основанный на GMP 6.3.0',
+            simple_qml_notify: 'Простая служба уведомлений QML для приложений QML.',
+            patronum: 'Расширенная библиотека для управления вашими демонами.',
+            hanoi: 'Игра Башни Ханоя',
+            ecliptica: 'Ecliptica - космическая игра, где вы управляете космической станцией и терраформируете планеты. Стройте базы, управляйте ресурсами и возглавляйте команду в глубоком космосе.'
         },
         about: {
             title: 'О нас',
@@ -172,45 +120,19 @@ const translations = {
         },
         projects: {
             title: 'Unsere Projekte',
-            cqtdeployer: {
-                desc: 'Leistungsstarkes Tool zum Deployment von plattformübergreifenden Qt-Anwendungen'
-            },
-            platforms: {
-                desc: 'Plattformabstraktionsschicht für plattformübergreifende Entwicklung'
-            },
-            opensimplex2: {
-                desc: 'Schnelle Noise-Implementierung für prozedurale Generierung'
-            },
-            qt_secret: {
-                desc: 'Verschlüsselungs-Bibliothek mit Unterstützung für RSA und AES-Algorithmen'
-            },
-            heart: {
-                desc: 'QuasarApp Heart - Basis-Backend für C++/Qt-Projekte. Diese Bibliothek unterstützt die Arbeit mit Datenbanken und leichte Netzwerkabfragen.'
-            },
-            cmake: {
-                desc: 'CMake-Module für QuasarApp-Projekte'
-            },
-            sdkmanager_android: {
-                desc: 'Wrapper für den Android SDK-Manager für Snap Store'
-            },
-            qml_login_view: {
-                desc: 'Einfache Login-Fenster-Bibliothek für QML-Projekte.'
-            },
-            qt_bignum: {
-                desc: 'QtBigInt - Klasse für Ganzzahlen beliebiger Größe für C++ und Build-System von Qt, angetrieben von GMP 6.3.0'
-            },
-            simple_qml_notify: {
-                desc: 'Einfache Benachrichtigungsdienst für QML-Anwendungen.'
-            },
-            patronum: {
-                desc: 'Erweiterungs-Bibliothek zur Steuerung Ihrer Demons.'
-            },
-            hanoi: {
-                desc: 'Hanoi-Türme Spiel'
-            },
-            ecliptica: {
-                desc: 'Ecliptica ist ein Weltraum-Abenteuerspiel, in dem Sie eine Raumstation kommandieren und Planeten terraformieren. Erstellen Sie Habitate, verwalten Sie Ressourcen und führen Sie Ihre Crew durch tiefe Raumaufgaben.'
-            }
+            cqtdeployer: 'Leistungsstarkes Tool zum Deployment von plattformübergreifenden Qt-Anwendungen',
+            platforms: 'Plattformabstraktionsschicht für plattformübergreifende Entwicklung',
+            opensimplex2: 'Schnelle Noise-Implementierung für prozedurale Generierung',
+            qt_secret: 'Verschlüsselungs-Bibliothek mit Unterstützung für RSA und AES-Algorithmen',
+            heart: 'QuasarApp Heart - Basis-Backend für C++/Qt-Projekte. Diese Bibliothek unterstützt die Arbeit mit Datenbanken und leichte Netzwerkabfragen.',
+            cmake: 'CMake-Module für QuasarApp-Projekte',
+            sdkmanager_android: 'Wrapper für den Android SDK-Manager für Snap Store',
+            qml_login_view: 'Einfache Login-Fenster-Bibliothek für QML-Projekte.',
+            qt_bignum: 'QtBigInt - Klasse für Ganzzahlen beliebiger Größe für C++ und Build-System von Qt, angetrieben von GMP 6.3.0',
+            simple_qml_notify: 'Einfache Benachrichtigungsdienst für QML-Anwendungen.',
+            patronum: 'Erweiterungs-Bibliothek zur Steuerung Ihrer Daemonen.',
+            hanoi: 'Hanoi-Türme Spiel',
+            ecliptica: 'Ecliptica ist ein Weltraum-Abenteuerspiel, in dem Sie eine Raumstation kommandieren und Planeten terraformieren. Erstellen Sie Habitate, verwalten Sie Ressourcen und führen Sie Ihre Crew durch tiefe Raumaufgaben.'
         },
         about: {
             title: 'Über uns',
@@ -251,45 +173,19 @@ const translations = {
         },
         projects: {
             title: 'Nuestros proyectos',
-            cqtdeployer: {
-                desc: 'Potente herramienta para el despliegue de aplicaciones multiplataforma con Qt'
-            },
-            platforms: {
-                desc: 'Capa de abstracción de plataforma para desarrollo multiplataforma'
-            },
-            opensimplex2: {
-                desc: 'Implementación rápida de ruido para generación procedural'
-            },
-            qt_secret: {
-                desc: 'Biblioteca de encriptación con soporte para algoritmos RSA y AES'
-            },
-            heart: {
-                desc: 'QuasarApp Heart - backend base para proyectos C++/Qt. Esta biblioteca soporta trabajo con bases de datos y solicitudes de red ligeras.'
-            },
-            cmake: {
-                desc: 'Módulos de CMake para proyectos de QuasarApp'
-            },
-            sdkmanager_android: {
-                desc: 'Envoltorio del administrador de SDK de Android para Snap Store'
-            },
-            qml_login_view: {
-                desc: 'Biblioteca simple de ventana de inicio de sesión para proyectos QML.'
-            },
-            qt_bignum: {
-                desc: 'QtBigInt - Clase de enteros de tamaño arbitrario para C++ y sistema de construcción de Qt, impulsado por GMP 6.3.0'
-            },
-            simple_qml_notify: {
-                desc: 'Servicio de notificación simple para aplicaciones QML.'
-            },
-            patronum: {
-                desc: 'Biblioteca de extensión para controlar tus demonios.'
-            },
-            hanoi: {
-                desc: 'Juego de Torres de Hanoi'
-            },
-            ecliptica: {
-                desc: 'Ecliptica es un juego de exploración espacial donde comandas una estación espacial y terraformas planetas. Construye hábitats, gestiona recursos y lidera a tu tripulación a través de desafíos del espacio profundo.'
-            }
+            cqtdeployer: 'Potente herramienta para el despliegue de aplicaciones multiplataforma con Qt',
+            platforms: 'Capa de abstracción de plataforma para desarrollo multiplataforma',
+            opensimplex2: 'Implementación rápida de ruido para generación procedural',
+            qt_secret: 'Biblioteca de encriptación con soporte para algoritmos RSA y AES',
+            heart: 'QuasarApp Heart - backend base para proyectos C++/Qt. Esta biblioteca soporta trabajo con bases de datos y solicitudes de red ligeras.',
+            cmake: 'Módulos de CMake para proyectos de QuasarApp',
+            sdkmanager_android: 'Envoltorio del administrador de SDK de Android para Snap Store',
+            qml_login_view: 'Biblioteca simple de ventana de inicio de sesión para proyectos QML.',
+            qt_bignum: 'QtBigInt - Clase de enteros de tamaño arbitrario para C++ y sistema de construcción de Qt, impulsado por GMP 6.3.0',
+            simple_qml_notify: 'Servicio de notificación simple para aplicaciones QML.',
+            patronum: 'Biblioteca de extensión para controlar tus demonios.',
+            hanoi: 'Juego de Torres de Hanoi',
+            ecliptica: 'Ecliptica es un juego de exploración espacial donde comandas una estación espacial y terraformas planetas. Construye hábitats, gestiona recursos y lidera a tu tripulación a través de desafíos del espacio profundo.'
         },
         about: {
             title: 'Sobre nosotros',
@@ -330,8 +226,15 @@ function getStoredLanguage() {
 }
 
 function setLanguage(lang) {
-    currentLanguage = lang;
-    localStorage.setItem('quasarapp_language', lang);
+    try {
+        currentLanguage = lang;
+        if (typeof Storage !== 'undefined') {
+            localStorage.setItem('quasarapp_language', lang);
+        }
+    } catch (e) {
+        // Storage might not be available or might be read-only
+        currentLanguage = lang;
+    }
 }
 
 function getBrowserLanguage() {
@@ -381,6 +284,11 @@ function updateLanguageButton() {
 function updateTranslations() {
     const elements = document.querySelectorAll('[data-lang]');
     elements.forEach(element => {
+        // Skip the language button - it's handled separately
+        if (element.classList.contains('lang-btn')) {
+            return;
+        }
+        
         const lang = element.getAttribute('data-lang');
         const keys = lang.split('.');
         let value = translations[currentLanguage];

@@ -84,8 +84,8 @@ class ParallaxHandler {
 }
 
 // Initialize parallax when DOM is ready
-let ParallaxHandler = new ParallaxHandler();
+let parallaxInstance = new ParallaxHandler();
 document.addEventListener('DOMContentLoaded', function() {
-    ParallaxHandler.init();
-    ParallaxHandler.addMouseParallax();
+    parallaxInstance.init();
+    parallaxInstance.addMouseParallax();
 });

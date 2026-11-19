@@ -8,7 +8,9 @@ class ParallaxManager {
     }
 
     init() {
-        this.cards = document.querySelectorAll('.parallax-card, .parallax-text, .about-section');
+        // Note: about-text intentionally excluded from parallax to prevent text spilling
+        // Only target parallax-text elements that are NOT about-text (i.e., project cards)
+        this.cards = document.querySelectorAll('.parallax-card, .about-section, .parallax-text:not(.about-text)');
         
         if (this.cards.length > 0) {
             this.bindEvents();
@@ -72,8 +74,8 @@ class ParallaxManager {
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         
-        const rotateX = (mouseY - centerY) / 20;
-        const rotateY = (mouseX - centerX) / 20;
+        const rotateX = (mouseY - centerY) / 100;
+        const rotateY = (mouseX - centerX) / 100;
         
         const heroContent = document.querySelector('.hero-content');
         if (heroContent) {
@@ -84,9 +86,14 @@ class ParallaxManager {
 }
 
 // Initialize parallax when DOM is ready
+<<<<<<< HEAD
 const ParallaxHandler = new ParallaxManager();
 window.ParallaxManager = ParallaxHandler;
+=======
+const parallax = new ParallaxHandler();
+window.ParallaxHandler = ParallaxHandler; // Expose class globally for i18n.js compatibility
+>>>>>>> main
 document.addEventListener('DOMContentLoaded', function() {
-    ParallaxHandler.init();
-    ParallaxHandler.addMouseParallax();
+    parallax.init();
+    parallax.addMouseParallax();
 });

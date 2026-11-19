@@ -129,8 +129,8 @@ const translations = {
             sdkmanager_android: 'Wrapper für den Android SDK Manager für den Snap Store',
             qml_login_view: 'Einfaches Login-Fenster-Bibliothek für QML-Projekte.',
             qt_bignum: 'QtBigInt - Klasse für Ganzzahlen beliebiger Größe für C++ und Build-System von Qt. Powered by GMP 6.3.0',
-            simple_qml_notify: 'Einfache QML-Benachrichtigungsdienst für QML-Anwendungen.',
-            patronum: 'Erweiterungsbibliothek zum Steuern Ihrer Demons.',
+            simple_qml_notify: 'Einfacher QML-Benachrichtigungsdienst für QML-Anwendungen.',
+            patronum: 'Erweiterungsbibliothek zum Steuern Ihrer Daemonen.',
             hanoi: 'Hanoi-Türme-Spiel',
             ecliptica: 'Ecliptica ist ein Weltraumforschungsspiel, in dem Sie eine Raumstation commandieren und Planeten terraformieren. Bau von Lebensräumen, Ressourcenmanagement und führen Sie Ihre Crew durch Herausforderungen im tiefen Weltraum.'
         },

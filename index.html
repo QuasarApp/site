@@ -12,23 +12,52 @@
     <meta property="og:url" content="https://quasarapp.me/">
     <meta property="og:title" content="QuasarApp Group">
     <meta property="og:description" content="Open-source organization building innovative software solutions and developer tools. Explore our projects and contribute to our community.">
-    <meta property="og:image" content="https://quasarapp.me/banner.png">
+    <meta property="og:image" content="https://quasarapp.me/banner.webp">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://quasarapp.me/">
     <meta name="twitter:title" content="QuasarApp Group">
     <meta name="twitter:description" content="Open-source organization building innovative software solutions and developer tools. Explore our projects and contribute to our community.">
-    <meta name="twitter:image" content="https://quasarapp.me/banner.png">
+    <meta name="twitter:image" content="https://quasarapp.me/banner.webp">
     
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!--
+      Performance (issue #81): no render-blocking third-party CSS/JS.
+      Fonts use the system font stack (see css/style.css) and icons are
+      inline SVGs, so there are no external stylesheet/font requests.
+    -->
+    <!-- LCP hero image: preload the responsive srcset so the browser fetches
+         the right WebP variant before first paint (issue #81). -->
+    <link rel="preload" as="image" href="ecliptica_background.jpg.webp"
+          imagesrcset="ecliptica_background-480.webp 480w, ecliptica_background-768.webp 768w, ecliptica_background.jpg.webp 1438w"
+          imagesizes="100vw">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 <body>
+    <!-- Inline SVG icon sprite (issue #81): replaces the Font Awesome CDN
+         stylesheet with zero network requests. Stroke icons use the
+         Feather icon set (MIT), brand icons use Simple Icons (CC0). -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;" aria-hidden="true" focusable="false">
+        <symbol id="icon-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+        <symbol id="icon-steam" viewBox="0 0 24 24"><path fill="currentColor" d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></symbol>
+        <symbol id="icon-youtube" viewBox="0 0 24 24"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol>
+        <symbol id="icon-heart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+        <symbol id="icon-send" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></g></symbol>
+        <symbol id="icon-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></g></symbol>
+        <symbol id="icon-settings" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></g></symbol>
+        <symbol id="icon-tool" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+        <symbol id="icon-box" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></g></symbol>
+        <symbol id="icon-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></g></symbol>
+        <symbol id="icon-smartphone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></g></symbol>
+        <symbol id="icon-login" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></g></symbol>
+        <symbol id="icon-calculator" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="12" x2="8.01" y2="12"/><line x1="12" y1="12" x2="12.01" y2="12"/><line x1="16" y1="12" x2="16.01" y2="12"/><line x1="8" y1="16" x2="8.01" y2="16"/><line x1="12" y1="16" x2="12.01" y2="16"/><line x1="16" y1="16" x2="16.01" y2="16"/></g></symbol>
+        <symbol id="icon-bell" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></g></symbol>
+        <symbol id="icon-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></g></symbol>
+        <symbol id="icon-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></g></symbol>
+    </svg>
     <!-- Skip to main content link for keyboard navigation -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
@@ -36,7 +65,7 @@
         <div class="container">
             <div class="nav-brand">
                 <a href="/">
-                    <img src="logo.png.webp" alt="QuasarApp" class="nav-logo" width="50" height="50">
+                    <img src="logo.png.webp" srcset="logo-100.webp 100w, logo.png.webp 512w" sizes="50px" alt="QuasarApp" class="nav-logo" width="50" height="50">
                     <span>QuasarApp</span>
                 </a>
             </div>
@@ -62,13 +91,13 @@
         <section id="home" class="hero-section">
             <div class="parallax-bg">
             <div class="parallax-bg-overlay" style="background: linear-gradient(to bottom, rgba(10, 14, 23, 0.35), rgba(10, 14, 23, 0.55));"></div>
-            <img src="ecliptica_background.jpg.webp" class="parallax-bg-img blur-bg" alt="Ecliptica Background" style="position: absolute; top: 50%; left: 50%; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; filter: blur(6px); transform: translate(-50%, -50%) scale(1.07);">
+            <img src="ecliptica_background.jpg.webp" srcset="ecliptica_background-480.webp 480w, ecliptica_background-768.webp 768w, ecliptica_background.jpg.webp 1438w" sizes="100vw" fetchpriority="high" class="parallax-bg-img blur-bg" alt="Ecliptica Background" style="position: absolute; top: 50%; left: 50%; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; filter: blur(6px); transform: translate(-50%, -50%) scale(1.07);">
         </div>
         <div class="hero-content">
             <!-- Ecliptica Featured Banner - Using Steam header image -->
             <div class="ecliptica-featured">
                 <div class="ecliptica-header-content">
-                    <img src="ecliptica_icon_logo.png.webp" alt="Ecliptica Logo" class="ecliptica-logo" loading="lazy" width="120" height="120">
+                    <img src="ecliptica_icon_logo.png.webp" srcset="ecliptica_icon_logo-240.webp 240w, ecliptica_icon_logo.png.webp 256w" sizes="150px" alt="Ecliptica Logo" class="ecliptica-logo" width="120" height="120">
                     <div class="ecliptica-header-info">
                         <h1 class="ecliptica-title">Ecliptica</h1>
                         <p class="ecliptica-subtitle">Command the Final Space Station - Explore, Build, and Survive</p>
@@ -78,20 +107,20 @@
 
                             <!-- Ecliptica Capsule Image on the Right -->
                 <div class="ecliptica-capsule">
-                    <img src="ecliptica_capsule.jpg.webp" alt="Ecliptica Capsule" class="ecliptica-capsule-img" loading="lazy" width="616" height="353">
+                    <img src="ecliptica_capsule.jpg.webp" srcset="ecliptica_capsule-308.webp 308w, ecliptica_capsule.jpg.webp 616w, ecliptica_capsule-924.webp 924w" sizes="(max-width: 640px) 100vw, 616px" alt="Ecliptica Capsule" class="ecliptica-capsule-img" loading="lazy" width="616" height="353">
                 </div>
                 
                 <div class="ecliptica-features">
-                    <div class="feature-item"><i class="fas fa-rocket"></i> Space Exploration</div>
-                    <div class="feature-item"><i class="fas fa-globe-americas"></i> Planet Building</div>
-                    <div class="feature-item"><i class="fas fa-cogs"></i> Resource Management</div>
+                    <div class="feature-item"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-send"></use></svg> Space Exploration</div>
+                    <div class="feature-item"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-globe"></use></svg> Planet Building</div>
+                    <div class="feature-item"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-settings"></use></svg> Resource Management</div>
                 </div>
                 <div class="ecliptica-buttons">
                     <a href="https://store.steampowered.com/app/3723390/Ecliptica/" target="_blank" class="btn btn-steam-primary">
-                        <i class="fab fa-steam"></i> Play on Steam
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-steam"></use></svg> Play on Steam
                     </a>
                     <a href="https://store.steampowered.com/wishlist/add/item?appid=3723390" target="_blank" class="btn btn-wishlist">
-                        <i class="fas fa-heart"></i> Add to Wishlist
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-heart"></use></svg> Add to Wishlist
                     </a>
                 </div>
             </div>
@@ -104,7 +133,7 @@
             <h2 class="section-title" data-lang="projects.title">Our Projects</h2>
             <div class="projects-grid">
                 <div class="project-card parallax-card ecliptica-card">
-                    <img src="ecliptica_icon_logo.png.webp" alt="Ecliptica Logo" class="game-logo" loading="lazy" width="120" height="120">
+                    <img src="ecliptica_icon_logo.png.webp" srcset="ecliptica_icon_logo-240.webp 240w, ecliptica_icon_logo.png.webp 256w" sizes="120px" alt="Ecliptica Logo" class="game-logo" loading="lazy" width="120" height="120">
                     <h3>Ecliptica</h3>
                     <p class="lang-badge">Game</p>
                     <p data-lang="projects.ecliptica">Ecliptica is a space exploration game where you command a space station and terraform planets. Build habitats, manage resources, and lead your crew through deep space challenges.</p>
@@ -116,83 +145,83 @@
                     </div>
                     <div class="card-buttons">
                         <a href="https://store.steampowered.com/app/3723390/Ecliptica/" target="_blank" class="btn btn-sm btn-steam-primary">
-                            <i class="fab fa-steam"></i> Play on Steam
+                            <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-steam"></use></svg> Play on Steam
                         </a>
                         <a href="https://store.steampowered.com/wishlist/add/item?appid=3723390" target="_blank" class="btn btn-sm btn-wishlist">
-                            <i class="fas fa-heart"></i> Add to Wishlist
+                            <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-heart"></use></svg> Add to Wishlist
                         </a>
                     </div>
-                    <img src="ecliptica_background.jpg.webp" class="ecliptica-card-bg" alt="Ecliptica Background">
+                    <img src="ecliptica_background.jpg.webp" srcset="ecliptica_background-480.webp 480w, ecliptica_background-768.webp 768w" sizes="(max-width: 768px) 100vw, 585px" alt="Ecliptica Background" class="ecliptica-card-bg" loading="lazy">
                 </div>
                 <div class="project-card parallax-card" data-project="cqtdeployer">
-                    <div class="card-icon"><i class="fas fa-tools"></i></div>
+                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-tool"></use></svg></div>
                     <h3>CQtDeployer</h3>
                     <p class="lang-badge">Multi-Language</p>
                     <p data-lang="projects.cqtdeployer">This project is used to deploy applications written using QML, Qt or other C / C++ frameworks.</p>
-                    <a href="https://github.com/QuasarApp/CQtDeployer" target="_blank" class="card-link"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/QuasarApp/CQtDeployer" target="_blank" class="card-link" aria-label="GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg></a>
                 </div>
                 <div class="project-card parallax-card" data-project="heart">
-                    <div class="card-icon"><i class="fas fa-heartbeat"></i></div>
+                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-heart"></use></svg></div>
                     <h3>Heart</h3>
                     <p class="lang-badge">Multi-Language</p>
                     <p data-lang="projects.heart">QuasarApp Heart - it is base backend for C++/Qt projects. This library support work with databases and work with lite network requests.</p>
-                    <a href="https://github.com/QuasarApp/Heart" target="_blank" class="card-link"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/QuasarApp/Heart" target="_blank" class="card-link" aria-label="GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg></a>
                 </div>
                 <div class="project-card parallax-card" data-project="qt-secret">
-                    <div class="card-icon"><i class="fas fa-lock"></i></div>
+                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-lock"></use></svg></div>
                     <h3>Qt-Secret</h3>
                     <p class="lang-badge">Multi-Language</p>
                     <p data-lang="projects.qt_secret">Simple encryption library supporting RSA and AES algorithms.</p>
-                    <a href="https://github.com/QuasarApp/Qt-Secret" target="_blank" class="card-link"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/QuasarApp/Qt-Secret" target="_blank" class="card-link" aria-label="GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg></a>
                 </div>
                 <div class="project-card parallax-card" data-project="cmake">
-                    <div class="card-icon"><i class="fas fa-cubes"></i></div>
+                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-box"></use></svg></div>
                     <h3>CMake</h3>
                     <p class="lang-badge">Multi-Language</p>
                     <p data-lang="projects.cmake">Cmake modules for quasarapp projects</p>
-                    <a href="https://github.com/QuasarApp/CMake" target="_blank" class="card-link"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/QuasarApp/CMake" target="_blank" class="card-link" aria-label="GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg></a>
                 </div>
                 <div class="project-card parallax-card" data-project="sdkmanager-android">
-                    <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-smartphone"></use></svg></div>
                     <h3>sdkmanager-android</h3>
                     <p class="lang-badge">Multi-Language</p>
                     <p data-lang="projects.sdkmanager_android">Wrapper of Android SDK Manager for the Snap Store</p>
-                    <a href="https://github.com/QuasarApp/sdkmanager-android" target="_blank" class="card-link"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/QuasarApp/sdkmanager-android" target="_blank" class="card-link" aria-label="GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg></a>
                 </div>
                 <div class="project-card parallax-card" data-project="qml-login-view">
-                    <div class="card-icon"><i class="fas fa-sign-in-alt"></i></div>
+                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-login"></use></svg></div>
                     <h3>QMLLoginView</h3>
                     <p class="lang-badge">Multi-Language</p>
                     <p data-lang="projects.qml_login_view">Simple login window library for qml projects.</p>
-                    <a href="https://github.com/QuasarApp/QMLLoginView" target="_blank" class="card-link"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/QuasarApp/QMLLoginView" target="_blank" class="card-link" aria-label="GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg></a>
                 </div>
                 <div class="project-card parallax-card" data-project="qt-bignum">
-                    <div class="card-icon"><i class="fas fa-calculator"></i></div>
+                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-calculator"></use></svg></div>
                     <h3>QtBigInt</h3>
                     <p class="lang-badge">Multi-Language</p>
                     <p data-lang="projects.qt_bignum">QtBigInt - Arbitrary-sized integer class for C++ and build system of Qt. Powered by GMP 6.3.0</p>
-                    <a href="https://github.com/QuasarApp/QtBigInt" target="_blank" class="card-link"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/QuasarApp/QtBigInt" target="_blank" class="card-link" aria-label="GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg></a>
                 </div>
                 <div class="project-card parallax-card" data-project="simple-qml-notify">
-                    <div class="card-icon"><i class="fas fa-bell"></i></div>
+                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-bell"></use></svg></div>
                     <h3>SimpleQmlNotify</h3>
                     <p class="lang-badge">Multi-Language</p>
                     <p data-lang="projects.simple_qml_notify">Simple Qml notification service for qml applications.</p>
-                    <a href="https://github.com/QuasarApp/SimpleQmlNotify" target="_blank" class="card-link"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/QuasarApp/SimpleQmlNotify" target="_blank" class="card-link" aria-label="GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg></a>
                 </div>
                 <div class="project-card parallax-card" data-project="patronum">
-                    <div class="card-icon"><i class="fas fa-cogs"></i></div>
+                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-settings"></use></svg></div>
                     <h3>Patronum</h3>
                     <p class="lang-badge">Multi-Language</p>
                     <p data-lang="projects.patronum">This is extension libraries for control your daemons.</p>
-                    <a href="https://github.com/QuasarApp/Patronum" target="_blank" class="card-link"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/QuasarApp/Patronum" target="_blank" class="card-link" aria-label="GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg></a>
                 </div>
                 <div class="project-card parallax-card" data-project="hanoi">
-                    <div class="card-icon"><i class="fas fa-gamepad"></i></div>
+                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-grid"></use></svg></div>
                     <h3>Hanoi-Towers</h3>
                     <p class="lang-badge">Multi-Language</p>
                     <p data-lang="projects.hanoi">Hanoi Towers Game</p>
-                    <a href="https://github.com/QuasarApp/Hanoi-Towers" target="_blank" class="card-link"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/QuasarApp/Hanoi-Towers" target="_blank" class="card-link" aria-label="GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg></a>
                 </div>
             </div>
         </div>
@@ -236,7 +265,7 @@
         <div class="container">
             <div class="footer-social">
                 <a href="https://github.com/QuasarApp" class="social-link">
-                    <i class="fab fa-github"></i>
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg>
                     <span data-lang="footer.github">GitHub</span>
                 </a>
                 <a href="https://bsky.app/profile/quasarapp.bsky.social" class="social-link">
@@ -244,21 +273,21 @@
                     <span data-lang="footer.bluesky">Bluesky</span>
                 </a>
                 <a href="mailto:quasarappdevelop@gmail.com" class="social-link">
-                    <i class="fas fa-envelope"></i>
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-mail"></use></svg>
                     <span data-lang="footer.email">Email</span>
                 </a>
                 <a href="https://www.youtube.com/@quasarappcore" class="social-link" target="_blank">
-                    <i class="fab fa-youtube"></i>
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-youtube"></use></svg>
                     <span data-lang="footer.youtube">YouTube</span>
                 </a>
                 <a href="https://store.steampowered.com/curator/45704880" class="social-link" target="_blank">
-                    <i class="fab fa-steam"></i>
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-steam"></use></svg>
                     <span data-lang="footer.steam">Steam</span>
                 </a>
             </div>
             <div class="footer-bottom">
                 <p data-lang="footer.copyright">&copy; 2026 QuasarApp Group. All rights reserved.</p>
-                <p class="made-with"><i class="fas fa-heart"></i> Made with <span class="glow">passion</span></p>
+                <p class="made-with"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-heart"></use></svg> Made with <span class="glow">passion</span></p>
             </div>
         </div>
     </footer>

@@ -47,13 +47,6 @@ body {
     box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
     transition: transform 0.3s ease;
 }
-@media (max-width: 768px) {
-    .nav-brand img,
-    .nav-brand svg {
-        width: 40px;
-        height: 40px;
-    }
-}
 .nav-brand img:hover {
     transform: scale(1.1);
 }
@@ -299,6 +292,15 @@ body {
 .ecliptica-card .game-logo:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 40px rgba(102, 192, 244, 0.6);
+}
+
+/* Ecliptica Card Features Badges - Flex layout for badges */
+.ecliptica-features-badges {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .card-link {

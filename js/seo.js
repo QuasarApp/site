@@ -199,15 +199,16 @@
      */
     function updateMetaTags() {
         const currentPath = window.location.pathname;
-        const currentHash = window.location.hash || '/';
+        const currentHash = window.location.hash || '';
         
         // Find matching meta config
         let meta = defaultMeta;
         
-        if (pageMeta[currentPath]) {
-            meta = pageMeta[currentPath];
-        } else if (pageMeta[currentHash]) {
+        // Check hash first (for SPA section navigation), then path (for actual pages)
+        if (currentHash && currentHash !== '/' && pageMeta[currentHash]) {
             meta = pageMeta[currentHash];
+        } else if (pageMeta[currentPath]) {
+            meta = pageMeta[currentPath];
         }
         // Fallback to defaultMeta for unknown paths - no iteration!
 

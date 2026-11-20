@@ -56,6 +56,7 @@ jobs:
           runs: 1
           temporaryPublicStorage: true
           uploadArtifacts: true
+          artifactName: lighthouse-desktop
 
       - name: Lighthouse Mobile (Performance >= 90)
         uses: treosh/lighthouse-ci-action@v12
@@ -65,3 +66,4 @@ jobs:
           runs: 1
           temporaryPublicStorage: true
           uploadArtifacts: true
+          artifactName: lighthouse-mobile

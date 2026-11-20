@@ -128,21 +128,7 @@
                 '@type': 'VideoGame',
                 'name': 'Ecliptica',
                 'url': 'https://quasarapp.me/ecliptica',
-                'description': 'A revolutionary game development tool for indie developers.',
-                'offers': {
-                    '@type': 'Offer',
-                    'url': 'https://store.steampowered.com/curator/45704880',
-                    'price': '0',
-                    'priceCurrency': 'USD',
-                    'availability': 'https://schema.org/InStock'
-                },
-                'aggregateRating': {
-                    '@type': 'AggregateRating',
-                    'ratingValue': '4.5',
-                    'ratingCount': '1234',
-                    'bestRating': '5',
-                    'worstRating': '1'
-                }
+                'description': 'A revolutionary game development tool for indie developers.'
             }
         },
         // Project detail pages (SoftwareApplication)

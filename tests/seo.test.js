@@ -25,20 +25,12 @@ test('sitemap.xml exists and is valid XML', () => {
     assert.ok(sitemap.includes('<urlset'), 'sitemap has urlset element');
 });
 
-test('sitemap.xml lists the homepage', () => {
+test('sitemap.xml lists the homepage only', () => {
     assert.ok(sitemap.includes('<loc>https://quasarapp.me/</loc>'), 'homepage URL in sitemap');
-});
-
-test('sitemap.xml lists ecliptica page', () => {
-    assert.ok(sitemap.includes('ecliptica'), 'ecliptica URL in sitemap');
-});
-
-test('sitemap.xml lists devlog section', () => {
-    assert.ok(sitemap.includes('devlog'), 'devlog URL in sitemap');
-});
-
-test('sitemap.xml lists project section', () => {
-    assert.ok(sitemap.includes('projects/'), 'projects URL in sitemap');
+    // Other URLs are not listed yet as they don't exist
+    assert.ok(!sitemap.includes('ecliptica'), 'ecliptica not in sitemap (page does not exist yet)');
+    assert.ok(!sitemap.includes('devlog'), 'devlog not in sitemap (page does not exist yet)');
+    assert.ok(!sitemap.includes('projects/'), 'projects/ not in sitemap (page does not exist yet)');
 });
 
 test('sitemap.xml has proper changefreq and priority', () => {
@@ -88,6 +80,8 @@ test('seo.js includes Organization structured data', () => {
 test('seo.js includes VideoGame structured data for /ecliptica', () => {
     assert.ok(seoContent.includes("'@type': 'VideoGame'"), 'seo.js includes VideoGame type');
     assert.ok(seoContent.includes('ecliptica'), 'seo.js has ecliptica configuration');
+    assert.ok(!seoContent.includes('aggregateRating'), 'seo.js does not include fake aggregateRating');
+    assert.ok(!seoContent.includes('store.steampowered.com/curator'), 'seo.js does not include fake offers');
 });
 
 test('seo.js includes SoftwareApplication structured data for /projects/', () => {

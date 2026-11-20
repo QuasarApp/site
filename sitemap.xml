@@ -7,28 +7,4 @@
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
-
-    <!-- Ecliptica project page -->
-    <url>
-        <loc>https://quasarapp.me/ecliptica</loc>
-        <lastmod>2026-11-20</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-
-    <!-- Project detail pages (will be added as pages are created) -->
-    <url>
-        <loc>https://quasarapp.me/projects/</loc>
-        <lastmod>2026-11-20</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <!-- Devlog section (future posts) -->
-    <url>
-        <loc>https://quasarapp.me/devlog</loc>
-        <lastmod>2026-11-20</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
 </urlset>

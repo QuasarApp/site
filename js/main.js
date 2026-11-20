@@ -131,7 +131,5 @@ function createParticles() {
     animateParticles();
 }
 
-// Console branding
-console.log('%c QuasarApp Group ', 'background: #00bcd4; color: white; font-size: 20px; padding: 10px;');
-console.log('%c Building the Future of Software ', 'color: #00bcd4; font-size: 14px;');
+
 

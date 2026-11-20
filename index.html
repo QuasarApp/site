@@ -45,7 +45,15 @@
                 <li><a href="#projects" data-lang="nav.projects">Projects</a></li>
                 <li><a href="#about" data-lang="nav.about">About</a></li>
                 <li><a href="#contact" data-lang="nav.contact">Contact</a></li>
-                <li><button type="button" class="lang-btn" onclick="toggleLanguage()" aria-label="Toggle language"><i class="fas fa-globe"></i> EN</button></li>
+                <li>
+                    <select id="lang-select" class="lang-select" aria-label="Toggle language" onchange="selectLanguage(this.value)">
+                        <option value="en" selected>EN</option>
+                        <option value="ru">RU</option>
+                        <option value="me">ME</option>
+                        <option value="de">DE</option>
+                        <option value="es">ES</option>
+                    </select>
+                </li>
             </ul>
         </div>
     </nav>
@@ -249,7 +257,7 @@
                 </a>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 QuasarApp Group. All rights reserved.</p>
+                <p data-lang="footer.copyright">&copy; 2026 QuasarApp Group. All rights reserved.</p>
                 <p class="made-with"><i class="fas fa-heart"></i> Made with <span class="glow">passion</span></p>
             </div>
         </div>

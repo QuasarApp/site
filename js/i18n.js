@@ -47,7 +47,8 @@ const translations = {
             bluesky: 'Bluesky',
             email: 'Email',
             youtube: 'YouTube',
-            steam: 'Steam'
+            steam: 'Steam',
+            copyright: '© 2026 QuasarApp Group. All rights reserved.'
         },
         aria: {
             toggleLanguage: 'Toggle language'
@@ -100,7 +101,8 @@ const translations = {
             bluesky: 'Bluesky',
             email: 'Email',
             youtube: 'YouTube',
-            steam: 'Steam'
+            steam: 'Steam',
+            copyright: '© 2026 QuasarApp Group. Все права защищены.'
         },
         aria: {
             toggleLanguage: 'Переключить язык'
@@ -153,7 +155,8 @@ const translations = {
             bluesky: 'Bluesky',
             email: 'E-Mail',
             youtube: 'YouTube',
-            steam: 'Steam'
+            steam: 'Steam',
+            copyright: '© 2026 QuasarApp Group. Alle Rechte vorbehalten.'
         },
         aria: {
             toggleLanguage: 'Sprache umschalten'
@@ -206,10 +209,65 @@ const translations = {
             bluesky: 'Bluesky',
             email: 'Email',
             youtube: 'YouTube',
-            steam: 'Steam'
+            steam: 'Steam',
+            copyright: '© 2026 QuasarApp Group. Todos los derechos reservados.'
         },
         aria: {
             toggleLanguage: 'Cambiar idioma'
+        }
+    },
+    me: {
+        nav: {
+            home: 'Početna',
+            projects: 'Projekti',
+            about: 'O nama',
+            contact: 'Kontakt'
+        },
+        hero: {
+            subtitle: 'Gradimo budućnost softvera',
+            explore: 'Istraži projekte',
+            learn: 'Saznaj više'
+        },
+        projects: {
+            title: 'Naši projekti',
+            cqtdeployer: 'Moj alat za postavljanje krosplatformskih Qt aplikacija',
+            platforms: 'Sloj apstrakcije platformi za krosplatformni razvoj',
+            opensimplex2: 'Brza implementacija šuma za proceduralnu generaciju',
+            qt_secret: 'Kriptografska biblioteka sa podrškom za RSA i AES algoritme',
+            heart: 'QuasarApp Heart - osnovni backend za C++/Qt projekte. Ova biblioteka podržava rad sa bazama podataka i laganim mrežnim zahtjevima.',
+            cmake: 'CMake moduli za QuasarApp projekte',
+            sdkmanager_android: 'Omotač Android SDK menadžera za Snap Store',
+            qml_login_view: 'Jednostavna biblioteka prijavne prozora za QML projekte.',
+            qt_bignum: 'QtBigInt - klasa za rad sa cijelim brojevima proizvoljne veličine za C++ i sistem za gradnju Qt. Pokreće GMP 6.3.0',
+            simple_qml_notify: 'Jednostavna QML služba za obaveštenja za QML aplikacije.',
+            patronum: 'Biblioteka proširenja za upravljanje vašim demonima.',
+            hanoi: 'Igra "Kule iz Hanoya"',
+            ecliptica: 'Ecliptica je igra o istraživanju svemira u kojoj komandujete svemirskom stanicom i terraformirate planete. Gradite habitate, upravljate resursima i vodite svoju posadu kroz izazove dubokog svemira.'
+        },
+        about: {
+            title: 'O nama',
+            text: 'QuasarApp je organizacija otvorenog koda posvećena kreiranju inovativnih softverskih rješenja. Vjerujemo u snagu otvorene saradnje i izgradnje alata koji pomažu developerima širom svijeta.',
+            text2: 'Naš tim čine strastveni inženjeri koji rade na najnovijim tehnologijama, od desktop frameworkova do web aplikacija i alata za razvoj igara.'
+        },
+        stats: {
+            projects: 'Projekti',
+            stars: 'Zvijezde',
+            contributors: 'Doprinosioci'
+        },
+        contact: {
+            title: 'Kontaktirajte nas',
+            message: 'Kontaktirajte nas putem naših zvaničnih kanala — linkovi su dostupni u podnožju.'
+        },
+        footer: {
+            github: 'GitHub',
+            bluesky: 'Bluesky',
+            email: 'E-mail',
+            youtube: 'YouTube',
+            steam: 'Steam',
+            copyright: '© 2026 QuasarApp Group. Sva prava zadržana.'
+        },
+        aria: {
+            toggleLanguage: 'Promijeni jezik'
         }
     }
 };
@@ -220,7 +278,7 @@ function getStoredLanguage() {
     if (typeof Storage !== 'undefined') {
         try {
             const stored = localStorage.getItem('quasarapp_language');
-            const validLanguages = ['en', 'ru', 'de', 'es'];
+            const validLanguages = ['en', 'ru', 'me', 'de', 'es'];
             if (stored && validLanguages.includes(stored)) {
                 return stored;
             }
@@ -255,6 +313,8 @@ function getLanguageFromBrowserCode(browserLang) {
     const langMap = {
         'ru-RU': 'ru',
         'ru': 'ru',
+        'me-ME': 'me',
+        'me': 'me',
         'de-DE': 'de',
         'de': 'de',
         'es-ES': 'es',
@@ -266,32 +326,31 @@ function getLanguageFromBrowserCode(browserLang) {
     return langMap[browserLang] || 'en';
 }
 
-function toggleLanguage() {
-    const languages = ['en', 'ru', 'de', 'es'];
-    const currentIndex = languages.indexOf(currentLanguage);
-    const nextLang = languages[(currentIndex + 1) % languages.length];
-    setLanguage(nextLang);
+function selectLanguage(lang) {
+    const languages = ['en', 'ru', 'me', 'de', 'es'];
+    if (!languages.includes(lang)) {
+        lang = 'en';
+    }
+    setLanguage(lang);
     updateTranslations();
     updateLanguageButton();
 }
 
 function updateLanguageButton() {
-    const langBtn = document.querySelector('.lang-btn');
-    if (langBtn) {
-        langBtn.innerHTML = '<i class="fas fa-globe"></i> ' + currentLanguage.toUpperCase();
+    const langSelect = document.getElementById('lang-select');
+    if (langSelect) {
+        const hasOption = Array.prototype.some.call(langSelect.options, (option) => option.value === currentLanguage);
+        if (hasOption) {
+            langSelect.value = currentLanguage;
+        }
         const ariaLabel = translations[currentLanguage]?.aria?.toggleLanguage || 'Toggle language';
-        langBtn.setAttribute('aria-label', ariaLabel);
+        langSelect.setAttribute('aria-label', ariaLabel);
     }
 }
 
 function updateTranslations() {
     const elements = document.querySelectorAll('[data-lang]');
     elements.forEach(element => {
-        // Skip the language button - it's handled separately
-        if (element.classList.contains('lang-btn')) {
-            return;
-        }
-        
         const lang = element.getAttribute('data-lang');
         const keys = lang.split('.');
         let value = translations[currentLanguage];

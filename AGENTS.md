@@ -23,6 +23,9 @@ Pages: the `main` branch root is served at
   together.
 - `js/parallax.js` (load 2nd) — global `ParallaxHandler` class.
 - `js/main.js` (load 3rd) — scroll animations, card tilt, particles.
+- `tests/` — dependency-free Node.js test suite run with
+  `node --test tests/*.test.js`; executed on every pull request by the
+  `.github/workflows/auto-tests.yml` GitHub Actions workflow.
 
 The script load order (i18n → parallax → main) matters — keep it.
 
@@ -30,6 +33,9 @@ The script load order (i18n → parallax → main) matters — keep it.
 
 - No build: serve the repo root (e.g. `npx http-server -p 8000`) and check
   all 4 languages in a browser.
+- Run the auto tests before pushing: `node --test tests/*.test.js` (the
+  same suite runs on every pull request via
+  `.github/workflows/auto-tests.yml`).
 - Never commit or push to `main`. Work on `task_<issue-number>` from an
   up-to-date `main`, push it, and open a PR against `main` with
   `Closes #<issue-number>` in the description.

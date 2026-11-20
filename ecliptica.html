@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecliptica - Flagship Hub | QuasarApp Group</title>
+    <meta name="description" content="Ecliptica - A space exploration game where you command a space station and terraform planets.">
+    <meta name="theme-color" content="#0a0e17">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="/">
+                    <img src="logo.png.webp" alt="QuasarApp" class="nav-logo" width="50" height="50">
+                    <span>QuasarApp</span>
+                </a>
+            </div>
+            <ul class="nav-links" aria-label="Main navigation">
+                <li><a href="#home" data-lang="nav.home">Home</a></li>
+                <li><a href="#projects" data-lang="nav.projects">Projects</a></li>
+                <li><a href="#about" data-lang="nav.about">About</a></li>
+                <li><a href="#contact" data-lang="nav.contact">Contact</a></li>
+                <li>
+                    <select id="lang-select" class="lang-select" aria-label="Toggle language" onchange="selectLanguage(this.value)">
+                        <option value="en" selected>EN</option>
+                        <option value="ru">RU</option>
+                        <option value="me">ME</option>
+                        <option value="de">DE</option>
+                        <option value="es">ES</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Ecliptica Header -->
+        <section id="ecliptica-header" class="ecliptica-header">
+            <div class="container">
+                <div class="ecliptica-header-content">
+                    <div class="ecliptica-logo-container">
+                        <img src="ecliptica_icon_logo.png.webp" alt="Ecliptica Logo" class="ecliptica-logo">
+                    </div>
+                    <h1 class="ecliptica-title" data-lang="ecliptica.title">Ecliptica</h1>
+                    <p class="ecliptica-subtitle" data-lang="ecliptica.subtitle">Command a Space Station. Terraform Planets. Build Your Empire.</p>
+                    <p class="ecliptica-description" data-lang="ecliptica.description">A 3D Open-World Survival & Economy Simulation built on Qt Quick 3D</p>
+                    <div class="ecliptica-features">
+                        <span class="feature-item" data-lang="ecliptica.feature1">Procedurally Generated Open World</span>
+                        <span class="feature-item" data-lang="ecliptica.feature2">Dynamic NPC-Driven Economy</span>
+                        <span class="feature-item" data-lang="ecliptica.feature3">Settlement Construction</span>
+                        <span class="feature-item" data-lang="ecliptica.feature4">Corporations & Factions</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Hero Section -->
+        <section id="ecliptica-hero" class="ecliptica-hero-section">
+            <div class="container">
+                <div class="ecliptica-hero-content">
+                    <div class="video-container" id="ecliptica-video-container">
+                        <video id="ecliptica-video" class="ecliptica-video" muted playsinline preload="none" poster="ecliptica_background.jpg.webp">
+                            <p class="video-placeholder" data-lang="ecliptica.hero.videoPlaceholder">Gameplay video coming soon</p>
+                        </video>
+                        <div class="video-overlay"></div>
+                    </div>
+                    <div class="ecliptica-cta-primary">
+                        <a href="https://store.steampowered.com/wishlist/add/item?appid=3723390" class="btn btn-steam-primary" target="_blank" rel="noopener noreferrer" data-lang="ecliptica.cta.wishlist">
+                            <i class="fab fa-steam"></i> Add to Wishlist on Steam
+                        </a>
+                        <a href="#" class="btn btn-itch" target="_blank" rel="noopener noreferrer" data-lang="ecliptica.cta.demo">
+                            <i class="fas fa-play"></i> Play Demo / Itch.io
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mechanics Showcase Section -->
+        <section id="ecliptica-mechanics" class="ecliptica-mechanics-section">
+            <div class="container">
+                <h2 class="section-title" data-lang="ecliptica.mechanics.title">Core Mechanics</h2>
+                <div class="mechanics-tabs">
+                    <button class="tab-btn active" data-tab="tab1" data-lang="ecliptica.mechanics.tab1">Open World</button>
+                    <button class="tab-btn" data-tab="tab2" data-lang="ecliptica.mechanics.tab2">Economy</button>
+                    <button class="tab-btn" data-tab="tab3" data-lang="ecliptica.mechanics.tab3">Construction</button>
+                    <button class="tab-btn" data-tab="tab4" data-lang="ecliptica.mechanics.tab4">Corporations</button>
+                </div>
+                
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+                        <div class="mechanic-content">
+                            <h3 data-lang="ecliptica.mechanics.content1.title">Procedurally Generated Open World & Terrain Deformation</h3>
+                            <p data-lang="ecliptica.mechanics.content1.desc">Experience a vast, ever-changing universe. Every planet, terrain feature, and resource distribution is generated procedurally.</p>
+                            <div class="mechanic-media">
+                                <img src="ecliptica_capsule.jpg.webp" alt="Procedural World Generation" class="mechanic-image">
+                                <span class="media-badge" data-lang="ecliptica.mechanics.content1.badge">Interactive Preview</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab2">
+                        <div class="mechanic-content">
+                            <h3 data-lang="ecliptica.mechanics.content2.title">Fully Dynamic NPC-Driven Economy</h3>
+                            <p data-lang="ecliptica.mechanics.content2.desc">Step into a living, breathing economic ecosystem. Trade resources and negotiate with AI-controlled corporations.</p>
+                            <div class="mechanic-media">
+                                <img src="ecliptica_capsule.jpg.webp" alt="Dynamic Economy System" class="mechanic-image">
+                                <span class="media-badge" data-lang="ecliptica.mechanics.content2.badge">Interactive Preview</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab3">
+                        <div class="mechanic-content">
+                            <h3 data-lang="ecliptica.mechanics.content3.title">Settlement Construction, Blueprints & Terminal Systems</h3>
+                            <p data-lang="ecliptica.mechanics.content3.desc">Design and build your own space stations and planetary outposts with our modular construction system.</p>
+                            <div class="mechanic-media">
+                                <img src="ecliptica_capsule.jpg.webp" alt="Settlement Construction" class="mechanic-image">
+                                <span class="media-badge" data-lang="ecliptica.mechanics.content3.badge">Interactive Preview</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab4">
+                        <div class="mechanic-content">
+                            <h3 data-lang="ecliptica.mechanics.content4.title">Player-Managed Corporations & Factions</h3>
+                            <p data-lang="ecliptica.mechanics.content4.desc">Create and lead your own corporations or join existing factions in a complex galactic power struggle.</p>
+                            <div class="mechanic-media">
+                                <img src="ecliptica_capsule.jpg.webp" alt="Corporations & Factions" class="mechanic-image">
+                                <span class="media-badge" data-lang="ecliptica.mechanics.content4.badge">Interactive Preview</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section id="ecliptica-roadmap" class="ecliptica-roadmap-section">
+            <div class="container">
+                <h2 class="section-title" data-lang="ecliptica.roadmap.title">Development Roadmap</h2>
+                <p class="roadmap-subtitle" data-lang="ecliptica.roadmap.subtitle">Transparent development tracking - updated regularly</p>
+                <div class="roadmap-content">
+                    <div class="roadmap-column">
+                        <h3 class="roadmap-column-title completed" data-lang="ecliptica.roadmap.completed">Completed</h3>
+                        <ul class="roadmap-list">
+                            <li class="roadmap-item completed"><span class="roadmap-status" data-lang="ecliptica.roadmap.status.completed">✓</span><span data-lang="ecliptica.roadmap.item1">Core Engine Foundation</span></li>
+                            <li class="roadmap-item completed"><span class="roadmap-status" data-lang="ecliptica.roadmap.status.completed">✓</span><span data-lang="ecliptica.roadmap.item2">Base Procedural Generation System</span></li>
+                            <li class="roadmap-item completed"><span class="roadmap-status" data-lang="ecliptica.roadmap.status.completed">✓</span><span data-lang="ecliptica.roadmap.item3">Space Station Framework</span></li>
+                        </ul>
+                    </div>
+                    <div class="roadmap-column">
+                        <h3 class="roadmap-column-title in-progress" data-lang="ecliptica.roadmap.inprogress">In Progress</h3>
+                        <ul class="roadmap-list">
+                            <li class="roadmap-item in-progress"><span class="roadmap-status" data-lang="ecliptica.roadmap.status.inprogress">⚡</span><span data-lang="ecliptica.roadmap.item4">Advanced Terrain Deformation</span></li>
+                            <li class="roadmap-item in-progress"><span class="roadmap-status" data-lang="ecliptica.roadmap.status.inprogress">⚡</span><span data-lang="ecliptica.roadmap.item5">Dynamic Economy System</span></li>
+                            <li class="roadmap-item in-progress"><span class="roadmap-status" data-lang="ecliptica.roadmap.status.inprogress">⚡</span><span data-lang="ecliptica.roadmap.item6">Settlement Construction Tools</span></li>
+                        </ul>
+                    </div>
+                    <div class="roadmap-column">
+                        <h3 class="roadmap-column-title planned" data-lang="ecliptica.roadmap.planned">Planned</h3>
+                        <ul class="roadmap-list">
+                            <li class="roadmap-item planned"><span class="roadmap-status" data-lang="ecliptica.roadmap.status.planned">○</span><span data-lang="ecliptica.roadmap.item7">Player Corporations & Factions</span></li>
+                            <li class="roadmap-item planned"><span class="roadmap-status" data-lang="ecliptica.roadmap.status.planned">○</span><span data-lang="ecliptica.roadmap.item8">Multiplayer Systems</span></li>
+                            <li class="roadmap-item planned"><span class="roadmap-status" data-lang="ecliptica.roadmap.status.planned">○</span><span data-lang="ecliptica.roadmap.item9">Advanced AI Systems</span></li>
+                            <li class="roadmap-item planned"><span class="roadmap-status" data-lang="ecliptica.roadmap.status.planned">○</span><span data-lang="ecliptica.roadmap.item10">Mobile Platform Support</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Requirements Section -->
+        <section id="ecliptica-requirements" class="ecliptica-requirements-section">
+            <div class="container">
+                <h2 class="section-title" data-lang="ecliptica.requirements.title">System Requirements</h2>
+                <div class="requirements-table">
+                    <table class="specs-table">
+                        <thead>
+                            <tr>
+                                <th data-lang="ecliptica.requirements.col.platform">Platform</th>
+                                <th data-lang="ecliptica.requirements.col.min">Minimum</th>
+                                <th data-lang="ecliptica.requirements.col.recommended">Recommended</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-lang="ecliptica.requirements.row.win10.platform">Windows 10/11 64-bit</td>
+                                <td data-lang="ecliptica.requirements.row.win10.min">
+                                    <ul><li>CPU: Intel Core i5-8400 / AMD Ryzen 5 2600</li><li>RAM: 16 GB</li><li>GPU: NVIDIA GTX 1060 6GB / AMD RX 580</li><li>Storage: 80 GB SSD</li><li>OS: Windows 10/11 64-bit</li></ul>
+                                </td>
+                                <td data-lang="ecliptica.requirements.row.win10.recommended">
+                                    <ul><li>CPU: Intel Core i7-10700K / AMD Ryzen 7 5800X</li><li>RAM: 32 GB</li><li>GPU: NVIDIA RTX 3070 / AMD RX 6800 XT</li><li>Storage: 80 GB NVMe SSD</li><li>OS: Windows 11 64-bit</li></ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-lang="ecliptica.requirements.row.ubuntu.platform">Ubuntu Linux 22.04/24.04/25.04</td>
+                                <td data-lang="ecliptica.requirements.row.ubuntu.min">
+                                    <ul><li>CPU: Intel Core i5-8400 / AMD Ryzen 5 2600</li><li>RAM: 16 GB</li><li>GPU: NVIDIA GTX 1060 6GB / AMD RX 580</li><li>Storage: 80 GB SSD</li><li>OS: Ubuntu 22.04 LTS</li></ul>
+                                </td>
+                                <td data-lang="ecliptica.requirements.row.ubuntu.recommended">
+                                    <ul><li>CPU: Intel Core i7-10700K / AMD Ryzen 7 5800X</li><li>RAM: 32 GB</li><li>GPU: NVIDIA RTX 3070 / AMD RX 6800 XT</li><li>Storage: 80 GB NVMe SSD</li><li>OS: Ubuntu 24.04 LTS</li></ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section id="ecliptica-community" class="ecliptica-community-section">
+            <div class="container">
+                <h2 class="section-title" data-lang="ecliptica.community.title">Join Our Community</h2>
+                <p class="community-subtitle" data-lang="ecliptica.community.subtitle">Connect with fellow explorers, share your ideas, and provide feedback</p>
+                <div class="community-links">
+                    <a href="https://discord.gg/quasarapp" class="community-card" target="_blank" rel="noopener noreferrer" data-lang="ecliptica.community.discord">
+                        <i class="fab fa-discord"></i><span>Discord Server</span><span class="community-desc">Chat with developers and players</span>
+                    </a>
+                    <a href="https://reddit.com/r/Ecliptica" class="community-card" target="_blank" rel="noopener noreferrer" data-lang="ecliptica.community.reddit">
+                        <i class="fab fa-reddit"></i><span>r/Ecliptica</span><span class="community-desc">Discuss on Reddit</span>
+                    </a>
+                    <a href="#feedback" class="community-card" data-lang="ecliptica.community.feedback">
+                        <i class="fas fa-envelope"></i><span>Feedback & Bug Reports</span><span class="community-desc">Submit your feedback</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Media Gallery Section -->
+        <section id="ecliptica-gallery" class="ecliptica-gallery-section">
+            <div class="container">
+                <h2 class="section-title" data-lang="ecliptica.gallery.title">Media Gallery</h2>
+                <p class="gallery-subtitle" data-lang="ecliptica.gallery.subtitle">Explore our screenshots and artwork</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="ecliptica_capsule.jpg.webp" alt="Ecliptica Screenshot 1" data-src="ecliptica_capsule.jpg" class="gallery-img">
+                        <span class="gallery-overlay" data-lang="ecliptica.gallery.overlay">View Full Size</span>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="ecliptica_background.jpg.webp" alt="Ecliptica Screenshot 2" data-src="ecliptica_background.jpg" class="gallery-img">
+                        <span class="gallery-overlay" data-lang="ecliptica.gallery.overlay">View Full Size</span>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="ecliptica_icon_logo.png.webp" alt="Ecliptica Screenshot 3" data-src="ecliptica_icon_logo.png" class="gallery-img">
+                        <span class="gallery-overlay" data-lang="ecliptica.gallery.overlay">View Full Size</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback Form Section -->
+        <section id="feedback" class="ecliptica-feedback-section">
+            <div class="container">
+                <h2 class="section-title" data-lang="ecliptica.feedback.title">Provide Feedback</h2>
+                <p class="feedback-subtitle" data-lang="ecliptica.feedback.subtitle">Help us improve Ecliptica by sharing your thoughts</p>
+                <form class="feedback-form" id="feedback-form" data-lang="ecliptica.feedback">
+                    <div class="form-group">
+                        <label for="feedback-name" data-lang="ecliptica.feedback.label.name">Name</label>
+                        <input type="text" id="feedback-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="feedback-email" data-lang="ecliptica.feedback.label.email">Email</label>
+                        <input type="email" id="feedback-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="feedback-type" data-lang="ecliptica.feedback.label.type">Feedback Type</label>
+                        <select id="feedback-type" name="type">
+                            <option value="feedback" data-lang="ecliptica.feedback.option.feedback">General Feedback</option>
+                            <option value="bug" data-lang="ecliptica.feedback.option.bug">Bug Report</option>
+                            <option value="feature" data-lang="ecliptica.feedback.option.feature">Feature Request</option>
+                            <option value="idea" data-lang="ecliptica.feedback.option.idea">Idea Suggestion</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="feedback-message" data-lang="ecliptica.feedback.label.message">Message</label>
+                        <textarea id="feedback-message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" data-lang="ecliptica.feedback.btn">Submit Feedback</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer" role="contentinfo">
+            <div class="container">
+                <div class="footer-social">
+                    <a href="https://github.com/QuasarApp" class="social-link">
+                        <i class="fab fa-github"></i><span data-lang="footer.github">GitHub</span>
+                    </a>
+                    <a href="https://bsky.app/profile/quasarapp.bsky.social" class="social-link">
+                        <span class="bsky-icon">🦋</span><span data-lang="footer.bluesky">Bluesky</span>
+                    </a>
+                    <a href="mailto:quasarappdevelop@gmail.com" class="social-link">
+                        <i class="fas fa-envelope"></i><span data-lang="footer.email">Email</span>
+                    </a>
+                    <a href="https://www.youtube.com/@quasarappcore" class="social-link" target="_blank">
+                        <i class="fab fa-youtube"></i><span data-lang="footer.youtube">YouTube</span>
+                    </a>
+                    <a href="https://store.steampowered.com/curator/45704880" class="social-link" target="_blank">
+                        <i class="fab fa-steam"></i><span data-lang="footer.steam">Steam</span>
+                    </a>
+                </div>
+                <div class="footer-bottom">
+                    <p data-lang="footer.copyright">&copy; 2026 QuasarApp Group. All rights reserved.</p>
+                    <p class="made-with"><i class="fas fa-heart"></i> Made with <span class="glow">passion</span></p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
+        <span class="lightbox-close" aria-label="Close">&times;</span>
+        <img class="lightbox-img" src="" alt="">
+        <div class="lightbox-caption"></div>
+    </div>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/parallax.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

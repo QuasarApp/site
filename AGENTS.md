@@ -25,9 +25,37 @@ Pages: the `main` branch root is served at
 - `js/main.js` (load 3rd) — scroll animations, card tilt, particles.
 - `tests/` — dependency-free Node.js test suite run with
   `node --test tests/*.test.js`; executed on every pull request by the
-  `.github/workflows/auto-tests.yml` GitHub Actions workflow.
+  `.github/workflows/auto-tests.yml` and `.github/workflows/ci-cd.yml`
+  GitHub Actions workflows.
 
 The script load order (i18n → parallax → main) matters — keep it.
+
+## Deployment
+
+Dockerized deployment (issue #83, TZ 5.4) — the full runbook lives in the
+`Deployment (runbook)` section of `README.md`.
+
+- `Dockerfile` — multi-stage: `build` (assembles the static site into `/out`;
+  runs `npm run build` automatically once a `package.json` exists) ->
+  `web` (Caddy 2: automatic Let's Encrypt + HTTP/3 on 443/udp) and
+  `api` (dependency-free Node.js form endpoint with per-IP rate limiting).
+- `deploy/` — Caddyfile, docker compose stack, the remote deploy script
+  (`deploy.sh`, executed on the VPS by the pipeline) and `deploy/.env.example`
+  (`deploy/.env` is git-ignored).
+- `.github/workflows/ci-cd.yml` — PR gate (lint, type-check, build, tests,
+  docker build + smoke tests); merge to `main` deploys to staging and then
+  production over SSH (secret-gated: missing `VPS_*` secrets fail loudly).
+
+Build and smoke-test locally:
+
+```bash
+docker build -t quasarapp/site .
+docker build -t quasarapp/site-api --target api .
+```
+
+The site stays dependency-free: `api/server.js` must remain a single file
+using only Node.js built-ins (no `package.json` in `api/`, no npm
+dependencies, no Python in the pipeline).
 
 ## Workflow
 

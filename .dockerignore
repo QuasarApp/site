@@ -1,0 +1,11 @@
+# Keep the build context small - only what the Dockerfile stages need.
+.git
+.github
+node_modules
+tests
+deploy/docker-compose.yml
+deploy/deploy.sh
+deploy/.env.example
+.gitignore
+.dockerignore
+CNAME

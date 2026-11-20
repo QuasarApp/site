@@ -1,0 +1,190 @@
+name: CI/CD
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# ---------------------------------------------------------------------------
+# PR gate (issue #83, TZ 5.4): lint, type-check, production build, auto
+# tests and Docker build with smoke tests. Deployment on merge to main is
+# secret-gated: missing VPS_* repository secrets make the deployment jobs
+# fail loudly with a clear message instead of skipping.
+# ---------------------------------------------------------------------------
+jobs:
+  ci:
+    name: Lint + type-check + build + tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Lint (JavaScript syntax check)
+        run: |
+          for f in js/*.js api/*.js; do
+            node --check "$f"
+          done
+
+      - name: Type-check (skipped until a TypeScript project exists)
+        run: |
+          if [ -f tsconfig.json ]; then
+            npx tsc --noEmit
+          else
+            echo "No TypeScript project yet - type-check skipped"
+          fi
+
+      - name: Production build (runs once a package.json exists)
+        run: |
+          if [ -f package.json ]; then
+            npm ci --no-audit --no-fund
+            npm run build
+          else
+            echo "Static site without a build step - the Docker job verifies the image"
+          fi
+
+      - name: Run auto tests
+        run: node --test tests/*.test.js
+
+  docker:
+    name: Docker build + smoke tests
+    runs-on: ubuntu-latest
+    needs: ci
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: "Build the static site image (target: web)"
+        run: docker build -t quasarapp/site:ci .
+
+      - name: "Build the form API image (target: api)"
+        run: docker build -t quasarapp/site-api:ci --target api .
+
+      - name: Smoke test - web image serves the built site
+        run: |
+          docker run -d --name site -p 127.0.0.1:8443:443 quasarapp/site:ci
+          ok=""
+          for i in $(seq 1 30); do
+            # Caddy redirects HTTP to HTTPS and provisions an internal
+            # certificate for localhost - verify over TLS (insecure flag:
+            # self-signed internal certificate).
+            if curl -fsSk --resolve localhost:8443:127.0.0.1 \
+                https://localhost:8443/ -o /tmp/site.html; then ok=1; break; fi
+            sleep 1
+          done
+          [ -n "$ok" ] && grep -qi quasarapp /tmp/site.html
+          docker rm -f site >/dev/null
+
+      - name: Smoke test - api image answers /api/health
+        run: |
+          docker run -d --name api -p 127.0.0.1:3999:3000 quasarapp/site-api:ci
+          ok=""
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:3999/api/health -o /tmp/health.json; then ok=1; break; fi
+            sleep 1
+          done
+          [ -n "$ok" ] && grep -q '"ok":true' /tmp/health.json
+          docker rm -f api >/dev/null
+
+  deploy-staging:
+    name: Deploy to staging
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: [ci, docker]
+    concurrency:
+      group: vps-deploy-staging
+      cancel-in-progress: false
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Check staging deployment secrets
+        env:
+          VPS_HOST: ${{ secrets.VPS_STAGING_HOST }}
+          VPS_USER: ${{ secrets.VPS_STAGING_USER }}
+          VPS_KEY: ${{ secrets.VPS_STAGING_SSH_KEY }}
+        run: |
+          missing=""
+          [ -n "$VPS_HOST" ] || missing="$missing VPS_STAGING_HOST"
+          [ -n "$VPS_USER" ] || missing="$missing VPS_STAGING_USER"
+          [ -n "$VPS_KEY" ] || missing="$missing VPS_STAGING_SSH_KEY"
+          if [ -n "$missing" ]; then
+            echo "::error::Staging deployment is blocked: repository secrets are missing:$missing"
+            echo "::error::Add them in Settings > Secrets and variables > Actions (values documented in README.md, Deployment)."
+            exit 1
+          fi
+
+      - name: Deploy to staging over SSH
+        env:
+          VPS_HOST: ${{ secrets.VPS_STAGING_HOST }}
+          VPS_USER: ${{ secrets.VPS_STAGING_USER }}
+          VPS_KEY: ${{ secrets.VPS_STAGING_SSH_KEY }}
+        run: |
+          umask 077
+          key_file="$(mktemp)"
+          printf '%s\n' "$VPS_KEY" > "$key_file"
+          chmod 600 "$key_file"
+          trap 'rm -f "$key_file"' EXIT
+          scp -i "$key_file" -o StrictHostKeyChecking=accept-new \
+              deploy/deploy.sh "$VPS_USER@$VPS_HOST:/tmp/quasarapp-site-deploy.sh"
+          ssh -i "$key_file" -o StrictHostKeyChecking=accept-new -o BatchMode=yes \
+              "$VPS_USER@$VPS_HOST" "SITE_DIR=/srv/site sh /tmp/quasarapp-site-deploy.sh"
+
+  deploy-production:
+    name: Deploy to production
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: [deploy-staging]
+    concurrency:
+      group: vps-deploy-production
+      cancel-in-progress: false
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Check production deployment secrets
+        env:
+          VPS_HOST: ${{ secrets.VPS_PRODUCTION_HOST }}
+          VPS_USER: ${{ secrets.VPS_PRODUCTION_USER }}
+          VPS_KEY: ${{ secrets.VPS_PRODUCTION_SSH_KEY }}
+        run: |
+          missing=""
+          [ -n "$VPS_HOST" ] || missing="$missing VPS_PRODUCTION_HOST"
+          [ -n "$VPS_USER" ] || missing="$missing VPS_PRODUCTION_USER"
+          [ -n "$VPS_KEY" ] || missing="$missing VPS_PRODUCTION_SSH_KEY"
+          if [ -n "$missing" ]; then
+            echo "::error::Production deployment is blocked: repository secrets are missing:$missing"
+            echo "::error::Add them in Settings > Secrets and variables > Actions (values documented in README.md, Deployment)."
+            exit 1
+          fi
+
+      - name: Deploy to production over SSH
+        env:
+          VPS_HOST: ${{ secrets.VPS_PRODUCTION_HOST }}
+          VPS_USER: ${{ secrets.VPS_PRODUCTION_USER }}
+          VPS_KEY: ${{ secrets.VPS_PRODUCTION_SSH_KEY }}
+        run: |
+          umask 077
+          key_file="$(mktemp)"
+          printf '%s\n' "$VPS_KEY" > "$key_file"
+          chmod 600 "$key_file"
+          trap 'rm -f "$key_file"' EXIT
+          scp -i "$key_file" -o StrictHostKeyChecking=accept-new \
+              deploy/deploy.sh "$VPS_USER@$VPS_HOST:/tmp/quasarapp-site-deploy.sh"
+          ssh -i "$key_file" -o StrictHostKeyChecking=accept-new -o BatchMode=yes \
+              "$VPS_USER@$VPS_HOST" "SITE_DIR=/srv/site sh /tmp/quasarapp-site-deploy.sh"
+

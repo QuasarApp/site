@@ -1,0 +1,47 @@
+# QuasarApp site - Caddy configuration (issue #83, TZ 5.4)
+#
+#  - automatic HTTPS via Let's Encrypt: Caddy provisions and renews the
+#    certificate automatically when SITE_ADDRESS is a public domain
+#    (HTTP-01 challenge; port 80 must be reachable from the internet)
+#  - HTTP/3 (QUIC over UDP/443): enabled by default in Caddy 2 for every
+#    TLS-enabled site - do NOT add a `protocols` restriction here
+#  - /api/* is reverse-proxied to the api service of the compose stack
+#    (the dependency-free form endpoint with per-IP rate limiting)
+#
+# Site address: set the SITE_ADDRESS environment variable (deploy/.env on
+# the VPS). It defaults to localhost for local development, where Caddy uses
+# an internal self-signed certificate instead of Let's Encrypt.
+
+{
+	email {$ACME_EMAIL:quasarappdevelop@gmail.com}
+}
+
+{$SITE_ADDRESS:localhost} {
+	# Contact form endpoint (api/server.js, per-IP rate limited).
+	reverse_proxy /api/* api:3000
+
+	encode gzip zstd
+
+	# Static site output assembled by the Dockerfile (build stage).
+	root * /srv/site
+	file_server
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "geolocation=(), microphone=(), camera=()"
+		-Server
+	}
+
+	# Long-lived caching for static assets; HTML stays revalidating.
+	@immutable path /css/* /js/* /assets/* *.webp *.png *.ico
+	header @immutable Cache-Control "public, max-age=31536000, immutable"
+	@html path / *.html
+	header @html Cache-Control "public, max-age=0, must-revalidate"
+
+	log {
+		output stdout
+		format json
+	}
+}

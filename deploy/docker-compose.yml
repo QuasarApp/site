@@ -1,0 +1,53 @@
+# QuasarApp site - VPS deployment stack (issue #83, TZ 5.4)
+#
+# One-time VPS setup and pipeline behavior: README.md, "Deployment
+# (runbook)" section. On the VPS the stack is (re)started by
+# deploy/deploy.sh:
+#   docker compose -f deploy/docker-compose.yml up -d --build
+#
+# The SITE_ADDRESS domain must resolve to this VPS (A/AAAA record); Caddy
+# then issues the Let's Encrypt certificate automatically (HTTP/3 included).
+
+name: quasarapp-site
+
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      target: web
+    image: quasarapp/site:latest
+    env_file:
+      - deploy/.env
+    ports:
+      - "80:80"        # HTTP + Let's Encrypt HTTP-01 challenge
+      - "443:443"      # HTTPS (HTTP/2)
+      - "443:443/udp"  # HTTP/3 (QUIC)
+    restart: unless-stopped
+    depends_on:
+      - api
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- --no-check-certificate https://localhost/ 2>/dev/null | grep -qi quasarapp || wget -qO- http://localhost/ 2>/dev/null | grep -qi quasarapp || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  api:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      target: api
+    image: quasarapp/site-api:latest
+    env_file:
+      - deploy/.env
+    environment:
+      DATA_DIR: /data
+    volumes:
+      - api-data:/data
+    restart: unless-stopped
+    # Internal service only - no published ports; Caddy (web) proxies
+    # /api/* to it (see deploy/caddy/Caddyfile).
+
+volumes:
+  api-data:

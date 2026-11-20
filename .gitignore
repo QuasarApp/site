@@ -14,3 +14,8 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+# Deployment (issue #83)
+deploy/.env
+
+# Local form API data
+api/data/

@@ -27,7 +27,23 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
 - `js/main.js` (load 3rd) — scroll animations, card tilt, particles.
 - `tests/` — dependency-free Node.js test suite run with
   `node --test tests/*.test.js`; executed on every pull request by the
-  `.github/workflows/auto-tests.yml` GitHub Actions workflow.
+  `.github/workflows/auto-tests.yml` GitHub Actions workflow
+  (`auto-tests` job plus a `lighthouse` job that enforces 90+ Performance
+  on Desktop and Mobile, see below).
+- Media & performance (issue #81):
+  - All content images are pre-optimized WebP committed to the repo (no
+    build step). Responsive variants (`*-480.webp`, `*-768.webp`, ...) live
+    next to the original and are wired via `srcset`/`sizes`. Favicons and
+    the Apple touch icon stay PNG (browser requirement).
+  - No render-blocking third-party CSS/JS: the body uses the system font
+    stack and icons are an inline SVG sprite (`<symbol>`/`<use>`) at the
+    top of `index.html`. Do not add CDN stylesheet/font/script links.
+  - LCP hero image: `<link rel="preload" as="image" imagesrcset=...
+    imagesizes=...>` in `<head>` + `fetchpriority="high"` on the `<img>`;
+    below-the-fold images use `loading="lazy"`.
+  - `tests/media.test.js` enforces all of the above; any `<video>` element
+    must also satisfy the non-blocking contract (poster +
+    IntersectionObserver + `prefers-reduced-motion` fallback).
 
 The script load order (i18n → parallax → main) matters — keep it.
 
@@ -38,6 +54,9 @@ The script load order (i18n → parallax → main) matters — keep it.
 - Run the auto tests before pushing: `node --test tests/*.test.js` (the
   same suite runs on every pull request via
   `.github/workflows/auto-tests.yml`).
+- Measure performance with Lighthouse before pushing (commands in
+  `README.md`, "Performance & Media"); CI fails the PR when the
+  Performance category drops below 90 on Desktop or Mobile.
 - Never commit or push to `main`. Work on `task_<issue-number>` from an
   up-to-date `main`, push it, and open a PR against `main` with
   `Closes #<issue-number>` in the description.

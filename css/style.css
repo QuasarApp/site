@@ -60,11 +60,22 @@
 
 html { scroll-behavior: smooth; }
 body {
-    font-family: 'Roboto', sans-serif;
+    /* System font stack (issue #81): removes the render-blocking Google
+       Fonts request; Roboto is used where available (e.g. Android). */
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background: var(--darker-bg);
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
+}
+/* Inline SVG icons (issue #81): replaces the Font Awesome CDN.
+   Sized in em so the surrounding font-size controls the icon size. */
+.icon {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: -0.125em;
+    fill: currentColor;
 }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
@@ -99,7 +110,6 @@ body {
 .nav-brand a {
     display: flex; align-items: center; gap: 10px;
 }
-.nav-brand i { font-size: 1.8rem; }
 .nav-brand span {
     background: var(--gradient-1); -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; background-clip: text;
@@ -488,7 +498,7 @@ body {
     border-color: var(--primary-color);
     box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
 }
-.contact-link i { color: var(--primary-color); }
+.contact-link .icon { color: var(--primary-color); }
 
 /* Responsive logo sizing */
 @media (max-width: 768px) {
@@ -510,11 +520,6 @@ body {
 .hero-content { z-index: 10; }
 .stat-item { z-index: 5; }
 .contact-link { z-index: 5; }
-.contact-link i.fa-bluesky { 
-    font-family: 'Font Awesome 6 Brands'; 
-    content: '\f17e';
-    color: #1d9bf0;
-}
 
 /* Social Links in About Section */
 .social-links {
@@ -545,18 +550,8 @@ body {
     box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
 }
 
-.social-link i {
+.social-link .icon {
     color: var(--primary-color);
-}
-
-.social-link i.fa-github {
-    color: #333;
-}
-
-.social-link i.fa-bluesky {
-    font-family: 'Font Awesome 6 Brands';
-    content: '\f17e';
-    color: #1d9bf0;
 }
 
 .footer {
@@ -586,7 +581,7 @@ body {
     font-size: 1rem;
     transition: all 0.3s ease;
 }
-.footer .social-link i {
+.footer .social-link .icon {
     font-size: 1.5rem;
 }
 
@@ -598,7 +593,7 @@ body {
     color: var(--primary-color);
     transform: translateY(-2px);
 }
-.footer .social-link:hover i {
+.footer .social-link:hover .icon {
     transform: scale(1.1);
 }
 .footer p {
@@ -625,7 +620,7 @@ body {
     .footer .social-link {
         font-size: 0.9rem;
     }
-    .footer .social-link i {
+    .footer .social-link .icon {
         font-size: 1.2rem;
     }
 }
@@ -796,7 +791,8 @@ body {
 }
 
 /* Steam icon color */
-.btn-steam i.fa-steam {
+.btn-steam .icon,
+.btn-steam-primary .icon {
     color: #66c0f4;
 }
 

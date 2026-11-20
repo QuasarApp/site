@@ -29,6 +29,9 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 <body>
+    <!-- Skip to main content link for keyboard navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
@@ -37,7 +40,7 @@
                     <span>QuasarApp</span>
                 </a>
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" aria-label="Main navigation">
                 <li><a href="#home" data-lang="nav.home">Home</a></li>
                 <li><a href="#projects" data-lang="nav.projects">Projects</a></li>
                 <li><a href="#about" data-lang="nav.about">About</a></li>
@@ -47,10 +50,11 @@
         </div>
     </nav>
 
-    <section id="home" class="hero-section">
-        <div class="parallax-bg">
-            <div class="parallax-bg-overlay"></div>
-            <img src="ecliptica_background.jpg.webp" class="parallax-bg-img blur-bg" alt="Ecliptica Background">
+    <main id="main-content">
+        <section id="home" class="hero-section">
+            <div class="parallax-bg">
+            <div class="parallax-bg-overlay" style="background: linear-gradient(to bottom, rgba(10, 14, 23, 0.35), rgba(10, 14, 23, 0.55));"></div>
+            <img src="ecliptica_background.jpg.webp" class="parallax-bg-img blur-bg" alt="Ecliptica Background" style="position: absolute; top: 50%; left: 50%; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; filter: blur(6px); transform: translate(-50%, -50%) scale(1.07);">
         </div>
         <div class="hero-content">
             <!-- Ecliptica Featured Banner - Using Steam header image -->
@@ -218,8 +222,9 @@
             <p data-lang="contact.message">Contact us through our official channels - links are available in the footer.</p>
         </div>
     </section>
+</main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-social">
                 <a href="https://github.com/QuasarApp" class="social-link">

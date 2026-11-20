@@ -347,6 +347,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
-    // Parallax effect is now initialized in parallax.js
 });

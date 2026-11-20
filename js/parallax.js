@@ -1,6 +1,9 @@
 // QuasarApp Group - Parallax Effects
 // Smooth parallax animations for cards and sections
 
+// Accessibility: Check if reduced motion is preferred
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 class ParallaxHandler {
     constructor() {
         this.cards = [];
@@ -85,9 +88,11 @@ class ParallaxHandler {
     }
 }
 
-// Initialize parallax when DOM is ready
-let parallaxInstance = new ParallaxHandler();
-document.addEventListener('DOMContentLoaded', function() {
-    parallaxInstance.init();
-    parallaxInstance.addMouseParallax();
-});
+// Initialize parallax when DOM is ready (disabled if reduced motion is preferred)
+if (!prefersReducedMotion) {
+    const parallax = new ParallaxHandler();
+    document.addEventListener('DOMContentLoaded', function() {
+        parallax.init();
+        parallax.addMouseParallax();
+    });
+}

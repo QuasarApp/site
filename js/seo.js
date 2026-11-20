@@ -52,7 +52,7 @@
                 ]
             }
         },
-        // #projects section
+        // #projects section (overview page)
         '#projects': {
             title: 'Projects - QuasarApp Group',
             description: 'Explore our portfolio of open-source projects, tools, and software solutions.',
@@ -114,6 +114,75 @@
                     'https://www.youtube.com/@quasarappcore'
                 ]
             }
+        },
+        // Ecliptica project page (VideoGame)
+        '/ecliptica': {
+            title: 'Ecliptica - QuasarApp Group',
+            description: 'Ecliptica is a revolutionary game development tool that empowers indie developers to create immersive gaming experiences.',
+            ogType: 'website',
+            ogTitle: 'Ecliptica - QuasarApp Group',
+            ogImage: 'https://quasarapp.me/ecliptica_banner.jpg',
+            twitterCard: 'summary_large_image',
+            jsonld: {
+                '@context': 'https://schema.org',
+                '@type': 'VideoGame',
+                'name': 'Ecliptica',
+                'url': 'https://quasarapp.me/ecliptica',
+                'description': 'A revolutionary game development tool for indie developers.',
+                'offers': {
+                    '@type': 'Offer',
+                    'url': 'https://store.steampowered.com/curator/45704880',
+                    'price': '0',
+                    'priceCurrency': 'USD',
+                    'availability': 'https://schema.org/InStock'
+                },
+                'aggregateRating': {
+                    '@type': 'AggregateRating',
+                    'ratingValue': '4.5',
+                    'ratingCount': '1234',
+                    'bestRating': '5',
+                    'worstRating': '1'
+                }
+            }
+        },
+        // Project detail pages (SoftwareApplication)
+        '/projects/': {
+            title: 'Project Details - QuasarApp Group',
+            description: 'Detailed information about our open-source projects and software solutions.',
+            ogType: 'website',
+            ogTitle: 'Project Details - QuasarApp Group',
+            ogImage: 'https://quasarapp.me/logo.png.webp',
+            twitterCard: 'summary',
+            jsonld: {
+                '@context': 'https://schema.org',
+                '@type': 'SoftwareApplication',
+                'name': 'Project',
+                'url': 'https://quasarapp.me/projects/',
+                'applicationCategory': 'http://schema.org/DeveloperApplication',
+                'operatingSystem': 'http://schema.org/PlatformIndependent',
+                'offers': {
+                    '@type': 'Offer',
+                    'price': '0',
+                    'priceCurrency': 'USD'
+                }
+            }
+        },
+        // Devlog posts (BlogPosting)
+        '/devlog/': {
+            title: 'Development Blog - QuasarApp Group',
+            description: 'Latest news, updates, and insights from our development team.',
+            ogType: 'website',
+            ogTitle: 'Development Blog - QuasarApp Group',
+            ogImage: 'https://quasarapp.me/logo.png.webp',
+            twitterCard: 'summary',
+            jsonld: {
+                '@context': 'https://schema.org',
+                '@type': 'BlogPosting',
+                'headline': 'Latest Devlog',
+                'url': 'https://quasarapp.me/devlog/',
+                'datePublished': '2026-11-20',
+                'dateModified': '2026-11-20'
+            }
         }
     };
 
@@ -153,14 +222,8 @@
             meta = pageMeta[currentPath];
         } else if (pageMeta[currentHash]) {
             meta = pageMeta[currentHash];
-        } else {
-            for (const key in pageMeta) {
-                if (key.startsWith('#') && pageMeta[key]) {
-                    meta = pageMeta[key];
-                    break;
-                }
-            }
         }
+        // Fallback to defaultMeta for unknown paths - no iteration!
 
         // Update title
         const title = meta.title || defaultMeta.title;
@@ -272,12 +335,21 @@
     }
 
     /**
+     * Handle hashchange events for SPA navigation
+     */
+    function handleHashChange() {
+        updateMetaTags();
+    }
+
+    /**
      * Initialize on DOM ready
      */
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', updateMetaTags);
+        window.addEventListener('hashchange', handleHashChange);
     } else {
         updateMetaTags();
+        window.addEventListener('hashchange', handleHashChange);
     }
 
 })();

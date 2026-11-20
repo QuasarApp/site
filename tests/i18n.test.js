@@ -10,7 +10,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 
 const ROOT = path.join(__dirname, '..');
-const LANGS = ['en', 'ru', 'de', 'es'];
+const LANGS = ['en', 'ru', 'me', 'de', 'es'];
 
 /**
  * Load js/i18n.js inside a VM sandbox with the minimal browser globals the
@@ -118,5 +118,57 @@ test('every data-lang key used in index.html exists in all languages', () => {
             );
             assert.notEqual(value.trim(), '', `data-lang '${key}' is empty in '${lang}'`);
         }
+    }
+});
+
+test('EN is the default language (issue #84)', () => {
+    const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+    assert.match(html, /<html[^>]*lang="en"/i, 'html element must declare lang="en"');
+    const i18n = fs.readFileSync(path.join(ROOT, 'js', 'i18n.js'), 'utf8');
+    assert.match(
+        i18n,
+        /let currentLanguage = 'en';/,
+        "the initial language in js/i18n.js must be 'en'"
+    );
+});
+
+test('the language switcher lists all active languages with EN selected (issue #84)', () => {
+    const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+    const selectMatch = html.match(/<select[^>]*id="lang-select"[\s\S]*?<\/select>/);
+    assert.ok(selectMatch, 'no #lang-select switcher found in index.html');
+    const options = [...selectMatch[0].matchAll(/<option[^>]*value="([^"]+)"/g)]
+        .map((m) => m[1]);
+    assert.deepEqual(
+        options.slice().sort(),
+        LANGS.slice().sort(),
+        'the switcher must list exactly the active languages'
+    );
+    const enOption = selectMatch[0]
+        .match(/<option[^>]*>/g)
+        ?.find((tag) => tag.includes('value="en"'));
+    assert.ok(
+        enOption && /\bselected\b/.test(enOption),
+        'the EN option must be the default selection'
+    );
+});
+
+test('ME (Montenegrin) covers the corporate/legal sections (issue #84)', () => {
+    const corporateKeys = [
+        'contact.title',
+        'contact.message',
+        'footer.github',
+        'footer.bluesky',
+        'footer.email',
+        'footer.youtube',
+        'footer.steam',
+        'footer.copyright',
+        'about.title',
+        'about.text',
+        'about.text2',
+    ];
+    for (const key of corporateKeys) {
+        const value = resolvePath(translations.me, key);
+        assert.equal(typeof value, 'string', `me.${key} is not a string`);
+        assert.notEqual(value.trim(), '', `me.${key} is empty`);
     }
 });

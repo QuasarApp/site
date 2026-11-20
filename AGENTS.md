@@ -6,8 +6,8 @@ Guidance for AI agents (and humans) working in this repository.
 
 Static single-page website for the QuasarApp organization. Pure HTML5 +
 CSS3 + vanilla JS — no framework, no build step, no dependencies.
-Multi-language: English, Russian, German and Spanish. Hosted on GitHub
-Pages: the `main` branch root is served at
+Multi-language: English (default), Russian, Montenegrin, German and
+Spanish. Hosted on GitHub Pages: the `main` branch root is served at
 `https://quasarapp.github.io/site/` (custom domain via `CNAME`).
 
 ## Architecture
@@ -17,10 +17,12 @@ Pages: the `main` branch root is served at
   links.
 - `css/style.css` — the only stylesheet; reuse the CSS design tokens on
   `:root`.
-- `js/i18n.js` (load 1st) — `translations` object for `en`/`ru`/`de`/`es`;
+- `js/i18n.js` (load 1st) — `translations` object for `en`/`ru`/`me`/`de`/`es`;
   elements carry `data-lang` dot-path keys. When adding or changing a
-  string, update the key in the markup and all four language blocks
-  together.
+  string, update the key in the markup and all five language blocks
+  together. EN is the default language; the navbar `#lang-select`
+  switcher lists every active language and the choice is persisted in
+  `localStorage` (`quasarapp_language`).
 - `js/parallax.js` (load 2nd) — global `ParallaxHandler` class.
 - `js/main.js` (load 3rd) — scroll animations, card tilt, particles.
 - `tests/` — dependency-free Node.js test suite run with
@@ -32,7 +34,7 @@ The script load order (i18n → parallax → main) matters — keep it.
 ## Workflow
 
 - No build: serve the repo root (e.g. `npx http-server -p 8000`) and check
-  all 4 languages in a browser.
+  all 5 languages in a browser.
 - Run the auto tests before pushing: `node --test tests/*.test.js` (the
   same suite runs on every pull request via
   `.github/workflows/auto-tests.yml`).

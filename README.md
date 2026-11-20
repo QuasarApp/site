@@ -13,15 +13,15 @@ cd /path/to/site
 npx http-server -p 8000
 ```
 
-Then open `http://localhost:8000` in your browser and check all four
-languages (EN/RU/DE/ES) with the language toggle in the navbar.
+Then open `http://localhost:8000` in your browser and check all five
+languages (EN/RU/ME/DE/ES) with the language switcher in the navbar.
 
 ## Testing
 
 The repository includes a dependency-free automated test suite in `tests/`
 that runs on every pull request via the GitHub Actions workflows
 (`.github/workflows/auto-tests.yml` and `.github/workflows/ci-cd.yml`). The
-tests cover i18n key parity across all four languages, local link and asset
+tests cover i18n key parity across all five languages, local link and asset
 references, HTML structure, JS/CSS syntax, repository hygiene, the contact
 form endpoint (`api/server.js`) and the deployment artifacts (Dockerfile,
 Caddyfile, compose stack, CI/CD workflow).

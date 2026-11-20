@@ -1,10 +1,9 @@
 // QuasarApp Group - Main JavaScript
 // Additional functionality and animations
 
-// Accessibility: Check if reduced motion is preferred
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
 document.addEventListener('DOMContentLoaded', function() {
+    // Accessibility: Check if reduced motion is preferred
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     // Animate elements on scroll
     const observerOptions = {
         threshold: 0.1,

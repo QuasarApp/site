@@ -26,7 +26,23 @@ const translations = {
             simple_qml_notify: 'Simple QML notification service for QML applications.',
             patronum: 'Extension library for controlling your daemons.',
             hanoi: 'Hanoi Towers Game',
-            ecliptica: 'Ecliptica is a space exploration game where you command a space station and terraform planets. Build habitats, manage resources, and lead your crew through deep space challenges.'
+            ecliptica: 'Ecliptica is a space exploration game where you command a space station and terraform planets. Build habitats, manage resources, and lead your crew through deep space challenges.',
+            cmsNote: 'Adding a new project simply requires adding a content file to our Git-based CMS.'
+        },
+        categories: {
+            games: 'Games',
+            devtools: 'Developer Tools',
+            desktopmobile: 'Desktop & Mobile Apps',
+            libraries: 'Libraries'
+        },
+        project: {
+            status: {
+                active: 'Active Development',
+                released: 'Released',
+                beta: 'Beta',
+                openSource: 'Open Source'
+            },
+            details: 'View Details →'
         },
         about: {
             title: 'About Us',
@@ -80,7 +96,23 @@ const translations = {
             simple_qml_notify: 'Простая служба уведомлений QML для QML-приложений.',
             patronum: 'Расширенная библиотека для управления вашими демонами.',
             hanoi: 'Игра "Башни Ханоя"',
-            ecliptica: 'Ecliptica - это игра о космических исследованиях, где вы командуете космической станцией и терраформируете планеты. Стройте колонии, управляйте ресурсами и приводите свою команду через вызовы глубокого космоса.'
+            ecliptica: 'Ecliptica - это игра о космических исследованиях, где вы командуете космической станцией и терраформируете планеты. Стройте колонии, управляйте ресурсами и приводите свою команду через вызовы глубокого космоса.',
+            cmsNote: 'Добавление нового проекта требует только добавления файла контента в наш Git-базированный CMS.'
+        },
+        categories: {
+            games: 'Игры',
+            devtools: 'Инструменты разработчика',
+            desktopmobile: 'Десктопные и мобильные приложения',
+            libraries: 'Библиотеки'
+        },
+        project: {
+            status: {
+                active: 'Активная разработка',
+                released: 'Опубликовано',
+                beta: 'Бета',
+                openSource: 'Открытый исходный код'
+            },
+            details: 'Подробнее →'
         },
         about: {
             title: 'О нас',
@@ -134,7 +166,23 @@ const translations = {
             simple_qml_notify: 'Einfacher QML-Benachrichtigungsdienst für QML-Anwendungen.',
             patronum: 'Erweiterungsbibliothek zum Steuern Ihrer Daemonen.',
             hanoi: 'Hanoi-Türme-Spiel',
-            ecliptica: 'Ecliptica ist ein Weltraumforschungsspiel, in dem Sie eine Raumstation commandieren und Planeten terraformieren. Bau von Lebensräumen, Ressourcenmanagement und führen Sie Ihre Crew durch Herausforderungen im tiefen Weltraum.'
+            ecliptica: 'Ecliptica ist ein Weltraumforschungsspiel, in dem Sie eine Raumstation commandieren und Planeten terraformieren. Bau von Lebensräumen, Ressourcenmanagement und führen Sie Ihre Crew durch Herausforderungen im tiefen Weltraum.',
+            cmsNote: 'Das Hinzufügen eines neuen Projekts erfordert nur das Hinzufügen einer Inhaltdatei zu unserem Git-basierten CMS.'
+        },
+        categories: {
+            games: 'Spiele',
+            devtools: 'Entwickertools',
+            desktopmobile: 'Desktop- und Mobilanwendungen',
+            libraries: 'Bibliotheken'
+        },
+        project: {
+            status: {
+                active: 'Aktive Entwicklung',
+                released: 'Veröffentlicht',
+                beta: 'Beta',
+                openSource: 'Open Source'
+            },
+            details: 'Details ansehen →'
         },
         about: {
             title: 'Über uns',
@@ -188,7 +236,23 @@ const translations = {
             simple_qml_notify: 'Servicio de notificación QML simple para aplicaciones QML.',
             patronum: 'Biblioteca de extensión para controlar sus demonios.',
             hanoi: 'Juego de Torres de Hanoi',
-            ecliptica: 'Ecliptica es un juego de exploración espacial donde comandas una estación espacial y terraformas planetas. Construye hábitats, gestiona recursos y lidera a tu tripulación a través de desafíos en el espacio profundo.'
+            ecliptica: 'Ecliptica es un juego de exploración espacial donde comandas una estación espacial y terraformas planetas. Construye hábitats, gestiona recursos y lidera a tu tripulación a través de desafíos en el espacio profundo.',
+            cmsNote: 'Agregar un nuevo proyecto solo requiere agregar un archivo de contenido a nuestro CMS basado en Git.'
+        },
+        categories: {
+            games: 'Juegos',
+            devtools: 'Herramientas de desarrollo',
+            desktopmobile: 'Aplicaciones de escritorio y móviles',
+            libraries: 'Bibliotecas'
+        },
+        project: {
+            status: {
+                active: 'Desarrollo activo',
+                released: 'Publicado',
+                beta: 'Beta',
+                openSource: 'Código abierto'
+            },
+            details: 'Ver detalles →'
         },
         about: {
             title: 'Sobre nosotros',
@@ -242,7 +306,23 @@ const translations = {
             simple_qml_notify: 'Jednostavna QML služba za obaveštenja za QML aplikacije.',
             patronum: 'Biblioteka proširenja za upravljanje vašim demonima.',
             hanoi: 'Igra "Kule iz Hanoya"',
-            ecliptica: 'Ecliptica je igra o istraživanju svemira u kojoj komandujete svemirskom stanicom i terraformirate planete. Gradite habitate, upravljate resursima i vodite svoju posadu kroz izazove dubokog svemira.'
+            ecliptica: 'Ecliptica je igra o istraživanju svemira u kojoj komandujete svemirskom stanicom i terraformirate planete. Gradite habitate, upravljate resursima i vodite svoju posadu kroz izazove dubokog svemira.',
+            cmsNote: 'Dodavanje novog projekta zahtijeva samo dodavanje fajla sadržaja u naš Git-baziran CMS.'
+        },
+        categories: {
+            games: 'Igre',
+            devtools: 'Alati za razvoj',
+            desktopmobile: 'Desktop i mobilne aplikacije',
+            libraries: 'Biblioteke'
+        },
+        project: {
+            status: {
+                active: 'Aktivni razvoj',
+                released: 'Objavljeno',
+                beta: 'Beta',
+                openSource: 'Otvoren kod'
+            },
+            details: 'Pogledaj detalje →'
         },
         about: {
             title: 'O nama',

@@ -25,11 +25,17 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
   `localStorage` (`quasarapp_language`).
 - `js/parallax.js` (load 2nd) — global `ParallaxHandler` class.
 - `js/main.js` (load 3rd) — scroll animations, card tilt, particles.
+- `js/analytics.js` (load 4th) — privacy-friendly analytics (Plausible,
+  loaded in `<head>` with `defer`, see README.md "Analytics") and custom
+  event tracking. Fixed event names: `steam_wishlist`, `download`,
+  `outbound` (GitHub/Discord links auto-tracked), `contact_form_submit`.
+  Tag elements with `data-analytics-event` / `data-analytics-source` and
+  keep the convention in README.md.
 - `tests/` — dependency-free Node.js test suite run with
   `node --test tests/*.test.js`; executed on every pull request by the
   `.github/workflows/auto-tests.yml` GitHub Actions workflow.
 
-The script load order (i18n → parallax → main) matters — keep it.
+The script load order (i18n → parallax → main → analytics) matters — keep it.
 
 ## Workflow
 

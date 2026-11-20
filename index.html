@@ -20,7 +20,14 @@
     <meta name="twitter:title" content="QuasarApp Group">
     <meta name="twitter:description" content="Open-source organization building innovative software solutions and developer tools. Explore our projects and contribute to our community.">
     <meta name="twitter:image" content="https://quasarapp.me/banner.png">
-    
+
+    <!-- Privacy-friendly analytics (issue #82): Plausible. No cookies, no
+         fingerprinting, no cookie banner. `defer` keeps the script
+         non-blocking so it never delays rendering. data-domain must match
+         the domain added in the Plausible dashboard (kept in sync with
+         CNAME). Event naming convention: see README.md "Analytics". -->
+    <script defer data-domain="quasarapp.me" src="https://plausible.io/js/script.js"></script>
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -90,7 +97,7 @@
                     <a href="https://store.steampowered.com/app/3723390/Ecliptica/" target="_blank" class="btn btn-steam-primary">
                         <i class="fab fa-steam"></i> Play on Steam
                     </a>
-                    <a href="https://store.steampowered.com/wishlist/add/item?appid=3723390" target="_blank" class="btn btn-wishlist">
+                    <a href="https://store.steampowered.com/wishlist/add/item?appid=3723390" target="_blank" class="btn btn-wishlist" data-analytics-event="steam_wishlist" data-analytics-source="hero">
                         <i class="fas fa-heart"></i> Add to Wishlist
                     </a>
                 </div>
@@ -118,7 +125,7 @@
                         <a href="https://store.steampowered.com/app/3723390/Ecliptica/" target="_blank" class="btn btn-sm btn-steam-primary">
                             <i class="fab fa-steam"></i> Play on Steam
                         </a>
-                        <a href="https://store.steampowered.com/wishlist/add/item?appid=3723390" target="_blank" class="btn btn-sm btn-wishlist">
+                        <a href="https://store.steampowered.com/wishlist/add/item?appid=3723390" target="_blank" class="btn btn-sm btn-wishlist" data-analytics-event="steam_wishlist" data-analytics-source="project-card">
                             <i class="fas fa-heart"></i> Add to Wishlist
                         </a>
                     </div>
@@ -266,6 +273,7 @@
     <script src="js/i18n.js"></script>
     <script src="js/parallax.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/analytics.js"></script>
 </body>
 </html>
 

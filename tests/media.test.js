@@ -73,21 +73,33 @@ const ICON_EXEMPT = new Set([
     'apple-touch-icon.png',
 ]);
 
-test('all content images in the repository root are WebP or AVIF', () => {
+test('all content images in the repository root and assets/images are WebP or AVIF', () => {
     const rasterExts = ['.png', '.jpg', '.jpeg', '.gif', '.webp', '.avif', '.ico'];
     let contentImages = 0;
-    for (const entry of fs.readdirSync(ROOT)) {
-        if (!fs.statSync(path.join(ROOT, entry)).isFile()) continue;
-        const ext = path.extname(entry).toLowerCase();
-        if (!rasterExts.includes(ext)) continue;
-        if (ICON_EXEMPT.has(entry.toLowerCase())) continue;
-        contentImages += 1;
-        assert.ok(
-            ext === '.webp' || ext === '.avif',
-            `'${entry}' is not WebP/AVIF - complete the media migration`
-        );
+    const dirsToCheck = [ROOT, path.join(ROOT, 'assets', 'images')];
+    
+    for (const dir of dirsToCheck) {
+        if (!fs.existsSync(dir)) continue;
+        for (const entry of fs.readdirSync(dir)) {
+            const fullPath = path.join(dir, entry);
+            if (!fs.statSync(fullPath).isFile()) continue;
+            const ext = path.extname(entry).toLowerCase();
+            if (!rasterExts.includes(ext)) continue;
+            
+            // Skip favicons in root
+            if (dir === ROOT && ICON_EXEMPT.has(entry.toLowerCase())) continue;
+            
+            contentImages += 1;
+            assert.ok(
+                ext === '.webp' || ext === '.avif',
+                `Image '${entry}' in ${path.basename(dir)} is not WebP/AVIF - complete the media migration`
+            );
+        }
     }
-    assert.ok(contentImages > 0, 'no content images found in the repository root');
+    // After the image migration to assets/images/, the root should only contain favicons.
+    // This assertion verifies that all content images across the site are WebP/AVIF.
+    // The assertion includes the count to ensure the check is not vacuous after migration.
+    assert.ok(contentImages > 0, `expected at least one WebP/AVIF content image (found ${contentImages})`);
 });
 
 test('LCP hero image uses fetchpriority="high" and is preloaded', () => {

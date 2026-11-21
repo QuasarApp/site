@@ -105,7 +105,10 @@ test('LCP hero image uses fetchpriority="high" and is preloaded', () => {
 });
 
 test('content images expose responsive srcset with at least two candidates', () => {
-    const classes = ['parallax-bg-img', 'ecliptica-capsule-img', 'ecliptica-logo', 'nav-logo', 'game-logo', 'ecliptica-card-bg'];
+    // game-logo / ecliptica-card-bg were removed together with the old
+    // single-page #projects / #about sections (issue #78); the project
+    // detail pages (issue #77) are covered by the tests below.
+    const classes = ['parallax-bg-img', 'ecliptica-capsule-img', 'ecliptica-logo', 'nav-logo'];
     for (const cls of classes) {
         const tag = imgByClass(cls);
         assert.match(tag, /\bsrcset="/, `img.${cls} has no srcset`);
@@ -119,25 +122,65 @@ test('content images expose responsive srcset with at least two candidates', () 
 });
 
 test('every srcset candidate resolves to an existing file', () => {
+    // Scan every HTML page of the site (home + /projects/{slug}); srcset
+    // candidates are resolved relative to the page that references them.
+    const htmlFiles = [path.join(ROOT, 'index.html')];
+    const projectsDir = path.join(ROOT, 'projects');
+    if (fs.existsSync(projectsDir)) {
+        for (const slug of fs.readdirSync(projectsDir).sort()) {
+            const page = path.join(projectsDir, slug, 'index.html');
+            if (fs.existsSync(page)) htmlFiles.push(page);
+        }
+    }
     let candidates = 0;
-    for (const m of htmlNoComments.matchAll(/<img[^>]*\bsrcset="([^"]+)"[^>]*>/gi)) {
-        for (const part of m[1].split(',')) {
-            const url = part.trim().split(/\s+/)[0];
-            if (!url) continue;
-            candidates += 1;
-            assert.ok(
-                fs.existsSync(path.resolve(ROOT, url)),
-                `srcset candidate '${url}' does not resolve to a file`
-            );
+    for (const file of htmlFiles) {
+        const page = fs.readFileSync(file, 'utf8').replace(/<!--[\s\S]*?-->/g, '');
+        for (const m of page.matchAll(/<img[^>]*\bsrcset="([^"]+)"[^>]*>/gi)) {
+            for (const part of m[1].split(',')) {
+                const url = part.trim().split(/\s+/)[0];
+                if (!url) continue;
+                candidates += 1;
+                const resolved = path.resolve(path.dirname(file), url);
+                assert.ok(
+                    fs.existsSync(resolved),
+                    `srcset candidate '${url}' in ${path.relative(ROOT, file)} does not resolve to a file`
+                );
+            }
         }
     }
     assert.ok(candidates >= 6, `expected at least 6 srcset candidates, found ${candidates}`);
 });
 
 test('below-the-fold images are lazy-loaded', () => {
-    for (const cls of ['ecliptica-capsule-img', 'game-logo', 'ecliptica-card-bg']) {
+    for (const cls of ['ecliptica-capsule-img']) {
         assert.match(imgByClass(cls), /loading=["']?lazy/i, `img.${cls} must be lazy-loaded`);
     }
+});
+
+test('project detail pages: below-the-fold images are lazy-loaded WebP with responsive srcset (issue #77)', () => {
+    const projectsDir = path.join(ROOT, 'projects');
+    const pages = fs.existsSync(projectsDir)
+        ? fs.readdirSync(projectsDir)
+            .map((slug) => path.join(projectsDir, slug, 'index.html'))
+            .filter((f) => fs.existsSync(f))
+        : [];
+    assert.ok(pages.length >= 6, 'expected at least six project detail pages');
+    let checked = 0;
+    for (const file of pages) {
+        const rel = path.relative(ROOT, file);
+        const page = fs.readFileSync(file, 'utf8').replace(/<!--[\s\S]*?-->/g, '');
+        for (const m of page.matchAll(/<img[^>]*>/g)) {
+            const tag = m[0];
+            // The nav logo and the project header logo are above the fold
+            // (LCP candidates) and must not be lazy-loaded.
+            if (/class="[^"]*(?:nav-logo|project-logo)[^"]*"/.test(tag)) continue;
+            assert.match(tag, /loading=["']?lazy/i, `image in ${rel} must be lazy-loaded: ${tag.slice(0, 80)}`);
+            assert.match(tag, /\bsrcset="/, `image in ${rel} has no srcset: ${tag.slice(0, 80)}`);
+            assert.ok(/\.(webp|avif)(\?|$)/i.test(tag.match(/\bsrc="([^"]+)"/)[1]), `image in ${rel} is not WebP/AVIF`);
+            checked += 1;
+        }
+    }
+    assert.ok(checked >= 2, `expected at least two below-the-fold project images, found ${checked}`);
 });
 
 test('any <video> element uses non-blocking media patterns (TZ 5.2)', () => {

@@ -25,14 +25,29 @@ function isExternal(ref) {
     return ref.startsWith('#') || ref.startsWith('//') || /^[a-z][a-z0-9+.-]*:/i.test(ref);
 }
 
-// Upcoming routes (issues #75/#77): the /projects/{slug} detail pages and
-// the /devlog/{slug} post pages are shipped by their own issues. The home
-// page (issue #78) already references them, so those references are
-// expected to 404 until those issues land and are exempt from the
-// file-existence check below.
-const PENDING_ROUTE_PREFIXES = ['/projects/', '/devlog/'];
+// Upcoming routes: the /devlog/{slug} post pages (issue #75) and the
+// /ecliptica hub (issue #72) are shipped by their own issues. The home page
+// (issue #78) and the /projects/{slug} detail pages (issue #77) already
+// reference them, so those references are expected to 404 until those
+// issues land and are exempt from the file-existence check below. The
+// /projects/ exemption was removed in issue #77 - those pages now exist and
+// are checked like every other local reference.
+const PENDING_ROUTE_PREFIXES = ['/devlog/', '/ecliptica'];
 function isPendingRoute(ref) {
     return ref.startsWith('/') && PENDING_ROUTE_PREFIXES.some((p) => ref.startsWith(p));
+}
+
+/** All HTML pages served by the site (home page + /projects/{slug}). */
+function listHtmlPages() {
+    const pages = [path.join(ROOT, 'index.html')];
+    const projectsDir = path.join(ROOT, 'projects');
+    if (fs.existsSync(projectsDir)) {
+        for (const slug of fs.readdirSync(projectsDir).sort()) {
+            const page = path.join(projectsDir, slug, 'index.html');
+            if (fs.existsSync(page)) pages.push(page);
+        }
+    }
+    return pages;
 }
 
 /** Assert that a local (relative or site-absolute) reference resolves to a file. */
@@ -56,13 +71,16 @@ function assertRefExists(ref, fromFile) {
     );
 }
 
-test('all local href/src references in index.html resolve to existing files', () => {
-    const htmlFile = path.join(ROOT, 'index.html');
-    const refs = [...fs.readFileSync(htmlFile, 'utf8').matchAll(/(?:href|src)\s*=\s*["']([^"']+)["']/gi)]
-        .map((m) => m[1].trim())
-        .filter((ref) => ref && !isExternal(ref) && !isPendingRoute(ref));
-    assert.ok(refs.length > 0, 'no local references found in index.html');
-    for (const ref of refs) assertRefExists(ref, htmlFile);
+test('all local href/src references in every HTML page resolve to existing files', () => {
+    const pages = listHtmlPages();
+    assert.ok(pages.length >= 7, 'expected the home page plus at least six project pages');
+    for (const htmlFile of pages) {
+        const refs = [...fs.readFileSync(htmlFile, 'utf8').matchAll(/(?:href|src)\s*=\s*["']([^"']+)["']/gi)]
+            .map((m) => m[1].trim())
+            .filter((ref) => ref && !isExternal(ref) && !isPendingRoute(ref));
+        assert.ok(refs.length > 0, `no local references found in ${path.relative(ROOT, htmlFile)}`);
+        for (const ref of refs) assertRefExists(ref, htmlFile);
+    }
 });
 
 test('all local url() references in CSS files resolve to existing files', () => {
@@ -85,7 +103,7 @@ test('every image in the repository root is referenced somewhere', () => {
     assert.ok(images.length > 0, 'no images found in the repository root');
 
     const sources = [
-        path.join(ROOT, 'index.html'),
+        ...listHtmlPages(),
         ...listFiles(path.join(ROOT, 'css'), ['.css']),
         ...listFiles(path.join(ROOT, 'js'), ['.js']),
     ];

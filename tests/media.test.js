@@ -98,7 +98,7 @@ test('all content images in the repository root and assets/images are WebP or AV
     }
     // After the image migration to assets/images/, the root should only contain favicons.
     // This assertion verifies that all content images across the site are WebP/AVIF.
-    assert.ok(contentImages >= 0, 'content images should be WebP/AVIF or none (after migration)');
+    assert.ok(contentImages > 0, 'content images should be WebP/AVIF and exist (found none, which is unexpected)');
 });
 
 test('LCP hero image uses fetchpriority="high" and is preloaded', () => {

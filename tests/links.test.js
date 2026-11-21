@@ -94,13 +94,20 @@ test('all local url() references in CSS files resolve to existing files', () => 
 
 const IMAGE_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.gif', '.webp', '.avif', '.ico'];
 
-test('every image in the repository root is referenced somewhere', () => {
+test('every image in the repository root and assets/images is referenced somewhere', () => {
     // Browsers request /favicon.ico by convention, even without a <link> tag.
     const EXEMPT = new Set(['favicon.ico']);
-    const images = listFiles(ROOT, IMAGE_EXTENSIONS).filter(
-        (f) => !EXEMPT.has(path.basename(f).toLowerCase())
-    );
-    assert.ok(images.length > 0, 'no images found in the repository root');
+    const dirsToCheck = [ROOT, path.join(ROOT, 'assets', 'images')];
+    const images = [];
+    for (const dir of dirsToCheck) {
+        if (!fs.existsSync(dir)) continue;
+        images.push(
+            ...listFiles(dir, IMAGE_EXTENSIONS).filter(
+                (f) => !EXEMPT.has(path.basename(f).toLowerCase())
+            )
+        );
+    }
+    assert.ok(images.length > 0, 'no images found in the repository root or assets/images');
 
     const sources = [
         ...listHtmlPages(),

@@ -14,6 +14,8 @@ const translations = {
         },
         projects: {
             title: 'Our Projects',
+            text: 'Explore our open-source projects and tools.',
+            empty: 'No projects available at the moment.',
             cqtdeployer: 'Powerful tool for deploying cross-platform Qt applications',
             platforms: 'Platform abstraction layer for cross-platform development',
             opensimplex2: 'Fast noise implementation for procedural generation',
@@ -144,6 +146,7 @@ const translations = {
         about: {
             title: 'About Us',
             text: 'QuasarApp is an open-source organization dedicated to creating innovative software solutions. We believe in the power of open collaboration and building tools that empower developers worldwide.',
+            description: 'Our mission is to build high-quality software that helps developers and organizations succeed.',
             text2: 'Our team consists of passionate engineers working on cutting-edge technologies, from desktop frameworks to web applications and game development tools.'
         },
         stats: {
@@ -153,6 +156,9 @@ const translations = {
         },
         contact: {
             title: 'Get in Touch',
+            text: 'Get in touch with us.',
+            email: 'Email',
+            github: 'GitHub',
             message: 'Contact us through our official channels - links are available in the footer.'
         },
         footer: {
@@ -181,6 +187,8 @@ const translations = {
         },
         projects: {
             title: 'Наши проекты',
+            text: 'Исследуйте наши открытые проекты и инструменты.',
+            empty: 'Проектов пока нет.',
             cqtdeployer: 'Мощный инструмент для переноса кроссплатформенных приложений на Qt',
             platforms: 'Слой абстракции платформы для кроссплатформенной разработки',
             opensimplex2: 'Быстрая реализация шума для процедурной генерации',
@@ -311,6 +319,7 @@ const translations = {
         about: {
             title: 'О нас',
             text: 'QuasarApp — это организация с открытым исходным кодом, посвящённая созданию инновационных программных решений. Мы верим в силу открытого сотрудничества и создания инструментов, которые помогают разработчикам по всему миру.',
+            description: 'Наша миссия — создавать высококачественное программное обеспечение, которое помогает разработчикам и организациям преуспевать.',
             text2: 'Наша команда состоит из увлечённых инженеров, работающих с передовыми технологиями, от десктопных фреймворков до веб-приложений и инструментов для разработки игр.'
         },
         stats: {
@@ -320,6 +329,9 @@ const translations = {
         },
         contact: {
             title: 'Связаться с нами',
+            text: 'Свяжитесь с нами.',
+            email: 'Email',
+            github: 'GitHub',
             message: 'Свяжитесь с нами через наши официальные каналы — ссылки доступны в подвале.'
         },
         footer: {
@@ -348,6 +360,8 @@ const translations = {
         },
         projects: {
             title: 'Unsere Projekte',
+            text: 'Entdecken Sie unsere Open-Source-Projekte und Tools.',
+            empty: 'Keine Projekte verfügbar.',
             cqtdeployer: 'Leistungsstarkes Tool zum Deployment von cross-platform Qt-Anwendungen',
             platforms: 'Plattformabstraktionsschicht für plattformübergreifende Entwicklung',
             opensimplex2: 'Schnelle Noise-Implementierung für prozedurale Generierung',
@@ -478,6 +492,7 @@ const translations = {
         about: {
             title: 'Über uns',
             text: 'QuasarApp ist eine Open-Source-Organisation, die sich dem Erschaffen innovativer Softwarelösungen widmet. Wir glauben an die Kraft der offenen Zusammenarbeit und an den Aufbau von Werkzeugen, die Entwicklern auf der ganzen Welt Empowerment bieten.',
+            description: 'Unsere Mission ist es, hochwertiges Software zu entwickeln, das Entwicklern und Organisationen hilft, erfolgreich zu sein.',
             text2: 'Unsere Mannschaft besteht aus leidenschaftlichen Ingenieuren, die mit state-of-the-art-Technologien arbeiten, von Desktop-Frameworks bis hin zu Webanwendungen und Spieleentwicklungswerkzeugen.'
         },
         stats: {
@@ -487,6 +502,9 @@ const translations = {
         },
         contact: {
             title: 'Kontaktieren Sie uns',
+            text: 'Kontaktieren Sie uns.',
+            email: 'E-Mail',
+            github: 'GitHub',
             message: 'Kontaktieren Sie uns über unsere offiziellen Kanäle - Links sind im Footer verfügbar.'
         },
         footer: {
@@ -515,6 +533,8 @@ const translations = {
         },
         projects: {
             title: 'Nuestros proyectos',
+            text: 'Explora nuestros proyectos de código abierto y herramientas.',
+            empty: 'No hay proyectos disponibles.',
             cqtdeployer: 'Potente herramienta para el despliegue de aplicaciones multiplataforma con Qt',
             platforms: 'Capa de abstracción de plataforma para desarrollo multiplataforma',
             opensimplex2: 'Implementación rápida de ruido para generación procedural',
@@ -645,6 +665,7 @@ const translations = {
         about: {
             title: 'Sobre nosotros',
             text: 'QuasarApp es una organización de código abierto dedicada a crear soluciones de software innovadoras. Creemos en el poder de la colaboración abierta y en la creación de herramientas que empoderan a desarrolladores de todo el mundo.',
+            description: 'Nuestra misión es desarrollar software de alta calidad que ayude a desarrolladores y organizaciones a tener éxito.',
             text2: 'Nuestro equipo consiste en ingenieros apasionados que trabajan con tecnologías de vanguardia, desde marcos de escritorio hasta aplicaciones web y herramientas de desarrollo de juegos.'
         },
         stats: {
@@ -654,6 +675,9 @@ const translations = {
         },
         contact: {
             title: 'Contáctanos',
+            text: 'Contáctanos.',
+            email: 'Email',
+            github: 'GitHub',
             message: 'Contáctanos a través de nuestros canales oficiales - los enlaces están disponibles en el pie de página.'
         },
         footer: {
@@ -682,6 +706,8 @@ const translations = {
         },
         projects: {
             title: 'Naši projekti',
+            text: 'Istražite naše open-source projekte i alate.',
+            empty: 'Projekti nisu dostupni.',
             cqtdeployer: 'Moj alat za postavljanje krosplatformskih Qt aplikacija',
             platforms: 'Sloj apstrakcije platformi za krosplatformni razvoj',
             opensimplex2: 'Brza implementacija šuma za proceduralnu generaciju',
@@ -812,6 +838,7 @@ const translations = {
         about: {
             title: 'O nama',
             text: 'QuasarApp je organizacija otvorenog koda posvećena kreiranju inovativnih softverskih rješenja. Vjerujemo u snagu otvorene saradnje i izgradnje alata koji pomažu developerima širom svijeta.',
+            description: 'Naša misija je kreiranje visokokvalitetnog softvera koji pomaže developerima i organizacijama da uspijevaju.',
             text2: 'Naš tim čine strastveni inženjeri koji rade na najnovijim tehnologijama, od desktop frameworkova do web aplikacija i alata za razvoj igara.'
         },
         stats: {
@@ -821,6 +848,9 @@ const translations = {
         },
         contact: {
             title: 'Kontaktirajte nas',
+            text: 'Kontaktirajte nas.',
+            email: 'E-mail',
+            github: 'GitHub',
             message: 'Kontaktirajte nas putem naših zvaničnih kanala — linkovi su dostupni u podnožju.'
         },
         footer: {

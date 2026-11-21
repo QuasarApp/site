@@ -30,6 +30,33 @@ Run the tests locally with Node.js (nothing to install):
 node --test tests/*.test.js
 ```
 
+## Home page data & GitHub metrics (issue #78)
+
+The home page renders two data-driven sections on top of the static
+markup:
+
+- **Latest News & Devlog feed** — the latest posts (max 5, newest first,
+  with date and tags) from the `data/devlog.json` content collection.
+  The devlog issue (#75) seeds the collection; while it is empty the
+  feed shows a documented explicit empty state.
+- **Technology stack & open-source footprint** — QuasarApp GitHub org
+  metrics (public repo count, total stars) from the build-time cache
+  `data/github-org-metrics.json`. The numbers are fetched at build time
+  from the GitHub API and committed as JSON (same pattern the
+  `/projects/{slug}` detail pages use for their per-repo data). If the
+  cache file is missing or unreachable at runtime, the page keeps the
+  static fallback line (graceful offline fallback).
+
+Refresh the metrics cache before pushing (no token required, Node >= 18,
+nothing to install):
+
+```bash
+node scripts/fetch-github-metrics.js
+```
+
+If the GitHub API is unreachable, the script keeps the existing cache
+and exits 0; without any cache it exits 1 so the build fails loudly.
+
 ## Performance & Media (issue #81)
 
 The site targets Lighthouse / PageSpeed **90+ Performance on Desktop and

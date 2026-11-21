@@ -57,6 +57,8 @@
         <symbol id="icon-bell" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></g></symbol>
         <symbol id="icon-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></g></symbol>
         <symbol id="icon-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></g></symbol>
+        <symbol id="icon-gamepad" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="11" x2="10" y2="11"/><line x1="8" y1="9" x2="8" y2="13"/><line x1="15" y1="12" x2="15.01" y2="12"/><line x1="18" y1="10" x2="18.01" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.051-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></g></symbol>
+        <symbol id="icon-credit-card" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></g></symbol>
     </svg>
     <!-- Skip to main content link for keyboard navigation -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -125,6 +127,138 @@
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    <!-- Core business verticals (issue #78, TZ 2.1) -->
+    <section id="verticals" class="verticals-section">
+        <div class="container">
+            <h2 class="section-title" data-lang="verticals.title">What We Do</h2>
+            <div class="verticals-grid">
+                <article class="vertical-card">
+                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-gamepad"></use></svg></div>
+                    <h3 data-lang="verticals.gamesTitle">Game Development</h3>
+                    <p data-lang="verticals.gamesText">We build immersive 3D games on Qt Quick 3D - from procedurally generated worlds and dynamic NPC-driven economies to full survival experiences like our flagship title Ecliptica.</p>
+                    <div class="vertical-tags">
+                        <span class="lang-badge">Qt Quick 3D</span>
+                        <span class="lang-badge">C++23</span>
+                        <span class="lang-badge">Ecliptica</span>
+                    </div>
+                </article>
+                <article class="vertical-card">
+                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-tool"></use></svg></div>
+                    <h3 data-lang="verticals.softwareTitle">Open-Source &amp; Enterprise Software</h3>
+                    <p data-lang="verticals.softwareText">We develop cross-platform desktop, mobile and system software in C++/Qt - deployment tools, backend libraries and enterprise solutions trusted in production.</p>
+                    <div class="vertical-tags">
+                        <span class="lang-badge">C++ / Qt</span>
+                        <span class="lang-badge">QML</span>
+                        <span class="lang-badge">Cross-Platform</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects showcase (issue #78, TZ 2.1). Cards link to the
+         /projects/{slug} detail pages shipped by issue #77. -->
+    <section id="featured" class="featured-section">
+        <div class="container">
+            <h2 class="section-title" data-lang="featured.title">Featured Projects</h2>
+            <p class="section-subtitle" data-lang="featured.subtitle">The flagship products and open-source tools that define the QuasarApp stack.</p>
+            <div class="featured-grid">
+                <a class="featured-card featured-card-game" href="/projects/ecliptica">
+                    <img src="ecliptica_icon_logo.png.webp" srcset="ecliptica_icon_logo-240.webp 240w, ecliptica_icon_logo.png.webp 256w" sizes="96px" alt="Ecliptica Logo" class="featured-logo" loading="lazy" width="96" height="96">
+                    <h3>Ecliptica</h3>
+                    <p class="lang-badge">Game</p>
+                    <p data-lang="projects.ecliptica">Ecliptica is a space exploration game where you command a space station and terraform planets. Build habitats, manage resources, and lead your crew through deep space challenges.</p>
+                    <span class="featured-cta" data-lang="featured.details">View details</span>
+                </a>
+                <a class="featured-card" href="/projects/cqtdeployer">
+                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-tool"></use></svg></div>
+                    <h3>CQtDeployer</h3>
+                    <p class="lang-badge">Developer Tool</p>
+                    <p data-lang="projects.cqtdeployer">This project is used to deploy applications written using QML, Qt or other C / C++ frameworks.</p>
+                    <span class="featured-cta" data-lang="featured.details">View details</span>
+                </a>
+                <a class="featured-card" href="/projects/cheatcard">
+                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-credit-card"></use></svg></div>
+                    <h3>CheatCard</h3>
+                    <p class="lang-badge">Desktop &amp; Mobile App</p>
+                    <p data-lang="projects.cheat_card">CheatCard - cross-platform loyalty and discount card application.</p>
+                    <span class="featured-cta" data-lang="featured.details">View details</span>
+                </a>
+                <a class="featured-card" href="/projects/yourtimedelivery">
+                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-send"></use></svg></div>
+                    <h3>YourTimeDelivery</h3>
+                    <p class="lang-badge">Desktop &amp; Mobile App</p>
+                    <p data-lang="projects.your_time_delivery">YourTimeDelivery - delivery and logistics management system.</p>
+                    <span class="featured-cta" data-lang="featured.details">View details</span>
+                </a>
+                <a class="featured-card" href="/projects/qtssecret">
+                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-lock"></use></svg></div>
+                    <h3>Qt-Secret</h3>
+                    <p class="lang-badge">Library</p>
+                    <p data-lang="projects.qt_secret">Simple encryption library supporting RSA and AES algorithms.</p>
+                    <span class="featured-cta" data-lang="featured.details">View details</span>
+                </a>
+                <a class="featured-card" href="/projects/heart">
+                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-heart"></use></svg></div>
+                    <h3>Heart</h3>
+                    <p class="lang-badge">Library</p>
+                    <p data-lang="projects.heart">QuasarApp Heart - it is base backend for C++/Qt projects. This library support work with databases and work with lite network requests.</p>
+                    <span class="featured-cta" data-lang="featured.details">View details</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News & Devlog feed (issue #78, TZ 2.1). js/home-data.js
+         renders the latest posts from the data/devlog.json content
+         collection (issue #75 seeds the collection); until then the
+         explicit empty state below is shown. -->
+    <section id="devlog" class="devlog-section">
+        <div class="container">
+            <h2 class="section-title" data-lang="devlog.title">Latest News &amp; Devlog</h2>
+            <p class="section-subtitle" data-lang="devlog.subtitle">Development logs, patch notes and engine insights from the Ecliptica workspace.</p>
+            <div id="devlog-feed" class="devlog-feed" aria-live="polite">
+                <div class="devlog-empty" data-devlog-empty>
+                    <svg class="icon devlog-empty-icon" aria-hidden="true" focusable="false"><use href="#icon-bell"></use></svg>
+                    <p data-lang="devlog.empty">No devlog posts yet. Development updates, patch notes and engine insights will appear here as soon as they are published on the devlog.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology stack & open-source footprint (issue #78, TZ 2.1). The
+         GitHub org metrics are rendered by js/home-data.js from the
+         build-time cache data/github-org-metrics.json (refresh with
+         `node scripts/fetch-github-metrics.js`). The static markup below
+         is the graceful offline fallback. -->
+    <section id="stack" class="stack-section">
+        <div class="container">
+            <h2 class="section-title" data-lang="stack.title">Technology Stack &amp; Open-Source Footprint</h2>
+            <p class="section-subtitle" data-lang="stack.text">Modern C++23 and Qt 6 across desktop, mobile and games - with a large open-source footprint on GitHub.</p>
+            <div class="stack-tags">
+                <span class="lang-badge">C++23</span>
+                <span class="lang-badge">Qt 6 / QML</span>
+                <span class="lang-badge">Qt Quick 3D</span>
+                <span class="lang-badge">CMake</span>
+                <span class="lang-badge">SQLite</span>
+                <span class="lang-badge">CI/CD</span>
+            </div>
+            <div class="github-metrics" id="github-metrics">
+                <div class="stat-item">
+                    <span class="stat-number" id="gh-repo-count">-</span>
+                    <span class="stat-label" data-lang="stack.repos">Public repositories</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="gh-total-stars">-</span>
+                    <span class="stat-label" data-lang="stack.stars">Total stars</span>
+                </div>
+                <p class="metrics-source" id="gh-metrics-source-line">
+                    <span id="gh-metrics-source" data-lang="stack.source">GitHub metrics are cached at build time from the GitHub API. Data is currently unavailable - see the QuasarApp organization on GitHub.</span>
+                </p>
+            </div>
         </div>
     </section>
 
@@ -295,6 +429,7 @@
     <script src="js/i18n.js"></script>
     <script src="js/parallax.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/home-data.js"></script>
 </body>
 </html>
 

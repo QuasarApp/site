@@ -30,7 +30,10 @@ test('document declares charset and viewport', () => {
     assert.match(html, /<meta[^>]+name=["']?viewport["']?/i);
 });
 
-for (const id of ['home', 'verticals', 'featured', 'devlog', 'stack', 'projects', 'about', 'contact']) {
+// The home page (issue #78) renders five TZ-2.1 sections. The legacy
+// #projects / #about / #contact sections were replaced by the redesigned
+// home (the projects directory moves to the /projects page, issue #77).
+for (const id of ['home', 'verticals', 'featured', 'devlog', 'stack']) {
     test(`section #${id} exists`, () => {
         assert.match(html, new RegExp(`<section[^>]+id=["']${id}["']`, 'i'));
     });

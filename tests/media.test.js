@@ -105,7 +105,7 @@ test('LCP hero image uses fetchpriority="high" and is preloaded', () => {
 });
 
 test('content images expose responsive srcset with at least two candidates', () => {
-    const classes = ['parallax-bg-img', 'ecliptica-capsule-img', 'ecliptica-logo', 'nav-logo', 'game-logo', 'ecliptica-card-bg'];
+    const classes = ['parallax-bg-img', 'ecliptica-capsule-img', 'ecliptica-logo', 'nav-logo', 'featured-logo'];
     for (const cls of classes) {
         const tag = imgByClass(cls);
         assert.match(tag, /\bsrcset="/, `img.${cls} has no srcset`);
@@ -135,7 +135,7 @@ test('every srcset candidate resolves to an existing file', () => {
 });
 
 test('below-the-fold images are lazy-loaded', () => {
-    for (const cls of ['ecliptica-capsule-img', 'game-logo', 'ecliptica-card-bg']) {
+    for (const cls of ['ecliptica-capsule-img', 'featured-logo']) {
         assert.match(imgByClass(cls), /loading=["']?lazy/i, `img.${cls} must be lazy-loaded`);
     }
 });

@@ -84,8 +84,12 @@ test('every image in the repository root is referenced somewhere', () => {
     );
     assert.ok(images.length > 0, 'no images found in the repository root');
 
+    // Every HTML page at the repository root (index.html, ecliptica.html,
+    // ...) plus the shared css/ and js/ assets are scanned, so an image that
+    // is only used by a subpage (e.g. the full-size Ecliptica background)
+    // still counts as referenced.
     const sources = [
-        path.join(ROOT, 'index.html'),
+        ...listFiles(ROOT, ['.html']),
         ...listFiles(path.join(ROOT, 'css'), ['.css']),
         ...listFiles(path.join(ROOT, 'js'), ['.js']),
     ];
@@ -95,7 +99,7 @@ test('every image in the repository root is referenced somewhere', () => {
         const name = path.basename(img).toLowerCase();
         assert.ok(
             haystack.includes(name),
-            `image '${name}' is not referenced in index.html, css/ or js/`
+            `image '${name}' is not referenced in any root HTML page, css/ or js/`
         );
     }
 });

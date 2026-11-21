@@ -200,6 +200,31 @@ body {
     opacity: 0.35;
 }
 
+/* Floating particles (js/main.js createParticles()).
+   Animated with CSS keyframes so the browser runs them on the compositor
+   thread: a per-frame JavaScript rAF loop that mutated these styles forced a
+   full style recalculation of the page every frame and caused long
+   main-thread tasks (Lighthouse TBT failure, PR #91). */
+.particle {
+    position: fixed;
+    background: rgba(0, 188, 212, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform;
+    animation: particleFloat ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-50px); }
+    100% { transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .particle { display: none; }
+}
+
 /* Ecliptica Card Features Badges - Flex layout for badges */
 .ecliptica-features-badges {
     display: flex;
@@ -1191,6 +1216,18 @@ body {
 }
 .github-metrics a { color: var(--primary-color); text-decoration: none; }
 .github-metrics a:hover { text-decoration: underline; }
+
+/* Below-the-fold sections skip layout/paint until they are scrolled into
+   view (PR #91): this cuts the first-paint work that FCP/LCP pay for on
+   mobile. contain-intrinsic-size reserves an approximate height so the
+   document layout stays stable (and remembered after the first render). */
+.verticals-section,
+.featured-section,
+.devlog-section,
+.stack-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 700px;
+}
 
 @media (max-width: 640px) {
     .verticals-section,

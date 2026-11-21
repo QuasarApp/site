@@ -28,12 +28,14 @@
       inline SVGs, so there are no external stylesheet/font requests.
     -->
     <!-- LCP hero image: preload the exact WebP variant the img resolves to
-         before first paint (issue #81). With the candidates capped at 768w
-         (see below), every realistic screen resolves to the 768w file, so a
-         plain `href` preload starts the fetch immediately at parse time.
+         before first paint (issue #81). Desktops resolve to the 768w file
+         (capped below), small screens resolve to the 480w file via the
+         <picture> <source> (PR #91), so each preload is media-scoped to
+         avoid fetching an unused variant.
          (An `imagesrcset`/`imagesizes="100vw"` preload cannot resolve its
          candidate before layout and delays the LCP fetch by ~0.7 s.) -->
-    <link rel="preload" as="image" href="ecliptica_background-768.webp">
+    <link rel="preload" as="image" href="ecliptica_background-768.webp" media="(min-width: 641px)">
+    <link rel="preload" as="image" href="ecliptica_background-480.webp" media="(max-width: 640px)">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -95,7 +97,14 @@
         <section id="home" class="hero-section">
             <div class="parallax-bg">
             <div class="parallax-bg-overlay" style="background: linear-gradient(to bottom, rgba(10, 14, 23, 0.35), rgba(10, 14, 23, 0.55));"></div>
-            <img src="ecliptica_background-768.webp" srcset="ecliptica_background-480.webp 480w, ecliptica_background-768.webp 768w" sizes="100vw" fetchpriority="high" class="parallax-bg-img blur-bg" alt="Ecliptica Background" style="position: absolute; top: 50%; left: 50%; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; transform: translate(-50%, -50%) scale(1.07);">
+            <picture>
+                <!-- Small screens get the 480w variant: it is displayed at the
+                     CSS viewport width, so the 6px blur hides the mild upscale
+                     on high-density screens while cutting the LCP decode/paint
+                     work (768x432 -> 480x270) on mobile (PR #91). -->
+                <source media="(max-width: 640px)" srcset="ecliptica_background-480.webp 480w">
+                <img src="ecliptica_background-768.webp" srcset="ecliptica_background-480.webp 480w, ecliptica_background-768.webp 768w" sizes="100vw" fetchpriority="high" class="parallax-bg-img blur-bg" alt="Ecliptica Background" style="position: absolute; top: 50%; left: 50%; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; transform: translate(-50%, -50%) scale(1.07);">
+            </picture>
         </div>
         <div class="hero-content">
             <!-- Ecliptica Featured Banner - Using Steam header image -->
@@ -111,7 +120,15 @@
 
                             <!-- Ecliptica Capsule Image on the Right -->
                 <div class="ecliptica-capsule">
-                    <img src="ecliptica_capsule.jpg.webp" srcset="ecliptica_capsule-308.webp 308w, ecliptica_capsule.jpg.webp 616w, ecliptica_capsule-924.webp 924w" sizes="(max-width: 640px) 100vw, 616px" alt="Ecliptica Capsule" class="ecliptica-capsule-img" loading="lazy" width="616" height="353">
+                    <picture>
+                        <!-- Small screens get the 616w capsule variant instead of
+                             the 924w one: the 924w file is only needed for
+                             large desktop screens, and decoding 924x524 in the
+                             LCP window produced long main-thread tasks on
+                             mobile (PR #91). -->
+                        <source media="(max-width: 640px)" srcset="ecliptica_capsule.jpg.webp 616w">
+                        <img src="ecliptica_capsule.jpg.webp" srcset="ecliptica_capsule-308.webp 308w, ecliptica_capsule.jpg.webp 616w, ecliptica_capsule-924.webp 924w" sizes="(max-width: 640px) 100vw, 616px" alt="Ecliptica Capsule" class="ecliptica-capsule-img" loading="lazy" decoding="async" width="616" height="353">
+                    </picture>
                 </div>
                 
                 <div class="ecliptica-features">
@@ -169,7 +186,7 @@
             <p class="section-subtitle" data-lang="featured.subtitle">The flagship products and open-source tools that define the QuasarApp stack.</p>
             <div class="featured-grid">
                 <a class="featured-card featured-card-game" href="/projects/ecliptica">
-                    <img src="ecliptica_icon_logo.png.webp" srcset="ecliptica_icon_logo-240.webp 240w, ecliptica_icon_logo.png.webp 256w" sizes="96px" alt="Ecliptica Logo" class="featured-logo" loading="lazy" width="96" height="96">
+                    <img src="ecliptica_icon_logo.png.webp" srcset="ecliptica_icon_logo-240.webp 240w, ecliptica_icon_logo.png.webp 256w" sizes="96px" alt="Ecliptica Logo" class="featured-logo" loading="lazy" decoding="async" width="96" height="96">
                     <h3>Ecliptica</h3>
                     <p class="lang-badge">Game</p>
                     <p data-lang="projects.ecliptica">Ecliptica is a space exploration game where you command a space station and terraform planets. Build habitats, manage resources, and lead your crew through deep space challenges.</p>

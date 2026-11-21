@@ -26,7 +26,34 @@ const translations = {
             simple_qml_notify: 'Simple QML notification service for QML applications.',
             patronum: 'Extension library for controlling your daemons.',
             hanoi: 'Hanoi Towers Game',
-            ecliptica: 'Ecliptica is a space exploration game where you command a space station and terraform planets. Build habitats, manage resources, and lead your crew through deep space challenges.'
+            ecliptica: 'Ecliptica is a space exploration game where you command a space station and terraform planets. Build habitats, manage resources, and lead your crew through deep space challenges.',
+            cheat_card: 'CheatCard - cross-platform loyalty and discount card application.',
+            your_time_delivery: 'YourTimeDelivery - delivery and logistics management system.'
+        },
+        verticals: {
+            title: 'What We Do',
+            gamesTitle: 'Game Development',
+            gamesText: 'We build immersive 3D games on Qt Quick 3D - from procedurally generated worlds and dynamic NPC-driven economies to full survival experiences like our flagship title Ecliptica.',
+            softwareTitle: 'Open-Source & Enterprise Software',
+            softwareText: 'We develop cross-platform desktop, mobile and system software in C++/Qt - deployment tools, backend libraries and enterprise solutions trusted in production.'
+        },
+        featured: {
+            title: 'Featured Projects',
+            subtitle: 'The flagship products and open-source tools that define the QuasarApp stack.',
+            details: 'View details'
+        },
+        devlog: {
+            title: 'Latest News & Devlog',
+            subtitle: 'Development logs, patch notes and engine insights from the Ecliptica workspace.',
+            empty: 'No devlog posts yet. Development updates, patch notes and engine insights will appear here as soon as they are published on the devlog.'
+        },
+        stack: {
+            title: 'Technology Stack & Open-Source Footprint',
+            text: 'Modern C++23 and Qt 6 across desktop, mobile and games - with a large open-source footprint on GitHub.',
+            repos: 'Public repositories',
+            stars: 'Total stars',
+            source: 'GitHub metrics are cached at build time from the GitHub API. Data is currently unavailable - see the QuasarApp organization on GitHub.',
+            updated: 'Updated'
         },
         about: {
             title: 'About Us',
@@ -156,7 +183,34 @@ ecliptica: {
             simple_qml_notify: 'Простая служба уведомлений QML для QML-приложений.',
             patronum: 'Расширенная библиотека для управления вашими демонами.',
             hanoi: 'Игра "Башни Ханоя"',
-            ecliptica: 'Ecliptica - это игра о космических исследованиях, где вы командуете космической станцией и терраформируете планеты. Стройте колонии, управляйте ресурсами и приводите свою команду через вызовы глубокого космоса.'
+            ecliptica: 'Ecliptica - это игра о космических исследованиях, где вы командуете космической станцией и терраформируете планеты. Стройте колонии, управляйте ресурсами и приводите свою команду через вызовы глубокого космоса.',
+            cheat_card: 'CheatCard - кроссплатформенное приложение лояльности и дисконтных карт.',
+            your_time_delivery: 'YourTimeDelivery - система управления доставкой и логистикой.'
+        },
+        verticals: {
+            title: 'Чем мы занимаемся',
+            gamesTitle: 'Разработка игр',
+            gamesText: 'Мы создаём захватывающие 3D-игры на Qt Quick 3D — от процедурных миров и динамических экономий, управляемых NPC, до полноценных survival-опытов, таких как наш флагманский проект Ecliptica.',
+            softwareTitle: 'Открытое и корпоративное ПО',
+            softwareText: 'Мы разрабатываем кроссплатформенное десктопное, мобильное и системное ПО на C++/Qt — инструменты развёртывания, backend-библиотеки и корпоративные решения, проверенные в продакшене.'
+        },
+        featured: {
+            title: 'Ключевые проекты',
+            subtitle: 'Флагманские продукты и открытые инструменты, определяющие стек QuasarApp.',
+            details: 'Подробнее'
+        },
+        devlog: {
+            title: 'Новости и журнал разработки',
+            subtitle: 'Журналы разработки, патч-ноты и технические заметки — прямо из рабочего процесса Ecliptica.',
+            empty: 'Записей пока нет. Новости разработки, патч-ноты и технические заметки будут появляться здесь по мере публикации в журнале разработки.'
+        },
+        stack: {
+            title: 'Технологический стек и открытый код',
+            text: 'Современный C++23 и Qt 6 для десктопа, мобильных устройств и игр — с большим открытым следом на GitHub.',
+            repos: 'Публичных репозиториев',
+            stars: 'Всего звёзд',
+            source: 'Метрики GitHub кэшируются при сборке из GitHub API. Данные в данный момент недоступны — см. организацию QuasarApp на GitHub.',
+            updated: 'Обновлено'
         },
         about: {
             title: 'О нас',
@@ -362,7 +416,34 @@ ecliptica: {
             simple_qml_notify: 'Einfacher QML-Benachrichtigungsdienst für QML-Anwendungen.',
             patronum: 'Erweiterungsbibliothek zum Steuern Ihrer Daemonen.',
             hanoi: 'Hanoi-Türme-Spiel',
-            ecliptica: 'Ecliptica ist ein Weltraumforschungsspiel, in dem Sie eine Raumstation commandieren und Planeten terraformieren. Bau von Lebensräumen, Ressourcenmanagement und führen Sie Ihre Crew durch Herausforderungen im tiefen Weltraum.'
+            ecliptica: 'Ecliptica ist ein Weltraumforschungsspiel, in dem Sie eine Raumstation commandieren und Planeten terraformieren. Bau von Lebensräumen, Ressourcenmanagement und führen Sie Ihre Crew durch Herausforderungen im tiefen Weltraum.',
+            cheat_card: 'CheatCard - plattformübergreifende Loyalitäts- und Rabattkarten-Anwendung.',
+            your_time_delivery: 'YourTimeDelivery - System für die Verwaltung von Lieferung und Logistik.'
+        },
+        verticals: {
+            title: 'Was wir tun',
+            gamesTitle: 'Spieleentwicklung',
+            gamesText: 'Wir entwickeln immersive 3D-Spiele auf Qt Quick 3D - von prozedural generierten Welten und dynamischen, von NPC-getriebenen Ökonomien bis zu vollen Survival-Erlebnissen wie unserem Flaggschiff Ecliptica.',
+            softwareTitle: 'Open-Source- und Enterprise-Software',
+            softwareText: 'Wir entwickeln plattformübergreifende Desktop-, Mobile- und Systemsoftware in C++/Qt - Deployment-Tools, Backend-Bibliotheken und Enterprise-Lösungen, die in Produktion bewährt sind.'
+        },
+        featured: {
+            title: 'Ausgewählte Projekte',
+            subtitle: 'Die Flaggschiff-Produkte und Open-Source-Tools, die den QuasarApp-Stack definieren.',
+            details: 'Details ansehen'
+        },
+        devlog: {
+            title: 'Neueste News und Devlog',
+            subtitle: 'Entwicklungs-Logs, Patch-Notes und Engine-Einblicke direkt aus dem Ecliptica-Entwicklungsalltag.',
+            empty: 'Noch keine Devlog-Beiträge. Entwicklungs-Updates, Patch-Notes und Engine-Einblicke erscheinen hier, sobald sie im Devlog veröffentlicht werden.'
+        },
+        stack: {
+            title: 'Technologie-Stack und Open-Source-Fußabdruck',
+            text: 'Modernes C++23 und Qt 6 für Desktop, Mobile und Games - mit einem großen Open-Source-Fußabdruck auf GitHub.',
+            repos: 'Öffentliche Repositories',
+            stars: 'Sterne insgesamt',
+            source: 'GitHub-Metriken werden beim Build aus der GitHub-API gecacht. Daten sind derzeit nicht verfügbar - siehe die QuasarApp-Organisation auf GitHub.',
+            updated: 'Aktualisiert'
         },
         about: {
             title: 'Über uns',
@@ -492,7 +573,34 @@ ecliptica: {
             simple_qml_notify: 'Servicio de notificación QML simple para aplicaciones QML.',
             patronum: 'Biblioteca de extensión para controlar sus demonios.',
             hanoi: 'Juego de Torres de Hanoi',
-            ecliptica: 'Ecliptica es un juego de exploración espacial donde comandas una estación espacial y terraformas planetas. Construye hábitats, gestiona recursos y lidera a tu tripulación a través de desafíos en el espacio profundo.'
+            ecliptica: 'Ecliptica es un juego de exploración espacial donde comandas una estación espacial y terraformas planetas. Construye hábitats, gestiona recursos y lidera a tu tripulación a través de desafíos en el espacio profundo.',
+            cheat_card: 'CheatCard - aplicación multiplataforma de lealtad y tarjetas de descuento.',
+            your_time_delivery: 'YourTimeDelivery - sistema de gestión de entregas y logística.'
+        },
+        verticals: {
+            title: 'Qué hacemos',
+            gamesTitle: 'Desarrollo de videojuegos',
+            gamesText: 'Creamos juegos 3D inmersivos con Qt Quick 3D - desde mundos procedurales y economías dinámicas impulsadas por NPC hasta experiencias de supervivencia completas como nuestro título insignia Ecliptica.',
+            softwareTitle: 'Software Open-Source y Empresarial',
+            softwareText: 'Desarrollamos software de escritorio, móvil y de sistema multiplataforma con C++/Qt - herramientas de despliegue, bibliotecas de backend y soluciones empresariales probadas en producción.'
+        },
+        featured: {
+            title: 'Proyectos destacados',
+            subtitle: 'Los productos insignia y las herramientas open-source que definen el stack de QuasarApp.',
+            details: 'Ver detalles'
+        },
+        devlog: {
+            title: 'Últimas noticias y devlog',
+            subtitle: 'Registros de desarrollo, notas de parche e insights del motor directos del espacio de trabajo de Ecliptica.',
+            empty: 'Aún no hay publicaciones en el devlog. Las noticias de desarrollo, notas de parche e insights del motor aparecerán aquí en cuanto se publiquen en el devlog.'
+        },
+        stack: {
+            title: 'Stack tecnológico y huella open-source',
+            text: 'C++23 moderno y Qt 6 en escritorio, móvil y videojuegos - con una gran huella open-source en GitHub.',
+            repos: 'Repositorios públicos',
+            stars: 'Estrellas totales',
+            source: 'Las métricas de GitHub se cachéan en tiempo de compilación desde la API de GitHub. Los datos no están disponibles - ver la organización QuasarApp en GitHub.',
+            updated: 'Actualizado'
         },
         about: {
             title: 'Sobre nosotros',
@@ -622,7 +730,34 @@ ecliptica: {
             simple_qml_notify: 'Jednostavna QML služba za obaveštenja za QML aplikacije.',
             patronum: 'Biblioteka proširenja za upravljanje vašim demonima.',
             hanoi: 'Igra "Kule iz Hanoya"',
-            ecliptica: 'Ecliptica je igra o istraživanju svemira u kojoj komandujete svemirskom stanicom i terraformirate planete. Gradite habitate, upravljate resursima i vodite svoju posadu kroz izazove dubokog svemira.'
+            ecliptica: 'Ecliptica je igra o istraživanju svemira u kojoj komandujete svemirskom stanicom i terraformirate planete. Gradite habitate, upravljate resursima i vodite svoju posadu kroz izazove dubokog svemira.',
+            cheat_card: 'CheatCard - krosplatformna aplikacija za kartice vjernosti i popuste.',
+            your_time_delivery: 'YourTimeDelivery - sistem za upravljanje dostavom i logistikom.'
+        },
+        verticals: {
+            title: 'Čime se bavimo',
+            gamesTitle: 'Razvoj igara',
+            gamesText: 'Gradimo imerzivne 3D igre na Qt Quick 3D - od proceduralnih svjetova i dinamičnih ekonomija vođenih NPC do potpunih survival iskustava poput našeg flagshipskog naslova Ecliptica.',
+            softwareTitle: 'Otvoreni i korporativni softver',
+            softwareText: 'Razvijamo krosplatformni desktop, mobilni i sistemski softver na C++/Qt - alati za postavljanje, backend biblioteke i korporativna rješenja provjerena u produkciji.'
+        },
+        featured: {
+            title: 'Izdvojeni projekti',
+            subtitle: 'Flagship proizvodi i otvoreni alati koji definišu QuasarApp stack.',
+            details: 'Pogledaj detalje'
+        },
+        devlog: {
+            title: 'Najnovije vijesti i devlog',
+            subtitle: 'Dnevnik razvoja, napomene za patcheve i uvidi u engine - direktno iz radnog procesa Ecliptica.',
+            empty: 'Još nema zapisa u devlogu. Vijesti o razvoju, napomene za patcheve i uvidi u engine pojaviće se ovdje čim se objave u devlogu.'
+        },
+        stack: {
+            title: 'Tehnološki stack i otvoreni trag',
+            text: 'Moderan C++23 i Qt 6 za desktop, mobilne uređaje i igre - sa velikim otvorenim tragom na GitHub.',
+            repos: 'Javnih repozitorijuma',
+            stars: 'Ukupno zvijezda',
+            source: 'GitHub metrike se keširaju pri gradnji iz GitHub API. Podaci su trenutno nedostupni - pogledajte organizaciju QuasarApp na GitHub.',
+            updated: 'Ažurirano'
         },
         about: {
             title: 'O nama',
@@ -740,7 +875,7 @@ function updateTranslations() {
             if (!value) break;
         }
         
-        if (value) {
+        if (value && element.textContent !== value) {
             element.textContent = value;
         }
     });
@@ -748,6 +883,15 @@ function updateTranslations() {
     // Update HTML lang attribute
     const html = document.documentElement;
     html.setAttribute('lang', currentLanguage);
+
+    // Notify data renderers (e.g. js/home-data.js) that the active language
+    // changed so dynamic content (GitHub metrics line, devlog dates) can be
+    // re-localized (issue #78).
+    if (typeof document.dispatchEvent === 'function' && typeof CustomEvent === 'function') {
+        document.dispatchEvent(new CustomEvent('quasarapp:languagechange', {
+            detail: { language: currentLanguage },
+        }));
+    }
 }
 
 // Initialize language on page load

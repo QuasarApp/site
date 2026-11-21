@@ -30,11 +30,27 @@ test('document declares charset and viewport', () => {
     assert.match(html, /<meta[^>]+name=["']?viewport["']?/i);
 });
 
-for (const id of ['home', 'projects', 'about', 'contact']) {
+for (const id of ['home', 'verticals', 'featured', 'devlog', 'stack', 'projects', 'about', 'contact']) {
     test(`section #${id} exists`, () => {
         assert.match(html, new RegExp(`<section[^>]+id=["']${id}["']`, 'i'));
     });
 }
+
+test('home page renders the five TZ-2.1 sections (issue #78)', () => {
+    // 1. hero with the Ecliptica featured banner
+    assert.match(html, /class="ecliptica-featured"/, 'hero is missing the Ecliptica featured banner');
+    // 2. business verticals
+    assert.match(html, /id=["']verticals["']/, 'business verticals section missing');
+    // 3. featured projects showcase
+    assert.match(html, /id=["']featured["']/, 'featured projects section missing');
+    // 4. latest news / devlog feed with a documented empty state
+    assert.match(html, /id=["']devlog-feed["']/, 'devlog feed container missing');
+    assert.match(html, /data-devlog-empty/, 'documented devlog empty state missing');
+    // 5. tech stack + GitHub org metrics from the build-time cache
+    assert.match(html, /id=["']stack["']/, 'tech stack section missing');
+    assert.match(html, /id=["']gh-repo-count["']/, 'GitHub repo count metric missing');
+    assert.match(html, /id=["']gh-total-stars["']/, 'GitHub total stars metric missing');
+});
 
 test('navigation bar and footer exist', () => {
     assert.match(html, /<nav[\s>]/i);

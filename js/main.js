@@ -74,9 +74,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Floating particles effect (disabled if reduced motion is preferred)
+    // Floating particles effect (disabled if reduced motion is preferred).
+    // The rAF loop starts only after the page has fully loaded, so it does
+    // not compete with first paint / LCP for the main thread (issue #78).
     if (!prefersReducedMotion) {
-        createParticles();
+        if (document.readyState === 'complete') {
+            createParticles();
+        } else {
+            window.addEventListener('load', createParticles, { once: true });
+        }
     }
 });
 

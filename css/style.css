@@ -175,7 +175,6 @@ body {
     /* Blur effect to hide artifacts from image stretching */
     filter: blur(6px);
     transform: translate(-50%, -50%) scale(1.07);
-    will-change: transform;
     /* Proper centering */
 }
 
@@ -329,7 +328,9 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('../ecliptica_background.jpg.webp') center/cover no-repeat;
+    /* 15% opacity decorative texture: the 768px variant is enough, the
+       1438px master would be pure download/decode waste (issue #78). */
+    background: url('../ecliptica_background-768.webp') center/cover no-repeat;
     opacity: 0.15;
     z-index: 0;
     transition: opacity 0.4s ease;
@@ -840,7 +841,6 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    backdrop-filter: blur(10px);
     border: 1px solid rgba(0, 188, 212, 0.2);
     transition: all 0.3s ease;
 }

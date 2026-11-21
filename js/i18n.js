@@ -495,7 +495,7 @@ function updateTranslations() {
             if (!value) break;
         }
         
-        if (value) {
+        if (value && element.textContent !== value) {
             element.textContent = value;
         }
     });

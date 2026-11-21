@@ -13,8 +13,11 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
 ## Architecture
 
 - `index.html` — single page: navbar, hero (with Ecliptica featured
-  banner), project-card grid, about + stats, contact, footer with social
-  links.
+  banner), business verticals, featured projects showcase (cards for the
+  6 key projects linking to the upcoming `/projects/{slug}` pages,
+  issue #77), latest news/devlog feed, technology stack + GitHub org
+  metrics, project-card grid, about + stats, contact, footer with social
+  links (home sections per issue #78 / TZ 2.1).
 - `css/style.css` — the only stylesheet; reuse the CSS design tokens on
   `:root`.
 - `js/i18n.js` (load 1st) — `translations` object for `en`/`ru`/`me`/`de`/`es`;
@@ -22,14 +25,37 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
   string, update the key in the markup and all five language blocks
   together. EN is the default language; the navbar `#lang-select`
   switcher lists every active language and the choice is persisted in
-  `localStorage` (`quasarapp_language`).
+  `localStorage` (`quasarapp_language`). After each update it dispatches
+  a `quasarapp:languagechange` CustomEvent so data renderers can
+  re-localize dynamic content.
 - `js/parallax.js` (load 2nd) — global `ParallaxHandler` class.
 - `js/main.js` (load 3rd) — scroll animations, card tilt, particles.
+- `js/home-data.js` (load 4th) — renders the devlog feed from
+  `data/devlog.json` (latest 5 posts with date + tag) and the GitHub org
+  metrics from `data/github-org-metrics.json` (issue #78). Progressive
+  enhancement: the static markup keeps the documented devlog empty state
+  and the metrics fallback line when a JSON file is missing or
+  unreachable (graceful offline fallback). Re-renders dynamic content on
+  the `quasarapp:languagechange` event.
+- `data/github-org-metrics.json` — build-time cache of the QuasarApp
+  GitHub org metrics (repo count, total stars, fetchedAt). Refresh with
+  `node scripts/fetch-github-metrics.js` (no token needed, Node >= 18).
+  If the GitHub API is unreachable, the script keeps the existing cache
+  and exits 0 (graceful offline fallback); without any cache it exits 1.
+- `data/devlog.json` — devlog content collection for the home feed:
+  `{"posts": [{ "slug", "title", "date", "tags": [], "excerpt" }]}`.
+  Seeded by the devlog issue (#75); while empty, the home page shows the
+  explicit empty state.
+- `scripts/` — dependency-free Node helper scripts (the metrics fetcher
+  above); they are build-time tools and are not loaded by the browser.
 - `tests/` — dependency-free Node.js test suite run with
   `node --test tests/*.test.js`; executed on every pull request by the
   `.github/workflows/auto-tests.yml` GitHub Actions workflow
   (`auto-tests` job plus a `lighthouse` job that enforces 90+ Performance
-  on Desktop and Mobile, see below).
+  on Desktop and Mobile, see below). `tests/home.test.js` guards the home
+  sections (issue #78); `tests/links.test.js` exempts the upcoming
+  `/projects/...` and `/devlog/...` routes (issues #75/#77) from the
+  file-existence check until those pages land.
 - Media & performance (issue #81):
   - All content images are pre-optimized WebP committed to the repo (no
     build step). Responsive variants (`*-480.webp`, `*-768.webp`, ...) live
@@ -45,7 +71,7 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
     must also satisfy the non-blocking contract (poster +
     IntersectionObserver + `prefers-reduced-motion` fallback).
 
-The script load order (i18n → parallax → main) matters — keep it.
+The script load order (i18n → parallax → main → home-data) matters — keep it.
 
 ## Workflow
 

@@ -1628,9 +1628,11 @@ body {
     background: #253146;
 }
 
-.specs-table ul {
-    margin: 0;
-    padding-left: 20px;
+.specs-table td {
+    white-space: pre-line;
+}
+
+.specs-table td.req-specs {
     color: #94a3b8;
     font-size: 0.9rem;
 }

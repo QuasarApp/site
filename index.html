@@ -168,12 +168,15 @@
             <h2 class="section-title" data-lang="featured.title">Featured Projects</h2>
             <p class="section-subtitle" data-lang="featured.subtitle">The flagship products and open-source tools that define the QuasarApp stack.</p>
             <div class="featured-grid">
-                <a class="featured-card featured-card-game" href="/projects/ecliptica">
-                    <img src="assets/images/ecliptica_icon_logo.png.webp" srcset="assets/images/ecliptica_icon_logo-240.webp 240w, assets/images/ecliptica_icon_logo.png.webp 256w" sizes="96px" alt="Ecliptica Logo" class="featured-logo" loading="lazy" width="96" height="96">
-                    <h3>Ecliptica</h3>
-                    <p class="lang-badge">Game</p>
-                    <p data-lang="projects.ecliptica">Ecliptica is a space exploration game where you command a space station and terraform planets. Build habitats, manage resources, and lead your crew through deep space challenges.</p>
-                    <span class="featured-cta" data-lang="featured.details">View details</span>
+                <a class="featured-card ecliptica-card" href="/projects/ecliptica">
+                    <img src="assets/images/ecliptica_background-768.webp" srcset="assets/images/ecliptica_background-480.webp 480w, assets/images/ecliptica_background-768.webp 768w" sizes="(max-width: 640px) 100vw, 616px" alt="Ecliptica Background" class="ecliptica-card-bg blur-bg" loading="lazy">
+                    <div class="ecliptica-card-content">
+                        <img src="assets/images/ecliptica_icon_logo.png.webp" srcset="assets/images/ecliptica_icon_logo-240.webp 240w, assets/images/ecliptica_icon_logo.png.webp 256w" sizes="96px" alt="Ecliptica Logo" class="game-logo featured-logo" loading="lazy" width="96" height="96">
+                        <h3>Ecliptica</h3>
+                        <p class="lang-badge">Game</p>
+                        <p data-lang="projects.ecliptica">Ecliptica is a space exploration game where you command a space station and terraform planets. Build habitats, manage resources, and lead your crew through deep space challenges.</p>
+                        <span class="featured-cta" data-lang="featured.details">View details</span>
+                    </div>
                 </a>
                 <a class="featured-card" href="/projects/cqtdeployer">
                     <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-tool"></use></svg></div>
@@ -236,6 +239,44 @@
          build-time cache data/github-org-metrics.json (refresh with
          `node scripts/fetch-github-metrics.js`). The static markup below
          is the graceful offline fallback. -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title" data-lang="projects.title">Projects</h2>
+            <p class="section-subtitle" data-lang="projects.text">Explore our open-source projects and tools.</p>
+            <div class="projects-grid" id="projects-grid">
+                <!-- Projects will be dynamically rendered here -->
+                <p class="data-devlog-empty" data-lang="projects.empty">No projects available at the moment.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title" data-lang="about.title">About Us</h2>
+            <p class="section-subtitle" data-lang="about.text">We are a team of passionate developers creating innovative solutions.</p>
+            <div class="about-content">
+                <p data-lang="about.description">Our mission is to build high-quality software that helps developers and organizations succeed.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title" data-lang="contact.title">Contact</h2>
+            <p class="section-subtitle" data-lang="contact.text">Get in touch with us.</p>
+            <div class="contact-info">
+                <a href="mailto:quasarappdevelop@gmail.com" class="contact-link">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-mail"></use></svg>
+                    <span data-lang="contact.email">Email</span>
+                </a>
+                <a href="https://github.com/QuasarApp" class="contact-link" target="_blank">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg>
+                    <span data-lang="contact.github">GitHub</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
     <section id="stack" class="stack-section">
         <div class="container">
             <h2 class="section-title" data-lang="stack.title">Technology Stack &amp; Open-Source Footprint</h2>

@@ -56,13 +56,15 @@ function assertRefExists(ref, fromFile) {
     );
 }
 
-test('all local href/src references in index.html resolve to existing files', () => {
-    const htmlFile = path.join(ROOT, 'index.html');
-    const refs = [...fs.readFileSync(htmlFile, 'utf8').matchAll(/(?:href|src)\s*=\s*["']([^"']+)["']/gi)]
-        .map((m) => m[1].trim())
-        .filter((ref) => ref && !isExternal(ref) && !isPendingRoute(ref));
-    assert.ok(refs.length > 0, 'no local references found in index.html');
-    for (const ref of refs) assertRefExists(ref, htmlFile);
+test('all local href/src references in every root HTML page resolve to existing files', () => {
+    const htmlFiles = listFiles(ROOT, ['.html']);
+    assert.ok(htmlFiles.length > 0, 'no HTML pages found in the repository root');
+    for (const htmlFile of htmlFiles) {
+        const refs = [...fs.readFileSync(htmlFile, 'utf8').matchAll(/(?:href|src)\s*=\s*["']([^"']+)["']/gi)]
+            .map((m) => m[1].trim())
+            .filter((ref) => ref && !isExternal(ref) && !isPendingRoute(ref));
+        for (const ref of refs) assertRefExists(ref, htmlFile);
+    }
 });
 
 test('all local url() references in CSS files resolve to existing files', () => {

@@ -14,10 +14,18 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
 
 - `index.html` — single page: navbar, hero (with Ecliptica featured
   banner), business verticals, featured projects showcase (cards for the
-  6 key projects linking to the upcoming `/projects/{slug}` pages,
-  issue #77), latest news/devlog feed, technology stack + GitHub org
+  6 key projects - Ecliptica links to the `/ecliptica.html` hub, issue
+  #79, the rest to the upcoming `/projects/{slug}` pages, issue #77),
+  latest news/devlog feed, technology stack + GitHub org
   metrics, project-card grid, about + stats, contact, footer with social
   links (home sections per issue #78 / TZ 2.1).
+- `ecliptica.html` — Ecliptica flagship hub page (issue #79): hero with
+  video placeholder, mechanics tabs, development roadmap, system
+  requirements table, community links, media gallery with lightbox and a
+  feedback form. Loads `js/i18n.js`, `js/parallax.js` and `js/main.js`;
+  its `data-lang` keys live in the nested `ecliptica` section of every
+  language in `js/i18n.js` (the same key set is enforced by
+  `tests/i18n.test.js` for all five languages).
 - `css/style.css` — the only stylesheet; reuse the CSS design tokens on
   `:root`.
 - `js/i18n.js` (load 1st) — `translations` object for `en`/`ru`/`me`/`de`/`es`;

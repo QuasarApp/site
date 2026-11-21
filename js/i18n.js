@@ -277,116 +277,116 @@ const translations = {
         },
         ecliptica: {
             title: "Ecliptica",
-            subtitle: "Command a Space Station. Terraform Planets. Build Your Empire.",
-            description: "A 3D Open-World Survival & Economy Simulation built on Qt Quick 3D",
-            feature1: "Procedurally Generated Open World",
-            feature2: "Dynamic NPC-Driven Economy",
-            feature3: "Settlement Construction",
-            feature4: "Corporations & Factions",
+            subtitle: "Командуйте космической станцией. Терраформируйте планеты. Стройте свою империю.",
+            description: "3D-симуляция выживания и экономики в открытом мире на базе Qt Quick 3D",
+            feature1: "Процедурно генерируемый открытый мир",
+            feature2: "Динамическая экономика под управлением NPC",
+            feature3: "Строительство поселений",
+            feature4: "Корпорации и фракции",
             hero: {
-                videoPlaceholder: "Gameplay video coming soon"
+                videoPlaceholder: "Геймплейное видео скоро появится"
             },
             cta: {
-                wishlist: "Add to Wishlist on Steam",
-                demo: "Play Demo / Itch.io"
+                wishlist: "Добавить в список желаемого в Steam",
+                demo: "Играть в демо / Itch.io"
             },
             mechanics: {
-                title: "Core Mechanics",
-                tab1: "Open World",
-                tab2: "Economy",
-                tab3: "Construction",
-                tab4: "Corporations",
+                title: "Ключевые механики",
+                tab1: "Открытый мир",
+                tab2: "Экономика",
+                tab3: "Строительство",
+                tab4: "Корпорации",
                 content1: {
-                    title: "Procedurally Generated Open World & Terrain Deformation",
-                    desc: "Experience a vast, ever-changing universe. Every planet, terrain feature, and resource distribution is generated procedurally.",
-                    badge: "Interactive Preview"
+                    title: "Процедурно генерируемый открытый мир и деформация рельефа",
+                    desc: "Исследуйте необъятную, постоянно меняющуюся вселенную. Каждая планета, особенность рельефа и распределение ресурсов генерируются процедурно.",
+                    badge: "Интерактивное превью"
                 },
                 content2: {
-                    title: "Fully Dynamic NPC-Driven Economy",
-                    desc: "Step into a living, breathing economic ecosystem. Trade resources and negotiate with AI-controlled corporations.",
-                    badge: "Interactive Preview"
+                    title: "Полностью динамическая экономика под управлением NPC",
+                    desc: "Окунитесь в живую, дышащую экономическую экосистему. Торгуйте ресурсами и ведите переговоры с корпорациями под управлением ИИ.",
+                    badge: "Интерактивное превью"
                 },
                 content3: {
-                    title: "Settlement Construction, Blueprints & Terminal Systems",
-                    desc: "Design and build your own space stations and planetary outposts with our modular construction system.",
-                    badge: "Interactive Preview"
+                    title: "Строительство поселений, чертежи и терминальные системы",
+                    desc: "Проектируйте и стройте собственные космические станции и планетарные аванпосты с помощью модульной системы строительства.",
+                    badge: "Интерактивное превью"
                 },
                 content4: {
-                    title: "Player-Managed Corporations & Factions",
-                    desc: "Create and lead your own corporations or join existing factions in a complex galactic power struggle.",
-                    badge: "Interactive Preview"
+                    title: "Корпорации и фракции под управлением игроков",
+                    desc: "Создавайте и возглавляйте собственные корпорации или присоединяйтесь к существующим фракциям в сложной галактической борьбе за власть.",
+                    badge: "Интерактивное превью"
                 }
             },
             roadmap: {
-                title: "Development Roadmap",
-                subtitle: "Transparent development tracking - updated regularly",
-                completed: "Completed",
-                inprogress: "In Progress",
-                planned: "Planned",
+                title: "Дорожная карта разработки",
+                subtitle: "Прозрачное отслеживание разработки - обновляется регулярно",
+                completed: "Завершено",
+                inprogress: "В разработке",
+                planned: "Запланировано",
                 status: {
                     completed: "✓",
                     inprogress: "⚡",
                     planned: "○"
                 },
-                item1: "Core Engine Foundation",
-                item2: "Base Procedural Generation System",
-                item3: "Space Station Framework",
-                item4: "Advanced Terrain Deformation",
-                item5: "Dynamic Economy System",
-                item6: "Settlement Construction Tools",
-                item7: "Player Corporations & Factions",
-                item8: "Multiplayer Systems",
-                item9: "Advanced AI Systems",
-                item10: "Mobile Platform Support"
+                item1: "Фундамент игрового движка",
+                item2: "Базовая система процедурной генерации",
+                item3: "Фреймворк космической станции",
+                item4: "Улучшенная деформация рельефа",
+                item5: "Динамическая система экономики",
+                item6: "Инструменты строительства поселений",
+                item7: "Корпорации и фракции игроков",
+                item8: "Мультиплеерные системы",
+                item9: "Улучшенные системы ИИ",
+                item10: "Поддержка мобильных платформ"
             },
             requirements: {
-                title: "System Requirements",
+                title: "Системные требования",
                 col: {
-                    platform: "Platform",
-                    min: "Minimum",
-                    recommended: "Recommended"
+                    platform: "Платформа",
+                    min: "Минимальные",
+                    recommended: "Рекомендуемые"
                 },
                 row: {
                     win10: {
                         platform: "Windows 10/11 64-bit",
-                        min: "<ul><li>CPU: Intel Core i5-8400 / AMD Ryzen 5 2600</li><li>RAM: 16 GB</li><li>GPU: NVIDIA GTX 1060 6GB / AMD RX 580</li><li>Storage: 80 GB SSD</li><li>OS: Windows 10/11 64-bit</li></ul>",
-                        recommended: "<ul><li>CPU: Intel Core i7-10700K / AMD Ryzen 7 5800X</li><li>RAM: 32 GB</li><li>GPU: NVIDIA RTX 3070 / AMD RX 6800 XT</li><li>Storage: 80 GB NVMe SSD</li><li>OS: Windows 11 64-bit</li></ul>"
+                        min: "<ul><li>Процессор: Intel Core i5-8400 / AMD Ryzen 5 2600</li><li>ОЗУ: 16 ГБ</li><li>Видеокарта: NVIDIA GTX 1060 6GB / AMD RX 580</li><li>Хранилище: SSD 80 ГБ</li><li>ОС: Windows 10/11 64-bit</li></ul>",
+                        recommended: "<ul><li>Процессор: Intel Core i7-10700K / AMD Ryzen 7 5800X</li><li>ОЗУ: 32 ГБ</li><li>Видеокарта: NVIDIA RTX 3070 / AMD RX 6800 XT</li><li>Хранилище: NVMe SSD 80 ГБ</li><li>ОС: Windows 11 64-bit</li></ul>"
                     },
                     ubuntu: {
                         platform: "Ubuntu Linux 22.04/24.04/25.04",
-                        min: "<ul><li>CPU: Intel Core i5-8400 / AMD Ryzen 5 2600</li><li>RAM: 16 GB</li><li>GPU: NVIDIA GTX 1060 6GB / AMD RX 580</li><li>Storage: 80 GB SSD</li><li>OS: Ubuntu 22.04 LTS</li></ul>",
-                        recommended: "<ul><li>CPU: Intel Core i7-10700K / AMD Ryzen 7 5800X</li><li>RAM: 32 GB</li><li>GPU: NVIDIA RTX 3070 / AMD RX 6800 XT</li><li>Storage: 80 GB NVMe SSD</li><li>OS: Ubuntu 24.04 LTS</li></ul>"
+                        min: "<ul><li>Процессор: Intel Core i5-8400 / AMD Ryzen 5 2600</li><li>ОЗУ: 16 ГБ</li><li>Видеокарта: NVIDIA GTX 1060 6GB / AMD RX 580</li><li>Хранилище: SSD 80 ГБ</li><li>ОС: Ubuntu 22.04 LTS</li></ul>",
+                        recommended: "<ul><li>Процессор: Intel Core i7-10700K / AMD Ryzen 7 5800X</li><li>ОЗУ: 32 ГБ</li><li>Видеокарта: NVIDIA RTX 3070 / AMD RX 6800 XT</li><li>Хранилище: NVMe SSD 80 ГБ</li><li>ОС: Ubuntu 24.04 LTS</li></ul>"
                     }
                 }
             },
             community: {
-                title: "Join Our Community",
-                subtitle: "Connect with fellow explorers, share your ideas, and provide feedback",
-                discord: "Discord Server",
+                title: "Присоединяйтесь к нашему сообществу",
+                subtitle: "Связывайтесь с единомышленниками, делитесь идеями и оставляйте отзывы",
+                discord: "Discord-сервер",
                 reddit: "r/Ecliptica",
-                feedback: "Feedback & Bug Reports"
+                feedback: "Отзывы и сообщения об ошибках"
             },
             gallery: {
-                title: "Media Gallery",
-                subtitle: "Explore our screenshots and artwork",
-                overlay: "View Full Size"
+                title: "Медиагалерея",
+                subtitle: "Смотрите наши скриншоты и арты",
+                overlay: "Посмотреть в полном размере"
             },
             feedback: {
-                title: "Provide Feedback",
-                subtitle: "Help us improve Ecliptica by sharing your thoughts",
+                title: "Оставить отзыв",
+                subtitle: "Помогите нам улучшить Ecliptica, поделитесь своим мнением",
                 label: {
-                    name: "Name",
-                    email: "Email",
-                    type: "Feedback Type",
-                    message: "Message"
+                    name: "Имя",
+                    email: "Эл. почта",
+                    type: "Тип отзыва",
+                    message: "Сообщение"
                 },
                 option: {
-                    feedback: "General Feedback",
-                    bug: "Bug Report",
-                    feature: "Feature Request",
-                    idea: "Idea Suggestion"
+                    feedback: "Общий отзыв",
+                    bug: "Сообщение об ошибке",
+                    feature: "Предложение функции",
+                    idea: "Предложение идеи"
                 },
-                btn: "Submit Feedback"
+                btn: "Отправить отзыв"
             }
         }
     },
@@ -472,116 +472,116 @@ const translations = {
         },
         ecliptica: {
             title: "Ecliptica",
-            subtitle: "Command a Space Station. Terraform Planets. Build Your Empire.",
-            description: "A 3D Open-World Survival & Economy Simulation built on Qt Quick 3D",
-            feature1: "Procedurally Generated Open World",
-            feature2: "Dynamic NPC-Driven Economy",
-            feature3: "Settlement Construction",
-            feature4: "Corporations & Factions",
+            subtitle: "Kommandiere eine Raumstation. Terraforme Planeten. Baue dein Imperium.",
+            description: "Eine 3D-Open-World-Überlebens- und Wirtschaftssimulation auf Basis von Qt Quick 3D",
+            feature1: "Prozedural generierte Open World",
+            feature2: "Dynamische, von NPC gesteuerte Wirtschaft",
+            feature3: "Siedlungsbau",
+            feature4: "Korporationen & Fraktionen",
             hero: {
-                videoPlaceholder: "Gameplay video coming soon"
+                videoPlaceholder: "Gameplay-Video folgt in Kürze"
             },
             cta: {
-                wishlist: "Add to Wishlist on Steam",
-                demo: "Play Demo / Itch.io"
+                wishlist: "Zur Steam-Wunschliste hinzufügen",
+                demo: "Demo spielen / Itch.io"
             },
             mechanics: {
-                title: "Core Mechanics",
+                title: "Kernmechaniken",
                 tab1: "Open World",
-                tab2: "Economy",
-                tab3: "Construction",
-                tab4: "Corporations",
+                tab2: "Wirtschaft",
+                tab3: "Bau",
+                tab4: "Korporationen",
                 content1: {
-                    title: "Procedurally Generated Open World & Terrain Deformation",
-                    desc: "Experience a vast, ever-changing universe. Every planet, terrain feature, and resource distribution is generated procedurally.",
-                    badge: "Interactive Preview"
+                    title: "Prozedural generierte Open World & Terrain-Verformung",
+                    desc: "Erlebe ein weites, ständig wechselndes Universum. Jeder Planet, jedes Terrainmerkmal und jede Ressourcenverteilung wird prozedural generiert.",
+                    badge: "Interaktive Vorschau"
                 },
                 content2: {
-                    title: "Fully Dynamic NPC-Driven Economy",
-                    desc: "Step into a living, breathing economic ecosystem. Trade resources and negotiate with AI-controlled corporations.",
-                    badge: "Interactive Preview"
+                    title: "Vollständig dynamische, von NPC gesteuerte Wirtschaft",
+                    desc: "Tauche ein in ein lebendiges, atmendes Wirtschaftssystem. Handel mit Ressourcen und verhandle mit KI-gesteuerten Korporationen.",
+                    badge: "Interaktive Vorschau"
                 },
                 content3: {
-                    title: "Settlement Construction, Blueprints & Terminal Systems",
-                    desc: "Design and build your own space stations and planetary outposts with our modular construction system.",
-                    badge: "Interactive Preview"
+                    title: "Siedlungsbau, Baupläne & Terminal-Systeme",
+                    desc: "Entwirf und baue deine eigenen Raumstationen und planetaren Vorposten mit unserem modularen Bausystem.",
+                    badge: "Interaktive Vorschau"
                 },
                 content4: {
-                    title: "Player-Managed Corporations & Factions",
-                    desc: "Create and lead your own corporations or join existing factions in a complex galactic power struggle.",
-                    badge: "Interactive Preview"
+                    title: "Von Spielern geführte Korporationen & Fraktionen",
+                    desc: "Gründe und führe deine eigene Korporation oder tritt bestehenden Fraktionen in einem komplexen galaktischen Machtkampf bei.",
+                    badge: "Interaktive Vorschau"
                 }
             },
             roadmap: {
-                title: "Development Roadmap",
-                subtitle: "Transparent development tracking - updated regularly",
-                completed: "Completed",
-                inprogress: "In Progress",
-                planned: "Planned",
+                title: "Entwicklungs-Roadmap",
+                subtitle: "Transparentes Entwicklungstracking - regelmäßig aktualisiert",
+                completed: "Abgeschlossen",
+                inprogress: "In Arbeit",
+                planned: "Geplant",
                 status: {
                     completed: "✓",
                     inprogress: "⚡",
                     planned: "○"
                 },
-                item1: "Core Engine Foundation",
-                item2: "Base Procedural Generation System",
-                item3: "Space Station Framework",
-                item4: "Advanced Terrain Deformation",
-                item5: "Dynamic Economy System",
-                item6: "Settlement Construction Tools",
-                item7: "Player Corporations & Factions",
-                item8: "Multiplayer Systems",
-                item9: "Advanced AI Systems",
-                item10: "Mobile Platform Support"
+                item1: "Grundlage der Spielengine",
+                item2: "Basis-System der prozeduralen Generierung",
+                item3: "Raumstations-Framework",
+                item4: "Erweiterte Terrain-Verformung",
+                item5: "Dynamisches Wirtschaftssystem",
+                item6: "Siedlungsbau-Tools",
+                item7: "Korporationen & Fraktionen der Spieler",
+                item8: "Multiplayer-Systeme",
+                item9: "Erweiterte KI-Systeme",
+                item10: "Unterstützung mobiler Plattformen"
             },
             requirements: {
-                title: "System Requirements",
+                title: "Systemanforderungen",
                 col: {
-                    platform: "Platform",
+                    platform: "Plattform",
                     min: "Minimum",
-                    recommended: "Recommended"
+                    recommended: "Empfohlen"
                 },
                 row: {
                     win10: {
-                        platform: "Windows 10/11 64-bit",
-                        min: "<ul><li>CPU: Intel Core i5-8400 / AMD Ryzen 5 2600</li><li>RAM: 16 GB</li><li>GPU: NVIDIA GTX 1060 6GB / AMD RX 580</li><li>Storage: 80 GB SSD</li><li>OS: Windows 10/11 64-bit</li></ul>",
-                        recommended: "<ul><li>CPU: Intel Core i7-10700K / AMD Ryzen 7 5800X</li><li>RAM: 32 GB</li><li>GPU: NVIDIA RTX 3070 / AMD RX 6800 XT</li><li>Storage: 80 GB NVMe SSD</li><li>OS: Windows 11 64-bit</li></ul>"
+                        platform: "Windows 10/11 64-Bit",
+                        min: "<ul><li>Prozessor: Intel Core i5-8400 / AMD Ryzen 5 2600</li><li>RAM: 16 GB</li><li>GPU: NVIDIA GTX 1060 6GB / AMD RX 580</li><li>Speicher: 80 GB SSD</li><li>Betriebssystem: Windows 10/11 64-Bit</li></ul>",
+                        recommended: "<ul><li>Prozessor: Intel Core i7-10700K / AMD Ryzen 7 5800X</li><li>RAM: 32 GB</li><li>GPU: NVIDIA RTX 3070 / AMD RX 6800 XT</li><li>Speicher: 80 GB NVMe-SSD</li><li>Betriebssystem: Windows 11 64-Bit</li></ul>"
                     },
                     ubuntu: {
                         platform: "Ubuntu Linux 22.04/24.04/25.04",
-                        min: "<ul><li>CPU: Intel Core i5-8400 / AMD Ryzen 5 2600</li><li>RAM: 16 GB</li><li>GPU: NVIDIA GTX 1060 6GB / AMD RX 580</li><li>Storage: 80 GB SSD</li><li>OS: Ubuntu 22.04 LTS</li></ul>",
-                        recommended: "<ul><li>CPU: Intel Core i7-10700K / AMD Ryzen 7 5800X</li><li>RAM: 32 GB</li><li>GPU: NVIDIA RTX 3070 / AMD RX 6800 XT</li><li>Storage: 80 GB NVMe SSD</li><li>OS: Ubuntu 24.04 LTS</li></ul>"
+                        min: "<ul><li>Prozessor: Intel Core i5-8400 / AMD Ryzen 5 2600</li><li>RAM: 16 GB</li><li>GPU: NVIDIA GTX 1060 6GB / AMD RX 580</li><li>Speicher: 80 GB SSD</li><li>Betriebssystem: Ubuntu 22.04 LTS</li></ul>",
+                        recommended: "<ul><li>Prozessor: Intel Core i7-10700K / AMD Ryzen 7 5800X</li><li>RAM: 32 GB</li><li>GPU: NVIDIA RTX 3070 / AMD RX 6800 XT</li><li>Speicher: 80 GB NVMe-SSD</li><li>Betriebssystem: Ubuntu 24.04 LTS</li></ul>"
                     }
                 }
             },
             community: {
-                title: "Join Our Community",
-                subtitle: "Connect with fellow explorers, share your ideas, and provide feedback",
-                discord: "Discord Server",
+                title: "Tritt unserer Community bei",
+                subtitle: "Vernetze dich mit anderen Entdeckern, teile deine Ideen und gib Feedback",
+                discord: "Discord-Server",
                 reddit: "r/Ecliptica",
-                feedback: "Feedback & Bug Reports"
+                feedback: "Feedback & Bugmeldungen"
             },
             gallery: {
-                title: "Media Gallery",
-                subtitle: "Explore our screenshots and artwork",
-                overlay: "View Full Size"
+                title: "Medien-Galerie",
+                subtitle: "Entdecke unsere Screenshots und Artworks",
+                overlay: "In voller Größe anzeigen"
             },
             feedback: {
-                title: "Provide Feedback",
-                subtitle: "Help us improve Ecliptica by sharing your thoughts",
+                title: "Feedback geben",
+                subtitle: "Hilf uns, Ecliptica zu verbessern, indem du deine Gedanken teilst",
                 label: {
                     name: "Name",
-                    email: "Email",
-                    type: "Feedback Type",
-                    message: "Message"
+                    email: "E-Mail",
+                    type: "Feedback-Typ",
+                    message: "Nachricht"
                 },
                 option: {
-                    feedback: "General Feedback",
-                    bug: "Bug Report",
-                    feature: "Feature Request",
-                    idea: "Idea Suggestion"
+                    feedback: "Allgemeines Feedback",
+                    bug: "Bugreport",
+                    feature: "Feature-Anfrage",
+                    idea: "Ideen-Vorschlag"
                 },
-                btn: "Submit Feedback"
+                btn: "Feedback absenden"
             }
         }
     },
@@ -667,116 +667,116 @@ const translations = {
         },
         ecliptica: {
             title: "Ecliptica",
-            subtitle: "Command a Space Station. Terraform Planets. Build Your Empire.",
-            description: "A 3D Open-World Survival & Economy Simulation built on Qt Quick 3D",
-            feature1: "Procedurally Generated Open World",
-            feature2: "Dynamic NPC-Driven Economy",
-            feature3: "Settlement Construction",
-            feature4: "Corporations & Factions",
+            subtitle: "Comando una estación espacial. Terraforma planetas. Construye tu imperio.",
+            description: "Una simulación de supervivencia y economía en mundo abierto 3D construida con Qt Quick 3D",
+            feature1: "Mundo abierto generado de forma procedural",
+            feature2: "Economía dinámica dirigida por NPC",
+            feature3: "Construcción de asentamientos",
+            feature4: "Corporaciones y facciones",
             hero: {
-                videoPlaceholder: "Gameplay video coming soon"
+                videoPlaceholder: "Video de gameplay próximamente"
             },
             cta: {
-                wishlist: "Add to Wishlist on Steam",
-                demo: "Play Demo / Itch.io"
+                wishlist: "Añadir a la lista de deseos en Steam",
+                demo: "Jugar a la demo / Itch.io"
             },
             mechanics: {
-                title: "Core Mechanics",
-                tab1: "Open World",
-                tab2: "Economy",
-                tab3: "Construction",
-                tab4: "Corporations",
+                title: "Mecánicas principales",
+                tab1: "Mundo abierto",
+                tab2: "Economía",
+                tab3: "Construcción",
+                tab4: "Corporaciones",
                 content1: {
-                    title: "Procedurally Generated Open World & Terrain Deformation",
-                    desc: "Experience a vast, ever-changing universe. Every planet, terrain feature, and resource distribution is generated procedurally.",
-                    badge: "Interactive Preview"
+                    title: "Mundo abierto procedural y deformación del terreno",
+                    desc: "Vive un universo inmenso y en constante cambio. Cada planeta, cada rasgo del terreno y cada distribución de recursos se genera de forma procedural.",
+                    badge: "Vista previa interactiva"
                 },
                 content2: {
-                    title: "Fully Dynamic NPC-Driven Economy",
-                    desc: "Step into a living, breathing economic ecosystem. Trade resources and negotiate with AI-controlled corporations.",
-                    badge: "Interactive Preview"
+                    title: "Economía totalmente dinámica dirigida por NPC",
+                    desc: "Sumérgete en un ecosistema económico vivo y en constante movimiento. Intercambia recursos y negocia con corporaciones controladas por IA.",
+                    badge: "Vista previa interactiva"
                 },
                 content3: {
-                    title: "Settlement Construction, Blueprints & Terminal Systems",
-                    desc: "Design and build your own space stations and planetary outposts with our modular construction system.",
-                    badge: "Interactive Preview"
+                    title: "Construcción de asentamientos, planos y sistemas de terminales",
+                    desc: "Diseña y construye tus propias estaciones espaciales y puestos avanzados planetarios con nuestro sistema de construcción modular.",
+                    badge: "Vista previa interactiva"
                 },
                 content4: {
-                    title: "Player-Managed Corporations & Factions",
-                    desc: "Create and lead your own corporations or join existing factions in a complex galactic power struggle.",
-                    badge: "Interactive Preview"
+                    title: "Corporaciones y facciones gestionadas por jugadores",
+                    desc: "Crea y lidera tus propias corporaciones o únete a facciones existentes en una compleja lucha de poder a escala galáctica.",
+                    badge: "Vista previa interactiva"
                 }
             },
             roadmap: {
-                title: "Development Roadmap",
-                subtitle: "Transparent development tracking - updated regularly",
-                completed: "Completed",
-                inprogress: "In Progress",
-                planned: "Planned",
+                title: "Hoja de ruta de desarrollo",
+                subtitle: "Seguimiento transparente del desarrollo, actualizado regularmente",
+                completed: "Completado",
+                inprogress: "En desarrollo",
+                planned: "Planificado",
                 status: {
                     completed: "✓",
                     inprogress: "⚡",
                     planned: "○"
                 },
-                item1: "Core Engine Foundation",
-                item2: "Base Procedural Generation System",
-                item3: "Space Station Framework",
-                item4: "Advanced Terrain Deformation",
-                item5: "Dynamic Economy System",
-                item6: "Settlement Construction Tools",
-                item7: "Player Corporations & Factions",
-                item8: "Multiplayer Systems",
-                item9: "Advanced AI Systems",
-                item10: "Mobile Platform Support"
+                item1: "Fundamento del motor principal",
+                item2: "Sistema básico de generación procedural",
+                item3: "Marco de la estación espacial",
+                item4: "Deformación avanzada del terreno",
+                item5: "Sistema de economía dinámica",
+                item6: "Herramientas de construcción de asentamientos",
+                item7: "Corporaciones y facciones de jugadores",
+                item8: "Sistemas multijugador",
+                item9: "Sistemas de IA avanzados",
+                item10: "Soporte para plataformas móviles"
             },
             requirements: {
-                title: "System Requirements",
+                title: "Requisitos del sistema",
                 col: {
-                    platform: "Platform",
-                    min: "Minimum",
-                    recommended: "Recommended"
+                    platform: "Plataforma",
+                    min: "Mínimo",
+                    recommended: "Recomendado"
                 },
                 row: {
                     win10: {
-                        platform: "Windows 10/11 64-bit",
-                        min: "<ul><li>CPU: Intel Core i5-8400 / AMD Ryzen 5 2600</li><li>RAM: 16 GB</li><li>GPU: NVIDIA GTX 1060 6GB / AMD RX 580</li><li>Storage: 80 GB SSD</li><li>OS: Windows 10/11 64-bit</li></ul>",
-                        recommended: "<ul><li>CPU: Intel Core i7-10700K / AMD Ryzen 7 5800X</li><li>RAM: 32 GB</li><li>GPU: NVIDIA RTX 3070 / AMD RX 6800 XT</li><li>Storage: 80 GB NVMe SSD</li><li>OS: Windows 11 64-bit</li></ul>"
+                        platform: "Windows 10/11 de 64 bits",
+                        min: "<ul><li>Procesador: Intel Core i5-8400 / AMD Ryzen 5 2600</li><li>RAM: 16 GB</li><li>GPU: NVIDIA GTX 1060 6GB / AMD RX 580</li><li>Almacenamiento: SSD de 80 GB</li><li>Sistema operativo: Windows 10/11 de 64 bits</li></ul>",
+                        recommended: "<ul><li>Procesador: Intel Core i7-10700K / AMD Ryzen 7 5800X</li><li>RAM: 32 GB</li><li>GPU: NVIDIA RTX 3070 / AMD RX 6800 XT</li><li>Almacenamiento: NVMe SSD de 80 GB</li><li>Sistema operativo: Windows 11 de 64 bits</li></ul>"
                     },
                     ubuntu: {
                         platform: "Ubuntu Linux 22.04/24.04/25.04",
-                        min: "<ul><li>CPU: Intel Core i5-8400 / AMD Ryzen 5 2600</li><li>RAM: 16 GB</li><li>GPU: NVIDIA GTX 1060 6GB / AMD RX 580</li><li>Storage: 80 GB SSD</li><li>OS: Ubuntu 22.04 LTS</li></ul>",
-                        recommended: "<ul><li>CPU: Intel Core i7-10700K / AMD Ryzen 7 5800X</li><li>RAM: 32 GB</li><li>GPU: NVIDIA RTX 3070 / AMD RX 6800 XT</li><li>Storage: 80 GB NVMe SSD</li><li>OS: Ubuntu 24.04 LTS</li></ul>"
+                        min: "<ul><li>Procesador: Intel Core i5-8400 / AMD Ryzen 5 2600</li><li>RAM: 16 GB</li><li>GPU: NVIDIA GTX 1060 6GB / AMD RX 580</li><li>Almacenamiento: SSD de 80 GB</li><li>Sistema operativo: Ubuntu 22.04 LTS</li></ul>",
+                        recommended: "<ul><li>Procesador: Intel Core i7-10700K / AMD Ryzen 7 5800X</li><li>RAM: 32 GB</li><li>GPU: NVIDIA RTX 3070 / AMD RX 6800 XT</li><li>Almacenamiento: NVMe SSD de 80 GB</li><li>Sistema operativo: Ubuntu 24.04 LTS</li></ul>"
                     }
                 }
             },
             community: {
-                title: "Join Our Community",
-                subtitle: "Connect with fellow explorers, share your ideas, and provide feedback",
-                discord: "Discord Server",
+                title: "Únete a nuestra comunidad",
+                subtitle: "Conecta con otros exploradores, comparte tus ideas y da tu opinión",
+                discord: "Servidor de Discord",
                 reddit: "r/Ecliptica",
-                feedback: "Feedback & Bug Reports"
+                feedback: "Opiniones e informes de errores"
             },
             gallery: {
-                title: "Media Gallery",
-                subtitle: "Explore our screenshots and artwork",
-                overlay: "View Full Size"
+                title: "Galería multimedia",
+                subtitle: "Explora nuestras capturas de pantalla y obras de arte",
+                overlay: "Ver en tamaño completo"
             },
             feedback: {
-                title: "Provide Feedback",
-                subtitle: "Help us improve Ecliptica by sharing your thoughts",
+                title: "Envíanos tu opinión",
+                subtitle: "Ayúdanos a mejorar Ecliptica compartiendo tus ideas",
                 label: {
-                    name: "Name",
-                    email: "Email",
-                    type: "Feedback Type",
-                    message: "Message"
+                    name: "Nombre",
+                    email: "Correo electrónico",
+                    type: "Tipo de opinión",
+                    message: "Mensaje"
                 },
                 option: {
-                    feedback: "General Feedback",
-                    bug: "Bug Report",
-                    feature: "Feature Request",
-                    idea: "Idea Suggestion"
+                    feedback: "Opinión general",
+                    bug: "Informe de errores",
+                    feature: "Solicitud de función",
+                    idea: "Sugerencia de idea"
                 },
-                btn: "Submit Feedback"
+                btn: "Enviar opinión"
             }
         }
     },
@@ -862,116 +862,116 @@ const translations = {
         },
         ecliptica: {
             title: "Ecliptica",
-            subtitle: "Command a Space Station. Terraform Planets. Build Your Empire.",
-            description: "A 3D Open-World Survival & Economy Simulation built on Qt Quick 3D",
-            feature1: "Procedurally Generated Open World",
-            feature2: "Dynamic NPC-Driven Economy",
-            feature3: "Settlement Construction",
-            feature4: "Corporations & Factions",
+            subtitle: "Komandujte svemirskom stanicom. Terraformirajte planete. Gradite svoju imperiju.",
+            description: "3D simulacija preživljavanja i ekonomije u otvorenom svijetu izgrađena na Qt Quick 3D",
+            feature1: "Proceduralno generisani otvoren svijet",
+            feature2: "Dinamička ekonomija pod upravom NPC",
+            feature3: "Izgradnja naselja",
+            feature4: "Korporacije i frakcije",
             hero: {
-                videoPlaceholder: "Gameplay video coming soon"
+                videoPlaceholder: "Gameplay video uskoro"
             },
             cta: {
-                wishlist: "Add to Wishlist on Steam",
-                demo: "Play Demo / Itch.io"
+                wishlist: "Dodaj na Steam listu želja",
+                demo: "Igraj demo / Itch.io"
             },
             mechanics: {
-                title: "Core Mechanics",
-                tab1: "Open World",
-                tab2: "Economy",
-                tab3: "Construction",
-                tab4: "Corporations",
+                title: "Osnovne mehanike",
+                tab1: "Otvoren svijet",
+                tab2: "Ekonomija",
+                tab3: "Izgradnja",
+                tab4: "Korporacije",
                 content1: {
-                    title: "Procedurally Generated Open World & Terrain Deformation",
-                    desc: "Experience a vast, ever-changing universe. Every planet, terrain feature, and resource distribution is generated procedurally.",
-                    badge: "Interactive Preview"
+                    title: "Proceduralno generisani otvoren svijet i deformacija terena",
+                    desc: "Iskusite ogroman, neprestano mijenjajući se svemir. Svaka planeta, teren i raspodjela resursa generisani su proceduralno.",
+                    badge: "Interaktivni pregled"
                 },
                 content2: {
-                    title: "Fully Dynamic NPC-Driven Economy",
-                    desc: "Step into a living, breathing economic ecosystem. Trade resources and negotiate with AI-controlled corporations.",
-                    badge: "Interactive Preview"
+                    title: "Potpuno dinamička ekonomija pod upravom NPC",
+                    desc: "Uronite u živu ekonomsku ekosistemu. Trgujte resursima i pregovarajte sa korporacijama pod upravom veštačke inteligencije.",
+                    badge: "Interaktivni pregled"
                 },
                 content3: {
-                    title: "Settlement Construction, Blueprints & Terminal Systems",
-                    desc: "Design and build your own space stations and planetary outposts with our modular construction system.",
-                    badge: "Interactive Preview"
+                    title: "Izgradnja naselja, nacrti i terminalni sistemi",
+                    desc: "Dizajnirajte i izgradite vlastite svemirske stanice i planetarne napredne baze pomoću našeg modularnog sistema izgradnje.",
+                    badge: "Interaktivni pregled"
                 },
                 content4: {
-                    title: "Player-Managed Corporations & Factions",
-                    desc: "Create and lead your own corporations or join existing factions in a complex galactic power struggle.",
-                    badge: "Interactive Preview"
+                    title: "Korporacije i frakcije pod upravom igrača",
+                    desc: "Osnovajte i vodite vlastitu korporaciju ili se priključite postojećim frakcijama u složenoj galaktičkoj borbi za moć.",
+                    badge: "Interaktivni pregled"
                 }
             },
             roadmap: {
-                title: "Development Roadmap",
-                subtitle: "Transparent development tracking - updated regularly",
-                completed: "Completed",
-                inprogress: "In Progress",
-                planned: "Planned",
+                title: "Plan razvoja",
+                subtitle: "Transparentno praćenje razvoja - redovno se ažurira",
+                completed: "Završeno",
+                inprogress: "U toku",
+                planned: "Planirano",
                 status: {
                     completed: "✓",
                     inprogress: "⚡",
                     planned: "○"
                 },
-                item1: "Core Engine Foundation",
-                item2: "Base Procedural Generation System",
-                item3: "Space Station Framework",
-                item4: "Advanced Terrain Deformation",
-                item5: "Dynamic Economy System",
-                item6: "Settlement Construction Tools",
-                item7: "Player Corporations & Factions",
-                item8: "Multiplayer Systems",
-                item9: "Advanced AI Systems",
-                item10: "Mobile Platform Support"
+                item1: "Temelj igračkog enginea",
+                item2: "Osnovni sistem proceduralne generacije",
+                item3: "Okvir za svemirsku stanicu",
+                item4: "Napredna deformacija terena",
+                item5: "Dinamički ekonomski sistem",
+                item6: "Alati za izgradnju naselja",
+                item7: "Korporacije i frakcije igrača",
+                item8: "Mnigogrački sistemi",
+                item9: "Napredni sistemi veštačke inteligencije",
+                item10: "Podrška za mobilne platforme"
             },
             requirements: {
-                title: "System Requirements",
+                title: "Sistemski zahtjevi",
                 col: {
-                    platform: "Platform",
-                    min: "Minimum",
-                    recommended: "Recommended"
+                    platform: "Platforma",
+                    min: "Minimalno",
+                    recommended: "Preporučeno"
                 },
                 row: {
                     win10: {
                         platform: "Windows 10/11 64-bit",
-                        min: "<ul><li>CPU: Intel Core i5-8400 / AMD Ryzen 5 2600</li><li>RAM: 16 GB</li><li>GPU: NVIDIA GTX 1060 6GB / AMD RX 580</li><li>Storage: 80 GB SSD</li><li>OS: Windows 10/11 64-bit</li></ul>",
-                        recommended: "<ul><li>CPU: Intel Core i7-10700K / AMD Ryzen 7 5800X</li><li>RAM: 32 GB</li><li>GPU: NVIDIA RTX 3070 / AMD RX 6800 XT</li><li>Storage: 80 GB NVMe SSD</li><li>OS: Windows 11 64-bit</li></ul>"
+                        min: "<ul><li>Procesor: Intel Core i5-8400 / AMD Ryzen 5 2600</li><li>RAM: 16 GB</li><li>GPU: NVIDIA GTX 1060 6GB / AMD RX 580</li><li>Spremište: SSD 80 GB</li><li>OS: Windows 10/11 64-bit</li></ul>",
+                        recommended: "<ul><li>Procesor: Intel Core i7-10700K / AMD Ryzen 7 5800X</li><li>RAM: 32 GB</li><li>GPU: NVIDIA RTX 3070 / AMD RX 6800 XT</li><li>Spremište: NVMe SSD 80 GB</li><li>OS: Windows 11 64-bit</li></ul>"
                     },
                     ubuntu: {
                         platform: "Ubuntu Linux 22.04/24.04/25.04",
-                        min: "<ul><li>CPU: Intel Core i5-8400 / AMD Ryzen 5 2600</li><li>RAM: 16 GB</li><li>GPU: NVIDIA GTX 1060 6GB / AMD RX 580</li><li>Storage: 80 GB SSD</li><li>OS: Ubuntu 22.04 LTS</li></ul>",
-                        recommended: "<ul><li>CPU: Intel Core i7-10700K / AMD Ryzen 7 5800X</li><li>RAM: 32 GB</li><li>GPU: NVIDIA RTX 3070 / AMD RX 6800 XT</li><li>Storage: 80 GB NVMe SSD</li><li>OS: Ubuntu 24.04 LTS</li></ul>"
+                        min: "<ul><li>Procesor: Intel Core i5-8400 / AMD Ryzen 5 2600</li><li>RAM: 16 GB</li><li>GPU: NVIDIA GTX 1060 6GB / AMD RX 580</li><li>Spremište: SSD 80 GB</li><li>OS: Ubuntu 22.04 LTS</li></ul>",
+                        recommended: "<ul><li>Procesor: Intel Core i7-10700K / AMD Ryzen 7 5800X</li><li>RAM: 32 GB</li><li>GPU: NVIDIA RTX 3070 / AMD RX 6800 XT</li><li>Spremište: NVMe SSD 80 GB</li><li>OS: Ubuntu 24.04 LTS</li></ul>"
                     }
                 }
             },
             community: {
-                title: "Join Our Community",
-                subtitle: "Connect with fellow explorers, share your ideas, and provide feedback",
-                discord: "Discord Server",
+                title: "Pridružite se našoj zajednici",
+                subtitle: "Povežite se sa drugim istraživačima, podijelite svoje ideje i dajte povratnu informaciju",
+                discord: "Discord server",
                 reddit: "r/Ecliptica",
-                feedback: "Feedback & Bug Reports"
+                feedback: "Povratne informacije i izveštaji o greškama"
             },
             gallery: {
-                title: "Media Gallery",
-                subtitle: "Explore our screenshots and artwork",
-                overlay: "View Full Size"
+                title: "Medijska galerija",
+                subtitle: "Istražite naše snimke ekrana i umjetničke radove",
+                overlay: "Pogledaj u punoj veličini"
             },
             feedback: {
-                title: "Provide Feedback",
-                subtitle: "Help us improve Ecliptica by sharing your thoughts",
+                title: "Dajte povratnu informaciju",
+                subtitle: "Pomozite nam da poboljšamo Ecliptica dijeleći svoje utiske",
                 label: {
-                    name: "Name",
-                    email: "Email",
-                    type: "Feedback Type",
-                    message: "Message"
+                    name: "Ime",
+                    email: "E-mail",
+                    type: "Vrsta povratne informacije",
+                    message: "Poruka"
                 },
                 option: {
-                    feedback: "General Feedback",
-                    bug: "Bug Report",
-                    feature: "Feature Request",
-                    idea: "Idea Suggestion"
+                    feedback: "Opća povratna informacija",
+                    bug: "Izveštaj o grešci",
+                    feature: "Zahtjev za novu funkciju",
+                    idea: "Prijedlog ideje"
                 },
-                btn: "Submit Feedback"
+                btn: "Pošalji povratnu informaciju"
             }
         }
     }

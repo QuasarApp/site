@@ -35,6 +35,14 @@ function isPendingRoute(ref) {
     return ref.startsWith('/') && PENDING_ROUTE_PREFIXES.some((p) => ref.startsWith(p));
 }
 
+/** All HTML pages served by the site (home page + /contacts, issue #74). */
+function listHtmlPages() {
+    const pages = [path.join(ROOT, 'index.html')];
+    const contactsPage = path.join(ROOT, 'contacts', 'index.html');
+    if (fs.existsSync(contactsPage)) pages.push(contactsPage);
+    return pages;
+}
+
 /** Assert that a local (relative or site-absolute) reference resolves to a file. */
 function assertRefExists(ref, fromFile) {
     const rel = path.relative(ROOT, fromFile);
@@ -56,13 +64,16 @@ function assertRefExists(ref, fromFile) {
     );
 }
 
-test('all local href/src references in index.html resolve to existing files', () => {
-    const htmlFile = path.join(ROOT, 'index.html');
-    const refs = [...fs.readFileSync(htmlFile, 'utf8').matchAll(/(?:href|src)\s*=\s*["']([^"']+)["']/gi)]
-        .map((m) => m[1].trim())
-        .filter((ref) => ref && !isExternal(ref) && !isPendingRoute(ref));
-    assert.ok(refs.length > 0, 'no local references found in index.html');
-    for (const ref of refs) assertRefExists(ref, htmlFile);
+test('all local href/src references in every HTML page resolve to existing files', () => {
+    const pages = listHtmlPages();
+    for (const htmlFile of pages) {
+        const rel = path.relative(ROOT, htmlFile);
+        const refs = [...fs.readFileSync(htmlFile, 'utf8').matchAll(/(?:href|src)\s*=\s*["']([^"']+)["']/gi)]
+            .map((m) => m[1].trim())
+            .filter((ref) => ref && !isExternal(ref) && !isPendingRoute(ref));
+        assert.ok(refs.length > 0, `no local references found in ${rel}`);
+        for (const ref of refs) assertRefExists(ref, htmlFile);
+    }
 });
 
 test('all local url() references in CSS files resolve to existing files', () => {
@@ -93,16 +104,17 @@ test('every image in the repository root and assets/images is referenced somewhe
 
     const sources = [
         path.join(ROOT, 'index.html'),
+        path.join(ROOT, 'contacts', 'index.html'),
         ...listFiles(path.join(ROOT, 'css'), ['.css']),
         ...listFiles(path.join(ROOT, 'js'), ['.js']),
-    ];
+    ].filter((f) => fs.existsSync(f));
     const haystack = sources.map((f) => fs.readFileSync(f, 'utf8')).join('\n').toLowerCase();
 
     for (const img of images) {
         const name = path.basename(img).toLowerCase();
         assert.ok(
             haystack.includes(name),
-            `image '${name}' is not referenced in index.html, css/ or js/`
+            `image '${name}' is not referenced in index.html, contacts/, css/ or js/`
         );
     }
 });

@@ -57,6 +57,33 @@ node scripts/fetch-github-metrics.js
 If the GitHub API is unreachable, the script keeps the existing cache
 and exits 0; without any cache it exits 1 so the build fails loudly.
 
+## Contacts page (issue #74)
+
+`/contacts` (`contacts/index.html`) provides:
+
+- **Anti-spam contact form** — client-side validation (name, email,
+  message), a hidden honeypot field for bots and an optional Cloudflare
+  Turnstile challenge (the third-party script is injected only when a
+  site key is configured). The form shows loading/success/error states.
+- **Graceful mailto fallback** — the site is static, so submissions are
+  meant to go to a rate-limited endpoint deployed by the Docker/CI-CD
+  issue. Until `CONTACT_ENDPOINT` in `js/contacts.js` is set, the form
+  shows a visible notice and submitting opens the visitor's email client
+  with the message pre-filled to `quasarappdevelop@gmail.com`.
+- **Official links block** — GitHub, Steam, Discord, Telegram, Reddit,
+  Bluesky, YouTube and email. Discord/Telegram/Reddit are the official
+  community links published on the Ecliptica Steam store page;
+  `tests/contacts.test.js` enforces the verified-URL allow-list so no
+  invented links can land.
+- **Legal corporate details** — QuasarApp Group d.o.o., Željeznička 91,
+  Bar, Montenegro, PIB 03602524 (values from the public registry of the
+  Agency for Public Revenue of Montenegro, IRMS; flagged for human
+  confirmation on the issue).
+
+To enable direct submission once the endpoint exists, set
+`CONTACT_ENDPOINT` (and optionally `TURNSTILE_SITE_KEY`) at the top of
+`js/contacts.js` — no other changes are needed.
+
 ## Performance & Media (issue #81)
 
 The site targets Lighthouse / PageSpeed **90+ Performance on Desktop and

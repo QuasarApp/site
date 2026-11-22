@@ -4,7 +4,8 @@ Guidance for AI agents (and humans) working in this repository.
 
 ## Description
 
-Static single-page website for the QuasarApp organization. Pure HTML5 +
+Static website for the QuasarApp organization (home page plus the
+`/contacts` page). Pure HTML5 +
 CSS3 + vanilla JS — no framework, no build step, no dependencies.
 Multi-language: English (default), Russian, Montenegrin, German and
 Spanish. Hosted on GitHub Pages: the `main` branch root is served at
@@ -37,6 +38,23 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
   and the metrics fallback line when a JSON file is missing or
   unreachable (graceful offline fallback). Re-renders dynamic content on
   the `quasarapp:languagechange` event.
+- `contacts/index.html` — the `/contacts` page (issue #74): anti-spam
+  contact form (client-side validation, honeypot, optional Cloudflare
+  Turnstile, loading/success/error states; graceful mailto fallback to
+  `quasarappdevelop@gmail.com` with a visible notice while the
+  rate-limited endpoint does not exist yet), official links block
+  (GitHub, Steam, Discord, Telegram, Reddit, Bluesky, YouTube, email —
+  verified URLs only) and legal corporate details for QuasarApp Group
+  d.o.o. (Bar, Montenegro, PIB). Loads `js/i18n.js`, `js/main.js` and
+  `js/contacts.js`; shares the i18n keys from `js/i18n.js` (`contacts.*`
+  namespace).
+- `js/contacts.js` (contacts page only, load 3rd) — `/contacts` form
+  controller: validation, honeypot, Turnstile (the third-party script is
+  injected only when `TURNSTILE_SITE_KEY` is configured in the file),
+  loading/success/error states and the mailto fallback. Delivery is
+  configured at the top of the file (`CONTACT_ENDPOINT`,
+  `TURNSTILE_SITE_KEY`); while the endpoint (Docker/CI-CD issue) is not
+  deployed the form degrades gracefully.
 - `data/github-org-metrics.json` — build-time cache of the QuasarApp
   GitHub org metrics (repo count, total stars, fetchedAt). Refresh with
   `node scripts/fetch-github-metrics.js` (no token needed, Node >= 18).
@@ -53,9 +71,15 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
   `.github/workflows/auto-tests.yml` GitHub Actions workflow
   (`auto-tests` job plus a `lighthouse` job that enforces 90+ Performance
   on Desktop and Mobile, see below). `tests/home.test.js` guards the home
-  sections (issue #78); `tests/links.test.js` exempts the upcoming
-  `/projects/...` and `/devlog/...` routes (issues #75/#77) from the
-  file-existence check until those pages land.
+  sections (issue #78); `tests/links.test.js` scans every HTML page
+  (home + `/contacts`) for resolvable local references and exempts the
+  upcoming `/projects/...` and `/devlog/...` routes (issues #75/#77) from
+  the file-existence check until those pages land; `tests/i18n.test.js`
+  checks key parity plus every `data-lang` key of all HTML pages;
+  `tests/contacts.test.js` guards the `/contacts` acceptance criteria
+  (issue #74): form validation and states, honeypot/Turnstile wiring,
+  verified external links only, and the legal details values in all
+  languages.
 - Media & performance (issue #81):
   - All content images are pre-optimized WebP committed to the repo (no
     build step). Responsive variants (`*-480.webp`, `*-768.webp`, ...) live

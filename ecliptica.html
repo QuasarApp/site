@@ -7,12 +7,30 @@
     <meta name="description" content="Ecliptica is a first-person open-world colony survival simulator with a fully dynamic economy. Set on a hostile alien planet, you'll found corporations, fight for resources, and build a sustainable future.">
     <meta name="theme-color" content="#0a0e17">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!--
+      Performance (issue #81): no render-blocking third-party CSS/JS.
+      Fonts use the system font stack (see css/style.css) and icons are
+      inline SVGs from the sprite at the top of the body, so there are no
+      external stylesheet/font requests.
+    -->
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 <body>
+    <!-- Inline SVG icon sprite (issue #81): the icons the Ecliptica hub
+         references, inlined so the page makes zero CDN font/icon
+         requests (same convention as index.html: stroke icons are
+         Feather (MIT), brand icons are Simple Icons (CC0)). -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;" aria-hidden="true" focusable="false">
+        <symbol id="icon-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+        <symbol id="icon-steam" viewBox="0 0 24 24"><path fill="currentColor" d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></symbol>
+        <symbol id="icon-youtube" viewBox="0 0 24 24"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol>
+        <symbol id="icon-heart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+        <symbol id="icon-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></g></symbol>
+        <symbol id="icon-play" viewBox="0 0 24 24"><path fill="currentColor" d="M5 3l14 9-14 9V3z"/></symbol>
+        <symbol id="icon-discord" viewBox="0 0 24 24"><path fill="currentColor" d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></symbol>
+        <symbol id="icon-reddit" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0C5.373 0 0 5.373 0 12c0 3.314 1.343 6.314 3.515 8.485l-2.286 2.286C.775 23.225 1.097 24 1.738 24H12c6.627 0 12-5.373 12-12S18.627 0 12 0Zm4.388 3.199c1.104 0 1.999.895 1.999 1.999 0 1.105-.895 2-1.999 2-.946 0-1.739-.657-1.947-1.539v.002c-1.147.162-2.032 1.15-2.032 2.341v.007c1.776.067 3.4.567 4.686 1.363.473-.363 1.064-.58 1.707-.58 1.547 0 2.802 1.254 2.802 2.802 0 1.117-.655 2.081-1.601 2.531-.088 3.256-3.637 5.876-7.997 5.876-4.361 0-7.905-2.617-7.998-5.87-.954-.447-1.614-1.415-1.614-2.538 0-1.548 1.255-2.802 2.803-2.802.645 0 1.239.218 1.712.585 1.275-.79 2.881-1.291 4.64-1.365v-.01c0-1.663 1.263-3.034 2.88-3.207.188-.911.993-1.595 1.959-1.595Zm-8.085 8.376c-.784 0-1.459.78-1.506 1.797-.047 1.016.64 1.429 1.426 1.429.786 0 1.371-.369 1.418-1.385.047-1.017-.553-1.841-1.338-1.841Zm7.406 0c-.786 0-1.385.824-1.338 1.841.047 1.017.634 1.385 1.418 1.385.785 0 1.473-.413 1.426-1.429-.046-1.017-.721-1.797-1.506-1.797Zm-3.703 4.013c-.974 0-1.907.048-2.77.135-.147.015-.241.168-.183.305.483 1.154 1.622 1.964 2.953 1.964 1.33 0 2.47-.81 2.953-1.964.057-.137-.037-.29-.184-.305-.863-.087-1.795-.135-2.769-.135Z"/></symbol>
+    </svg>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
     <nav class="navbar">
@@ -62,22 +80,25 @@
             </div>
         </section>
 
-        <!-- Video Hero Section -->
+        <!-- Hero Section: static key art from the Steam store page (verified
+             source, issue #79) until the official gameplay trailer ships.
+             The source-less video element was removed: it rendered as an
+             empty rectangle. -->
         <section id="ecliptica-hero" class="ecliptica-hero-section">
             <div class="container">
                 <div class="ecliptica-hero-content">
-                    <div class="video-container" id="ecliptica-video-container">
-                        <video id="ecliptica-video" class="ecliptica-video" muted playsinline preload="none" poster="ecliptica_background.jpg.webp">
-                            <p class="video-placeholder" data-lang="ecliptica.hero.videoPlaceholder">Gameplay video coming soon</p>
-                        </video>
-                        <div class="video-overlay"></div>
+                    <div class="ecliptica-hero-media">
+                        <img src="ecliptica_background.jpg.webp" alt="Ecliptica key art from the Steam store page" class="ecliptica-hero-image" loading="lazy" decoding="async" width="1438" height="810">
+                        <p class="video-placeholder" data-lang="ecliptica.hero.videoPlaceholder">Gameplay video coming soon</p>
                     </div>
                     <div class="ecliptica-cta-primary">
-                        <a href="https://store.steampowered.com/wishlist/add/item?appid=3723390" class="btn btn-steam-primary" target="_blank" rel="noopener noreferrer" data-lang="ecliptica.cta.wishlist">
-                            <i class="fab fa-steam"></i> Add to Wishlist on Steam
+                        <a href="https://store.steampowered.com/wishlist/add/item?appid=3723390" class="btn btn-steam-primary" target="_blank" rel="noopener noreferrer">
+                            <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-heart"></use></svg>
+                            <span data-lang="ecliptica.cta.wishlist">Add to Wishlist on Steam</span>
                         </a>
-                        <a href="https://quasarapp.itch.io/ecliptica" class="btn btn-itch" target="_blank" rel="noopener noreferrer" data-lang="ecliptica.cta.demo">
-                            <i class="fas fa-play"></i> Play Demo / Itch.io
+                        <a href="https://quasarapp.itch.io/ecliptica" class="btn btn-itch" target="_blank" rel="noopener noreferrer">
+                            <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-play"></use></svg>
+                            <span data-lang="ecliptica.cta.demo">Play Demo / Itch.io</span>
                         </a>
                     </div>
                 </div>
@@ -221,20 +242,27 @@ Storage: 2 GB available space</td>
             </div>
         </section>
 
-        <!-- Community Section -->
+        <!-- Community Section: data-lang is placed on the leaf <span>s so
+             updateTranslations() never replaces the inline SVG icons. -->
         <section id="ecliptica-community" class="ecliptica-community-section">
             <div class="container">
                 <h2 class="section-title" data-lang="ecliptica.community.title">Join Our Community</h2>
-                <p class="community-subtitle" data-lang="ecliptica.community.subtitle">Connect with fellow explorers, share your ideas, and provide feedback</p>
+                <p class="community-subtitle" data-lang="ecliptica.community.subtitle">Connect with fellow explorers and share your ideas</p>
                 <div class="community-links">
-                    <a href="https://discord.gg/FRpw2565Sy" class="community-card" target="_blank" rel="noopener noreferrer" data-lang="ecliptica.community.discord">
-                        <i class="fab fa-discord"></i><span>Discord Server</span><span class="community-desc">Chat with developers and players</span>
+                    <a href="https://discord.gg/FRpw2565Sy" class="community-card" target="_blank" rel="noopener noreferrer">
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-discord"></use></svg>
+                        <span data-lang="ecliptica.community.discord">Discord Server</span>
+                        <span class="community-desc" data-lang="ecliptica.community.discordDesc">Chat with developers and players</span>
                     </a>
-                    <a href="https://reddit.com/r/Ecliptica" class="community-card" target="_blank" rel="noopener noreferrer" data-lang="ecliptica.community.reddit">
-                        <i class="fab fa-reddit"></i><span>r/Ecliptica</span><span class="community-desc">Discuss on Reddit</span>
+                    <a href="https://reddit.com/r/Ecliptica" class="community-card" target="_blank" rel="noopener noreferrer">
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-reddit"></use></svg>
+                        <span data-lang="ecliptica.community.reddit">r/Ecliptica</span>
+                        <span class="community-desc" data-lang="ecliptica.community.redditDesc">Discuss on Reddit</span>
                     </a>
-                    <a href="#feedback" class="community-card" data-lang="ecliptica.community.feedback">
-                        <i class="fas fa-envelope"></i><span>Feedback & Bug Reports</span><span class="community-desc">Submit your feedback</span>
+                    <a href="https://store.steampowered.com/app/3723390/Ecliptica/" class="community-card" target="_blank" rel="noopener noreferrer">
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-steam"></use></svg>
+                        <span data-lang="ecliptica.community.steam">Ecliptica on Steam</span>
+                        <span class="community-desc" data-lang="ecliptica.community.steamDesc">Official store page</span>
                     </a>
                 </div>
             </div>
@@ -245,82 +273,68 @@ Storage: 2 GB available space</td>
             <div class="container">
                 <h2 class="section-title" data-lang="ecliptica.gallery.title">Media Gallery</h2>
                 <p class="gallery-subtitle" data-lang="ecliptica.gallery.subtitle">Explore our screenshots and artwork</p>
+                <!-- Screenshots from the Steam store page (app 3723390),
+                     committed as WebP: 600w thumbnails in the grid, the
+                     1920x1080 originals load on demand in the lightbox. -->
                 <div class="gallery-grid">
                     <div class="gallery-item">
-                        <img src="ecliptica_capsule.jpg.webp" alt="Ecliptica Screenshot 1" data-src="ecliptica_capsule.jpg.webp" class="gallery-img">
+                        <img src="ecliptica_ss1-600.webp" alt="Ecliptica screenshot 1" data-src="ecliptica_ss1.webp" class="gallery-img" loading="lazy" decoding="async" width="600" height="338">
                         <span class="gallery-overlay" data-lang="ecliptica.gallery.overlay">View Full Size</span>
                     </div>
                     <div class="gallery-item">
-                        <img src="ecliptica_background.jpg.webp" alt="Ecliptica Screenshot 2" data-src="ecliptica_background.jpg.webp" class="gallery-img">
+                        <img src="ecliptica_ss2-600.webp" alt="Ecliptica screenshot 2" data-src="ecliptica_ss2.webp" class="gallery-img" loading="lazy" decoding="async" width="600" height="338">
                         <span class="gallery-overlay" data-lang="ecliptica.gallery.overlay">View Full Size</span>
                     </div>
                     <div class="gallery-item">
-                        <img src="ecliptica_icon_logo.png.webp" alt="Ecliptica Screenshot 3" data-src="ecliptica_icon_logo.png.webp" class="gallery-img">
+                        <img src="ecliptica_ss3-600.webp" alt="Ecliptica screenshot 3" data-src="ecliptica_ss3.webp" class="gallery-img" loading="lazy" decoding="async" width="600" height="338">
+                        <span class="gallery-overlay" data-lang="ecliptica.gallery.overlay">View Full Size</span>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="ecliptica_ss4-600.webp" alt="Ecliptica screenshot 4" data-src="ecliptica_ss4.webp" class="gallery-img" loading="lazy" decoding="async" width="600" height="338">
+                        <span class="gallery-overlay" data-lang="ecliptica.gallery.overlay">View Full Size</span>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="ecliptica_ss5-600.webp" alt="Ecliptica screenshot 5" data-src="ecliptica_ss5.webp" class="gallery-img" loading="lazy" decoding="async" width="600" height="338">
+                        <span class="gallery-overlay" data-lang="ecliptica.gallery.overlay">View Full Size</span>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="ecliptica_ss6-600.webp" alt="Ecliptica screenshot 6" data-src="ecliptica_ss6.webp" class="gallery-img" loading="lazy" decoding="async" width="600" height="338">
                         <span class="gallery-overlay" data-lang="ecliptica.gallery.overlay">View Full Size</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Feedback Form Section -->
-        <section id="feedback" class="ecliptica-feedback-section">
-            <div class="container">
-                <h2 class="section-title" data-lang="ecliptica.feedback.title">Provide Feedback</h2>
-                <p class="feedback-subtitle" data-lang="ecliptica.feedback.subtitle">Help us improve Ecliptica by sharing your thoughts</p>
-                <form class="feedback-form" id="feedback-form">
-                    <div class="form-group">
-                        <label for="feedback-name" data-lang="ecliptica.feedback.label.name">Name</label>
-                        <input type="text" id="feedback-name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="feedback-email" data-lang="ecliptica.feedback.label.email">Email</label>
-                        <input type="email" id="feedback-email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="feedback-type" data-lang="ecliptica.feedback.label.type">Feedback Type</label>
-                        <select id="feedback-type" name="type">
-                            <option value="feedback" data-lang="ecliptica.feedback.option.feedback">General Feedback</option>
-                            <option value="bug" data-lang="ecliptica.feedback.option.bug">Bug Report</option>
-                            <option value="feature" data-lang="ecliptica.feedback.option.feature">Feature Request</option>
-                            <option value="idea" data-lang="ecliptica.feedback.option.idea">Idea Suggestion</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="feedback-message" data-lang="ecliptica.feedback.label.message">Message</label>
-                        <textarea id="feedback-message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" data-lang="ecliptica.feedback.btn">Submit Feedback</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer" role="contentinfo">
-            <div class="container">
-                <div class="footer-social">
-                    <a href="https://github.com/QuasarApp" class="social-link">
-                        <i class="fab fa-github"></i><span data-lang="footer.github">GitHub</span>
-                    </a>
-                    <a href="https://bsky.app/profile/quasarapp.bsky.social" class="social-link">
-                        <span class="bsky-icon">🦋</span><span data-lang="footer.bluesky">Bluesky</span>
-                    </a>
-                    <a href="mailto:quasarappdevelop@gmail.com" class="social-link">
-                        <i class="fas fa-envelope"></i><span data-lang="footer.email">Email</span>
-                    </a>
-                    <a href="https://www.youtube.com/@quasarappcore" class="social-link" target="_blank">
-                        <i class="fab fa-youtube"></i><span data-lang="footer.youtube">YouTube</span>
-                    </a>
-                    <a href="https://store.steampowered.com/curator/45704880" class="social-link" target="_blank">
-                        <i class="fab fa-steam"></i><span data-lang="footer.steam">Steam</span>
-                    </a>
-                </div>
-                <div class="footer-bottom">
-                    <p data-lang="footer.copyright">&copy; 2026 QuasarApp Group. All rights reserved.</p>
-                    <p class="made-with"><i class="fas fa-heart"></i> Made with <span class="glow">passion</span></p>
-                </div>
-            </div>
-        </footer>
     </main>
+
+    <!-- Footer: copied verbatim from index.html (issue #79 review) so the
+         hub page footer is identical to the main page footer. -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-social">
+                <a href="https://github.com/QuasarApp" class="social-link">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg>
+                    <span data-lang="footer.github">GitHub</span>
+                </a>
+                <a href="mailto:quasarappdevelop@gmail.com" class="social-link">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-mail"></use></svg>
+                    <span data-lang="footer.email">Email</span>
+                </a>
+                <a href="https://www.youtube.com/@quasarappcore" class="social-link" target="_blank">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-youtube"></use></svg>
+                    <span data-lang="footer.youtube">YouTube</span>
+                </a>
+                <a href="https://store.steampowered.com/curator/45704880" class="social-link" target="_blank">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-steam"></use></svg>
+                    <span data-lang="footer.steam">Steam</span>
+                </a>
+            </div>
+            <div class="footer-bottom">
+                <p data-lang="footer.copyright">&copy; 2026 QuasarApp Group. All rights reserved.</p>
+                <p class="made-with"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-heart"></use></svg> Made with <span class="glow">passion</span></p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Lightbox Modal -->
     <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">

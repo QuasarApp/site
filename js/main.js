@@ -113,68 +113,6 @@ function createParticles() {
    ============================================ */
 
 /**
- * Ecliptica Video Handler
- * Handles viewport-triggered video playback with IntersectionObserver
- * and prefers-reduced-motion fallback
- */
-(function() {
-    'use strict';
-    
-    const videoContainer = document.getElementById('ecliptica-video-container');
-    const video = document.getElementById('ecliptica-video');
-    const videoPlaceholder = document.querySelector('.video-placeholder');
-    
-    if (!videoContainer || !video) return;
-    
-    // Check for prefers-reduced-motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
-    if (prefersReducedMotion) {
-        // Static fallback: show placeholder, hide video
-        video.style.display = 'none';
-        if (videoPlaceholder) {
-            videoPlaceholder.style.display = 'block';
-        }
-        console.log('Ecliptica video: reduced motion mode enabled');
-        return;
-    }
-    
-    // Set up IntersectionObserver
-    const observerOptions = {
-        root: null,
-        rootMargin: '100px',
-        threshold: 0.25
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Play video when in viewport
-                if (video.paused || video.ended) {
-                    video.play().catch(err => {
-                        console.warn('Video autoplay blocked:', err);
-                    });
-                }
-                videoContainer.classList.add('is-playing');
-                observer.disconnect(); // Only play once
-            }
-        });
-    }, observerOptions);
-    
-    // Observe the video container
-    observer.observe(videoContainer);
-    
-    // Handle browser back button
-    window.addEventListener('popstate', () => {
-        if (videoContainer.classList.contains('is-playing')) {
-            video.pause();
-            video.currentTime = 0;
-            videoContainer.classList.remove('is-playing');
-        }
-    });
-})();
-
-/**
  * Mechanics Tabs Handler
  * Tabbed interface for the core mechanics showcase
  */
@@ -265,40 +203,5 @@ function createParticles() {
         if (e.key === 'Escape' && lightbox.classList.contains('active')) {
             closeLightbox();
         }
-    });
-})();
-
-/**
- * Feedback Form Handler
- * Basic form submission with loading state
- */
-(function() {
-    'use strict';
-    
-    const feedbackForm = document.getElementById('feedback-form');
-    
-    if (!feedbackForm) return;
-    
-    feedbackForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const submitBtn = feedbackForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        
-        // Set loading state
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
-        
-        // Collect form data
-        const formData = new FormData(feedbackForm);
-        
-        // Note: For production, this would submit to a backend endpoint
-        // For now, show a success message
-        setTimeout(() => {
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
-            feedbackForm.reset();
-            alert('Thank you for your feedback! We will review it soon.');
-        }, 1500);
     });
 })();

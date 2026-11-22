@@ -166,32 +166,18 @@ const translations = {
             },
             community: {
                 title: "Join Our Community",
-                subtitle: "Connect with fellow explorers, share your ideas, and provide feedback",
+                subtitle: "Connect with fellow explorers and share your ideas",
                 discord: "Discord Server",
+                discordDesc: "Chat with developers and players",
                 reddit: "r/Ecliptica",
-                feedback: "Feedback & Bug Reports"
+                redditDesc: "Discuss on Reddit",
+                steam: "Ecliptica on Steam",
+                steamDesc: "Official store page"
             },
             gallery: {
                 title: "Media Gallery",
                 subtitle: "Explore our screenshots and artwork",
                 overlay: "View Full Size"
-            },
-            feedback: {
-                title: "Provide Feedback",
-                subtitle: "Help us improve Ecliptica by sharing your thoughts",
-                label: {
-                    name: "Name",
-                    email: "Email",
-                    type: "Feedback Type",
-                    message: "Message"
-                },
-                option: {
-                    feedback: "General Feedback",
-                    bug: "Bug Report",
-                    feature: "Feature Request",
-                    idea: "Idea Suggestion"
-                },
-                btn: "Submit Feedback"
             }
         }
     },
@@ -361,32 +347,18 @@ const translations = {
             },
             community: {
                 title: "Присоединяйтесь к нашему сообществу",
-                subtitle: "Связывайтесь с единомышленниками, делитесь идеями и оставляйте отзывы",
+                subtitle: "Связывайтесь с единомышленниками и делитесь идеями",
                 discord: "Discord-сервер",
+                discordDesc: "Общайтесь с разработчиками и игроками",
                 reddit: "r/Ecliptica",
-                feedback: "Отзывы и сообщения об ошибках"
+                redditDesc: "Обсуждайте на Reddit",
+                steam: "Ecliptica в Steam",
+                steamDesc: "Страница в магазине Steam"
             },
             gallery: {
                 title: "Медиагалерея",
                 subtitle: "Смотрите наши скриншоты и арты",
                 overlay: "Посмотреть в полном размере"
-            },
-            feedback: {
-                title: "Оставить отзыв",
-                subtitle: "Помогите нам улучшить Ecliptica, поделитесь своим мнением",
-                label: {
-                    name: "Имя",
-                    email: "Эл. почта",
-                    type: "Тип отзыва",
-                    message: "Сообщение"
-                },
-                option: {
-                    feedback: "Общий отзыв",
-                    bug: "Сообщение об ошибке",
-                    feature: "Предложение функции",
-                    idea: "Предложение идеи"
-                },
-                btn: "Отправить отзыв"
             }
         }
     },
@@ -556,32 +528,18 @@ const translations = {
             },
             community: {
                 title: "Tritt unserer Community bei",
-                subtitle: "Vernetze dich mit anderen Entdeckern, teile deine Ideen und gib Feedback",
+                subtitle: "Vernetze dich mit anderen Entdeckern und teile deine Ideen",
                 discord: "Discord-Server",
+                discordDesc: "Chatte mit Entwicklern und Spielern",
                 reddit: "r/Ecliptica",
-                feedback: "Feedback & Bugmeldungen"
+                redditDesc: "Diskutiere auf Reddit",
+                steam: "Ecliptica auf Steam",
+                steamDesc: "Offizielle Store-Seite"
             },
             gallery: {
                 title: "Medien-Galerie",
                 subtitle: "Entdecke unsere Screenshots und Artworks",
                 overlay: "In voller Größe anzeigen"
-            },
-            feedback: {
-                title: "Feedback geben",
-                subtitle: "Hilf uns, Ecliptica zu verbessern, indem du deine Gedanken teilst",
-                label: {
-                    name: "Name",
-                    email: "E-Mail",
-                    type: "Feedback-Typ",
-                    message: "Nachricht"
-                },
-                option: {
-                    feedback: "Allgemeines Feedback",
-                    bug: "Bugreport",
-                    feature: "Feature-Anfrage",
-                    idea: "Ideen-Vorschlag"
-                },
-                btn: "Feedback absenden"
             }
         }
     },
@@ -751,32 +709,18 @@ const translations = {
             },
             community: {
                 title: "Únete a nuestra comunidad",
-                subtitle: "Conecta con otros exploradores, comparte tus ideas y da tu opinión",
+                subtitle: "Conecta con otros exploradores y comparte tus ideas",
                 discord: "Servidor de Discord",
+                discordDesc: "Chatea con desarrolladores y jugadores",
                 reddit: "r/Ecliptica",
-                feedback: "Opiniones e informes de errores"
+                redditDesc: "Discute en Reddit",
+                steam: "Ecliptica en Steam",
+                steamDesc: "Página oficial de la tienda"
             },
             gallery: {
                 title: "Galería multimedia",
                 subtitle: "Explora nuestras capturas de pantalla y obras de arte",
                 overlay: "Ver en tamaño completo"
-            },
-            feedback: {
-                title: "Envíanos tu opinión",
-                subtitle: "Ayúdanos a mejorar Ecliptica compartiendo tus ideas",
-                label: {
-                    name: "Nombre",
-                    email: "Correo electrónico",
-                    type: "Tipo de opinión",
-                    message: "Mensaje"
-                },
-                option: {
-                    feedback: "Opinión general",
-                    bug: "Informe de errores",
-                    feature: "Solicitud de función",
-                    idea: "Sugerencia de idea"
-                },
-                btn: "Enviar opinión"
             }
         }
     },
@@ -946,32 +890,18 @@ const translations = {
             },
             community: {
                 title: "Pridružite se našoj zajednici",
-                subtitle: "Povežite se sa drugim istraživačima, podijelite svoje ideje i dajte povratnu informaciju",
+                subtitle: "Povežite se sa drugim istraživačima i podijelite svoje ideje",
                 discord: "Discord server",
+                discordDesc: "Razgovarajte s developerima i igračima",
                 reddit: "r/Ecliptica",
-                feedback: "Povratne informacije i izveštaji o greškama"
+                redditDesc: "Diskusija na Reddit",
+                steam: "Ecliptica na Steam",
+                steamDesc: "Zvanična Steam prodavnica"
             },
             gallery: {
                 title: "Medijska galerija",
                 subtitle: "Istražite naše snimke ekrana i umjetničke radove",
                 overlay: "Pogledaj u punoj veličini"
-            },
-            feedback: {
-                title: "Dajte povratnu informaciju",
-                subtitle: "Pomozite nam da poboljšamo Ecliptica dijeleći svoje utiske",
-                label: {
-                    name: "Ime",
-                    email: "E-mail",
-                    type: "Vrsta povratne informacije",
-                    message: "Poruka"
-                },
-                option: {
-                    feedback: "Opća povratna informacija",
-                    bug: "Izveštaj o grešci",
-                    feature: "Zahtjev za novu funkciju",
-                    idea: "Prijedlog ideje"
-                },
-                btn: "Pošalji povratnu informaciju"
             }
         }
     }

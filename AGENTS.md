@@ -30,6 +30,14 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
   open-source projects — YourTimeDelivery has no public repository and
   renders "No Public Repository" contact messaging instead. All copy is
   localized via `data-lang` keys under `projectsDetail.{slug}`.
+- `about/index.html` — the About Us & Services page (issue #73, TZ 2.5):
+  studio background (QuasarApp Group d.o.o., Bar, Montenegro), team
+  competencies (C++23, Qt/QML, CI/CD, cross-platform deployment) and B2B
+  services (outsourcing, consulting, platform porting) as service cards,
+  plus a B2B CTA toward `/contacts` (shipped by issue #74, still pending).
+  Reuses the existing `about.*` i18n copy and the cached org metrics
+  (repo count, total stars); all new copy is localized via `data-lang`
+  keys under `aboutPage.*`.
 - `js/i18n.js` (load 1st) — `translations` object for `en`/`ru`/`me`/`de`/`es`;
   elements carry `data-lang` dot-path keys. When adding or changing a
   string, update the key in the markup and all five language blocks
@@ -78,10 +86,12 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
   (`auto-tests` job plus a `lighthouse` job that enforces 90+ Performance
   on Desktop and Mobile, see below). `tests/home.test.js` guards the home
   sections (issue #78); `tests/projects.test.js` guards the
-  `/projects/{slug}` detail pages (issue #77); `tests/links.test.js`
+  `/projects/{slug}` detail pages (issue #77); `tests/about.test.js`
+  guards the `/about` page (issue #73); `tests/links.test.js`
   checks every HTML page and exempts only the upcoming `/devlog/...`
-  routes (issue #75) and the `/ecliptica` hub (issue #72) from the
-  file-existence check until those pages land.
+  routes (issue #75), the `/ecliptica` hub (issue #72) and the
+  `/contacts` page (issue #74) from the file-existence check until
+  those pages land.
 - Media & performance (issue #81):
   - All content images are pre-optimized WebP committed to the repo (no
     build step). Responsive variants (`*-480.webp`, `*-768.webp`, ...) live

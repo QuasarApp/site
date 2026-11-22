@@ -1458,3 +1458,51 @@ body {
     .project-logo-tile { font-size: 3rem; }
     .project-actions .btn { width: 100%; text-align: center; }
 }
+
+/* ========================================
+   About page /about (issue #73, TZ 2.5)
+   ======================================== */
+
+/* B2B call-to-action panel toward /contacts (issue #74) */
+.about-cta {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 50px 40px;
+    max-width: 760px;
+    margin: 60px auto 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.about-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-1);
+}
+.about-cta h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.about-cta p {
+    color: var(--muted-text);
+    max-width: 560px;
+    margin: 0 auto 25px;
+}
+.about-cta .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+@media (max-width: 640px) {
+    .about-cta { padding: 40px 25px; }
+    .about-cta h3 { font-size: 1.4rem; }
+}

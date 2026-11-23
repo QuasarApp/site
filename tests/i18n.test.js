@@ -127,6 +127,24 @@ test('every data-lang key used in any root HTML page exists in all languages', (
     }
 });
 
+test('every data-lang key used in contacts/index.html exists in all languages (issue #74)', () => {
+    const page = path.join(ROOT, 'contacts', 'index.html');
+    assert.ok(fs.existsSync(page), 'contacts/index.html is missing');
+    const keys = [...fs.readFileSync(page, 'utf8').matchAll(/data-lang="([^"]+)"/g)].map((m) => m[1]);
+    assert.ok(keys.length > 0, 'no data-lang attributes found in contacts/index.html');
+    for (const key of new Set(keys)) {
+        for (const lang of LANGS) {
+            const value = resolvePath(translations[lang], key);
+            assert.equal(
+                typeof value,
+                'string',
+                `data-lang '${key}' does not resolve to a string in '${lang}'`
+            );
+            assert.notEqual(value.trim(), '', `data-lang '${key}' is empty in '${lang}'`);
+        }
+    }
+});
+
 test('EN is the default language (issue #84)', () => {
     const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
     assert.match(html, /<html[^>]*lang="en"/i, 'html element must declare lang="en"');

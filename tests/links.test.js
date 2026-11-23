@@ -25,14 +25,33 @@ function isExternal(ref) {
     return ref.startsWith('#') || ref.startsWith('//') || /^[a-z][a-z0-9+.-]*:/i.test(ref);
 }
 
-// Upcoming routes (issues #75/#77): the /projects/{slug} detail pages and
-// the /devlog/{slug} post pages are shipped by their own issues. The home
-// page (issue #78) already references them, so those references are
-// expected to 404 until those issues land and are exempt from the
-// file-existence check below.
-const PENDING_ROUTE_PREFIXES = ['/projects/', '/devlog/'];
+// Upcoming routes: the /devlog/{slug} post pages (issue #75) are shipped
+// by their own issue, so references to them are expected to 404 until it
+// lands and are exempt from the file-existence check below. The
+// /projects/ exemption was removed in issue #77, the /contacts exemption
+// in issue #74 and the /ecliptica exemption in issue #79 (the hub is
+// shipped at /ecliptica.html) - those pages now exist and are checked
+// like every other local reference.
+const PENDING_ROUTE_PREFIXES = ['/devlog/'];
 function isPendingRoute(ref) {
     return ref.startsWith('/') && PENDING_ROUTE_PREFIXES.some((p) => ref.startsWith(p));
+}
+
+/** All HTML pages served by the site (every root page + /projects/{slug} + /about + /contacts). */
+function listHtmlPages() {
+    const pages = listFiles(ROOT, ['.html']);
+    const projectsDir = path.join(ROOT, 'projects');
+    if (fs.existsSync(projectsDir)) {
+        for (const slug of fs.readdirSync(projectsDir).sort()) {
+            const page = path.join(projectsDir, slug, 'index.html');
+            if (fs.existsSync(page)) pages.push(page);
+        }
+    }
+    const aboutPage = path.join(ROOT, 'about', 'index.html');
+    if (fs.existsSync(aboutPage)) pages.push(aboutPage);
+    const contactsPage = path.join(ROOT, 'contacts', 'index.html');
+    if (fs.existsSync(contactsPage)) pages.push(contactsPage);
+    return pages;
 }
 
 /** Assert that a local (relative or site-absolute) reference resolves to a file. */
@@ -56,13 +75,15 @@ function assertRefExists(ref, fromFile) {
     );
 }
 
-test('all local href/src references in every root HTML page resolve to existing files', () => {
-    const htmlFiles = listFiles(ROOT, ['.html']);
-    assert.ok(htmlFiles.length > 0, 'no HTML pages found in the repository root');
-    for (const htmlFile of htmlFiles) {
+test('all local href/src references in every HTML page resolve to existing files', () => {
+    const pages = listHtmlPages();
+    assert.ok(pages.length >= 11, 'expected the two root pages, seven project pages, the about page and the contacts page');
+    for (const htmlFile of pages) {
+        const rel = path.relative(ROOT, htmlFile);
         const refs = [...fs.readFileSync(htmlFile, 'utf8').matchAll(/(?:href|src)\s*=\s*["']([^"']+)["']/gi)]
             .map((m) => m[1].trim())
             .filter((ref) => ref && !isExternal(ref) && !isPendingRoute(ref));
+        assert.ok(refs.length > 0, `no local references found in ${rel}`);
         for (const ref of refs) assertRefExists(ref, htmlFile);
     }
 });
@@ -78,30 +99,37 @@ test('all local url() references in CSS files resolve to existing files', () => 
 
 const IMAGE_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.gif', '.webp', '.avif', '.ico'];
 
-test('every image in the repository root is referenced somewhere', () => {
+test('every image in the repository root and assets/images is referenced somewhere', () => {
     // Browsers request /favicon.ico by convention, even without a <link> tag.
     const EXEMPT = new Set(['favicon.ico']);
-    const images = listFiles(ROOT, IMAGE_EXTENSIONS).filter(
-        (f) => !EXEMPT.has(path.basename(f).toLowerCase())
-    );
-    assert.ok(images.length > 0, 'no images found in the repository root');
+    const dirsToCheck = [ROOT, path.join(ROOT, 'assets', 'images')];
+    const images = [];
+    for (const dir of dirsToCheck) {
+        if (!fs.existsSync(dir)) continue;
+        images.push(
+            ...listFiles(dir, IMAGE_EXTENSIONS).filter(
+                (f) => !EXEMPT.has(path.basename(f).toLowerCase())
+            )
+        );
+    }
+    assert.ok(images.length > 0, 'no images found in the repository root or assets/images');
 
     // Every HTML page at the repository root (index.html, ecliptica.html,
     // ...) plus the shared css/ and js/ assets are scanned, so an image that
     // is only used by a subpage (e.g. the full-size Ecliptica background)
     // still counts as referenced.
     const sources = [
-        ...listFiles(ROOT, ['.html']),
+        ...listHtmlPages(),
         ...listFiles(path.join(ROOT, 'css'), ['.css']),
         ...listFiles(path.join(ROOT, 'js'), ['.js']),
-    ];
+    ].filter((f) => fs.existsSync(f));
     const haystack = sources.map((f) => fs.readFileSync(f, 'utf8')).join('\n').toLowerCase();
 
     for (const img of images) {
         const name = path.basename(img).toLowerCase();
         assert.ok(
             haystack.includes(name),
-            `image '${name}' is not referenced in any root HTML page, css/ or js/`
+            `image '${name}' is not referenced in any HTML page, css/ or js/`
         );
     }
 });

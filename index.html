@@ -12,14 +12,14 @@
     <meta property="og:url" content="https://quasarapp.me/">
     <meta property="og:title" content="QuasarApp Group">
     <meta property="og:description" content="Open-source organization building innovative software solutions and developer tools. Explore our projects and contribute to our community.">
-    <meta property="og:image" content="https://quasarapp.me/banner.webp">
+    <meta property="og:image" content="https://quasarapp.me/assets/images/banner.webp">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://quasarapp.me/">
     <meta name="twitter:title" content="QuasarApp Group">
     <meta name="twitter:description" content="Open-source organization building innovative software solutions and developer tools. Explore our projects and contribute to our community.">
-    <meta name="twitter:image" content="https://quasarapp.me/banner.webp">
+    <meta name="twitter:image" content="https://quasarapp.me/assets/images/banner.webp">
     
     <link rel="stylesheet" href="css/style.css">
     <!--
@@ -34,8 +34,8 @@
          avoid fetching an unused variant.
          (An `imagesrcset`/`imagesizes="100vw"` preload cannot resolve its
          candidate before layout and delays the LCP fetch by ~0.7 s.) -->
-    <link rel="preload" as="image" href="ecliptica_background-768.webp" media="(min-width: 641px)">
-    <link rel="preload" as="image" href="ecliptica_background-480.webp" media="(max-width: 640px)">
+    <link rel="preload" as="image" href="assets/images/ecliptica_background-768.webp" media="(min-width: 641px)">
+    <link rel="preload" as="image" href="assets/images/ecliptica_background-480.webp" media="(max-width: 640px)">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -71,15 +71,15 @@
         <div class="container">
             <div class="nav-brand">
                 <a href="/">
-                    <img src="logo.png.webp" srcset="logo-100.webp 100w, logo.png.webp 512w" sizes="50px" alt="QuasarApp" class="nav-logo" width="50" height="50">
+                    <img src="assets/images/logo.png.webp" srcset="assets/images/logo-100.webp 100w, assets/images/logo.png.webp 512w" sizes="50px" alt="QuasarApp" class="nav-logo" width="50" height="50">
                     <span>QuasarApp</span>
                 </a>
             </div>
             <ul class="nav-links" aria-label="Main navigation">
                 <li><a href="#home" data-lang="nav.home">Home</a></li>
-                <li><a href="#projects" data-lang="nav.projects">Projects</a></li>
-                <li><a href="#about" data-lang="nav.about">About</a></li>
-                <li><a href="#contact" data-lang="nav.contact">Contact</a></li>
+                <li><a href="#featured" data-lang="nav.projects">Projects</a></li>
+                <li><a href="/about" data-lang="nav.about">About</a></li>
+                <li><a href="/contacts" data-lang="nav.contact">Contact</a></li>
                 <li>
                     <select id="lang-select" class="lang-select" aria-label="Toggle language" onchange="selectLanguage(this.value)">
                         <option value="en" selected>EN</option>
@@ -102,15 +102,15 @@
                      CSS viewport width, so the 6px blur hides the mild upscale
                      on high-density screens while cutting the LCP decode/paint
                      work (768x432 -> 480x270) on mobile (PR #91). -->
-                <source media="(max-width: 640px)" srcset="ecliptica_background-480.webp 480w">
-                <img src="ecliptica_background-768.webp" srcset="ecliptica_background-480.webp 480w, ecliptica_background-768.webp 768w" sizes="100vw" fetchpriority="high" class="parallax-bg-img blur-bg" alt="Ecliptica Background" style="position: absolute; top: 50%; left: 50%; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; transform: translate(-50%, -50%) scale(1.07);">
+                <source media="(max-width: 640px)" srcset="assets/images/ecliptica_background-480.webp 480w">
+                <img src="assets/images/ecliptica_background-768.webp" srcset="assets/images/ecliptica_background-480.webp 480w, assets/images/ecliptica_background-768.webp 768w" sizes="100vw" fetchpriority="high" class="parallax-bg-img blur-bg" alt="Ecliptica Background" style="position: absolute; top: 50%; left: 50%; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; transform: translate(-50%, -50%) scale(1.07);">
             </picture>
         </div>
         <div class="hero-content">
             <!-- Ecliptica Featured Banner - Using Steam header image -->
             <div class="ecliptica-featured">
                 <div class="ecliptica-header-content">
-                    <img src="ecliptica_icon_logo.png.webp" srcset="ecliptica_icon_logo-240.webp 240w, ecliptica_icon_logo.png.webp 256w" sizes="150px" alt="Ecliptica Logo" class="ecliptica-logo" width="120" height="120">
+                    <img src="assets/images/ecliptica_icon_logo.png.webp" srcset="assets/images/ecliptica_icon_logo-240.webp 240w, assets/images/ecliptica_icon_logo.png.webp 256w" sizes="150px" alt="Ecliptica Logo" class="ecliptica-logo" width="120" height="120">
                     <div class="ecliptica-header-info">
                         <h1 class="ecliptica-title">Ecliptica</h1>
                         <p class="ecliptica-subtitle">Found Corporations. Fight for Resources. Build a Sustainable Future.</p>
@@ -126,8 +126,8 @@
                              large desktop screens, and decoding 924x524 in the
                              LCP window produced long main-thread tasks on
                              mobile (PR #91). -->
-                        <source media="(max-width: 640px)" srcset="ecliptica_capsule.jpg.webp 616w">
-                        <img src="ecliptica_capsule.jpg.webp" srcset="ecliptica_capsule-308.webp 308w, ecliptica_capsule.jpg.webp 616w, ecliptica_capsule-924.webp 924w" sizes="(max-width: 640px) 100vw, 616px" alt="Ecliptica Capsule" class="ecliptica-capsule-img" loading="lazy" decoding="async" width="616" height="353">
+                        <source media="(max-width: 640px)" srcset="assets/images/ecliptica_capsule.jpg.webp 616w">
+                        <img src="assets/images/ecliptica_capsule.jpg.webp" srcset="assets/images/ecliptica_capsule-308.webp 308w, assets/images/ecliptica_capsule.jpg.webp 616w, assets/images/ecliptica_capsule-924.webp 924w" sizes="(max-width: 640px) 100vw, 616px" alt="Ecliptica Capsule" class="ecliptica-capsule-img" loading="lazy" decoding="async" width="616" height="353">
                     </picture>
                 </div>
                 
@@ -149,35 +149,6 @@
         </div>
     </section>
 
-    <!-- Core business verticals (issue #78, TZ 2.1) -->
-    <section id="verticals" class="verticals-section">
-        <div class="container">
-            <h2 class="section-title" data-lang="verticals.title">What We Do</h2>
-            <div class="verticals-grid">
-                <article class="vertical-card">
-                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-gamepad"></use></svg></div>
-                    <h3 data-lang="verticals.gamesTitle">Game Development</h3>
-                    <p data-lang="verticals.gamesText">We build immersive 3D games on Qt Quick 3D - from dynamic NPC-driven economies and adaptive quests to full colony survival experiences like our flagship title Ecliptica.</p>
-                    <div class="vertical-tags">
-                        <span class="lang-badge">Qt Quick 3D</span>
-                        <span class="lang-badge">C++23</span>
-                        <span class="lang-badge">Ecliptica</span>
-                    </div>
-                </article>
-                <article class="vertical-card">
-                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-tool"></use></svg></div>
-                    <h3 data-lang="verticals.softwareTitle">Open-Source &amp; Enterprise Software</h3>
-                    <p data-lang="verticals.softwareText">We develop cross-platform desktop, mobile and system software in C++/Qt - deployment tools, backend libraries and enterprise solutions trusted in production.</p>
-                    <div class="vertical-tags">
-                        <span class="lang-badge">C++ / Qt</span>
-                        <span class="lang-badge">QML</span>
-                        <span class="lang-badge">Cross-Platform</span>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
     <!-- Featured Projects showcase (issue #78, TZ 2.1). The Ecliptica card
          links to the shipped /ecliptica.html hub page (issue #79); the
          remaining cards link to the /projects/{slug} detail pages shipped
@@ -187,12 +158,15 @@
             <h2 class="section-title" data-lang="featured.title">Featured Projects</h2>
             <p class="section-subtitle" data-lang="featured.subtitle">The flagship products and open-source tools that define the QuasarApp stack.</p>
             <div class="featured-grid">
-                <a class="featured-card featured-card-game" href="/ecliptica.html">
-                    <img src="ecliptica_icon_logo.png.webp" srcset="ecliptica_icon_logo-240.webp 240w, ecliptica_icon_logo.png.webp 256w" sizes="96px" alt="Ecliptica Logo" class="featured-logo" loading="lazy" decoding="async" width="96" height="96">
-                    <h3>Ecliptica</h3>
-                    <p class="lang-badge">Game</p>
-                    <p data-lang="projects.ecliptica">Ecliptica is a first-person open-world colony survival simulator with a fully dynamic economy. Set on a hostile alien planet, you'll found corporations, fight for resources, and build a sustainable future.</p>
-                    <span class="featured-cta" data-lang="featured.details">View details</span>
+                <a class="featured-card ecliptica-card" href="/ecliptica.html">
+                    <img src="assets/images/ecliptica_background-768.webp" srcset="assets/images/ecliptica_background-480.webp 480w, assets/images/ecliptica_background-768.webp 768w" sizes="(max-width: 640px) 100vw, 616px" alt="Ecliptica Background" class="ecliptica-card-bg blur-bg" loading="lazy">
+                    <div class="ecliptica-card-content">
+                        <img src="assets/images/ecliptica_icon_logo.png.webp" srcset="assets/images/ecliptica_icon_logo-240.webp 240w, assets/images/ecliptica_icon_logo.png.webp 256w" sizes="96px" alt="Ecliptica Logo" class="game-logo featured-logo" loading="lazy" width="96" height="96">
+                        <h3>Ecliptica</h3>
+                        <p class="lang-badge">Game</p>
+                        <p data-lang="projects.ecliptica">Ecliptica is a first-person open-world colony survival simulator with a fully dynamic economy. Set on a hostile alien planet, you'll found corporations, fight for resources, and build a sustainable future.</p>
+                        <span class="featured-cta" data-lang="featured.details">View details</span>
+                    </div>
                 </a>
                 <a class="featured-card" href="/projects/cqtdeployer">
                     <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-tool"></use></svg></div>
@@ -250,38 +224,15 @@
         </div>
     </section>
 
-    <!-- Technology stack & open-source footprint (issue #78, TZ 2.1). The
-         GitHub org metrics are rendered by js/home-data.js from the
-         build-time cache data/github-org-metrics.json (refresh with
-         `node scripts/fetch-github-metrics.js`). The static markup below
-         is the graceful offline fallback. -->
-    <section id="stack" class="stack-section">
-        <div class="container">
-            <h2 class="section-title" data-lang="stack.title">Technology Stack &amp; Open-Source Footprint</h2>
-            <p class="section-subtitle" data-lang="stack.text">Modern C++23 and Qt 6 across desktop, mobile and games - with a large open-source footprint on GitHub.</p>
-            <div class="stack-tags">
-                <span class="lang-badge">C++23</span>
-                <span class="lang-badge">Qt 6 / QML</span>
-                <span class="lang-badge">Qt Quick 3D</span>
-                <span class="lang-badge">CMake</span>
-                <span class="lang-badge">SQLite</span>
-                <span class="lang-badge">CI/CD</span>
-            </div>
-            <div class="github-metrics" id="github-metrics">
-                <div class="stat-item">
-                    <span class="stat-number" id="gh-repo-count">-</span>
-                    <span class="stat-label" data-lang="stack.repos">Public repositories</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" id="gh-total-stars">-</span>
-                    <span class="stat-label" data-lang="stack.stars">Total stars</span>
-                </div>
-                <p class="metrics-source" id="gh-metrics-source-line">
-                    <span id="gh-metrics-source" data-lang="stack.source">GitHub metrics are cached at build time from the GitHub API. Data is currently unavailable - see the QuasarApp organization on GitHub.</span>
-                </p>
-            </div>
-        </div>
-    </section>
+    <!-- Per EndrII's review of PR #96 the home page no longer duplicates
+         the /about or /contacts content (issues #73 / #74): the "What We
+         Do" verticals section, the "Our Projects" project-card grid, the
+         "Technology Stack & open-source footprint" section (the GitHub
+         org metrics are baked into the /about page markup from
+         data/github-org-metrics.json) and the "Get in Touch" contact
+         section were removed from the home page. The navbar "Projects"
+         entry anchors the #featured showcase above, the "About" entry
+         links to /about and the "Contact" entry links to /contacts. -->
 
 </main>
 

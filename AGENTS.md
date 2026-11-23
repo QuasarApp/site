@@ -4,7 +4,8 @@ Guidance for AI agents (and humans) working in this repository.
 
 ## Description
 
-Static single-page website for the QuasarApp organization. Pure HTML5 +
+Static website for the QuasarApp organization (home page plus the
+`/contacts` page). Pure HTML5 +
 CSS3 + vanilla JS — no framework, no build step, no dependencies.
 Multi-language: English (default), Russian, Montenegrin, German and
 Spanish. Hosted on GitHub Pages: the `main` branch root is served at
@@ -13,21 +14,49 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
 ## Architecture
 
 - `index.html` — single page: navbar, hero (with Ecliptica featured
-  banner), business verticals, featured projects showcase (cards for the
-  6 key projects - Ecliptica links to the `/ecliptica.html` hub, issue
-  #79, the rest to the upcoming `/projects/{slug}` pages, issue #77),
-  latest news/devlog feed, technology stack + GitHub org
-  metrics, project-card grid, about + stats, contact, footer with social
-  links (home sections per issue #78 / TZ 2.1).
+  banner), featured projects showcase (cards for the 6 key projects -
+  Ecliptica links to the `/ecliptica.html` hub, issue #79, the rest to
+  the `/projects/{slug}` pages, issue #77), latest news/devlog feed,
+  footer with social links (home sections per issue #78 / TZ 2.1). Per
+  the EndrII review of PR #96 the home page no longer duplicates the
+  /about or /contacts content: the "What We Do" verticals
+  section, the "Our Projects" project-card grid, the "Technology Stack &
+  open-source footprint" section (the GitHub org metrics are baked into
+  the /about page markup instead) and the "Get in Touch" contact section
+  were removed from the home page. The navbar "Projects" entry anchors
+  the #featured showcase, the "About" entry links to /about (issue #73,
+  which also removed the redundant "About Us" section) and the "Contact"
+  entry links to /contacts (issue #74).
 - `ecliptica.html` — Ecliptica flagship hub page (issue #79): hero with
-  video placeholder, mechanics tabs, development roadmap, system
-  requirements table, community links, media gallery with lightbox and a
-  feedback form. Loads `js/i18n.js`, `js/parallax.js` and `js/main.js`;
-  its `data-lang` keys live in the nested `ecliptica` section of every
-  language in `js/i18n.js` (the same key set is enforced by
-  `tests/i18n.test.js` for all five languages).
+  the Steam key art ("gameplay video coming soon" caption), mechanics
+  tabs, development roadmap (Steam-verified milestones), system
+  requirements table (the exact Steam specs), community links (Discord,
+  Reddit, Steam store page) and a media gallery of Steam screenshots
+  with lightbox. The footer is copied verbatim from `index.html`. Loads
+  `js/i18n.js`, `js/parallax.js` and `js/main.js`; its `data-lang` keys
+  live in the nested `ecliptica` section of every language in
+  `js/i18n.js` (the same key set is enforced by `tests/i18n.test.js` for
+  all five languages).
 - `css/style.css` — the only stylesheet; reuse the CSS design tokens on
   `:root`.
+- `projects/{slug}/index.html` — project detail pages (issue #77) for the
+  6 key projects: `ecliptica`, `cqtdeployer`, `cheatcard`,
+  `yourtimedelivery`, `qtssecret` (canonical slug for Qt-Secret, with a
+  noindex `qt-secret` redirect stub) and `heart`. Shared template: header
+  + logo, category/status badges, OS badges, problem, value, features,
+  tech stack tags, media/downloads, action buttons, and a GitHub block
+  (stars, latest release, archived note, "updated" date) for the five
+  open-source projects — YourTimeDelivery has no public repository and
+  renders "No Public Repository" contact messaging instead. All copy is
+  localized via `data-lang` keys under `projectsDetail.{slug}`.
+- `about/index.html` — the About Us & Services page (issue #73, TZ 2.5):
+  studio background (QuasarApp Group d.o.o., Bar, Montenegro), team
+  competencies (C++23, Qt/QML, CI/CD, cross-platform deployment) and B2B
+  services (outsourcing, consulting, platform porting) as service cards,
+  plus a B2B CTA toward `/contacts` (issue #74).
+  Reuses the existing `about.*` i18n copy and the cached org metrics
+  (repo count, total stars); all new copy is localized via `data-lang`
+  keys under `aboutPage.*`.
 - `js/i18n.js` (load 1st) — `translations` object for `en`/`ru`/`me`/`de`/`es`;
   elements carry `data-lang` dot-path keys. When adding or changing a
   string, update the key in the markup and all five language blocks
@@ -39,31 +68,77 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
 - `js/parallax.js` (load 2nd) — global `ParallaxHandler` class.
 - `js/main.js` (load 3rd) — scroll animations, card tilt, particles.
 - `js/home-data.js` (load 4th) — renders the devlog feed from
-  `data/devlog.json` (latest 5 posts with date + tag) and the GitHub org
-  metrics from `data/github-org-metrics.json` (issue #78). Progressive
+  `data/devlog.json` (latest 5 posts with date + tag). Progressive
   enhancement: the static markup keeps the documented devlog empty state
-  and the metrics fallback line when a JSON file is missing or
-  unreachable (graceful offline fallback). Re-renders dynamic content on
-  the `quasarapp:languagechange` event.
+  when the JSON file is missing or unreachable (graceful offline
+  fallback). Re-renders dynamic content on the
+  `quasarapp:languagechange` event. The GitHub org metrics renderer was
+  removed together with the home page "Technology Stack & open-source
+  footprint" section (EndrII review of PR #96) — the cached values are
+  baked into the /about page markup instead.
+- `contacts/index.html` — the `/contacts` page (issue #74): anti-spam
+  contact form (client-side validation, honeypot, optional Cloudflare
+  Turnstile, loading/success/error states; graceful mailto fallback to
+  `quasarappdevelop@gmail.com` with a visible notice while the
+  rate-limited endpoint does not exist yet), official links block
+  (GitHub, Steam, Discord, Telegram, Reddit, Bluesky, YouTube, email —
+  verified URLs only). The legal information section was removed from the
+  page per the EndrII review of PR #96 (guarded by
+  `tests/contacts.test.js`). Loads `js/i18n.js`, `js/main.js` and
+  `js/contacts.js`; shares the i18n keys from `js/i18n.js` (`contacts.*`
+  namespace).
+- `js/contacts.js` (contacts page only, load 3rd) — `/contacts` form
+  controller: validation, honeypot, Turnstile (the third-party script is
+  injected only when `TURNSTILE_SITE_KEY` is configured in the file),
+  loading/success/error states and the mailto fallback. Delivery is
+  configured at the top of the file (`CONTACT_ENDPOINT`,
+  `TURNSTILE_SITE_KEY`); while the endpoint (Docker/CI-CD issue) is not
+  deployed the form degrades gracefully.
+- `js/projects-data.js` — project detail pages only (loaded after
+  `js/i18n.js` and `js/main.js`): renders the GitHub block from
+  `data/projects-github.json` (issue #77) and re-localizes the labels on
+  `quasarapp:languagechange`. The static markup bakes in the same cached
+  values as the graceful offline fallback.
 - `data/github-org-metrics.json` — build-time cache of the QuasarApp
-  GitHub org metrics (repo count, total stars, fetchedAt). Refresh with
+  GitHub org metrics (repo count, total stars, fetchedAt). The values
+  are baked into the /about page markup (the home page no longer renders
+  the metrics section, EndrII review of PR #96). Refresh with
   `node scripts/fetch-github-metrics.js` (no token needed, Node >= 18).
   If the GitHub API is unreachable, the script keeps the existing cache
   and exits 0 (graceful offline fallback); without any cache it exits 1.
+- `data/projects-github.json` — build-time cache of the per-project
+  GitHub data used by the `/projects/{slug}` pages (issue #77): for each
+  of the five open-source projects — repo URL, stars, latest release tag
+  + URL (or null), archived flag — plus `fetchedAt`. YourTimeDelivery is
+  intentionally absent (no public repository; never invent one). Refresh
+  with `node scripts/fetch-projects-github.js` (no token needed, Node >=
+  18); same offline behavior as the org metrics fetcher (keeps the
+  existing cache and exits 0, exits 1 only without any cache).
 - `data/devlog.json` — devlog content collection for the home feed:
   `{"posts": [{ "slug", "title", "date", "tags": [], "excerpt" }]}`.
   Seeded by the devlog issue (#75); while empty, the home page shows the
   explicit empty state.
-- `scripts/` — dependency-free Node helper scripts (the metrics fetcher
-  above); they are build-time tools and are not loaded by the browser.
+- `scripts/` — dependency-free Node helper scripts (the two build-time
+  GitHub metrics fetchers above); they are build-time tools and are not
+  loaded by the browser.
 - `tests/` — dependency-free Node.js test suite run with
   `node --test tests/*.test.js`; executed on every pull request by the
   `.github/workflows/auto-tests.yml` GitHub Actions workflow
   (`auto-tests` job plus a `lighthouse` job that enforces 90+ Performance
   on Desktop and Mobile, see below). `tests/home.test.js` guards the home
-  sections (issue #78); `tests/links.test.js` exempts the upcoming
-  `/projects/...` and `/devlog/...` routes (issues #75/#77) from the
-  file-existence check until those pages land.
+  sections (issue #78); `tests/projects.test.js` guards the
+  `/projects/{slug}` detail pages (issue #77); `tests/about.test.js`
+  guards the `/about` page (issue #73); `tests/links.test.js` scans
+  every HTML page (the root pages incl. the `/ecliptica.html` hub,
+  issue #79 + `/projects/{slug}` + `/about` + `/contacts`) for
+  resolvable local references and exempts only the upcoming
+  `/devlog/...` routes (issue #75) from the file-existence check until
+  they land;
+  `tests/i18n.test.js` checks key parity plus every `data-lang` key of
+  all HTML pages; `tests/contacts.test.js` guards the `/contacts`
+  acceptance criteria (issue #74): form validation and states,
+  honeypot/Turnstile wiring, verified external links only, and that the
+  legal information section stays removed (EndrII review of PR #96).
 - Media & performance (issue #81):
   - All content images are pre-optimized WebP committed to the repo (no
     build step). Responsive variants (`*-480.webp`, `*-768.webp`, ...) live

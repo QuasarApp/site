@@ -36,6 +36,69 @@ test('featured cards link to the project pages (Ecliptica hub or /projects/{slug
     }
 });
 
+test('the home page links to the /about page (issue #73)', () => {
+    // The dedicated About page must be reachable from the home page
+    // (review of PR #97): the navbar "About" entry points to /about.
+    const aboutLinks = [...html.matchAll(/<a\b[^>]*href="\/about\/?"[^>]*>/g)];
+    assert.ok(
+        aboutLinks.length >= 1,
+        `expected the navbar to link to /about, found ${aboutLinks.length} link(s)`
+    );
+});
+
+test('the home page no longer duplicates the About Us copy (issue #73)', () => {
+    // The About Us information lives on the dedicated /about page
+    // (EndrII review of PR #97): the home page must not repeat the
+    // studio copy, only link to the page from the navbar.
+    assert.ok(
+        !/<section\b[^>]*id=["']about["']/.test(html),
+        'home page still has an #about section'
+    );
+    for (const key of ['about.title', 'about.text', 'about.text2', 'about.description']) {
+        assert.ok(
+            !html.includes(`data-lang="${key}"`),
+            `home page still duplicates the '${key}' copy that lives at /about`
+        );
+    }
+});
+
+test('the home page navbar links to the /contacts page (issue #74)', () => {
+    // The contact page must be reachable from the home page (EndrII
+    // review of PR #96): the navbar "Contact" entry points to /contacts
+    // instead of the removed #contact in-page anchor.
+    const contactLinks = [...html.matchAll(/<a\b[^>]*href="\/contacts\/?"[^>]*>/g)];
+    assert.ok(
+        contactLinks.length >= 1,
+        `expected the home page to link to /contacts, found ${contactLinks.length} link(s)`
+    );
+    assert.ok(
+        !/<a\b[^>]*href=["']#contact["']/.test(html),
+        'home page still links to the removed #contact anchor'
+    );
+});
+
+test('the "Our Projects" grid and "Get in Touch" sections were removed from the home page (issue #74 review)', () => {
+    // The "Our Projects" project-card grid (#projects) and the "Get in
+    // Touch" contact section (#contact) no longer live on the home page
+    // (EndrII review of PR #96): the projects are showcased in #featured
+    // and on the /projects/{slug} pages, the contact form lives on
+    // /contacts.
+    assert.ok(
+        !/<section\b[^>]*id=["']projects["']/.test(html),
+        'home page still has the #projects "Our Projects" section'
+    );
+    assert.ok(
+        !/<section\b[^>]*id=["']contact["']/.test(html),
+        'home page still has the #contact "Get in Touch" section'
+    );
+    for (const key of ['projects.title', 'projects.text', 'projects.empty', 'contact.title', 'contact.text']) {
+        assert.ok(
+            !html.includes(`data-lang="${key}"`),
+            `home page still duplicates the '${key}' copy`
+        );
+    }
+});
+
 test('the devlog content collection JSON exists and is a valid posts array', () => {
     const file = path.join(ROOT, 'data', 'devlog.json');
     assert.ok(fs.existsSync(file), 'data/devlog.json is missing');

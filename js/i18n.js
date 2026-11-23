@@ -147,7 +147,8 @@ const translations = {
             title: 'About Us',
             text: 'QuasarApp is an open-source organization dedicated to creating innovative software solutions. We believe in the power of open collaboration and building tools that empower developers worldwide.',
             description: 'Our mission is to build high-quality software that helps developers and organizations succeed.',
-            text2: 'Our team consists of passionate engineers working on cutting-edge technologies, from desktop frameworks to web applications and game development tools.'
+            text2: 'Our team consists of passionate engineers working on cutting-edge technologies, from desktop frameworks to web applications and game development tools.',
+            moreLink: 'More about the studio'
         },
         aboutPage: {
             backToHome: 'Back to home',
@@ -352,7 +353,8 @@ const translations = {
             title: 'О нас',
             text: 'QuasarApp — это организация с открытым исходным кодом, посвящённая созданию инновационных программных решений. Мы верим в силу открытого сотрудничества и создания инструментов, которые помогают разработчикам по всему миру.',
             description: 'Наша миссия — создавать высококачественное программное обеспечение, которое помогает разработчикам и организациям преуспевать.',
-            text2: 'Наша команда состоит из увлечённых инженеров, работающих с передовыми технологиями, от десктопных фреймворков до веб-приложений и инструментов для разработки игр.'
+            text2: 'Наша команда состоит из увлечённых инженеров, работающих с передовыми технологиями, от десктопных фреймворков до веб-приложений и инструментов для разработки игр.',
+            moreLink: 'Подробнее о студии'
         },
         aboutPage: {
             backToHome: 'На главную',
@@ -557,7 +559,8 @@ const translations = {
             title: 'Über uns',
             text: 'QuasarApp ist eine Open-Source-Organisation, die sich dem Erschaffen innovativer Softwarelösungen widmet. Wir glauben an die Kraft der offenen Zusammenarbeit und an den Aufbau von Werkzeugen, die Entwicklern auf der ganzen Welt Empowerment bieten.',
             description: 'Unsere Mission ist es, hochwertiges Software zu entwickeln, das Entwicklern und Organisationen hilft, erfolgreich zu sein.',
-            text2: 'Unsere Mannschaft besteht aus leidenschaftlichen Ingenieuren, die mit state-of-the-art-Technologien arbeiten, von Desktop-Frameworks bis hin zu Webanwendungen und Spieleentwicklungswerkzeugen.'
+            text2: 'Unsere Mannschaft besteht aus leidenschaftlichen Ingenieuren, die mit state-of-the-art-Technologien arbeiten, von Desktop-Frameworks bis hin zu Webanwendungen und Spieleentwicklungswerkzeugen.',
+            moreLink: 'Mehr über das Studio'
         },
         aboutPage: {
             backToHome: 'Zur Startseite',
@@ -762,7 +765,8 @@ const translations = {
             title: 'Sobre nosotros',
             text: 'QuasarApp es una organización de código abierto dedicada a crear soluciones de software innovadoras. Creemos en el poder de la colaboración abierta y en la creación de herramientas que empoderan a desarrolladores de todo el mundo.',
             description: 'Nuestra misión es desarrollar software de alta calidad que ayude a desarrolladores y organizaciones a tener éxito.',
-            text2: 'Nuestro equipo consiste en ingenieros apasionados que trabajan con tecnologías de vanguardia, desde marcos de escritorio hasta aplicaciones web y herramientas de desarrollo de juegos.'
+            text2: 'Nuestro equipo consiste en ingenieros apasionados que trabajan con tecnologías de vanguardia, desde marcos de escritorio hasta aplicaciones web y herramientas de desarrollo de juegos.',
+            moreLink: 'Más sobre el estudio'
         },
         aboutPage: {
             backToHome: 'Volver al inicio',
@@ -967,7 +971,8 @@ const translations = {
             title: 'O nama',
             text: 'QuasarApp je organizacija otvorenog koda posvećena kreiranju inovativnih softverskih rješenja. Vjerujemo u snagu otvorene saradnje i izgradnje alata koji pomažu developerima širom svijeta.',
             description: 'Naša misija je kreiranje visokokvalitetnog softvera koji pomaže developerima i organizacijama da uspijevaju.',
-            text2: 'Naš tim čine strastveni inženjeri koji rade na najnovijim tehnologijama, od desktop frameworkova do web aplikacija i alata za razvoj igara.'
+            text2: 'Naš tim čine strastveni inženjeri koji rade na najnovijim tehnologijama, od desktop frameworkova do web aplikacija i alata za razvoj igara.',
+            moreLink: 'Više o studiju'
         },
         aboutPage: {
             backToHome: 'Nazad na početnu',

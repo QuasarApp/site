@@ -34,6 +34,17 @@ test('featured cards for the 6 key projects link to /projects/{slug}', () => {
     }
 });
 
+test('the home page links to the /about page (issue #73)', () => {
+    // The dedicated About page must be reachable from the home page
+    // (review of PR #97): the navbar "About" entry and the CTA inside
+    // the #about section both point to /about.
+    const aboutLinks = [...html.matchAll(/<a\b[^>]*href="\/about\/?"[^>]*>/g)];
+    assert.ok(
+        aboutLinks.length >= 2,
+        `expected the navbar and the #about section to link to /about, found ${aboutLinks.length} link(s)`
+    );
+});
+
 test('the devlog content collection JSON exists and is a valid posts array', () => {
     const file = path.join(ROOT, 'data', 'devlog.json');
     assert.ok(fs.existsSync(file), 'data/devlog.json is missing');

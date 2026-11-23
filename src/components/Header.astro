@@ -1,0 +1,77 @@
+---
+// Global header: brand, page navigation and the EN/RU/DE/ES language
+// switcher (issue #72). The switcher is a <select> whose options are the
+// locale-prefixed URLs of the current page; the change handler (in Base)
+// navigates to the selected URL, so the switcher works on every page.
+// The current path is first stripped of its locale prefix (non-default
+// locales live under /{locale}/) so every option maps the same page.
+import { LOCALES, LOCALE_LABELS, localeHref, t, DEFAULT_LOCALE } from '../i18n';
+
+const locale = Astro.currentLocale ?? DEFAULT_LOCALE;
+let pathname = Astro.url.pathname;
+if (pathname.length > 1 && pathname.endsWith('/')) pathname = pathname.slice(0, -1);
+// Strip the active locale prefix: /ru/projects -> /projects, /ru -> /.
+if (locale !== DEFAULT_LOCALE) {
+	if (pathname === `/${locale}`) {
+		pathname = '/';
+	} else if (pathname.startsWith(`/${locale}/`)) {
+		pathname = pathname.slice(locale.length + 1) || '/';
+	}
+}
+
+const nav = [
+	{ path: '/', key: 'nav.home' },
+	{ path: '/projects', key: 'nav.projects' },
+	{ path: '/about', key: 'nav.about' },
+	{ path: '/contacts', key: 'nav.contact' },
+];
+
+function isCurrent(navPath: string): boolean {
+	if (navPath === '/') return pathname === '/';
+	return pathname === navPath || pathname.startsWith(`${navPath}/`);
+}
+---
+<nav class="navbar" aria-label="Main navigation">
+	<div class="container">
+		<div class="nav-brand">
+			<a href={localeHref(locale, '/')}>
+				<img
+					src="/assets/images/logo.png.webp"
+					srcset="/assets/images/logo-100.webp 100w, /assets/images/logo.png.webp 512w"
+					sizes="50px"
+					alt="QuasarApp"
+					class="nav-logo"
+					width="50"
+					height="50"
+				>
+				<span>QuasarApp</span>
+			</a>
+		</div>
+		<ul class="nav-links">
+			{
+				nav.map((item) => (
+					<li>
+						<a href={localeHref(locale, item.path)} aria-current={isCurrent(item.path) ? 'page' : undefined}>
+							{t(locale, item.key)}
+						</a>
+					</li>
+				))
+			}
+			<li>
+				<select
+					id="lang-select"
+					class="lang-select"
+					aria-label={t(locale, 'aria.toggleLanguage')}
+				>
+					{
+						LOCALES.map((l) => (
+							<option value={localeHref(l, pathname)} selected={l === locale}>
+								{LOCALE_LABELS[l]}
+							</option>
+						))
+					}
+				</select>
+			</li>
+		</ul>
+	</div>
+</nav>

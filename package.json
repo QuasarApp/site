@@ -1,0 +1,28 @@
+{
+  "name": "quasarapp-site",
+  "type": "commonjs",
+  "private": true,
+  "version": "2.0.0",
+  "description": "QuasarApp Group website - multi-page static site built with Astro and Tailwind CSS (issue #72)",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "lint": "eslint .",
+    "check": "astro check",
+    "test": "node --test tests/*.test.js",
+    "test:full": "npm run build && npm test"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^7.4.13",
+    "eslint": "^10.15.0",
+    "eslint-plugin-astro": "^3.2.1",
+    "globals": "^17.14.0",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.74.0"
+  }
+}

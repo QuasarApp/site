@@ -1,0 +1,67 @@
+---
+// Action buttons for /projects/{slug} pages (issue #72). The action types
+// come from the project content collection; the Steam/email links are the
+// verified links from the issue and the repository links come from the
+// build-time cache src/data/projects-github.json.
+import { t, localeHref, DEFAULT_LOCALE } from '../i18n';
+import projectsGithub from '../data/projects-github.json';
+
+interface Props {
+	slug: string;
+	actions: string[];
+}
+
+const { slug, actions } = Astro.props;
+const locale = Astro.currentLocale ?? DEFAULT_LOCALE;
+const repoData = (projectsGithub.projects as Record<string, { repoUrl: string }> | undefined)?.[slug];
+const repoUrl = repoData?.repoUrl ?? '';
+
+const STEAM_URL = 'https://store.steampowered.com/app/3723390/Ecliptica/';
+const WISHLIST_URL = 'https://store.steampowered.com/wishlist/add/item?appid=3723390';
+const CONTACT_URL = 'mailto:quasarappdevelop@gmail.com';
+
+type ActionDef = {
+	href: string;
+	labelKey: string;
+	icon: string;
+	cls: string;
+	external: boolean;
+};
+
+function resolve(action: string): ActionDef | null {
+	switch (action) {
+		case 'steam':
+			return { href: STEAM_URL, labelKey: 'projectsDetail.btnSteam', icon: 'icon-steam', cls: 'btn-steam-primary', external: true };
+		case 'wishlist':
+			return { href: WISHLIST_URL, labelKey: 'projectsDetail.btnWishlist', icon: 'icon-heart', cls: 'btn-wishlist', external: true };
+		case 'hub':
+			return { href: localeHref(locale, '/ecliptica'), labelKey: 'projectsDetail.btnEclipticaHub', icon: 'icon-globe', cls: 'btn-secondary', external: false };
+		case 'download':
+			return { href: `${repoUrl}/releases`, labelKey: 'projectsDetail.btnDownload', icon: 'icon-box', cls: 'btn-primary', external: true };
+		case 'github':
+			return { href: repoUrl, labelKey: 'projectsDetail.btnGithub', icon: 'icon-github', cls: 'btn-secondary', external: true };
+		case 'docs':
+			return { href: repoUrl, labelKey: 'projectsDetail.btnDocs', icon: 'icon-tool', cls: 'btn-primary', external: true };
+		case 'contact':
+			return { href: CONTACT_URL, labelKey: 'projectsDetail.btnContact', icon: 'icon-mail', cls: 'btn-primary', external: false };
+		default:
+			return null;
+	}
+}
+
+const resolved = actions.map(resolve).filter((a): a is ActionDef => a !== null);
+---
+{resolved.length > 0 && (
+	<div class="project-actions flex flex-wrap items-center gap-3">
+		{resolved.map((action) => (
+			<a
+				href={action.href}
+				class={`btn ${action.cls}`}
+				{...(action.external ? { target: '_blank', rel: 'noopener' } : {})}
+			>
+				<svg class="icon" aria-hidden="true" focusable="false"><use href={`#${action.icon}`} /></svg>
+				<span>{t(locale, action.labelKey)}</span>
+			</a>
+		))}
+	</div>
+)}

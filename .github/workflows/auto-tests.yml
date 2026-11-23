@@ -9,7 +9,7 @@ on:
 
 jobs:
   auto-tests:
-    name: Site auto tests
+    name: Lint, type-check, build & auto tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -20,7 +20,19 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint (eslint)
+        run: npm run lint
+
+      - name: Type-check (astro check)
+        run: npm run check
+
+      - name: Build (astro build)
+        run: npm run build
 
       - name: Run auto tests
         run: node --test tests/*.test.js
@@ -37,11 +49,17 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static site
+        run: npm run build
 
       - name: Start static server
         run: |
-          nohup npx -y http-server -p 8080 --silent > /dev/null 2>&1 &
+          nohup npx -y http-server dist -p 8080 --silent > /dev/null 2>&1 &
           for i in $(seq 1 30); do
             curl -sf http://127.0.0.1:8080/ > /dev/null && break
             sleep 1

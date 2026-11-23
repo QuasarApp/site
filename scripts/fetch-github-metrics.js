@@ -5,7 +5,7 @@
 //
 // Queries the public GitHub REST API (no token required; unauthenticated
 // rate limit is 60 requests/hour) and caches the result as JSON in
-// data/github-org-metrics.json. The home page (js/home-data.js) renders the
+// src/data/github-org-metrics.json. The Astro home page (src/pages/index.astro) renders the
 // cached numbers - the same build-time cache pattern the /projects/{slug}
 // detail pages (issue #77) use for their per-repo GitHub data.
 //
@@ -22,7 +22,7 @@ const path = require('node:path');
 
 const ORG = 'QuasarApp';
 const API_BASE = `https://api.github.com/orgs/${ORG}/repos`;
-const OUT_FILE = path.join(__dirname, '..', 'data', 'github-org-metrics.json');
+const OUT_FILE = path.join(__dirname, '..', 'src', 'data', 'github-org-metrics.json');
 const TIMEOUT_MS = 20000;
 const MAX_PAGES = 10; // safety cap: 1000 repositories
 const PER_PAGE = 100;

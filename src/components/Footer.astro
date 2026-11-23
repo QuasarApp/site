@@ -1,0 +1,35 @@
+---
+// Global footer: verified social/contact links (issue #72) and copyright.
+// The verified external links must stay exactly as listed in the issue:
+// GitHub, Bluesky, email, YouTube and the Steam curator page.
+import { t, DEFAULT_LOCALE } from '../i18n';
+
+const locale = Astro.currentLocale ?? DEFAULT_LOCALE;
+
+const social = [
+	{ href: 'https://github.com/QuasarApp', key: 'footer.github', icon: 'icon-github', external: true },
+	{ href: 'https://bsky.app/profile/quasarapp.bsky.social', key: 'footer.bluesky', icon: 'icon-bluesky', external: true },
+	{ href: 'mailto:quasarappdevelop@gmail.com', key: 'footer.email', icon: 'icon-mail', external: false },
+	{ href: 'https://www.youtube.com/@quasarappcore', key: 'footer.youtube', icon: 'icon-youtube', external: true },
+	{ href: 'https://store.steampowered.com/curator/45704880', key: 'footer.steam', icon: 'icon-steam', external: true },
+];
+---
+<footer class="footer" role="contentinfo">
+	<div class="container">
+		<div class="footer-social">
+			{social.map((link) => (
+				<a href={link.href} class="social-link" {...(link.external ? { target: '_blank', rel: 'noopener' } : {})}>
+					<svg class="icon" aria-hidden="true" focusable="false"><use href={`#${link.icon}`} /></svg>
+					<span>{t(locale, link.key)}</span>
+				</a>
+			))}
+		</div>
+		<div class="footer-bottom">
+			<p>{t(locale, 'footer.copyright')}</p>
+			<p class="made-with">
+				<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-heart" /></svg>
+				Made with <span class="glow">passion</span>
+			</p>
+		</div>
+	</div>
+</footer>

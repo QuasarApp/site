@@ -1,0 +1,11 @@
+---
+// /[locale]/devlog routes (issue #72): RU/DE/ES. Body shared with the EN
+// route (src/pages/devlog/index.astro).
+import { localeStaticPaths } from '../../i18n';
+import DevlogPage from '../../components/pages/DevlogPage.astro';
+
+export function getStaticPaths() {
+	return localeStaticPaths();
+}
+---
+<DevlogPage />

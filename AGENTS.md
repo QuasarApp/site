@@ -4,114 +4,111 @@ Guidance for AI agents (and humans) working in this repository.
 
 ## Description
 
-Static single-page website for the QuasarApp organization. Pure HTML5 +
-CSS3 + vanilla JS — no framework, no build step, no dependencies.
-Multi-language: English (default), Russian, Montenegrin, German and
-Spanish. Hosted on GitHub Pages: the `main` branch root is served at
-`https://quasarapp.github.io/site/` (custom domain via `CNAME`).
+Static multi-page website for the QuasarApp organization. Built with
+**Astro 7** (content layer, i18n routing, static output) and **Tailwind
+CSS 4** (`@tailwindcss/vite`, design tokens in `@theme`). Multi-language:
+English (default, unprefixed at `/`), Russian, German and Spanish under
+`/ru/`, `/de/`, `/es/`. Hosted on GitHub Pages: the `main` branch root is
+served at `https://quasarapp.me/` (custom domain via `CNAME`).
 
 ## Architecture
 
-- `index.html` — single page: navbar, hero (with Ecliptica featured
-  banner), business verticals, featured projects showcase (cards for the
-  6 key projects linking to the upcoming `/projects/{slug}` pages,
-  issue #77), latest news/devlog feed, technology stack + GitHub org
-  metrics, project-card grid, about + stats, contact, footer with social
-  links (home sections per issue #78 / TZ 2.1).
-- `css/style.css` — the only stylesheet; reuse the CSS design tokens on
-  `:root`.
-- `projects/{slug}/index.html` — project detail pages (issue #77) for the
-  6 key projects: `ecliptica`, `cqtdeployer`, `cheatcard`,
-  `yourtimedelivery`, `qtssecret` (canonical slug for Qt-Secret, with a
-  noindex `qt-secret` redirect stub) and `heart`. Shared template: header
-  + logo, category/status badges, OS badges, problem, value, features,
-  tech stack tags, media/downloads, action buttons, and a GitHub block
-  (stars, latest release, archived note, "updated" date) for the five
-  open-source projects — YourTimeDelivery has no public repository and
-  renders "No Public Repository" contact messaging instead. All copy is
-  localized via `data-lang` keys under `projectsDetail.{slug}`.
-- `js/i18n.js` (load 1st) — `translations` object for `en`/`ru`/`me`/`de`/`es`;
-  elements carry `data-lang` dot-path keys. When adding or changing a
-  string, update the key in the markup and all five language blocks
-  together. EN is the default language; the navbar `#lang-select`
-  switcher lists every active language and the choice is persisted in
-  `localStorage` (`quasarapp_language`). After each update it dispatches
-  a `quasarapp:languagechange` CustomEvent so data renderers can
-  re-localize dynamic content.
-- `js/parallax.js` (load 2nd) — global `ParallaxHandler` class.
-- `js/main.js` (load 3rd) — scroll animations, card tilt, particles.
-- `js/home-data.js` (load 4th) — renders the devlog feed from
-  `data/devlog.json` (latest 5 posts with date + tag) and the GitHub org
-  metrics from `data/github-org-metrics.json` (issue #78). Progressive
-  enhancement: the static markup keeps the documented devlog empty state
-  and the metrics fallback line when a JSON file is missing or
-  unreachable (graceful offline fallback). Re-renders dynamic content on
-  the `quasarapp:languagechange` event.
-- `js/projects-data.js` — project detail pages only (loaded after
-  `js/i18n.js` and `js/main.js`): renders the GitHub block from
-  `data/projects-github.json` (issue #77) and re-localizes the labels on
-  `quasarapp:languagechange`. The static markup bakes in the same cached
-  values as the graceful offline fallback.
-- `data/github-org-metrics.json` — build-time cache of the QuasarApp
-  GitHub org metrics (repo count, total stars, fetchedAt). Refresh with
-  `node scripts/fetch-github-metrics.js` (no token needed, Node >= 18).
-  If the GitHub API is unreachable, the script keeps the existing cache
-  and exits 0 (graceful offline fallback); without any cache it exits 1.
-- `data/projects-github.json` — build-time cache of the per-project
-  GitHub data used by the `/projects/{slug}` pages (issue #77): for each
-  of the five open-source projects — repo URL, stars, latest release tag
-  + URL (or null), archived flag — plus `fetchedAt`. YourTimeDelivery is
-  intentionally absent (no public repository; never invent one). Refresh
-  with `node scripts/fetch-projects-github.js` (no token needed, Node >=
-  18); same offline behavior as the org metrics fetcher (keeps the
-  existing cache and exits 0, exits 1 only without any cache).
-- `data/devlog.json` — devlog content collection for the home feed:
-  `{"posts": [{ "slug", "title", "date", "tags": [], "excerpt" }]}`.
-  Seeded by the devlog issue (#75); while empty, the home page shows the
-  explicit empty state.
-- `scripts/` — dependency-free Node helper scripts (the two build-time
-  GitHub metrics fetchers above); they are build-time tools and are not
-  loaded by the browser.
-- `tests/` — dependency-free Node.js test suite run with
-  `node --test tests/*.test.js`; executed on every pull request by the
-  `.github/workflows/auto-tests.yml` GitHub Actions workflow
-  (`auto-tests` job plus a `lighthouse` job that enforces 90+ Performance
-  on Desktop and Mobile, see below). `tests/home.test.js` guards the home
-  sections (issue #78); `tests/projects.test.js` guards the
-  `/projects/{slug}` detail pages (issue #77); `tests/links.test.js`
-  checks every HTML page and exempts only the upcoming `/devlog/...`
-  routes (issue #75) and the `/ecliptica` hub (issue #72) from the
-  file-existence check until those pages land.
-- Media & performance (issue #81):
-  - All content images are pre-optimized WebP committed to the repo (no
-    build step). Responsive variants (`*-480.webp`, `*-768.webp`, ...) live
-    next to the original and are wired via `srcset`/`sizes`. Favicons and
-    the Apple touch icon stay PNG (browser requirement).
-  - No render-blocking third-party CSS/JS: the body uses the system font
-    stack and icons are an inline SVG sprite (`<symbol>`/`<use>`) at the
-    top of `index.html`. Do not add CDN stylesheet/font/script links.
-  - LCP hero image: `<link rel="preload" as="image" imagesrcset=...
-    imagesizes=...>` in `<head>` + `fetchpriority="high"` on the `<img>`;
-    below-the-fold images use `loading="lazy"`.
-  - `tests/media.test.js` enforces all of the above; any `<video>` element
-    must also satisfy the non-blocking contract (poster +
-    IntersectionObserver + `prefers-reduced-motion` fallback).
-
-The script load order (i18n → parallax → main → home-data) matters — keep it.
+- `src/pages/` — route files. English routes live at the unprefixed root;
+  the other locales are thin wrapper pages under `src/pages/[locale]/`
+  whose `getStaticPaths()` emit one route per non-default locale
+  (helper: `localeStaticPaths()` / `nonDefaultLocales()` from
+  `src/i18n/index.ts`). Astro 7 renders non-default locales only when the
+  routes exist, so keep the wrapper pages in 1:1 correspondence with the
+  English routes. The locale inside a page is `Astro.currentLocale`
+  (there is no `Astro.locale` in Astro 7).
+- `src/components/pages/` — the page bodies (home, about, contacts, devlog,
+  Ecliptica hub, projects catalog, project detail, noindex `qt-secret`
+  redirect stub). Every locale route renders the same body; the body
+  localizes itself via `t(Astro.currentLocale, key)`. Put new shared page
+  markup here, not in the route files.
+- `src/layouts/Base.astro` — unified head (canonical, Open Graph / Twitter
+  card using `banner.webp`), the header with the EN/RU/DE/ES language
+  switcher (options are the locale-prefixed URLs of the current page;
+  the current path is stripped of its locale prefix first), the footer
+  with the verified social links and the shared language-switch
+  script. `src/components/` holds Header, Footer, the inline SVG icon
+  sprite (Icons), ProjectActions and DevlogFeed.
+- `src/i18n/` — `index.ts` (`DEFAULT_LOCALE`, `LOCALES`, `t()` dot-path
+  lookup with visible fallback for missing keys, `localeHref()`, the
+  static-path helpers) plus one JSON file per language (`en.json`,
+  `ru.json`, `de.json`, `es.json`). When adding or changing a string,
+  update all four language files together — `tests/i18n.test.js` asserts
+  identical key sets and non-empty values.
+- `src/content/` — the Git-based content layer (Astro content collections;
+  `glob()` loaders from `astro/loaders`, `render()` from `astro:content`):
+  - `projects/{slug}.md` — the 6 key project records rendered at
+    `/projects/{slug}` for every locale (Ecliptica, CQtDeployer, CheatCard,
+    YourTimeDelivery, Qt-Secret with the canonical slug `qtssecret` + a
+    noindex `qt-secret` redirect stub, Heart).
+  - `devlog/` — devlog posts for the home feed and `/devlog` (seeded by
+    the devlog issue, #75; while empty the documented empty state renders
+    and the build logs a harmless empty-collection warning).
+  - `roadmap/` — the Ecliptica roadmap rendered on the `/ecliptica` hub.
+- `src/data/` — build-time GitHub caches imported by the pages:
+  - `github-org-metrics.json` — org repo count / total stars; refresh with
+    `node scripts/fetch-github-metrics.js` (no token, Node >= 18).
+  - `projects-github.json` — per-project stars, latest release, archived
+    flag for the 5 open-source projects; refresh with
+    `node scripts/fetch-projects-github.js`. YourTimeDelivery has no public
+    repository and is intentionally absent — its page renders "No Public
+    Repository" contact messaging; never invent a repository URL. Both
+    scripts keep the existing cache and exit 0 when the GitHub API is
+    unreachable (graceful offline fallback); exit 1 only without any cache.
+- `src/styles/global.css` — the only stylesheet: Tailwind CSS 4 plus the
+  design tokens on `@theme`.
+- `public/` — static assets served as-is: pre-optimized WebP content
+  images under `assets/images/` (responsive `*-480.webp` / `*-768.webp`
+  variants wired via `srcset`/`sizes`; the Open Graph banner
+  `banner.webp`), favicons (PNG), `robots.txt`, `sitemap.xml`.
+- `scripts/` — the two dependency-free Node fetcher scripts (build-time
+  tools, not loaded by the browser).
+- `tests/` — dependency-free Node.js test suite run with `node --test
+  tests/*.test.js`; executed on every pull request by
+  `.github/workflows/auto-tests.yml` (install, lint, `astro check`,
+  `astro build`, node tests, plus a Lighthouse job enforcing 90+
+  Performance on Desktop and Mobile). `tests/pages.test.js` guards the
+  built routes per locale; `tests/i18n.test.js` the translation parity and
+  the language switcher; `tests/links.test.js` local/external links and
+  image references; `tests/content.test.js` the content layer and caches;
+  `tests/repo.test.js` repository hygiene; `tests/syntax.test.js` parses
+  the source files.
+- Media & performance (issue #81): all content images are pre-optimized
+  WebP (no build step); no render-blocking third-party CSS/JS (system font
+  stack, inline SVG sprite); the LCP hero image is preloaded in
+  `Base.astro` (`rel="preload" as="image"`) with `fetchpriority="high"`;
+  below-the-fold images use `loading="lazy"`. The LCP preload is applied
+  via the `preloadHero` prop of `Base.astro` (home page only).
 
 ## Workflow
 
-- No build: serve the repo root (e.g. `npx http-server -p 8000`) and check
-  all 5 languages in a browser.
-- Run the auto tests before pushing: `node --test tests/*.test.js` (the
-  same suite runs on every pull request via
-  `.github/workflows/auto-tests.yml`).
+- Install once, then: `npm run dev` for local development, `npm run build`
+  for the production output in `dist/`. Serve `dist/` with
+  `npx http-server dist -p 8000` and check all four languages (EN/RU/DE/ES)
+  in a browser.
+- Run the quality gates before pushing:
+
+  ```bash
+  npm run lint       # eslint (JS/TS + .astro)
+  npm run check      # astro check (TypeScript)
+  npm run build      # astro build -> dist/
+  npm run test:full  # build + node --test tests/*.test.js
+  ```
+
+  The pages/i18n/links tests assert on the built `dist/` pages, so a build
+  must precede the test run.
 - Measure performance with Lighthouse before pushing (commands in
   `README.md`, "Performance & Media"); CI fails the PR when the
   Performance category drops below 90 on Desktop or Mobile.
+- Keep the site dependency-free in `tests/` and `scripts/` (Node builtins
+  only). Do not use Python. Keep changes minimal; update `README.md` and
+  this file together on structural changes.
+- Refresh the GitHub caches (`scripts/fetch-*.js`) before pushing when
+  touching the data-driven sections.
 - Never commit or push to `main`. Work on `task_<issue-number>` from an
   up-to-date `main`, push it, and open a PR against `main` with
   `Closes #<issue-number>` in the description.
-- Keep the site dependency-free (no frameworks or bundlers) and do not use
-  Python. Keep changes minimal; update `README.md` and this file together
-  on structural changes.

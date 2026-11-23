@@ -1,0 +1,45 @@
+---
+// Devlog index body (issue #72): lists the devlog content collection
+// (Git-based CMS). While the collection is empty the documented empty state
+// is shown. Rendered by src/pages/devlog/index.astro (EN) and
+// src/pages/[locale]/devlog.astro (RU/DE/ES).
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { t, DEFAULT_LOCALE } from '../../i18n';
+
+const locale = Astro.currentLocale ?? DEFAULT_LOCALE;
+const posts = (await getCollection('devlog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+function formatDate(date: Date): string {
+	return new Intl.DateTimeFormat(locale, { dateStyle: 'medium' }).format(date);
+}
+---
+<Base title={`${t(locale, 'devlog.title')} — ${t(locale, 'meta.title')}`} description={t(locale, 'devlog.subtitle')}>
+	<section class="section">
+		<div class="container">
+			<h1 class="section-title">{t(locale, 'devlog.title')}</h1>
+			<p class="section-subtitle">{t(locale, 'devlog.subtitle')}</p>
+			{posts.length === 0 ? (
+				<div class="devlog-empty" data-devlog-empty>
+					<svg class="icon devlog-empty-icon" aria-hidden="true" focusable="false"><use href="#icon-bell" /></svg>
+					<p>{t(locale, 'devlog.empty')}</p>
+				</div>
+			) : (
+				<div class="grid gap-4 md:grid-cols-2">
+					{posts.map((post) => (
+						<article class="card">
+							<p class="text-sm text-muted">{formatDate(post.data.date)}</p>
+							<h2 class="mt-1 text-lg font-semibold">{post.data.title}</h2>
+							{post.data.tags.length > 0 && (
+								<div class="mt-2 flex flex-wrap gap-2">
+									{post.data.tags.map((tag) => <span class="lang-badge">{tag}</span>)}
+								</div>
+							)}
+							{post.data.excerpt && <p class="mt-2 text-sm text-muted">{post.data.excerpt}</p>}
+						</article>
+					))}
+				</div>
+			)}
+		</div>
+	</section>
+</Base>

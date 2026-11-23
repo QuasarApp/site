@@ -1,0 +1,29 @@
+---
+// Contacts page body (issue #72): migrated from the legacy home page contact
+// section. Verified links: the team email and the GitHub organization.
+// Rendered by src/pages/contacts/index.astro (EN) and
+// src/pages/[locale]/contacts.astro (RU/DE/ES).
+import Base from '../../layouts/Base.astro';
+import { t, DEFAULT_LOCALE } from '../../i18n';
+
+const locale = Astro.currentLocale ?? DEFAULT_LOCALE;
+---
+<Base title={`${t(locale, 'contact.title')} — ${t(locale, 'meta.title')}`} description={t(locale, 'contact.text')}>
+	<section class="section">
+		<div class="container max-w-4xl">
+			<h1 class="section-title">{t(locale, 'contact.title')}</h1>
+			<p class="section-subtitle">{t(locale, 'contact.text')}</p>
+			<div class="contact-info flex flex-wrap justify-center gap-4">
+				<a href="mailto:quasarappdevelop@gmail.com" class="contact-link">
+					<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-mail" /></svg>
+					<span>{t(locale, 'contact.email')}</span>
+				</a>
+				<a href="https://github.com/QuasarApp" class="contact-link" target="_blank" rel="noopener">
+					<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github" /></svg>
+					<span>{t(locale, 'contact.github')}</span>
+				</a>
+			</div>
+			<p class="mt-6 text-center text-sm text-muted">{t(locale, 'contact.message')}</p>
+		</div>
+	</section>
+</Base>

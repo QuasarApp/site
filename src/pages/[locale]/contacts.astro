@@ -1,0 +1,11 @@
+---
+// /[locale]/contacts routes (issue #72): RU/DE/ES. Body shared with the EN
+// route (src/pages/contacts/index.astro).
+import { localeStaticPaths } from '../../i18n';
+import ContactsPage from '../../components/pages/ContactsPage.astro';
+
+export function getStaticPaths() {
+	return localeStaticPaths();
+}
+---
+<ContactsPage />

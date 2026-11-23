@@ -1,0 +1,45 @@
+---
+// Devlog feed (issue #72): renders the latest posts from the devlog content
+// collection (Git-based CMS). While the collection is empty the documented
+// empty state is shown - the same contract the legacy home page had.
+import { getCollection } from 'astro:content';
+import { t, DEFAULT_LOCALE } from '../i18n';
+
+interface Props {
+	limit?: number;
+}
+
+const { limit = 5 } = Astro.props;
+const locale = Astro.currentLocale ?? DEFAULT_LOCALE;
+const posts = (await getCollection('devlog'))
+	.slice()
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+	.slice(0, limit);
+
+function formatDate(date: Date): string {
+	return new Intl.DateTimeFormat(locale, { dateStyle: 'medium' }).format(date);
+}
+---
+<div id="devlog-feed" class="devlog-feed" aria-live="polite">
+	{posts.length === 0 ? (
+		<div class="devlog-empty" data-devlog-empty>
+			<svg class="icon devlog-empty-icon" aria-hidden="true" focusable="false"><use href="#icon-bell" /></svg>
+			<p>{t(locale, 'devlog.empty')}</p>
+		</div>
+	) : (
+		<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+			{posts.map((post) => (
+				<article class="card devlog-post">
+					<p class="text-sm text-muted">{formatDate(post.data.date)}</p>
+					<h3 class="mt-1 text-lg font-semibold">{post.data.title}</h3>
+					{post.data.tags.length > 0 && (
+						<div class="mt-2 flex flex-wrap gap-2">
+							{post.data.tags.map((tag) => <span class="lang-badge">{tag}</span>)}
+						</div>
+					)}
+					{post.data.excerpt && <p class="mt-2 text-sm">{post.data.excerpt}</p>}
+				</article>
+			))}
+		</div>
+	)}
+</div>

@@ -1,0 +1,53 @@
+---
+// Projects catalog body (issue #72): lists every record of the projects
+// content collection. Card copy comes from the i18n files, metadata from the
+// collection frontmatter. Rendered by src/pages/projects/index.astro (EN)
+// and src/pages/[locale]/projects.astro (RU/DE/ES).
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { t, localeHref, DEFAULT_LOCALE } from '../../i18n';
+
+const locale = Astro.currentLocale ?? DEFAULT_LOCALE;
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+
+const DESCRIPTION_KEYS: Record<string, string> = {
+	ecliptica: 'projects.ecliptica',
+	cqtdeployer: 'projects.cqtdeployer',
+	cheatcard: 'projects.cheat_card',
+	yourtimedelivery: 'projects.your_time_delivery',
+	qtssecret: 'projects.qt_secret',
+	heart: 'projects.heart',
+};
+const CARD_ICONS: Record<string, string> = {
+	ecliptica: 'icon-globe',
+	cqtdeployer: 'icon-tool',
+	cheatcard: 'icon-credit-card',
+	yourtimedelivery: 'icon-send',
+	qtssecret: 'icon-lock',
+	heart: 'icon-heart',
+};
+---
+<Base title={`${t(locale, 'projects.title')} — ${t(locale, 'meta.title')}`} description={t(locale, 'projects.text')}>
+	<section class="section">
+		<div class="container">
+			<h1 class="section-title">{t(locale, 'projects.title')}</h1>
+			<p class="section-subtitle">{t(locale, 'projects.text')}</p>
+			<div id="projects-grid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+				{
+					projects.map((project) => {
+						const slug = project.id;
+						return (
+						<a class="card project-card" href={localeHref(locale, `/projects/${slug}`)}>
+							<div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href={`#${CARD_ICONS[slug]}`} /></svg></div>
+							<h2 class="text-xl font-semibold">{project.data.title}</h2>
+							<p class="mt-1"><span class="badge badge-category">{t(locale, `projectsDetail.categories.${project.data.category}`)}</span></p>
+							<p class="mt-2 text-sm text-muted">{t(locale, DESCRIPTION_KEYS[slug] ?? `projects.${slug}`)}</p>
+							<span class="featured-cta mt-2 inline-block">{t(locale, 'featured.details')}</span>
+						</a>
+						);
+					})
+				}
+			</div>
+		</div>
+	</section>
+</Base>

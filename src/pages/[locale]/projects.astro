@@ -1,0 +1,11 @@
+---
+// /[locale]/projects catalog routes (issue #72): RU/DE/ES. Body shared with
+// the EN route (src/pages/projects/index.astro).
+import { localeStaticPaths } from '../../i18n';
+import ProjectsPage from '../../components/pages/ProjectsPage.astro';
+
+export function getStaticPaths() {
+	return localeStaticPaths();
+}
+---
+<ProjectsPage />

@@ -1,0 +1,11 @@
+---
+// /[locale]/about routes (issue #72): RU/DE/ES. Body shared with the EN
+// route (src/pages/about/index.astro).
+import { localeStaticPaths } from '../../i18n';
+import AboutPage from '../../components/pages/AboutPage.astro';
+
+export function getStaticPaths() {
+	return localeStaticPaths();
+}
+---
+<AboutPage />

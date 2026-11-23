@@ -1,0 +1,11 @@
+---
+// /[locale]/projects/qt-secret noindex redirect stubs (issue #72): RU/DE/ES.
+// Body shared with the EN stub (src/pages/projects/qt-secret/index.astro).
+import { localeStaticPaths } from '../../../../i18n';
+import QtSecretStub from '../../../../components/pages/QtSecretStub.astro';
+
+export function getStaticPaths() {
+	return localeStaticPaths();
+}
+---
+<QtSecretStub />

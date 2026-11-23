@@ -1,0 +1,186 @@
+{
+    "nav": {
+        "home": "Startseite",
+        "projects": "Projekte",
+        "about": "Über uns",
+        "contact": "Kontakt"
+    },
+    "hero": {
+        "subtitle": "Die Zukunft der Software gestalten",
+        "explore": "Projekte entdecken",
+        "learn": "Mehr erfahren",
+        "eclipticaSubtitle": "Kommandiere die letzte Raumstation - Erkunde, baue und überlebe",
+        "eclipticaDescription": "Kommandiere die letzte Raumstation und terraforme ferne Planeten. Baue futuristische Habitate, verwalte erweiterte Ressourcen und führe deine Crew durch die Herausforderungen des tiefen Weltraums. Dein Vermächtnis unter den Sternen erwartet dich.",
+        "feature1": "Weltraumerkundung",
+        "feature2": "Planetenbau",
+        "feature3": "Ressourcenmanagement"
+    },
+    "projects": {
+        "title": "Unsere Projekte",
+        "text": "Entdecken Sie unsere Open-Source-Projekte und Tools.",
+        "empty": "Keine Projekte verfügbar.",
+        "cqtdeployer": "Leistungsstarkes Tool zum Deployment von cross-platform Qt-Anwendungen",
+        "platforms": "Plattformabstraktionsschicht für plattformübergreifende Entwicklung",
+        "opensimplex2": "Schnelle Noise-Implementierung für prozedurale Generierung",
+        "qt_secret": "Verschlüsselungsbibliothek mit Unterstützung für RSA- und AES-Algorithmen",
+        "heart": "QuasarApp Heart - die Basis-Backend-Infrastruktur für C++/Qt-Projekte. Diese Bibliothek unterstützt die Arbeit mit Datenbanken und leichten Netzwerkrequests.",
+        "cmake": "CMake-Module für QuasarApp-Projekte",
+        "sdkmanager_android": "Wrapper für den Android SDK Manager für den Snap Store",
+        "qml_login_view": "Einfaches Login-Fenster-Bibliothek für QML-Projekte.",
+        "qt_bignum": "QtBigInt - Klasse für Ganzzahlen beliebiger Größe für C++ und Build-System von Qt. Powered by GMP 6.3.0",
+        "simple_qml_notify": "Einfacher QML-Benachrichtigungsdienst für QML-Anwendungen.",
+        "patronum": "Erweiterungsbibliothek zum Steuern Ihrer Daemonen.",
+        "hanoi": "Hanoi-Türme-Spiel",
+        "ecliptica": "Ecliptica ist ein Weltraumforschungsspiel, in dem Sie eine Raumstation commandieren und Planeten terraformieren. Bau von Lebensräumen, Ressourcenmanagement und führen Sie Ihre Crew durch Herausforderungen im tiefen Weltraum.",
+        "cheat_card": "CheatCard - plattformübergreifende Loyalitäts- und Rabattkarten-Anwendung.",
+        "your_time_delivery": "YourTimeDelivery - System für die Verwaltung von Lieferung und Logistik."
+    },
+    "projectsDetail": {
+        "backToCatalog": "Zurück zu allen Projekten",
+        "platformsLabel": "Unterstützte Plattformen",
+        "problemTitle": "Das Problem",
+        "valueTitle": "Warum es existiert",
+        "featuresTitle": "Funktionen",
+        "stackTitle": "Technologie-Stack",
+        "mediaTitle": "Medien & Downloads",
+        "githubTitle": "Open Source auf GitHub",
+        "noGithubTitle": "Kein öffentliches Repository",
+        "githubStars": "Sterne auf GitHub",
+        "githubLatestRelease": "Letztes Release",
+        "githubCached": "GitHub-Daten werden beim Build aus der GitHub-API gecacht - die angezeigten Werte stammen vom letzten erfolgreichen Abruf.",
+        "githubUpdated": "Aktualisiert",
+        "githubArchived": "Dieses Repository ist archiviert und nur noch schreibgeschützt.",
+        "githubNoRelease": "Keine öffentlichen Releases",
+        "mediaEmpty": "Screenshots und Demo-Videos erscheinen hier, sobald das Projekt öffentliche Medien veröffentlicht.",
+        "mediaCaptionKeyArt": "Offizielles Key Art (Steam-Kapsel)",
+        "mediaCaptionEnvironment": "Umgebungs- und Welten-Art",
+        "btnSteam": "Auf Steam spielen",
+        "btnWishlist": "Zur Wunschliste",
+        "btnDownload": "Download",
+        "btnGithub": "Auf GitHub ansehen",
+        "btnDocs": "Dokumentation",
+        "btnContact": "Team kontaktieren",
+        "btnEclipticaHub": "Zum Ecliptica-Hub",
+        "categories": {
+            "games": "Spiele",
+            "developerTools": "Entwickler-Tools",
+            "desktopApps": "Desktop- & Mobile-Apps",
+            "libraries": "Bibliotheken"
+        },
+        "statuses": {
+            "activeDevelopment": "Aktive Entwicklung",
+            "released": "Veröffentlicht",
+            "openSource": "Open Source",
+            "beta": "Beta"
+        },
+        "ecliptica": {
+            "problem": "Survival- und Wirtschaftssimulationen treffen selten aufeinander: offene Welten ohne lebendige Ökonomie oder Strategie ohne eine Welt, in der man selbst unterwegs ist. Ecliptica schließt diese Lücke auf einer modernen Cross-Plattform-Engine.",
+            "value": "Ein 3D-Open-World-Survival- & Wirtschaftssimulator auf Qt Quick 3D. Sie commandieren die letzte Raumstation, terraformen ferne Planeten und beobachten, wie eine vollständig dynamische, von NPC getriebene Ökonomie auf jede Ihrer Entscheidungen reagiert.",
+            "feature1": "Prozedural generierte offene Welten mit veränderbarem Gelände",
+            "feature2": "Vollständig dynamische, von NPC getriebene Ökonomie",
+            "feature3": "Siedlungsbau mit Bauplänen und Terminal-Systemen",
+            "feature4": "Vom Spieler geführte Korporationen und Fraktionen",
+            "githubNote": "Ecliptica ist ein kommerzielles Steam-Spiel. Das öffentliche Repository hostet die offizielle Website des Spiels, nicht den Spielcode."
+        },
+        "cqtdeployer": {
+            "problem": "Das Ausliefern einer Qt/QML-Anwendung bedeutet: auf jedem Betriebssystem die passenden DLLs, Qt-Module und Plugins zusammenzusuchen - langsam, manuell und fehleranfällig.",
+            "value": "CQtDeployer automatisiert das Cross-Platform-Deployment von QML-, Qt- und anderen C/C++-Anwendungen: Ein Tool sammelt die richtigen Binaries, Module und Plugins für Ihre Zielplattform.",
+            "feature1": "Deployment per Klick für QML- und Qt/C++-Anwendungen",
+            "feature2": "Windows, Linux und macOS aus einem einzigen Workflow",
+            "feature3": "Automatische Erkennung benötigter Qt-Module und Plugins",
+            "feature4": "Befehlszeilenschnittstelle für CI/CD-Pipelines"
+        },
+        "cheatcard": {
+            "problem": "Loyalitäts- und Rabattprogramme leben auf Papier oder in isolierten Apps - kleine Unternehmen haben es schwer, Kartenprogramme zu betreiben, und Kunden verlieren ihre Vorteile aus den Augen.",
+            "value": "CheatCard ist eine plattformübergreifende Loyalitäts- und Rabattkarten-Anwendung: Kunden führen alle Karten an einem Ort, und Unternehmen betreiben Rabatt- und Loyalitätsprogramme ohne eigene Software.",
+            "feature1": "Digitale Loyalitäts- und Rabattkarten in einer Wallet",
+            "feature2": "Plattformübergreifender Qt/QML-Client",
+            "feature3": "Verwaltung von Rabatt- und Loyalitätsprogrammen",
+            "feature4": "Auf dem QuasarApp C++/Qt-Stack gebaut"
+        },
+        "yourtimedelivery": {
+            "noRepo": "YourTimeDelivery ist ein kommerzielles Produkt ohne öffentliches Repository. Kontaktieren Sie das Team für eine Demo, Lizenzierung oder eine Custom-Installation.",
+            "problem": "Kleine Lieferdienste verlieren Zeit für Anrufe, Tabellen und papierbasierte Routen: Dispatch, Routenplanung und Kundenupdates laufen in Tools, die untereinander nicht kommunizieren.",
+            "value": "YourTimeDelivery ist ein System für Liefer- und Logistikmanagement, das Dispatch, Routenplanung und Lieferstatus in einer plattformübergreifenden Anwendung bündelt.",
+            "feature1": "Dispatch und Routenplanung in einem Workflow",
+            "feature2": "Lieferstatus-Tracking über die gesamte Flotte",
+            "feature3": "Plattformübergreifende Desktop- und Mobile-Clients"
+        },
+        "qtssecret": {
+            "problem": "Kryptographie in ein C++/Qt-Projekt einzubauen bedeutet meist, eine rohe C-Bibliothek zu integrieren: manuelle Kontexte, Schlüsselverwaltung und Plattform-Spezialitäten im eigenen Code.",
+            "value": "Qt-Secret ist eine einfache C++-Verschlüsselungsbibliothek mit erstklassiger RSA- und AES-Unterstützung, entwickelt zum direkten Einsatz in Qt-Anwendungen.",
+            "feature1": "RSA- und AES-Algorithmen direkt aus der Box",
+            "feature2": "Einfache C++-API für Qt-Projekte",
+            "feature3": "CMake-basierte Integration in bestehende Builds"
+        },
+        "heart": {
+            "problem": "Jedes C++/Qt-Projekt erfindet dieselbe Kleinarbeit neu: Datenbankzugriff, leichte Netzwerkrequests und gemeinsame Backend-Primitiven.",
+            "value": "Heart ist die Basis-Backend-Bibliothek für C++/Qt-Projekte - eine Abhängigkeit für Datenbankarbeit und leichte Netzwerkrequests, erprobt im gesamten QuasarApp-Toolset.",
+            "feature1": "Datenbankzugriffsschicht für C++/Qt-Anwendungen",
+            "feature2": "Leichte Netzwerk-Request-Utilities",
+            "feature3": "Gemeinsame Backend-Primitiven des QuasarApp-Ökosystems"
+        }
+    },
+    "verticals": {
+        "title": "Was wir tun",
+        "gamesTitle": "Spieleentwicklung",
+        "gamesText": "Wir entwickeln immersive 3D-Spiele auf Qt Quick 3D - von prozedural generierten Welten und dynamischen, von NPC-getriebenen Ökonomien bis zu vollen Survival-Erlebnissen wie unserem Flaggschiff Ecliptica.",
+        "softwareTitle": "Open-Source- und Enterprise-Software",
+        "softwareText": "Wir entwickeln plattformübergreifende Desktop-, Mobile- und Systemsoftware in C++/Qt - Deployment-Tools, Backend-Bibliotheken und Enterprise-Lösungen, die in Produktion bewährt sind."
+    },
+    "featured": {
+        "title": "Ausgewählte Projekte",
+        "subtitle": "Die Flaggschiff-Produkte und Open-Source-Tools, die den QuasarApp-Stack definieren.",
+        "details": "Details ansehen"
+    },
+    "devlog": {
+        "title": "Neueste News und Devlog",
+        "subtitle": "Entwicklungs-Logs, Patch-Notes und Engine-Einblicke direkt aus dem Ecliptica-Entwicklungsalltag.",
+        "empty": "Noch keine Devlog-Beiträge. Entwicklungs-Updates, Patch-Notes und Engine-Einblicke erscheinen hier, sobald sie im Devlog veröffentlicht werden."
+    },
+    "stack": {
+        "title": "Technologie-Stack und Open-Source-Fußabdruck",
+        "text": "Modernes C++23 und Qt 6 für Desktop, Mobile und Games - mit einem großen Open-Source-Fußabdruck auf GitHub.",
+        "repos": "Öffentliche Repositories",
+        "stars": "Sterne insgesamt",
+        "source": "GitHub-Metriken werden beim Build aus der GitHub-API gecacht. Daten sind derzeit nicht verfügbar - siehe die QuasarApp-Organisation auf GitHub.",
+        "updated": "Aktualisiert"
+    },
+    "about": {
+        "title": "Über uns",
+        "text": "QuasarApp ist eine Open-Source-Organisation, die sich dem Erschaffen innovativer Softwarelösungen widmet. Wir glauben an die Kraft der offenen Zusammenarbeit und an den Aufbau von Werkzeugen, die Entwicklern auf der ganzen Welt Empowerment bieten.",
+        "description": "Unsere Mission ist es, hochwertiges Software zu entwickeln, das Entwicklern und Organisationen hilft, erfolgreich zu sein.",
+        "text2": "Unsere Mannschaft besteht aus leidenschaftlichen Ingenieuren, die mit state-of-the-art-Technologien arbeiten, von Desktop-Frameworks bis hin zu Webanwendungen und Spieleentwicklungswerkzeugen."
+    },
+    "stats": {
+        "projects": "Projekte",
+        "stars": "Sterne",
+        "contributors": "Beiträger"
+    },
+    "contact": {
+        "title": "Kontaktieren Sie uns",
+        "text": "Kontaktieren Sie uns.",
+        "email": "E-Mail",
+        "github": "GitHub",
+        "message": "Kontaktieren Sie uns über unsere offiziellen Kanäle - Links sind im Footer verfügbar."
+    },
+    "footer": {
+        "github": "GitHub",
+        "bluesky": "Bluesky",
+        "email": "E-Mail",
+        "youtube": "YouTube",
+        "steam": "Steam",
+        "copyright": "© 2026 QuasarApp Group. Alle Rechte vorbehalten."
+    },
+    "aria": {
+        "toggleLanguage": "Sprache umschalten",
+        "skipToContent": "Zum Hauptinhalt springen"
+    },
+    "meta": {
+        "title": "QuasarApp Group",
+        "description": "Open-Source-Organisation für innovative Softwarelösungen und Entwickler-Tools. Entdecken Sie unsere Projekte und werden Sie Teil unserer Community."
+    },
+    "pages": {
+        "eclipticaTagline": "Kommandiere die letzte Raumstation. Der vollständige Ecliptica-Hub: die neuesten News, Medien und die Roadmap unseres Flaggschiff-Titels."
+    }
+}

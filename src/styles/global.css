@@ -1,0 +1,541 @@
+/* QuasarApp Group - global stylesheet (issue #72).
+ *
+ * Design system: Tailwind CSS v4. The dark, tech-forward tokens below are the
+ * single source of truth for colors/typography and are exposed both as
+ * Tailwind theme tokens (@theme) and as CSS custom properties for the
+ * component classes further down. */
+
+@import 'tailwindcss';
+
+@theme {
+	--color-night: #0a0e17;
+	--color-surface: #111827;
+	--color-card: #1e293b;
+	--color-edge: #334155;
+	--color-primary: #00bcd4;
+	--color-secondary: #2196f3;
+	--color-accent: #ff9800;
+	--color-ink: #e2e8f0;
+	--color-muted: #94a3b8;
+
+	--font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+:root {
+	--glow-color: rgba(0, 188, 212, 0.6);
+	--gradient-1: linear-gradient(135deg, #00bcd4 0%, #2196f3 100%);
+}
+
+/* Accessibility: reduced motion support (carried over from the legacy site). */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background: var(--color-night);
+	color: var(--color-ink);
+	line-height: 1.6;
+	overflow-x: hidden;
+}
+
+/* Layout primitives */
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.section {
+	padding-top: 72px;
+	padding-bottom: 72px;
+}
+
+.section-alt {
+	background: var(--color-surface);
+}
+
+.section-title {
+	font-size: 2rem;
+	font-weight: 700;
+	text-align: center;
+	margin-bottom: 0.75rem;
+	background: var(--gradient-1);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.section-subtitle {
+	color: var(--color-muted);
+	text-align: center;
+	max-width: 720px;
+	margin: 0 auto 2.5rem;
+}
+
+/* Skip link for keyboard navigation */
+.skip-link {
+	position: absolute;
+	top: -100px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: var(--color-primary);
+	color: #fff;
+	padding: 12px 24px;
+	z-index: 9999;
+	text-decoration: none;
+	font-weight: 600;
+	border-radius: 0 0 8px 8px;
+	transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+	top: 0;
+	outline: 3px solid var(--color-accent);
+	outline-offset: 2px;
+}
+
+/* Inline SVG icons (issue #81 contract: inline sprite, zero icon requests) */
+.icon {
+	width: 1em;
+	height: 1em;
+	display: inline-block;
+	vertical-align: -0.125em;
+	fill: currentColor;
+}
+
+/* Navbar */
+.navbar {
+	position: sticky;
+	top: 0;
+	z-index: 50;
+	background: rgba(10, 14, 23, 0.85);
+	backdrop-filter: blur(10px);
+	border-bottom: 1px solid var(--color-edge);
+}
+
+.navbar .container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	min-height: 64px;
+}
+
+.nav-brand {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	font-weight: 700;
+	font-size: 1.1rem;
+	color: var(--color-ink);
+	text-decoration: none;
+}
+
+.nav-brand:hover {
+	color: var(--color-primary);
+}
+
+.nav-logo {
+	width: 50px;
+	height: 50px;
+	border-radius: 12px;
+}
+
+.nav-links {
+	display: flex;
+	align-items: center;
+	gap: 1.25rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.nav-links a {
+	color: var(--color-ink);
+	text-decoration: none;
+	font-weight: 500;
+	padding: 0.4rem 0.15rem;
+	border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current='page'] {
+	color: var(--color-primary);
+	border-bottom-color: var(--color-primary);
+}
+
+.lang-select {
+	background: var(--color-card);
+	color: var(--color-ink);
+	border: 1px solid var(--color-edge);
+	border-radius: 8px;
+	padding: 0.35rem 0.6rem;
+	font-size: 0.9rem;
+	cursor: pointer;
+}
+
+.lang-select:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
+}
+
+/* Hero (home) */
+.hero {
+	position: relative;
+	overflow: hidden;
+	padding-top: 56px;
+	padding-bottom: 72px;
+}
+
+.hero-bg {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+}
+
+.hero-bg img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0.35;
+}
+
+.hero-bg::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to bottom, rgba(10, 14, 23, 0.55), rgba(10, 14, 23, 0.9));
+}
+
+.ecliptica-featured {
+	position: relative;
+	background: var(--color-card);
+	border: 1px solid var(--color-edge);
+	border-radius: 16px;
+	padding: 2rem;
+	box-shadow: 0 0 40px rgba(0, 188, 212, 0.12);
+}
+
+.ecliptica-logo {
+	width: 120px;
+	height: 120px;
+	border-radius: 24px;
+	box-shadow: 0 0 24px var(--glow-color);
+}
+
+.ecliptica-title {
+	font-size: 2.25rem;
+	font-weight: 800;
+	letter-spacing: 0.04em;
+	background: var(--gradient-1);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.ecliptica-subtitle {
+	color: var(--color-primary);
+	font-weight: 600;
+}
+
+.ecliptica-capsule img {
+	width: 100%;
+	height: auto;
+	border-radius: 12px;
+	border: 1px solid var(--color-edge);
+}
+
+.feature-item {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--color-muted);
+	font-size: 0.95rem;
+}
+
+.feature-item .icon {
+	color: var(--color-primary);
+}
+
+/* Buttons */
+.btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.65rem 1.4rem;
+	border-radius: 10px;
+	font-weight: 600;
+	text-decoration: none;
+	border: 1px solid transparent;
+	transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+	transform: translateY(-2px);
+}
+
+.btn-primary {
+	background: var(--gradient-1);
+	color: #fff;
+	box-shadow: 0 4px 18px var(--glow-color);
+}
+
+.btn-secondary {
+	background: var(--color-card);
+	color: var(--color-ink);
+	border-color: var(--color-edge);
+}
+
+.btn-steam-primary {
+	background: #1b2838;
+	color: #fff;
+	border-color: #2a475e;
+}
+
+.btn-steam-primary:hover {
+	box-shadow: 0 4px 18px rgba(9, 144, 156, 0.5);
+}
+
+.btn-wishlist {
+	background: transparent;
+	color: var(--color-primary);
+	border-color: var(--color-primary);
+}
+
+/* Badges & tags */
+.badge {
+	display: inline-block;
+	padding: 0.2rem 0.7rem;
+	border-radius: 999px;
+	font-size: 0.8rem;
+	font-weight: 600;
+}
+
+.badge-category {
+	background: rgba(0, 188, 212, 0.15);
+	color: var(--color-primary);
+	border: 1px solid rgba(0, 188, 212, 0.4);
+}
+
+.badge-status {
+	background: rgba(34, 197, 94, 0.12);
+	color: #4ade80;
+	border: 1px solid rgba(34, 197, 94, 0.4);
+}
+
+.os-badge {
+	display: inline-block;
+	padding: 0.15rem 0.6rem;
+	border-radius: 6px;
+	background: var(--color-surface);
+	border: 1px solid var(--color-edge);
+	color: var(--color-muted);
+	font-size: 0.8rem;
+}
+
+.lang-badge {
+	display: inline-block;
+	padding: 0.2rem 0.65rem;
+	border-radius: 6px;
+	background: rgba(33, 150, 243, 0.12);
+	border: 1px solid rgba(33, 150, 243, 0.35);
+	color: var(--color-secondary);
+	font-size: 0.8rem;
+	font-weight: 500;
+}
+
+/* Cards (featured projects, verticals, devlog, github) */
+.card {
+	background: var(--color-card);
+	border: 1px solid var(--color-edge);
+	border-radius: 14px;
+	padding: 1.5rem;
+	transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.card:hover {
+	transform: translateY(-4px);
+	border-color: var(--color-primary);
+}
+
+a.card {
+	display: block;
+	text-decoration: none;
+	color: inherit;
+}
+
+.featured-card {
+	position: relative;
+	overflow: hidden;
+}
+
+.featured-card .card-icon,
+.vertical-card .card-icon,
+.project-card .card-icon {
+	width: 44px;
+	height: 44px;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.4rem;
+	background: rgba(0, 188, 212, 0.12);
+	color: var(--color-primary);
+	margin-bottom: 1rem;
+}
+
+.featured-cta {
+	color: var(--color-primary);
+	font-weight: 600;
+	font-size: 0.9rem;
+}
+
+.ecliptica-card-bg {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0.18;
+}
+
+/* Stats & GitHub metrics */
+.stat-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.25rem;
+}
+
+.stat-number {
+	font-size: 1.9rem;
+	font-weight: 800;
+	color: var(--color-primary);
+	text-decoration: none;
+}
+
+a.stat-number:hover {
+	color: var(--color-secondary);
+}
+
+.stat-label {
+	color: var(--color-muted);
+	font-size: 0.85rem;
+}
+
+.metrics-source {
+	color: var(--color-muted);
+	font-size: 0.85rem;
+}
+
+/* GitHub block on project detail pages */
+.github-card {
+	background: var(--color-card);
+	border: 1px solid var(--color-edge);
+	border-radius: 14px;
+	padding: 1.5rem;
+}
+
+.github-note {
+	color: var(--color-muted);
+	font-size: 0.9rem;
+}
+
+/* Devlog */
+.devlog-empty {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.75rem;
+	color: var(--color-muted);
+	padding: 2rem;
+	border: 1px dashed var(--color-edge);
+	border-radius: 14px;
+	text-align: center;
+}
+
+.devlog-empty-icon {
+	font-size: 2rem;
+	color: var(--color-primary);
+}
+
+.devlog-post {
+	display: block;
+	text-decoration: none;
+	color: inherit;
+}
+
+/* Contact */
+.contact-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--color-ink);
+	text-decoration: none;
+	padding: 0.6rem 1.2rem;
+	border: 1px solid var(--color-edge);
+	border-radius: 10px;
+}
+
+.contact-link:hover {
+	color: var(--color-primary);
+	border-color: var(--color-primary);
+}
+
+.contact-link .icon {
+	color: var(--color-primary);
+}
+
+/* Footer */
+.footer {
+	background: var(--color-surface);
+	border-top: 1px solid var(--color-edge);
+	padding-top: 2.5rem;
+	padding-bottom: 2.5rem;
+}
+
+.footer-social {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.social-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--color-muted);
+	text-decoration: none;
+}
+
+.social-link:hover {
+	color: var(--color-primary);
+}
+
+.footer-bottom {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.75rem;
+	color: var(--color-muted);
+	font-size: 0.9rem;
+}
+
+.glow {
+	color: var(--color-primary);
+	text-shadow: 0 0 12px var(--glow-color);
+}

@@ -1,0 +1,45 @@
+---
+// About page body (issue #72): migrated from the legacy home page about
+// section (about + stats). The GitHub org metrics come from the build-time
+// cache. Rendered by src/pages/about/index.astro (EN) and
+// src/pages/[locale]/about.astro (RU/DE/ES).
+import Base from '../../layouts/Base.astro';
+import { t, DEFAULT_LOCALE } from '../../i18n';
+import metrics from '../../data/github-org-metrics.json';
+
+const locale = Astro.currentLocale ?? DEFAULT_LOCALE;
+const metricsUpdated = new Date(metrics.fetchedAt).toISOString().slice(0, 10);
+---
+<Base title={`${t(locale, 'about.title')} — ${t(locale, 'meta.title')}`} description={t(locale, 'about.text')}>
+	<section class="section">
+		<div class="container max-w-4xl">
+			<h1 class="section-title">{t(locale, 'about.title')}</h1>
+			<p class="section-subtitle">{t(locale, 'about.text')}</p>
+			<div class="about-content space-y-4 text-center text-muted">
+				<p>{t(locale, 'about.description')}</p>
+				<p>{t(locale, 'about.text2')}</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-alt pt-10">
+		<div class="container">
+			<h2 class="section-title">{t(locale, 'stack.title')}</h2>
+			<p class="section-subtitle">{t(locale, 'stack.text')}</p>
+			<div class="github-metrics flex flex-wrap items-start justify-center gap-10">
+				<div class="stat-item">
+					<span class="stat-number">{metrics.repoCount}</span>
+					<span class="stat-label">{t(locale, 'stack.repos')}</span>
+				</div>
+				<div class="stat-item">
+					<span class="stat-number">{metrics.totalStars}</span>
+					<span class="stat-label">{t(locale, 'stack.stars')}</span>
+				</div>
+			</div>
+			<p class="metrics-source mt-4 text-center">
+				<a href={metrics.source} target="_blank" rel="noopener" class="underline hover:text-primary">{t(locale, 'stack.source')}</a>
+				<span class="metrics-updated"> · {t(locale, 'stack.updated')} {metricsUpdated}</span>
+			</p>
+		</div>
+	</section>
+</Base>

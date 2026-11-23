@@ -1,0 +1,21 @@
+---
+// /[locale]/projects/{slug} detail routes (issue #72): the locale x project
+// cross product, generated from the projects content collection. Body shared
+// with the EN route (src/pages/projects/[slug].astro).
+import { getCollection } from 'astro:content';
+import { nonDefaultLocales } from '../../../i18n';
+import ProjectDetailPage from '../../../components/pages/ProjectDetailPage.astro';
+
+export async function getStaticPaths() {
+	const projects = await getCollection('projects');
+	return nonDefaultLocales().flatMap((locale) =>
+		projects.map((project) => ({
+			params: { locale, slug: project.id },
+			props: { slug: project.id },
+		}))
+	);
+}
+
+const { slug } = Astro.props;
+---
+<ProjectDetailPage slug={slug} />

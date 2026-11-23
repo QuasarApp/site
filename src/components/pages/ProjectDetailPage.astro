@@ -1,0 +1,181 @@
+---
+// Project detail page body (issue #72): rendered from the projects content
+// collection (src/content/projects/{slug}.md) + the localized copy from
+// src/i18n + the build-time GitHub cache (src/data/projects-github.json).
+// YourTimeDelivery has no public repository and renders the
+// "No Public Repository" contact messaging instead of a GitHub block.
+// Rendered by src/pages/projects/[slug].astro (EN) and
+// src/pages/[locale]/projects/[slug].astro (RU/DE/ES).
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ProjectActions from '../ProjectActions.astro';
+import { t, localeHref, DEFAULT_LOCALE } from '../../i18n';
+import projectsGithub from '../../data/projects-github.json';
+
+interface Props {
+	slug: string;
+}
+const { slug } = Astro.props;
+const locale = Astro.currentLocale ?? DEFAULT_LOCALE;
+
+const projects = await getCollection('projects');
+const project = projects.find((entry) => entry.id === slug);
+if (!project) throw new Error(`Unknown project slug: ${slug}`);
+const data = project.data;
+const repo = (projectsGithub.projects as Record<string, {
+	repoUrl: string;
+	stars: number;
+	archived: boolean;
+	latestRelease: string | null;
+	latestReleaseUrl: string | null;
+}> | undefined)?.[slug];
+const updated = new Date(projectsGithub.fetchedAt).toISOString().slice(0, 10);
+const detail = (key: string) => t(locale, `projectsDetail.${slug}.${key}`);
+// i18n key for the short project description (legacy data-lang mapping).
+const descKey = slug === 'cheatcard' ? 'projects.cheat_card' : slug === 'yourtimedelivery' ? 'projects.your_time_delivery' : slug === 'qtssecret' ? 'projects.qt_secret' : `projects.${slug}`;
+
+const featureKeys = ['feature1', 'feature2', 'feature3', 'feature4'];
+const features = featureKeys
+	.map((key) => detail(key))
+	.filter((value) => !value.startsWith('projectsDetail.'));
+---
+<Base
+	title={`${data.title} — ${t(locale, 'meta.title')}`}
+	description={t(locale, descKey)}
+>
+	<section class="section pt-10">
+		<div class="container">
+			<a class="inline-flex items-center gap-2 text-sm text-primary hover:underline" href={localeHref(locale, '/projects')}>← {t(locale, 'projectsDetail.backToCatalog')}</a>
+			<div class="mt-6 grid items-center gap-8 lg:grid-cols-[auto,1fr]">
+				{slug === 'ecliptica' && (
+					<img
+						src="/assets/images/ecliptica_icon_logo.png.webp"
+						srcset="/assets/images/ecliptica_icon_logo-240.webp 240w, /assets/images/ecliptica_icon_logo.png.webp 256w"
+						sizes="140px"
+						alt="Ecliptica Logo"
+						class="h-32 w-32 rounded-3xl shadow-[0_0_24px_rgba(0,188,212,0.6)]"
+						width="140"
+						height="140"
+					>
+				)}
+				<div>
+					<h1 class="text-3xl font-bold">{data.title}</h1>
+					<p class="mt-2 text-muted">{t(locale, descKey)}</p>
+					<div class="mt-3 flex flex-wrap gap-2">
+						<span class="badge badge-category">{t(locale, `projectsDetail.categories.${data.category}`)}</span>
+						{data.statuses.map((status) => <span class="badge badge-status">{t(locale, `projectsDetail.statuses.${status}`)}</span>)}
+					</div>
+					<div class="os-badges mt-3 flex flex-wrap gap-2" role="list" aria-label={t(locale, 'projectsDetail.platformsLabel')}>
+						{data.os.map((os) => <span class="os-badge" role="listitem">{os}</span>)}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="problem" class="section pt-0">
+		<div class="container max-w-4xl">
+			<h2 class="section-title">{t(locale, 'projectsDetail.problemTitle')}</h2>
+			<p class="mt-4 text-muted">{detail('problem')}</p>
+		</div>
+	</section>
+
+	<section id="value" class="section section-alt pt-0">
+		<div class="container max-w-4xl">
+			<h2 class="section-title">{t(locale, 'projectsDetail.valueTitle')}</h2>
+			<p class="mt-4 text-muted">{detail('value')}</p>
+		</div>
+	</section>
+
+	<section id="features" class="section pt-0">
+		<div class="container max-w-4xl">
+			<h2 class="section-title">{t(locale, 'projectsDetail.featuresTitle')}</h2>
+			<ul class="feature-list mt-4 space-y-2 text-muted">
+				{features.map((feature) => (
+					<li class="flex items-start gap-2">
+						<svg class="icon mt-1 text-primary" aria-hidden="true" focusable="false"><use href="#icon-box" /></svg>
+						<span>{feature}</span>
+					</li>
+				))}
+			</ul>
+		</div>
+	</section>
+
+	<section id="stack" class="section section-alt pt-0">
+		<div class="container">
+			<h2 class="section-title">{t(locale, 'projectsDetail.stackTitle')}</h2>
+			<div class="stack-tags mt-4 flex flex-wrap justify-center gap-2">
+				{data.stack.map((tag) => <span class="lang-badge">{tag}</span>)}
+			</div>
+		</div>
+	</section>
+
+	<section id="github" class="section pt-0">
+		<div class="container max-w-4xl">
+			{repo ? (
+				<>
+					<h2 class="section-title">{t(locale, 'projectsDetail.githubTitle')}</h2>
+					<div class="github-card mt-4">
+						<div class="flex flex-wrap items-start justify-center gap-10">
+							<div class="stat-item">
+								<span class="stat-number" data-project-github="stars">{repo.stars}</span>
+								<span class="stat-label">{t(locale, 'projectsDetail.githubStars')}</span>
+							</div>
+							<div class="stat-item">
+								{repo.latestRelease ? (
+									<a class="stat-number" href={repo.latestReleaseUrl ?? repo.repoUrl} data-project-github="release" target="_blank" rel="noopener">{repo.latestRelease}</a>
+								) : (
+									<a class="stat-number" href={repo.repoUrl} data-project-github="release" target="_blank" rel="noopener">{t(locale, 'projectsDetail.githubNoRelease')}</a>
+								)}
+								<span class="stat-label">{t(locale, 'projectsDetail.githubLatestRelease')}</span>
+							</div>
+						</div>
+						<div class="mt-4 flex flex-wrap justify-center gap-3">
+							<a class="btn btn-primary" href={repo.repoUrl} target="_blank" rel="noopener">
+								<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github" /></svg>
+								<span>{t(locale, 'projectsDetail.btnGithub')}</span>
+							</a>
+						</div>
+						{slug === 'ecliptica' && <p class="github-note mt-3 text-center">{detail('githubNote')}</p>}
+						{repo.archived && <p class="github-note mt-3 text-center" data-project-github="archived-note">{t(locale, 'projectsDetail.githubArchived')}</p>}
+						<p class="metrics-source mt-3 text-center">
+							<span>{t(locale, 'projectsDetail.githubCached')}</span>
+							<span class="metrics-updated"> · <span>{t(locale, 'projectsDetail.githubUpdated')}</span> <span data-project-github="updated-date">{updated}</span></span>
+						</p>
+					</div>
+				</>
+			) : (
+				<>
+					<h2 class="section-title">{t(locale, 'projectsDetail.noGithubTitle')}</h2>
+					<div class="github-card mt-4">
+						<p class="text-center text-muted">{detail('noRepo')}</p>
+					</div>
+				</>
+			)}
+		</div>
+	</section>
+
+	<section id="media" class="section section-alt pt-0">
+		<div class="container">
+			<h2 class="section-title">{t(locale, 'projectsDetail.mediaTitle')}</h2>
+			{data.media.length > 0 ? (
+				<div class="project-media mt-4 grid gap-6 md:grid-cols-2">
+					{data.media.map((item) => (
+						<figure>
+							<img src={item.image} {...(item.srcset ? { srcset: item.srcset } : {})} sizes="(max-width: 640px) 100vw, 616px" alt={item.alt ?? data.title} loading="lazy" class="h-auto w-full rounded-xl border border-edge" width="616" height="353">
+							<figcaption class="mt-2 text-center text-sm text-muted">{t(locale, `projectsDetail.${item.captionKey}`)}</figcaption>
+						</figure>
+					))}
+				</div>
+			) : (
+				<div class="devlog-empty mt-4" data-media-empty>
+					<svg class="icon devlog-empty-icon" aria-hidden="true" focusable="false"><use href="#icon-box" /></svg>
+					<p>{t(locale, 'projectsDetail.mediaEmpty')}</p>
+				</div>
+			)}
+			<div class="mt-6">
+				<ProjectActions slug={slug} actions={data.actions} />
+			</div>
+		</div>
+	</section>
+</Base>

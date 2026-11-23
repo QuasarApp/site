@@ -6,13 +6,13 @@
 //
 // For every open-source project page, queries the public GitHub REST API
 // (no token required; unauthenticated rate limit is 60 requests/hour) and
-// caches the result as JSON in data/projects-github.json:
+// caches the result as JSON in src/data/projects-github.json:
 //   - latest release version (tag) + release URL, or null when the repo
 //     has no public releases
 //   - star count
 //   - repository URL and archived flag
 //
-// The project pages (js/projects-data.js) render the cached values and the
+// The project pages (the Astro project pages (src/pages/projects/[slug].astro)) render the cached values and the
 // static markup bakes in the same values as the graceful offline fallback,
 // so the static site is reproducible and works without network access.
 //
@@ -33,7 +33,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const ORG = 'QuasarApp';
-const OUT_FILE = path.join(__dirname, '..', 'data', 'projects-github.json');
+const OUT_FILE = path.join(__dirname, '..', 'src', 'data', 'projects-github.json');
 const TIMEOUT_MS = 20000;
 
 /**

@@ -1,0 +1,69 @@
+---
+// Global layout (issue #72): unified head, header and footer across all
+// pages and all locales. `Astro.currentLocale` is set by the i18n routing.
+import '../styles/global.css';
+import Icons from '../components/Icons.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { t, DEFAULT_LOCALE } from '../i18n';
+
+interface Props {
+	title?: string;
+	description?: string;
+	preloadHero?: boolean;
+}
+
+const { title, description, preloadHero = false } = Astro.props;
+const locale = Astro.currentLocale ?? DEFAULT_LOCALE;
+const pageTitle = title ?? t(locale, 'meta.title');
+const pageDescription = description ?? t(locale, 'meta.description');
+---
+<!doctype html>
+<html lang={locale}>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="theme-color" content="#0a0e17">
+		<meta name="description" content={pageDescription}>
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href}>
+		<!-- Open Graph / Twitter card (restored from the legacy head, issue #72) -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content={new URL(Astro.url.pathname, Astro.site).href}>
+		<meta property="og:title" content={pageTitle}>
+		<meta property="og:description" content={pageDescription}>
+		<meta property="og:image" content="https://quasarapp.me/assets/images/banner.webp">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content={pageTitle}>
+		<meta name="twitter:description" content={pageDescription}>
+		<meta name="twitter:image" content="https://quasarapp.me/assets/images/banner.webp">
+		<!-- LCP hero image: start the fetch at parse time (issue #81 contract). -->
+		{preloadHero && (
+			<link rel="preload" as="image" href="/assets/images/ecliptica_background-768.webp">
+		)}
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		<title>{pageTitle}</title>
+	</head>
+	<body>
+		<Icons />
+		<a href="#main-content" class="skip-link">{t(locale, 'aria.skipToContent')}</a>
+		<Header />
+		<main id="main-content">
+			<slot />
+		</main>
+		<Footer />
+		<script>
+			// Language switcher (issue #72): each option value is the URL of
+			// the current page in the selected locale; navigate on change.
+			const select = document.getElementById('lang-select') as HTMLSelectElement | null;
+			if (select) {
+				select.addEventListener('change', () => {
+					if (select.value) {
+						window.location.assign(select.value);
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

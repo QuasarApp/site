@@ -1,0 +1,12 @@
+---
+// /[locale]/ home routes (issue #72): RU/DE/ES home pages. The default
+// locale (EN) is served from the unprefixed src/pages/index.astro; the page
+// body is shared with it.
+import { localeStaticPaths } from '../../i18n';
+import HomePage from '../../components/pages/HomePage.astro';
+
+export function getStaticPaths() {
+	return localeStaticPaths();
+}
+---
+<HomePage />

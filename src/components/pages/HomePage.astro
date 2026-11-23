@@ -1,0 +1,245 @@
+---
+// Home page body (issue #72): migrated from the legacy single-page
+// index.html. Sections: hero with the Ecliptica featured banner, business
+// verticals, featured projects (content collection), latest news/devlog
+// feed, technology stack + GitHub org metrics, about and contact.
+// Rendered by every locale's home route (src/pages/index.astro for EN at
+// the unprefixed root and src/pages/[locale]/index.astro for RU/DE/ES);
+// the active locale comes from Astro.currentLocale.
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import DevlogFeed from '../DevlogFeed.astro';
+import { t, localeHref, DEFAULT_LOCALE } from '../../i18n';
+import metrics from '../../data/github-org-metrics.json';
+
+const locale = Astro.currentLocale ?? DEFAULT_LOCALE;
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+
+// i18n key for the short project description (projects.{slug} in the JSON).
+const DESCRIPTION_KEYS: Record<string, string> = {
+	ecliptica: 'projects.ecliptica',
+	cqtdeployer: 'projects.cqtdeployer',
+	cheatcard: 'projects.cheat_card',
+	yourtimedelivery: 'projects.your_time_delivery',
+	qtssecret: 'projects.qt_secret',
+	heart: 'projects.heart',
+};
+const CARD_ICONS: Record<string, string> = {
+	cqtdeployer: 'icon-tool',
+	cheatcard: 'icon-credit-card',
+	yourtimedelivery: 'icon-send',
+	qtssecret: 'icon-lock',
+	heart: 'icon-heart',
+};
+
+const stackTags = ['C++23', 'Qt 6 / QML', 'Qt Quick 3D', 'CMake', 'SQLite', 'CI/CD'];
+const metricsUpdated = new Date(metrics.fetchedAt).toISOString().slice(0, 10);
+---
+<Base title={t(locale, 'meta.title')} description={t(locale, 'meta.description')} preloadHero>
+	<!-- Hero with the Ecliptica featured banner -->
+	<section id="home" class="hero">
+		<div class="hero-bg" aria-hidden="true">
+			<img
+				src="/assets/images/ecliptica_background-768.webp"
+				srcset="/assets/images/ecliptica_background-480.webp 480w, /assets/images/ecliptica_background-768.webp 768w"
+				sizes="100vw"
+				fetchpriority="high"
+				alt=""
+			>
+		</div>
+		<div class="container">
+			<div class="ecliptica-featured">
+				<div class="grid items-center gap-8 lg:grid-cols-[auto,1fr]">
+					<img
+						src="/assets/images/ecliptica_icon_logo.png.webp"
+						srcset="/assets/images/ecliptica_icon_logo-240.webp 240w, /assets/images/ecliptica_icon_logo.png.webp 256w"
+						sizes="120px"
+						alt="Ecliptica Logo"
+						class="ecliptica-logo"
+						width="120"
+						height="120"
+					>
+					<div>
+						<h1 class="ecliptica-title">Ecliptica</h1>
+						<p class="ecliptica-subtitle">{t(locale, 'hero.eclipticaSubtitle')}</p>
+						<p class="mt-2 text-muted">{t(locale, 'hero.eclipticaDescription')}</p>
+					</div>
+				</div>
+
+				<div class="ecliptica-capsule mt-6">
+					<img
+						src="/assets/images/ecliptica_capsule.jpg.webp"
+						srcset="/assets/images/ecliptica_capsule-308.webp 308w, /assets/images/ecliptica_capsule.jpg.webp 616w, /assets/images/ecliptica_capsule-924.webp 924w"
+						sizes="(max-width: 640px) 100vw, 616px"
+						alt="Ecliptica Capsule"
+						class="ecliptica-capsule-img"
+						loading="lazy"
+						width="616"
+						height="353"
+					>
+				</div>
+
+				<div class="mt-6 flex flex-wrap gap-4">
+					<span class="feature-item"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-send" /></svg>{t(locale, 'hero.feature1')}</span>
+					<span class="feature-item"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-globe" /></svg>{t(locale, 'hero.feature2')}</span>
+					<span class="feature-item"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-settings" /></svg>{t(locale, 'hero.feature3')}</span>
+				</div>
+
+				<div class="mt-6 flex flex-wrap gap-3">
+					<a href="https://store.steampowered.com/app/3723390/Ecliptica/" target="_blank" rel="noopener" class="btn btn-steam-primary">
+						<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-steam" /></svg>
+						{t(locale, 'projectsDetail.btnSteam')}
+					</a>
+					<a href="https://store.steampowered.com/wishlist/add/item?appid=3723390" target="_blank" rel="noopener" class="btn btn-wishlist">
+						<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-heart" /></svg>
+						{t(locale, 'projectsDetail.btnWishlist')}
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Core business verticals -->
+	<section id="verticals" class="section">
+		<div class="container">
+			<h2 class="section-title">{t(locale, 'verticals.title')}</h2>
+			<div class="grid gap-6 md:grid-cols-2">
+				<article class="card vertical-card">
+					<div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-gamepad" /></svg></div>
+					<h3 class="mb-2 text-xl font-semibold">{t(locale, 'verticals.gamesTitle')}</h3>
+					<p class="text-muted">{t(locale, 'verticals.gamesText')}</p>
+					<div class="mt-3 flex flex-wrap gap-2">
+						<span class="lang-badge">Qt Quick 3D</span>
+						<span class="lang-badge">C++23</span>
+						<span class="lang-badge">Ecliptica</span>
+					</div>
+				</article>
+				<article class="card vertical-card">
+					<div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-tool" /></svg></div>
+					<h3 class="mb-2 text-xl font-semibold">{t(locale, 'verticals.softwareTitle')}</h3>
+					<p class="text-muted">{t(locale, 'verticals.softwareText')}</p>
+					<div class="mt-3 flex flex-wrap gap-2">
+						<span class="lang-badge">C++ / Qt</span>
+						<span class="lang-badge">QML</span>
+						<span class="lang-badge">Cross-Platform</span>
+					</div>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<!-- Featured Projects showcase (content collection) -->
+	<section id="featured" class="section section-alt">
+		<div class="container">
+			<h2 class="section-title">{t(locale, 'featured.title')}</h2>
+			<p class="section-subtitle">{t(locale, 'featured.subtitle')}</p>
+			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+				{
+					projects.map((project) => {
+						const slug = project.id;
+						const icon = CARD_ICONS[slug];
+						const descKey = DESCRIPTION_KEYS[slug] ?? `projects.${slug}`;
+						return (
+						<a class="card featured-card" href={localeHref(locale, `/projects/${slug}`)}>
+							{slug === 'ecliptica' && (
+							<img
+								src="/assets/images/ecliptica_background-768.webp"
+								srcset="/assets/images/ecliptica_background-480.webp 480w, /assets/images/ecliptica_background-768.webp 768w"
+								sizes="(max-width: 640px) 100vw, 616px"
+								alt="Ecliptica Background"
+								class="ecliptica-card-bg"
+								loading="lazy"
+							>
+							)}
+							{slug === 'ecliptica' ? (
+							<img
+								src="/assets/images/ecliptica_icon_logo.png.webp"
+								srcset="/assets/images/ecliptica_icon_logo-240.webp 240w, /assets/images/ecliptica_icon_logo.png.webp 256w"
+								sizes="96px"
+								alt="Ecliptica Logo"
+								class="game-logo mb-3 h-24 w-24 rounded-2xl"
+								loading="lazy"
+								width="96"
+								height="96"
+							>
+							) : (
+							<div class="card-icon">
+								<svg class="icon" aria-hidden="true" focusable="false"><use href={`#${icon}`} /></svg>
+							</div>
+							)}
+							<h3 class="text-xl font-semibold">{project.data.title}</h3>
+							<p class="mt-1"><span class="lang-badge">{t(locale, `projectsDetail.categories.${project.data.category}`)}</span></p>
+							<p class="mt-2 text-sm text-muted">{t(locale, descKey)}</p>
+							<span class="featured-cta mt-2 inline-block">{t(locale, 'featured.details')}</span>
+						</a>
+						);
+					})
+				}
+			</div>
+		</div>
+	</section>
+
+	<!-- Latest News & Devlog feed (devlog content collection) -->
+	<section id="devlog" class="section">
+		<div class="container">
+			<h2 class="section-title">{t(locale, 'devlog.title')}</h2>
+			<p class="section-subtitle">{t(locale, 'devlog.subtitle')}</p>
+			<DevlogFeed limit={5} />
+		</div>
+	</section>
+
+	<!-- Technology stack & open-source footprint (build-time cache) -->
+	<section id="stack" class="section section-alt">
+		<div class="container">
+			<h2 class="section-title">{t(locale, 'stack.title')}</h2>
+			<p class="section-subtitle">{t(locale, 'stack.text')}</p>
+			<div class="mb-8 flex flex-wrap justify-center gap-2">
+				{stackTags.map((tag) => <span class="lang-badge">{tag}</span>)}
+			</div>
+			<div class="github-metrics flex flex-wrap items-start justify-center gap-10">
+				<div class="stat-item">
+					<span class="stat-number" id="gh-repo-count">{metrics.repoCount}</span>
+					<span class="stat-label">{t(locale, 'stack.repos')}</span>
+				</div>
+				<div class="stat-item">
+					<span class="stat-number" id="gh-total-stars">{metrics.totalStars}</span>
+					<span class="stat-label">{t(locale, 'stack.stars')}</span>
+				</div>
+			</div>
+			<p class="metrics-source mt-4 text-center">
+				<a href={metrics.source} target="_blank" rel="noopener" class="underline hover:text-primary">{t(locale, 'stack.source')}</a>
+				<span class="metrics-updated"> · {t(locale, 'stack.updated')} {metricsUpdated}</span>
+			</p>
+		</div>
+	</section>
+
+	<!-- About -->
+	<section id="about" class="section">
+		<div class="container">
+			<h2 class="section-title">{t(locale, 'about.title')}</h2>
+			<p class="section-subtitle">{t(locale, 'about.text')}</p>
+			<div class="about-content mx-auto max-w-3xl text-center text-muted">
+				<p>{t(locale, 'about.description')}</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact -->
+	<section id="contact" class="section section-alt">
+		<div class="container">
+			<h2 class="section-title">{t(locale, 'contact.title')}</h2>
+			<p class="section-subtitle">{t(locale, 'contact.text')}</p>
+			<div class="contact-info flex flex-wrap justify-center gap-4">
+				<a href="mailto:quasarappdevelop@gmail.com" class="contact-link">
+					<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-mail" /></svg>
+					<span>{t(locale, 'contact.email')}</span>
+				</a>
+				<a href="https://github.com/QuasarApp" class="contact-link" target="_blank" rel="noopener">
+					<svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github" /></svg>
+					<span>{t(locale, 'contact.github')}</span>
+				</a>
+			</div>
+			<p class="mt-4 text-center text-sm text-muted">{t(locale, 'contact.message')}</p>
+		</div>
+	</section>
+</Base>

@@ -16,8 +16,11 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
   banner), business verticals, featured projects showcase (cards for the
   6 key projects linking to the upcoming `/projects/{slug}` pages,
   issue #77), latest news/devlog feed, technology stack + GitHub org
-  metrics, project-card grid, about + stats, contact, footer with social
-  links (home sections per issue #78 / TZ 2.1).
+  metrics, project-card grid, contact, footer with social links (home
+  sections per issue #78 / TZ 2.1). The redundant "About Us" section was
+  removed from the home page (issue #73): the studio background, team
+  competencies and B2B services live on the dedicated /about page, which
+  the navbar "About" entry links to.
 - `css/style.css` — the only stylesheet; reuse the CSS design tokens on
   `:root`.
 - `projects/{slug}/index.html` — project detail pages (issue #77) for the

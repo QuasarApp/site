@@ -468,8 +468,6 @@ body {
     }
 }
 
-.about-section { padding: 100px 0; background: var(--darker-bg); overflow: hidden; }
-.about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
 .about-text { font-size: 1.1rem; color: var(--muted-text); width: 100%; }
 .about-text p { margin-bottom: 20px; }
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
@@ -639,7 +637,6 @@ body {
     .hero-buttons { flex-direction: column; }
     .btn { width: 100%; text-align: center; }
     .projects-grid { grid-template-columns: 1fr; }
-    .about-content { grid-template-columns: 1fr; }
     .stats { grid-template-columns: 1fr; }
     .contact-content { gap: 20px; }
     .section-title { font-size: 2rem; }

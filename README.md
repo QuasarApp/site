@@ -135,6 +135,11 @@ languages. `tests/about.test.js` guards the page (sections, required
 competencies/services, `/contacts` CTA, per-page i18n coverage, script
 order, tag balance, sitemap entry).
 
+The redundant "About Us" section was removed from the home page
+(`index.html`): the navbar "About" entry is the home page link to
+`/about`, and `tests/home.test.js` guards both the link and the absence
+of the duplicated copy (EndrII review of PR #97).
+
 ## Performance & Media (issue #81)
 
 The site targets Lighthouse / PageSpeed **90+ Performance on Desktop and

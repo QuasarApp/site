@@ -17,10 +17,31 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
   banner), business verticals, featured projects showcase (cards for the
   6 key projects linking to the upcoming `/projects/{slug}` pages,
   issue #77), latest news/devlog feed, technology stack + GitHub org
-  metrics, project-card grid, about + stats, contact, footer with social
-  links (home sections per issue #78 / TZ 2.1).
+  metrics, project-card grid, contact, footer with social links (home
+  sections per issue #78 / TZ 2.1). The redundant "About Us" section was
+  removed from the home page (issue #73): the studio background, team
+  competencies and B2B services live on the dedicated /about page, which
+  the navbar "About" entry links to.
 - `css/style.css` — the only stylesheet; reuse the CSS design tokens on
   `:root`.
+- `projects/{slug}/index.html` — project detail pages (issue #77) for the
+  6 key projects: `ecliptica`, `cqtdeployer`, `cheatcard`,
+  `yourtimedelivery`, `qtssecret` (canonical slug for Qt-Secret, with a
+  noindex `qt-secret` redirect stub) and `heart`. Shared template: header
+  + logo, category/status badges, OS badges, problem, value, features,
+  tech stack tags, media/downloads, action buttons, and a GitHub block
+  (stars, latest release, archived note, "updated" date) for the five
+  open-source projects — YourTimeDelivery has no public repository and
+  renders "No Public Repository" contact messaging instead. All copy is
+  localized via `data-lang` keys under `projectsDetail.{slug}`.
+- `about/index.html` — the About Us & Services page (issue #73, TZ 2.5):
+  studio background (QuasarApp Group d.o.o., Bar, Montenegro), team
+  competencies (C++23, Qt/QML, CI/CD, cross-platform deployment) and B2B
+  services (outsourcing, consulting, platform porting) as service cards,
+  plus a B2B CTA toward `/contacts` (issue #74).
+  Reuses the existing `about.*` i18n copy and the cached org metrics
+  (repo count, total stars); all new copy is localized via `data-lang`
+  keys under `aboutPage.*`.
 - `js/i18n.js` (load 1st) — `translations` object for `en`/`ru`/`me`/`de`/`es`;
   elements carry `data-lang` dot-path keys. When adding or changing a
   string, update the key in the markup and all five language blocks
@@ -55,31 +76,48 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
   configured at the top of the file (`CONTACT_ENDPOINT`,
   `TURNSTILE_SITE_KEY`); while the endpoint (Docker/CI-CD issue) is not
   deployed the form degrades gracefully.
+- `js/projects-data.js` — project detail pages only (loaded after
+  `js/i18n.js` and `js/main.js`): renders the GitHub block from
+  `data/projects-github.json` (issue #77) and re-localizes the labels on
+  `quasarapp:languagechange`. The static markup bakes in the same cached
+  values as the graceful offline fallback.
 - `data/github-org-metrics.json` — build-time cache of the QuasarApp
   GitHub org metrics (repo count, total stars, fetchedAt). Refresh with
   `node scripts/fetch-github-metrics.js` (no token needed, Node >= 18).
   If the GitHub API is unreachable, the script keeps the existing cache
   and exits 0 (graceful offline fallback); without any cache it exits 1.
+- `data/projects-github.json` — build-time cache of the per-project
+  GitHub data used by the `/projects/{slug}` pages (issue #77): for each
+  of the five open-source projects — repo URL, stars, latest release tag
+  + URL (or null), archived flag — plus `fetchedAt`. YourTimeDelivery is
+  intentionally absent (no public repository; never invent one). Refresh
+  with `node scripts/fetch-projects-github.js` (no token needed, Node >=
+  18); same offline behavior as the org metrics fetcher (keeps the
+  existing cache and exits 0, exits 1 only without any cache).
 - `data/devlog.json` — devlog content collection for the home feed:
   `{"posts": [{ "slug", "title", "date", "tags": [], "excerpt" }]}`.
   Seeded by the devlog issue (#75); while empty, the home page shows the
   explicit empty state.
-- `scripts/` — dependency-free Node helper scripts (the metrics fetcher
-  above); they are build-time tools and are not loaded by the browser.
+- `scripts/` — dependency-free Node helper scripts (the two build-time
+  GitHub metrics fetchers above); they are build-time tools and are not
+  loaded by the browser.
 - `tests/` — dependency-free Node.js test suite run with
   `node --test tests/*.test.js`; executed on every pull request by the
   `.github/workflows/auto-tests.yml` GitHub Actions workflow
   (`auto-tests` job plus a `lighthouse` job that enforces 90+ Performance
   on Desktop and Mobile, see below). `tests/home.test.js` guards the home
-  sections (issue #78); `tests/links.test.js` scans every HTML page
-  (home + `/contacts`) for resolvable local references and exempts the
-  upcoming `/projects/...` and `/devlog/...` routes (issues #75/#77) from
-  the file-existence check until those pages land; `tests/i18n.test.js`
-  checks key parity plus every `data-lang` key of all HTML pages;
-  `tests/contacts.test.js` guards the `/contacts` acceptance criteria
-  (issue #74): form validation and states, honeypot/Turnstile wiring,
-  verified external links only, and the legal details values in all
-  languages.
+  sections (issue #78); `tests/projects.test.js` guards the
+  `/projects/{slug}` detail pages (issue #77); `tests/about.test.js`
+  guards the `/about` page (issue #73); `tests/links.test.js` scans
+  every HTML page (home + `/projects/{slug}` + `/about` + `/contacts`)
+  for resolvable local references and exempts only the upcoming
+  `/devlog/...` routes (issue #75) and the `/ecliptica` hub (issue
+  #72) from the file-existence check until those pages land;
+  `tests/i18n.test.js` checks key parity plus every `data-lang` key of
+  all HTML pages; `tests/contacts.test.js` guards the `/contacts`
+  acceptance criteria (issue #74): form validation and states,
+  honeypot/Turnstile wiring, verified external links only, and the
+  legal details values in all languages.
 - Media & performance (issue #81):
   - All content images are pre-optimized WebP committed to the repo (no
     build step). Responsive variants (`*-480.webp`, `*-768.webp`, ...) live

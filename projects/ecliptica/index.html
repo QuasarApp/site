@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecliptica &mdash; QuasarApp Group</title>
+    <meta name="description" content="Ecliptica is a 3D open-world survival &amp; economy sim on Qt Quick 3D. Command the final space station, terraform planets and manage a fully dynamic NPC-driven economy.">
+    <meta name="theme-color" content="#0a0e17">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quasarapp.me/projects/ecliptica/">
+    <meta property="og:title" content="Ecliptica &mdash; QuasarApp Group">
+    <meta property="og:description" content="Ecliptica is a 3D open-world survival &amp; economy sim on Qt Quick 3D. Command the final space station, terraform planets and manage a fully dynamic NPC-driven economy.">
+    <meta property="og:image" content="https://quasarapp.me/assets/images/banner.webp">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+</head>
+<body>
+    <!-- Inline SVG icon sprite (issue #81): same sprite as index.html. -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;" aria-hidden="true" focusable="false">
+        <symbol id="icon-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+        <symbol id="icon-steam" viewBox="0 0 24 24"><path fill="currentColor" d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></symbol>
+        <symbol id="icon-youtube" viewBox="0 0 24 24"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol>
+        <symbol id="icon-heart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+        <symbol id="icon-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></g></symbol>
+        <symbol id="icon-box" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></g></symbol>
+        <symbol id="icon-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></g></symbol>
+        <symbol id="icon-tool" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+        <symbol id="icon-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></g></symbol>
+        <symbol id="icon-send" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></g></symbol>
+        <symbol id="icon-credit-card" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></g></symbol>
+    </svg>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="/">
+                    <img src="../../assets/images/logo.png.webp" srcset="../../assets/images/logo-100.webp 100w, ../../assets/images/logo.png.webp 512w" sizes="50px" alt="QuasarApp" class="nav-logo" width="50" height="50">
+                    <span>QuasarApp</span>
+                </a>
+            </div>
+            <ul class="nav-links" aria-label="Main navigation">
+                <li><a href="/" data-lang="nav.home">Home</a></li>
+                <li><a href="/#featured" data-lang="nav.projects">Projects</a></li>
+                <li><a href="mailto:quasarappdevelop@gmail.com" data-lang="nav.contact">Contact</a></li>
+                <li>
+                    <select id="lang-select" class="lang-select" aria-label="Toggle language" onchange="selectLanguage(this.value)">
+                        <option value="en" selected>EN</option>
+                        <option value="ru">RU</option>
+                        <option value="me">ME</option>
+                        <option value="de">DE</option>
+                        <option value="es">ES</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <section class="project-hero">
+            <div class="container">
+                <a class="project-back" href="/#featured" data-lang="projectsDetail.backToCatalog">Back to all projects</a>
+                <div class="project-header">
+                    <img class="project-logo" src="../../assets/images/ecliptica_icon_logo.png.webp" srcset="../../assets/images/ecliptica_icon_logo-240.webp 240w, ../../assets/images/ecliptica_icon_logo.png.webp 256w" sizes="140px" alt="Ecliptica Logo" width="140" height="140">
+                    <div class="project-header-info">
+                        <h1>Ecliptica</h1>
+                        <p class="project-lead" data-lang="projects.ecliptica">Ecliptica is a space exploration game where you command a space station and terraform planets. Build habitats, manage resources, and lead your crew through deep space challenges.</p>
+                        <div class="project-badges">
+                            <span class="badge badge-category" data-lang="projectsDetail.categories.games">Games</span>
+                            <span class="badge badge-status" data-lang="projectsDetail.statuses.activeDevelopment">Active Development</span>
+                        </div>
+                        <div class="os-badges" role="list" aria-label="Supported platforms">
+                            <span class="os-badge" role="listitem">Windows</span>
+                            <span class="os-badge" role="listitem">Linux</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="problem" class="project-section">
+            <div class="container">
+                <h2 class="section-title" data-lang="projectsDetail.problemTitle">The Problem</h2>
+                <p class="project-text" data-lang="projectsDetail.ecliptica.problem">Survival games and economy sims rarely meet: open-world crafting without a living economy, or strategy without a world you can walk through. Ecliptica closes that gap on a modern cross-platform engine.</p>
+            </div>
+        </section>
+
+        <section id="value" class="project-section project-section-alt">
+            <div class="container">
+                <h2 class="section-title" data-lang="projectsDetail.valueTitle">Why It Matters</h2>
+                <p class="project-text" data-lang="projectsDetail.ecliptica.value">A 3D open-world survival &amp; economy sim built on Qt Quick 3D. You command the final space station, terraform distant planets and watch a fully dynamic, NPC-driven economy react to every decision you make.</p>
+            </div>
+        </section>
+
+        <section id="features" class="project-section">
+            <div class="container">
+                <h2 class="section-title" data-lang="projectsDetail.featuresTitle">Features</h2>
+                <ul class="feature-list">
+                    <li data-lang="projectsDetail.ecliptica.feature1">Procedurally generated open worlds with deformable terrain</li>
+                    <li data-lang="projectsDetail.ecliptica.feature2">Fully dynamic, NPC-driven economy</li>
+                    <li data-lang="projectsDetail.ecliptica.feature3">Settlement construction with blueprints and terminal systems</li>
+                    <li data-lang="projectsDetail.ecliptica.feature4">Player-managed corporations and factions</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="stack" class="project-section project-section-alt">
+            <div class="container">
+                <h2 class="section-title" data-lang="projectsDetail.stackTitle">Technology Stack</h2>
+                <div class="stack-tags">
+                    <span class="lang-badge">C++23</span>
+                    <span class="lang-badge">Qt 6</span>
+                    <span class="lang-badge">Qt Quick 3D</span>
+                    <span class="lang-badge">CMake</span>
+                    <span class="lang-badge">SQLite</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="github" class="project-section">
+            <div class="container">
+                <h2 class="section-title" data-lang="projectsDetail.githubTitle">Open Source on GitHub</h2>
+                <div class="github-card">
+                    <div class="github-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-project-github="stars">1</span>
+                            <span class="stat-label" data-lang="projectsDetail.githubStars">Stars on GitHub</span>
+                        </div>
+                        <div class="stat-item">
+                            <a class="stat-number" data-project-github="release" href="https://github.com/QuasarApp/EclipticaPage" data-lang="projectsDetail.githubNoRelease">No public releases</a>
+                            <span class="stat-label" data-lang="projectsDetail.githubLatestRelease">Latest release</span>
+                        </div>
+                    </div>
+                    <div class="github-links">
+                        <a class="btn btn-primary" href="https://github.com/QuasarApp/EclipticaPage" target="_blank" rel="noopener">
+                            <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg>
+                            <span data-lang="projectsDetail.btnGithub">View on GitHub</span>
+                        </a>
+                    </div>
+                    <p class="github-note" data-lang="projectsDetail.ecliptica.githubNote">Ecliptica is a commercial Steam game. The public repository hosts the game’s official web page, not the game code.</p>
+                    <p class="github-note" data-project-github="archived-note" hidden data-lang="projectsDetail.githubArchived">This repository is archived and is now read-only.</p>
+                    <p class="metrics-source">
+                        <span data-lang="projectsDetail.githubCached">GitHub data is cached at build time from the GitHub API - the values shown are from the last successful fetch.</span>
+                        <span class="metrics-updated"><span data-lang="projectsDetail.githubUpdated">Updated</span> <span data-project-github="updated-date">2026-11-21</span></span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="media" class="project-section project-section-alt">
+            <div class="container">
+                <h2 class="section-title" data-lang="projectsDetail.mediaTitle">Media &amp; Downloads</h2>
+                <div class="project-media">
+                    <figure>
+                        <img src="../../assets/images/ecliptica_capsule.jpg.webp" srcset="../../assets/images/ecliptica_capsule-308.webp 308w, ../../assets/images/ecliptica_capsule.jpg.webp 616w, ../../assets/images/ecliptica_capsule-924.webp 924w" sizes="(max-width: 640px) 100vw, 616px" alt="Ecliptica key art" loading="lazy" width="616" height="353">
+                        <figcaption data-lang="projectsDetail.mediaCaptionKeyArt">Official key art (Steam capsule)</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="../../assets/images/ecliptica_background-768.webp" srcset="../../assets/images/ecliptica_background-480.webp 480w, ../../assets/images/ecliptica_background-768.webp 768w" sizes="(max-width: 640px) 100vw, 616px" alt="Ecliptica environment art" loading="lazy" width="616" height="346">
+                        <figcaption data-lang="projectsDetail.mediaCaptionEnvironment">Environment &amp; world art</figcaption>
+                    </figure>
+                </div>
+                <div class="project-actions">
+                    <a href="https://store.steampowered.com/app/3723390/Ecliptica/" target="_blank" rel="noopener" class="btn btn-steam-primary">
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-steam"></use></svg>
+                        <span data-lang="projectsDetail.btnSteam">Play on Steam</span>
+                    </a>
+                    <a href="https://store.steampowered.com/wishlist/add/item?appid=3723390" target="_blank" rel="noopener" class="btn btn-wishlist">
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-heart"></use></svg>
+                        <span data-lang="projectsDetail.btnWishlist">Add to Wishlist</span>
+                    </a>
+                    <a href="/ecliptica" class="btn btn-secondary">
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-globe"></use></svg>
+                        <span data-lang="projectsDetail.btnEclipticaHub">Visit the Ecliptica hub</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-social">
+                <a href="https://github.com/QuasarApp" class="social-link">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg>
+                    <span data-lang="footer.github">GitHub</span>
+                </a>
+                <a href="mailto:quasarappdevelop@gmail.com" class="social-link">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-mail"></use></svg>
+                    <span data-lang="footer.email">Email</span>
+                </a>
+                <a href="https://www.youtube.com/@quasarappcore" class="social-link" target="_blank">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-youtube"></use></svg>
+                    <span data-lang="footer.youtube">YouTube</span>
+                </a>
+                <a href="https://store.steampowered.com/curator/45704880" class="social-link" target="_blank">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-steam"></use></svg>
+                    <span data-lang="footer.steam">Steam</span>
+                </a>
+            </div>
+            <div class="footer-bottom">
+                <p data-lang="footer.copyright">&copy; 2026 QuasarApp Group. All rights reserved.</p>
+                <p class="made-with"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-heart"></use></svg> Made with <span class="glow">passion</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/i18n.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/projects-data.js"></script>
+</body>
+</html>

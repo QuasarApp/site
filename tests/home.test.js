@@ -34,6 +34,32 @@ test('featured cards for the 6 key projects link to /projects/{slug}', () => {
     }
 });
 
+test('the home page links to the /about page (issue #73)', () => {
+    // The dedicated About page must be reachable from the home page
+    // (review of PR #97): the navbar "About" entry points to /about.
+    const aboutLinks = [...html.matchAll(/<a\b[^>]*href="\/about\/?"[^>]*>/g)];
+    assert.ok(
+        aboutLinks.length >= 1,
+        `expected the navbar to link to /about, found ${aboutLinks.length} link(s)`
+    );
+});
+
+test('the home page no longer duplicates the About Us copy (issue #73)', () => {
+    // The About Us information lives on the dedicated /about page
+    // (EndrII review of PR #97): the home page must not repeat the
+    // studio copy, only link to the page from the navbar.
+    assert.ok(
+        !/<section\b[^>]*id=["']about["']/.test(html),
+        'home page still has an #about section'
+    );
+    for (const key of ['about.title', 'about.text', 'about.text2', 'about.description']) {
+        assert.ok(
+            !html.includes(`data-lang="${key}"`),
+            `home page still duplicates the '${key}' copy that lives at /about`
+        );
+    }
+});
+
 test('the devlog content collection JSON exists and is a valid posts array', () => {
     const file = path.join(ROOT, 'data', 'devlog.json');
     assert.ok(fs.existsSync(file), 'data/devlog.json is missing');

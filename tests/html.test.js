@@ -30,7 +30,11 @@ test('document declares charset and viewport', () => {
     assert.match(html, /<meta[^>]+name=["']?viewport["']?/i);
 });
 
-for (const id of ['home', 'verticals', 'featured', 'devlog', 'stack', 'projects', 'about', 'contact']) {
+// The home page ships the five TZ-2.1 sections (issue #78). The former
+// #projects / #about / #contact single-page sections were removed: project
+// detail pages live under /projects/{slug} (issue #77) and are guarded by
+// tests/projects.test.js, while contact is the nav/footer mailto link.
+for (const id of ['home', 'verticals', 'featured', 'devlog', 'stack']) {
     test(`section #${id} exists`, () => {
         assert.match(html, new RegExp(`<section[^>]+id=["']${id}["']`, 'i'));
     });

@@ -76,7 +76,7 @@
             <ul class="nav-links" aria-label="Main navigation">
                 <li><a href="#home" data-lang="nav.home">Home</a></li>
                 <li><a href="#projects" data-lang="nav.projects">Projects</a></li>
-                <li><a href="#about" data-lang="nav.about">About</a></li>
+                <li><a href="/about" data-lang="nav.about">About</a></li>
                 <li><a href="#contact" data-lang="nav.contact">Contact</a></li>
                 <li>
                     <select id="lang-select" class="lang-select" aria-label="Toggle language" onchange="selectLanguage(this.value)">
@@ -250,15 +250,10 @@
         </div>
     </section>
     
-    <section id="about" class="about-section">
-        <div class="container">
-            <h2 class="section-title" data-lang="about.title">About Us</h2>
-            <p class="section-subtitle" data-lang="about.text">QuasarApp is an open-source organization dedicated to creating innovative software solutions. We believe in the power of open collaboration and building tools that empower developers worldwide.</p>
-            <div class="about-content">
-                <p data-lang="about.description">Our mission is to build high-quality software that helps developers and organizations succeed.</p>
-            </div>
-        </div>
-    </section>
+    <!-- About Us (issue #73): the studio background, team competencies
+         and B2B services now live on the dedicated /about page, so the
+         home page no longer repeats them. The navbar "About" entry is
+         the link from here to /about (EndrII review of PR #97). -->
     
     <section id="contact" class="contact-section">
         <div class="container">

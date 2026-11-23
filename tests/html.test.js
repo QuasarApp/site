@@ -36,8 +36,8 @@ test('document declares charset and viewport', () => {
 // open-source footprint" (#stack) and the "Get in Touch" (#contact)
 // sections were removed from the home page (EndrII review of PR #96):
 // the studio, services and GitHub org metrics live on /about (issue #73,
-// guarded by tests/about.test.js) and the contact form + legal details
-// live on /contacts (issue #74, guarded by tests/contacts.test.js).
+// guarded by tests/about.test.js) and the contact form lives on /contacts
+// (issue #74, guarded by tests/contacts.test.js).
 for (const id of ['home', 'featured', 'devlog']) {
     test(`section #${id} exists`, () => {
         assert.match(html, new RegExp(`<section[^>]+id=["']${id}["']`, 'i'));

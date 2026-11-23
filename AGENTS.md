@@ -71,8 +71,9 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
   `quasarappdevelop@gmail.com` with a visible notice while the
   rate-limited endpoint does not exist yet), official links block
   (GitHub, Steam, Discord, Telegram, Reddit, Bluesky, YouTube, email —
-  verified URLs only) and legal corporate details for QuasarApp Group
-  d.o.o. (Bar, Montenegro, PIB). Loads `js/i18n.js`, `js/main.js` and
+  verified URLs only). The legal information section was removed from the
+  page per the EndrII review of PR #96 (guarded by
+  `tests/contacts.test.js`). Loads `js/i18n.js`, `js/main.js` and
   `js/contacts.js`; shares the i18n keys from `js/i18n.js` (`contacts.*`
   namespace).
 - `js/contacts.js` (contacts page only, load 3rd) — `/contacts` form
@@ -124,8 +125,8 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
   `tests/i18n.test.js` checks key parity plus every `data-lang` key of
   all HTML pages; `tests/contacts.test.js` guards the `/contacts`
   acceptance criteria (issue #74): form validation and states,
-  honeypot/Turnstile wiring, verified external links only, and the
-  legal details values in all languages.
+  honeypot/Turnstile wiring, verified external links only, and that the
+  legal information section stays removed (EndrII review of PR #96).
 - Media & performance (issue #81):
   - All content images are pre-optimized WebP committed to the repo (no
     build step). Responsive variants (`*-480.webp`, `*-768.webp`, ...) live

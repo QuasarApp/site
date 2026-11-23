@@ -4,8 +4,8 @@
 // - anti-spam contact form: validation fields, honeypot, loading/success/
 //   error states, graceful mailto fallback with a visible notice
 // - official links block: only verified URLs (no invented external links)
-// - legal details block: company name + registered office (Bar, Montenegro)
-//   + PIB, with values consistent across all languages
+// - the legal information section was removed on request (EndrII review of
+//   PR #96) and must not be reintroduced
 // Run with: node --test tests/*.test.js
 
 const { test } = require('node:test');
@@ -148,36 +148,22 @@ test('no invented external URLs on the contacts page (issue #74)', () => {
     }
 });
 
-test('legal details block shows company name, registered office in Bar, Montenegro and PIB (issue #74)', () => {
-    assert.match(html, /<section[^>]+id=["']legal["']/, 'legal section missing');
-    assert.match(html, /QuasarApp Group d\.o\.o\./, 'company name missing');
-    assert.match(html, /03602524/, 'PIB missing from the legal block');
-    // The city may be localized (e.g. Cyrillic "Бар" in Russian).
-    const cityPatterns = {
-        en: /Bar/i,
-        ru: /Бар/i,
-        me: /Bar/i,
-        de: /Bar/i,
-        es: /Bar/i,
-    };
+test('the legal information section is not on the page (EndrII review of PR #96)', () => {
+    // The legal details block was removed on request; guard against it being
+    // reintroduced (markup, i18n keys and the PIB value).
+    assert.doesNotMatch(html, /<section[^>]+id=["']legal["']/, 'legal section must stay removed');
+    assert.doesNotMatch(html, /legal-details/, 'legal details markup must stay removed');
+    assert.doesNotMatch(html, /03602524/, 'PIB must stay removed from the page');
     for (const lang of LANGS) {
         assert.equal(
-            resolvePath(translations[lang], 'contacts.legalCompanyValue'),
-            'QuasarApp Group d.o.o.',
-            `${lang}.contacts.legalCompanyValue must be the company name`
-        );
-        const office = resolvePath(translations[lang], 'contacts.legalOfficeValue');
-        assert.equal(typeof office, 'string', `${lang}.contacts.legalOfficeValue missing`);
-        assert.match(office, cityPatterns[lang], `${lang}.contacts.legalOfficeValue must mention Bar`);
-        assert.match(
-            office,
-            /Montenegro|Crna Gora|Черногория/i,
-            `${lang}.contacts.legalOfficeValue must mention Montenegro`
+            resolvePath(translations[lang], 'contacts.legalHeading'),
+            undefined,
+            `${lang}.contacts.legalHeading must stay removed from the translations`
         );
         assert.equal(
             resolvePath(translations[lang], 'contacts.legalPibValue'),
-            '03602524',
-            `${lang}.contacts.legalPibValue must carry the registry PIB`
+            undefined,
+            `${lang}.contacts.legalPibValue must stay removed from the translations`
         );
     }
 });

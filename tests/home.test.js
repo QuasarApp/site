@@ -79,8 +79,8 @@ test('the "Our Projects" grid and "Get in Touch" sections were removed from the 
     // The "Our Projects" project-card grid (#projects) and the "Get in
     // Touch" contact section (#contact) no longer live on the home page
     // (EndrII review of PR #96): the projects are showcased in #featured
-    // and on the /projects/{slug} pages, the contact form and the legal
-    // details live on /contacts.
+    // and on the /projects/{slug} pages, the contact form lives on
+    // /contacts.
     assert.ok(
         !/<section\b[^>]*id=["']projects["']/.test(html),
         'home page still has the #projects "Our Projects" section'

@@ -78,10 +78,10 @@ and exits 0; without any cache it exits 1 so the build fails loudly.
   community links published on the Ecliptica Steam store page;
   `tests/contacts.test.js` enforces the verified-URL allow-list so no
   invented links can land.
-- **Legal corporate details** — QuasarApp Group d.o.o., Željeznička 91,
-  Bar, Montenegro, PIB 03602524 (values from the public registry of the
-  Agency for Public Revenue of Montenegro, IRMS; flagged for human
-  confirmation on the issue).
+
+Note: the legal information section was removed from the page per the
+EndrII review of PR #96; `tests/contacts.test.js` guards that it stays
+removed.
 
 To enable direct submission once the endpoint exists, set
 `CONTACT_ENDPOINT` (and optionally `TURNSTILE_SITE_KEY`) at the top of

@@ -192,10 +192,10 @@ const translations = {
             email: 'Email',
             github: 'GitHub',
             message: 'Contact us through our official channels - links are available in the footer.',
-            page: 'Contact page & legal information'
+            page: 'Contact page'
         },
         contacts: {
-            title: 'Contacts & Legal Information',
+            title: 'Contacts',
             lead: 'Get in touch with QuasarApp Group — business inquiries, press, partnerships or support.',
             formHeading: 'Send us a message',
             formText: 'Fill in the form and we will get back to you. Messages are protected by anti-spam validation.',
@@ -234,18 +234,7 @@ const translations = {
             channelYoutube: 'YouTube',
             channelYoutubeDesc: 'Devlogs and trailers',
             channelEmail: 'Email',
-            channelEmailDesc: 'Business and support inquiries',
-            legalHeading: 'Legal information',
-            legalText: 'Corporate details of the operating company as registered in the public registries of Montenegro.',
-            legalCompany: 'Company name',
-            legalCompanyValue: 'QuasarApp Group d.o.o.',
-            legalForm: 'Legal form',
-            legalFormValue: 'Društvo sa ograničenom odgovornošću (limited liability company)',
-            legalOffice: 'Registered office',
-            legalOfficeValue: 'Željeznička 91, Bar, Montenegro',
-            legalPib: 'PIB (registration number)',
-            legalPibValue: '03602524',
-            legalSource: 'Source: public registry of the Agency for Public Revenue of Montenegro (IRMS).'
+            channelEmailDesc: 'Business and support inquiries'
         },
         footer: {
             github: 'GitHub',
@@ -451,10 +440,10 @@ const translations = {
             email: 'Email',
             github: 'GitHub',
             message: 'Свяжитесь с нами через наши официальные каналы — ссылки доступны в подвале.',
-            page: 'Страница контактов и правовая информация'
+            page: 'Страница контактов'
         },
         contacts: {
-            title: 'Контакты и правовая информация',
+            title: 'Контакты',
             lead: 'Свяжитесь с QuasarApp Group — деловые запросы, пресса, партнёрства или поддержка.',
             formHeading: 'Отправьте нам сообщение',
             formText: 'Заполните форму, и мы ответим вам. Сообщения защищены анти-спам проверкой.',
@@ -493,18 +482,7 @@ const translations = {
             channelYoutube: 'YouTube',
             channelYoutubeDesc: 'Devlog и трейлеры',
             channelEmail: 'Email',
-            channelEmailDesc: 'Деловые запросы и поддержка',
-            legalHeading: 'Правовая информация',
-            legalText: 'Сведения об операционной компании по данным открытых реестров Черногории.',
-            legalCompany: 'Название компании',
-            legalCompanyValue: 'QuasarApp Group d.o.o.',
-            legalForm: 'Правовая форма',
-            legalFormValue: 'Друštvo sa ograničenom odgovornošću (общество с ограниченной ответственностью)',
-            legalOffice: 'Юридический адрес',
-            legalOfficeValue: 'Железничка 91, Бар, Черногория',
-            legalPib: 'PIB (номер регистрации)',
-            legalPibValue: '03602524',
-            legalSource: 'Источник: открытый реестр Налогового агентства Черногории (IRMS).'
+            channelEmailDesc: 'Деловые запросы и поддержка'
         },
         footer: {
             github: 'GitHub',
@@ -710,10 +688,10 @@ const translations = {
             email: 'E-Mail',
             github: 'GitHub',
             message: 'Kontaktieren Sie uns über unsere offiziellen Kanäle - Links sind im Footer verfügbar.',
-            page: 'Kontaktseite & rechtliche Informationen'
+            page: 'Kontaktseite'
         },
         contacts: {
-            title: 'Kontakt & Rechtliche Informationen',
+            title: 'Kontakt',
             lead: 'Setzen Sie sich mit der QuasarApp Group in Verbindung — Geschäftsanfragen, Presse, Partnerschaften oder Support.',
             formHeading: 'Senden Sie uns eine Nachricht',
             formText: 'Füllen Sie das Formular aus, und wir melden uns bei Ihnen. Nachrichten werden durch Anti-Spam-Prüfungen geschützt.',
@@ -752,18 +730,7 @@ const translations = {
             channelYoutube: 'YouTube',
             channelYoutubeDesc: 'Devlogs und Trailer',
             channelEmail: 'E-Mail',
-            channelEmailDesc: 'Geschäfts- und Supportanfragen',
-            legalHeading: 'Rechtliche Informationen',
-            legalText: 'Firmenangaben des Unternehmens nach den öffentlichen Registern Montenegros.',
-            legalCompany: 'Firmenname',
-            legalCompanyValue: 'QuasarApp Group d.o.o.',
-            legalForm: 'Rechtsform',
-            legalFormValue: 'Društvo sa ograničenom odgovornošću (GmbH)',
-            legalOffice: 'Sitz der Gesellschaft',
-            legalOfficeValue: 'Željeznička 91, Bar, Montenegro',
-            legalPib: 'PIB (Registrierungsnummer)',
-            legalPibValue: '03602524',
-            legalSource: 'Quelle: öffentliches Register der Agentur für öffentliche Einnahmen Montenegros (IRMS).'
+            channelEmailDesc: 'Geschäfts- und Supportanfragen'
         },
         footer: {
             github: 'GitHub',
@@ -969,10 +936,10 @@ const translations = {
             email: 'Email',
             github: 'GitHub',
             message: 'Contáctanos a través de nuestros canales oficiales - los enlaces están disponibles en el pie de página.',
-            page: 'Página de contacto e información legal'
+            page: 'Página de contacto'
         },
         contacts: {
-            title: 'Contacto e información legal',
+            title: 'Contacto',
             lead: 'Ponte en contacto con QuasarApp Group — consultas de negocio, prensa, alianzas o soporte.',
             formHeading: 'Envíanos un mensaje',
             formText: 'Completa el formulario y te responderemos. Los mensajes están protegidos con validación antispam.',
@@ -1011,18 +978,7 @@ const translations = {
             channelYoutube: 'YouTube',
             channelYoutubeDesc: 'Devlogs y tráileres',
             channelEmail: 'Email',
-            channelEmailDesc: 'Consultas de negocio y soporte',
-            legalHeading: 'Información legal',
-            legalText: 'Datos corporativos de la empresa operadora según los registros públicos de Montenegro.',
-            legalCompany: 'Nombre de la empresa',
-            legalCompanyValue: 'QuasarApp Group d.o.o.',
-            legalForm: 'Forma legal',
-            legalFormValue: 'Društvo sa ograničenom odgovornošću (sociedad de responsabilidad limitada)',
-            legalOffice: 'Oficina registrada',
-            legalOfficeValue: 'Željeznička 91, Bar, Montenegro',
-            legalPib: 'PIB (número de registro)',
-            legalPibValue: '03602524',
-            legalSource: 'Fuente: registro público de la Agencia de Ingresos Públicos de Montenegro (IRMS).'
+            channelEmailDesc: 'Consultas de negocio y soporte'
         },
         footer: {
             github: 'GitHub',
@@ -1228,10 +1184,10 @@ const translations = {
             email: 'E-mail',
             github: 'GitHub',
             message: 'Kontaktirajte nas putem naših zvaničnih kanala — linkovi su dostupni u podnožju.',
-            page: 'Strana za kontakt i pravni podaci'
+            page: 'Strana za kontakt'
         },
         contacts: {
-            title: 'Kontakt i pravni podaci',
+            title: 'Kontakt',
             lead: 'Kontaktirajte QuasarApp Group — poslovna pitanja, prasa, partnerstva ili podrška.',
             formHeading: 'Pošaljite nam poruku',
             formText: 'Ispunite formular i javićemo vam se. Poruke su zaštićene anti-spam provjerom.',
@@ -1270,18 +1226,7 @@ const translations = {
             channelYoutube: 'YouTube',
             channelYoutubeDesc: 'Devlog i traileri',
             channelEmail: 'Email',
-            channelEmailDesc: 'Poslovna pitanja i podrška',
-            legalHeading: 'Pravni podaci',
-            legalText: 'Podaci o operativnoj kompaniji prema javnim registrima Crne Gore.',
-            legalCompany: 'Naziv kompanije',
-            legalCompanyValue: 'QuasarApp Group d.o.o.',
-            legalForm: 'Pravni oblik',
-            legalFormValue: 'Društvo sa ograničenom odgovornošću (d.o.o.)',
-            legalOffice: 'Sjedište',
-            legalOfficeValue: 'Željeznička 91, Bar, Crna Gora',
-            legalPib: 'PIB (matični broj)',
-            legalPibValue: '03602524',
-            legalSource: 'Izvor: javni registar Poreske uprave Crne Gore (IRMS).'
+            channelEmailDesc: 'Poslovna pitanja i podrška'
         },
         footer: {
             github: 'GitHub',

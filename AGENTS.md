@@ -14,14 +14,18 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
 ## Architecture
 
 - `index.html` — single page: navbar, hero (with Ecliptica featured
-  banner), business verticals, featured projects showcase (cards for the
-  6 key projects linking to the upcoming `/projects/{slug}` pages,
-  issue #77), latest news/devlog feed, technology stack + GitHub org
-  metrics, project-card grid, contact, footer with social links (home
-  sections per issue #78 / TZ 2.1). The redundant "About Us" section was
-  removed from the home page (issue #73): the studio background, team
-  competencies and B2B services live on the dedicated /about page, which
-  the navbar "About" entry links to.
+  banner), featured projects showcase (cards for the 6 key projects
+  linking to the `/projects/{slug}` pages, issue #77), latest
+  news/devlog feed, footer with social links (home sections per issue
+  #78 / TZ 2.1). Per the EndrII review of PR #96 the home page no longer
+  duplicates the /about or /contacts content: the "What We Do" verticals
+  section, the "Our Projects" project-card grid, the "Technology Stack &
+  open-source footprint" section (the GitHub org metrics are baked into
+  the /about page markup instead) and the "Get in Touch" contact section
+  were removed from the home page. The navbar "Projects" entry anchors
+  the #featured showcase, the "About" entry links to /about (issue #73,
+  which also removed the redundant "About Us" section) and the "Contact"
+  entry links to /contacts (issue #74).
 - `css/style.css` — the only stylesheet; reuse the CSS design tokens on
   `:root`.
 - `projects/{slug}/index.html` — project detail pages (issue #77) for the
@@ -53,12 +57,14 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
 - `js/parallax.js` (load 2nd) — global `ParallaxHandler` class.
 - `js/main.js` (load 3rd) — scroll animations, card tilt, particles.
 - `js/home-data.js` (load 4th) — renders the devlog feed from
-  `data/devlog.json` (latest 5 posts with date + tag) and the GitHub org
-  metrics from `data/github-org-metrics.json` (issue #78). Progressive
+  `data/devlog.json` (latest 5 posts with date + tag). Progressive
   enhancement: the static markup keeps the documented devlog empty state
-  and the metrics fallback line when a JSON file is missing or
-  unreachable (graceful offline fallback). Re-renders dynamic content on
-  the `quasarapp:languagechange` event.
+  when the JSON file is missing or unreachable (graceful offline
+  fallback). Re-renders dynamic content on the
+  `quasarapp:languagechange` event. The GitHub org metrics renderer was
+  removed together with the home page "Technology Stack & open-source
+  footprint" section (EndrII review of PR #96) — the cached values are
+  baked into the /about page markup instead.
 - `contacts/index.html` — the `/contacts` page (issue #74): anti-spam
   contact form (client-side validation, honeypot, optional Cloudflare
   Turnstile, loading/success/error states; graceful mailto fallback to
@@ -82,7 +88,9 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
   `quasarapp:languagechange`. The static markup bakes in the same cached
   values as the graceful offline fallback.
 - `data/github-org-metrics.json` — build-time cache of the QuasarApp
-  GitHub org metrics (repo count, total stars, fetchedAt). Refresh with
+  GitHub org metrics (repo count, total stars, fetchedAt). The values
+  are baked into the /about page markup (the home page no longer renders
+  the metrics section, EndrII review of PR #96). Refresh with
   `node scripts/fetch-github-metrics.js` (no token needed, Node >= 18).
   If the GitHub API is unreachable, the script keeps the existing cache
   and exits 0 (graceful offline fallback); without any cache it exits 1.

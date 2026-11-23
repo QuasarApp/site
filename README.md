@@ -34,20 +34,21 @@ node --test tests/*.test.js
 
 ## Home page data & GitHub metrics (issue #78)
 
-The home page renders two data-driven sections on top of the static
+The home page renders one data-driven section on top of the static
 markup:
 
 - **Latest News & Devlog feed** — the latest posts (max 5, newest first,
   with date and tags) from the `data/devlog.json` content collection.
   The devlog issue (#75) seeds the collection; while it is empty the
   feed shows a documented explicit empty state.
-- **Technology stack & open-source footprint** — QuasarApp GitHub org
-  metrics (public repo count, total stars) from the build-time cache
-  `data/github-org-metrics.json`. The numbers are fetched at build time
-  from the GitHub API and committed as JSON (same pattern the
-  `/projects/{slug}` detail pages use for their per-repo data). If the
-  cache file is missing or unreachable at runtime, the page keeps the
-  static fallback line (graceful offline fallback).
+
+The former **Technology stack & open-source footprint** section was
+removed from the home page (EndrII review of PR #96, together with the
+"What We Do", "Our Projects" and "Get in Touch" sections): the QuasarApp
+GitHub org metrics (public repo count, total stars) now live on the
+`/about` page, where the cached values from `data/github-org-metrics.json`
+are baked into the markup, and `js/home-data.js` no longer fetches the
+metrics cache on `/`.
 
 Refresh the metrics cache before pushing (no token required, Node >= 18,
 nothing to install):

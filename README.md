@@ -34,20 +34,21 @@ node --test tests/*.test.js
 
 ## Home page data & GitHub metrics (issue #78)
 
-The home page renders two data-driven sections on top of the static
+The home page renders one data-driven section on top of the static
 markup:
 
 - **Latest News & Devlog feed** — the latest posts (max 5, newest first,
   with date and tags) from the `data/devlog.json` content collection.
   The devlog issue (#75) seeds the collection; while it is empty the
   feed shows a documented explicit empty state.
-- **Technology stack & open-source footprint** — QuasarApp GitHub org
-  metrics (public repo count, total stars) from the build-time cache
-  `data/github-org-metrics.json`. The numbers are fetched at build time
-  from the GitHub API and committed as JSON (same pattern the
-  `/projects/{slug}` detail pages use for their per-repo data). If the
-  cache file is missing or unreachable at runtime, the page keeps the
-  static fallback line (graceful offline fallback).
+
+The former **Technology stack & open-source footprint** section was
+removed from the home page (EndrII review of PR #96, together with the
+"What We Do", "Our Projects" and "Get in Touch" sections): the QuasarApp
+GitHub org metrics (public repo count, total stars) now live on the
+`/about` page, where the cached values from `data/github-org-metrics.json`
+are baked into the markup, and `js/home-data.js` no longer fetches the
+metrics cache on `/`.
 
 Refresh the metrics cache before pushing (no token required, Node >= 18,
 nothing to install):
@@ -59,6 +60,32 @@ node scripts/fetch-github-metrics.js
 If the GitHub API is unreachable, the script keeps the existing cache
 and exits 0; without any cache it exits 1 so the build fails loudly.
 
+## Contacts page (issue #74)
+
+`/contacts` (`contacts/index.html`) provides:
+
+- **Anti-spam contact form** — client-side validation (name, email,
+  message), a hidden honeypot field for bots and an optional Cloudflare
+  Turnstile challenge (the third-party script is injected only when a
+  site key is configured). The form shows loading/success/error states.
+- **Graceful mailto fallback** — the site is static, so submissions are
+  meant to go to a rate-limited endpoint deployed by the Docker/CI-CD
+  issue. Until `CONTACT_ENDPOINT` in `js/contacts.js` is set, the form
+  shows a visible notice and submitting opens the visitor's email client
+  with the message pre-filled to `quasarappdevelop@gmail.com`.
+- **Official links block** — GitHub, Steam, Discord, Telegram, Reddit,
+  Bluesky, YouTube and email. Discord/Telegram/Reddit are the official
+  community links published on the Ecliptica Steam store page;
+  `tests/contacts.test.js` enforces the verified-URL allow-list so no
+  invented links can land.
+
+Note: the legal information section was removed from the page per the
+EndrII review of PR #96; `tests/contacts.test.js` guards that it stays
+removed.
+
+To enable direct submission once the endpoint exists, set
+`CONTACT_ENDPOINT` (and optionally `TURNSTILE_SITE_KEY`) at the top of
+`js/contacts.js` — no other changes are needed.
 ## Project detail pages (issue #77)
 
 Each key project has a detail page at `projects/{slug}/index.html`:
@@ -126,8 +153,7 @@ with the fetcher, add the URL to `sitemap.xml` and re-run the tests.
   cross-platform deployment as four competency cards.
 - **B2B services** (`#services`) — outsourcing, consulting and platform
   porting as service cards, with a CTA panel linking to `/contacts`
-  (the contacts page is shipped by issue #74 and is exempted from the
-  dead-link check in `tests/links.test.js` until it lands).
+  (issue #74).
 
 All copy is localized via `data-lang` keys under `aboutPage.*` (plus the
 reused `about.*`/`stack.*`/`nav.*`/`footer.*` keys) in all five active

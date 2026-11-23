@@ -75,9 +75,9 @@
             </div>
             <ul class="nav-links" aria-label="Main navigation">
                 <li><a href="#home" data-lang="nav.home">Home</a></li>
-                <li><a href="#projects" data-lang="nav.projects">Projects</a></li>
+                <li><a href="#featured" data-lang="nav.projects">Projects</a></li>
                 <li><a href="/about" data-lang="nav.about">About</a></li>
-                <li><a href="#contact" data-lang="nav.contact">Contact</a></li>
+                <li><a href="/contacts" data-lang="nav.contact">Contact</a></li>
                 <li>
                     <select id="lang-select" class="lang-select" aria-label="Toggle language" onchange="selectLanguage(this.value)">
                         <option value="en" selected>EN</option>
@@ -129,35 +129,6 @@
                 </div>
             </div>
 
-        </div>
-    </section>
-
-    <!-- Core business verticals (issue #78, TZ 2.1) -->
-    <section id="verticals" class="verticals-section">
-        <div class="container">
-            <h2 class="section-title" data-lang="verticals.title">What We Do</h2>
-            <div class="verticals-grid">
-                <article class="vertical-card">
-                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-gamepad"></use></svg></div>
-                    <h3 data-lang="verticals.gamesTitle">Game Development</h3>
-                    <p data-lang="verticals.gamesText">We build immersive 3D games on Qt Quick 3D - from procedurally generated worlds and dynamic NPC-driven economies to full survival experiences like our flagship title Ecliptica.</p>
-                    <div class="vertical-tags">
-                        <span class="lang-badge">Qt Quick 3D</span>
-                        <span class="lang-badge">C++23</span>
-                        <span class="lang-badge">Ecliptica</span>
-                    </div>
-                </article>
-                <article class="vertical-card">
-                    <div class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-tool"></use></svg></div>
-                    <h3 data-lang="verticals.softwareTitle">Open-Source &amp; Enterprise Software</h3>
-                    <p data-lang="verticals.softwareText">We develop cross-platform desktop, mobile and system software in C++/Qt - deployment tools, backend libraries and enterprise solutions trusted in production.</p>
-                    <div class="vertical-tags">
-                        <span class="lang-badge">C++ / Qt</span>
-                        <span class="lang-badge">QML</span>
-                        <span class="lang-badge">Cross-Platform</span>
-                    </div>
-                </article>
-            </div>
         </div>
     </section>
 
@@ -234,71 +205,15 @@
         </div>
     </section>
 
-    <!-- Technology stack & open-source footprint (issue #78, TZ 2.1). The
-         GitHub org metrics are rendered by js/home-data.js from the
-         build-time cache data/github-org-metrics.json (refresh with
-         `node scripts/fetch-github-metrics.js`). The static markup below
-         is the graceful offline fallback. -->
-    <section id="projects" class="projects-section">
-        <div class="container">
-            <h2 class="section-title" data-lang="projects.title">Projects</h2>
-            <p class="section-subtitle" data-lang="projects.text">Explore our open-source projects and tools.</p>
-            <div class="projects-grid" id="projects-grid">
-                <!-- Projects will be dynamically rendered here -->
-                <p class="projects-empty" data-lang="projects.empty">No projects available at the moment.</p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- About Us (issue #73): the studio background, team competencies
-         and B2B services now live on the dedicated /about page, so the
-         home page no longer repeats them. The navbar "About" entry is
-         the link from here to /about (EndrII review of PR #97). -->
-    
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="section-title" data-lang="contact.title">Contact</h2>
-            <p class="section-subtitle" data-lang="contact.text">Get in touch with us.</p>
-            <div class="contact-info">
-                <a href="mailto:quasarappdevelop@gmail.com" class="contact-link">
-                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-mail"></use></svg>
-                    <span data-lang="contact.email">Email</span>
-                </a>
-                <a href="https://github.com/QuasarApp" class="contact-link" target="_blank">
-                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg>
-                    <span data-lang="contact.github">GitHub</span>
-                </a>
-            </div>
-        </div>
-    </section>
-    
-    <section id="stack" class="stack-section">
-        <div class="container">
-            <h2 class="section-title" data-lang="stack.title">Technology Stack &amp; Open-Source Footprint</h2>
-            <p class="section-subtitle" data-lang="stack.text">Modern C++23 and Qt 6 across desktop, mobile and games - with a large open-source footprint on GitHub.</p>
-            <div class="stack-tags">
-                <span class="lang-badge">C++23</span>
-                <span class="lang-badge">Qt 6 / QML</span>
-                <span class="lang-badge">Qt Quick 3D</span>
-                <span class="lang-badge">CMake</span>
-                <span class="lang-badge">SQLite</span>
-                <span class="lang-badge">CI/CD</span>
-            </div>
-            <div class="github-metrics" id="github-metrics">
-                <div class="stat-item">
-                    <span class="stat-number" id="gh-repo-count">-</span>
-                    <span class="stat-label" data-lang="stack.repos">Public repositories</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" id="gh-total-stars">-</span>
-                    <span class="stat-label" data-lang="stack.stars">Total stars</span>
-                </div>
-                <p class="metrics-source" id="gh-metrics-source-line">
-                    <span id="gh-metrics-source" data-lang="stack.source">GitHub metrics are cached at build time from the GitHub API. Data is currently unavailable - see the QuasarApp organization on GitHub.</span>
-                </p>
-            </div>
-        </div>
-    </section>
+    <!-- Per EndrII's review of PR #96 the home page no longer duplicates
+         the /about or /contacts content (issues #73 / #74): the "What We
+         Do" verticals section, the "Our Projects" project-card grid, the
+         "Technology Stack & open-source footprint" section (the GitHub
+         org metrics are baked into the /about page markup from
+         data/github-org-metrics.json) and the "Get in Touch" contact
+         section were removed from the home page. The navbar "Projects"
+         entry anchors the #featured showcase above, the "About" entry
+         links to /about and the "Contact" entry links to /contacts. -->
 
 </main>
 

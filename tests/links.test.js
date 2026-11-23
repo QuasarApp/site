@@ -25,19 +25,20 @@ function isExternal(ref) {
     return ref.startsWith('#') || ref.startsWith('//') || /^[a-z][a-z0-9+.-]*:/i.test(ref);
 }
 
-// Upcoming routes: the /devlog/{slug} post pages (issue #75) and the
-// /ecliptica hub (issue #72) are shipped by their own issues. The home page
-// (issue #78) and the /projects/{slug} detail pages (issue #77) already
-// reference them, so those references are expected to 404 until those
-// issues land and are exempt from the file-existence check below. The
-// /projects/ exemption was removed in issue #77 - those pages now exist and
-// are checked like every other local reference.
-const PENDING_ROUTE_PREFIXES = ['/devlog/', '/ecliptica'];
+// Upcoming routes: the /devlog/{slug} post pages (issue #75), the
+// /ecliptica hub (issue #72) and the /contacts page (issue #74) are
+// shipped by their own issues. The home page (issue #78), the
+// /projects/{slug} detail pages (issue #77) and the /about page
+// (issue #73) already reference them, so those references are expected
+// to 404 until those issues land and are exempt from the file-existence
+// check below. The /projects/ exemption was removed in issue #77 -
+// those pages now exist and are checked like every other local reference.
+const PENDING_ROUTE_PREFIXES = ['/devlog/', '/ecliptica', '/contacts'];
 function isPendingRoute(ref) {
     return ref.startsWith('/') && PENDING_ROUTE_PREFIXES.some((p) => ref.startsWith(p));
 }
 
-/** All HTML pages served by the site (home page + /projects/{slug}). */
+/** All HTML pages served by the site (home + /projects/{slug} + /about). */
 function listHtmlPages() {
     const pages = [path.join(ROOT, 'index.html')];
     const projectsDir = path.join(ROOT, 'projects');
@@ -47,6 +48,8 @@ function listHtmlPages() {
             if (fs.existsSync(page)) pages.push(page);
         }
     }
+    const aboutPage = path.join(ROOT, 'about', 'index.html');
+    if (fs.existsSync(aboutPage)) pages.push(aboutPage);
     return pages;
 }
 

@@ -111,6 +111,35 @@ five language blocks in `js/i18n.js`, add the slug/repository to the
 `PROJECTS` map in `scripts/fetch-projects-github.js`, refresh the cache
 with the fetcher, add the URL to `sitemap.xml` and re-run the tests.
 
+## About page (issue #73)
+
+`about/index.html` is the About Us & Services page at `/about`
+(TZ section 2.5), rendered statically with the same dark design system:
+
+- **Studio background** (`#background`) — QuasarApp Group d.o.o., a
+  high-tech software and game development studio in Bar, Montenegro,
+  specializing in C++/Qt/QML, cross-platform solutions and 3D engines.
+  Reuses the existing `about.*` i18n copy (title, lead, mission, team)
+  and shows the cached GitHub org metrics (repo count, total stars)
+  from `data/github-org-metrics.json` baked into the markup.
+- **Team competencies** (`#competencies`) — C++23, Qt/QML, CI/CD and
+  cross-platform deployment as four competency cards.
+- **B2B services** (`#services`) — outsourcing, consulting and platform
+  porting as service cards, with a CTA panel linking to `/contacts`
+  (the contacts page is shipped by issue #74 and is exempted from the
+  dead-link check in `tests/links.test.js` until it lands).
+
+All copy is localized via `data-lang` keys under `aboutPage.*` (plus the
+reused `about.*`/`stack.*`/`nav.*`/`footer.*` keys) in all five active
+languages. `tests/about.test.js` guards the page (sections, required
+competencies/services, `/contacts` CTA, per-page i18n coverage, script
+order, tag balance, sitemap entry).
+
+The redundant "About Us" section was removed from the home page
+(`index.html`): the navbar "About" entry is the home page link to
+`/about`, and `tests/home.test.js` guards both the link and the absence
+of the duplicated copy (EndrII review of PR #97).
+
 ## Performance & Media (issue #81)
 
 The site targets Lighthouse / PageSpeed **90+ Performance on Desktop and

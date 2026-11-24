@@ -4,7 +4,7 @@
 // - all six project pages exist with the required sections
 // - GitHub API integration block with build-time cache values
 //   (data/projects-github.json + scripts/fetch-projects-github.js)
-// - Ecliptica: Steam store/wishlist buttons, /ecliptica hub link,
+// - Ecliptica: Steam store/wishlist buttons, /ecliptica.html hub link,
 //   EclipticaPage repository note
 // - YourTimeDelivery: no invented repository, explicit "no public
 //   repository" messaging
@@ -108,11 +108,11 @@ test('YourTimeDelivery has no GitHub repository link or block', () => {
     assert.doesNotMatch(html, /github\.com\/QuasarApp\/YourTimeDelivery/i, 'must not reference an invented repository');
 });
 
-test('Ecliptica links to Steam (store + wishlist), the /ecliptica hub and documents the EclipticaPage repository', () => {
+test('Ecliptica links to Steam (store + wishlist), the /ecliptica.html hub and documents the EclipticaPage repository', () => {
     const html = pageHtml('ecliptica');
     assert.match(html, /store\.steampowered\.com\/app\/3723390\//, 'missing the Steam store button');
     assert.match(html, /wishlist\/add\/item\?appid=3723390/, 'missing the Steam wishlist button');
-    assert.match(html, /href="\/ecliptica"/, 'missing the /ecliptica hub link');
+    assert.match(html, /href="\/ecliptica\.html"/, 'missing the /ecliptica.html hub link (issue #79)');
     assert.match(html, /github\.com\/QuasarApp\/EclipticaPage/, 'missing the EclipticaPage repository link');
     assert.match(html, /projectsDetail\.ecliptica\.githubNote/, 'missing the note that EclipticaPage is the web page, not the game code');
 });

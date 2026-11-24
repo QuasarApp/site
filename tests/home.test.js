@@ -1,7 +1,8 @@
 'use strict';
 
 // Auto tests for the home page (issue #78, TZ section 2.1):
-// - featured cards for the 6 key projects link to /projects/{slug}
+// - featured cards: the Ecliptica card links to the shipped /ecliptica.html
+//   hub (issue #79), the rest to /projects/{slug}
 // - devlog feed: content collection JSON + documented empty state
 // - GitHub org metrics: build-time cache JSON + fetcher script
 // - js/home-data.js loads after the i18n -> parallax -> main chain
@@ -15,16 +16,17 @@ const path = require('node:path');
 const ROOT = path.join(__dirname, '..');
 const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 
-const FEATURED_SLUGS = [
-    'ecliptica',
-    'cqtdeployer',
-    'cheatcard',
-    'yourtimedelivery',
-    'qtssecret',
-    'heart',
-];
+// The Ecliptica flagship hub page is already shipped at /ecliptica.html
+// (issue #79), so its featured card links there directly. The remaining
+// cards link to the /projects/{slug} detail pages shipped by issue #77.
+const FEATURED_SLUGS = ['cqtdeployer', 'cheatcard', 'yourtimedelivery', 'qtssecret', 'heart'];
 
-test('featured cards for the 6 key projects link to /projects/{slug}', () => {
+test('featured cards link to the project pages (Ecliptica hub or /projects/{slug})', () => {
+    assert.match(
+        html,
+        /href=["']?\/ecliptica\.html["']?/,
+        'no featured card linking to the /ecliptica.html hub page'
+    );
     for (const slug of FEATURED_SLUGS) {
         assert.match(
             html,

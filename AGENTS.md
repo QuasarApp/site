@@ -14,11 +14,12 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
 ## Architecture
 
 - `index.html` — single page: navbar, hero (with Ecliptica featured
-  banner), featured projects showcase (cards for the 6 key projects
-  linking to the `/projects/{slug}` pages, issue #77), latest
-  news/devlog feed, footer with social links (home sections per issue
-  #78 / TZ 2.1). Per the EndrII review of PR #96 the home page no longer
-  duplicates the /about or /contacts content: the "What We Do" verticals
+  banner), featured projects showcase (cards for the 6 key projects -
+  Ecliptica links to the `/ecliptica.html` hub, issue #79, the rest to
+  the `/projects/{slug}` pages, issue #77), latest news/devlog feed,
+  footer with social links (home sections per issue #78 / TZ 2.1). Per
+  the EndrII review of PR #96 the home page no longer duplicates the
+  /about or /contacts content: the "What We Do" verticals
   section, the "Our Projects" project-card grid, the "Technology Stack &
   open-source footprint" section (the GitHub org metrics are baked into
   the /about page markup instead) and the "Get in Touch" contact section
@@ -26,6 +27,16 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
   the #featured showcase, the "About" entry links to /about (issue #73,
   which also removed the redundant "About Us" section) and the "Contact"
   entry links to /contacts (issue #74).
+- `ecliptica.html` — Ecliptica flagship hub page (issue #79): hero with
+  the Steam key art ("gameplay video coming soon" caption), mechanics
+  tabs, development roadmap (Steam-verified milestones), system
+  requirements table (the exact Steam specs), community links (Discord,
+  Reddit, Steam store page) and a media gallery of Steam screenshots
+  with lightbox. The footer is copied verbatim from `index.html`. Loads
+  `js/i18n.js`, `js/parallax.js` and `js/main.js`; its `data-lang` keys
+  live in the nested `ecliptica` section of every language in
+  `js/i18n.js` (the same key set is enforced by `tests/i18n.test.js` for
+  all five languages).
 - `css/style.css` — the only stylesheet; reuse the CSS design tokens on
   `:root`.
 - `projects/{slug}/index.html` — project detail pages (issue #77) for the
@@ -118,10 +129,11 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
   sections (issue #78); `tests/projects.test.js` guards the
   `/projects/{slug}` detail pages (issue #77); `tests/about.test.js`
   guards the `/about` page (issue #73); `tests/links.test.js` scans
-  every HTML page (home + `/projects/{slug}` + `/about` + `/contacts`)
-  for resolvable local references and exempts only the upcoming
-  `/devlog/...` routes (issue #75) and the `/ecliptica` hub (issue
-  #72) from the file-existence check until those pages land;
+  every HTML page (the root pages incl. the `/ecliptica.html` hub,
+  issue #79 + `/projects/{slug}` + `/about` + `/contacts`) for
+  resolvable local references and exempts only the upcoming
+  `/devlog/...` routes (issue #75) from the file-existence check until
+  they land;
   `tests/i18n.test.js` checks key parity plus every `data-lang` key of
   all HTML pages; `tests/contacts.test.js` guards the `/contacts`
   acceptance criteria (issue #74): form validation and states,

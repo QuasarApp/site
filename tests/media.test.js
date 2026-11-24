@@ -117,9 +117,9 @@ test('LCP hero image uses fetchpriority="high" and is preloaded', () => {
 });
 
 test('content images expose responsive srcset with at least two candidates', () => {
-    // game-logo / ecliptica-card-bg were removed together with the old
-    // single-page #projects / #about sections (issue #78); the project
-    // detail pages (issue #77) are covered by the tests below.
+    // The Ecliptica featured card ships the game-logo / ecliptica-card-bg
+    // images (issue #79 hub card); the project detail pages (issue #77)
+    // are covered by the tests below.
     const classes = ['parallax-bg-img', 'ecliptica-capsule-img', 'ecliptica-logo', 'nav-logo'];
     for (const cls of classes) {
         const tag = imgByClass(cls);

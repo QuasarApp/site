@@ -25,23 +25,21 @@ function isExternal(ref) {
     return ref.startsWith('#') || ref.startsWith('//') || /^[a-z][a-z0-9+.-]*:/i.test(ref);
 }
 
-// Upcoming routes: the /devlog/{slug} post pages (issue #75) and the
-// /ecliptica hub (issue #72) are shipped by their own issues. The home
-// page (issue #78), the /projects/{slug} detail pages (issue #77), the
-// /about page (issue #73) and the /contacts page (issue #74) already
-// reference them, so those references are expected to 404 until those
-// issues land and are exempt from the file-existence check below. The
-// /projects/ exemption was removed in issue #77 and the /contacts
-// exemption in issue #74 - those pages now exist and are checked like
-// every other local reference.
-const PENDING_ROUTE_PREFIXES = ['/devlog/', '/ecliptica'];
+// Upcoming routes: the /devlog/{slug} post pages (issue #75) are shipped
+// by their own issue, so references to them are expected to 404 until it
+// lands and are exempt from the file-existence check below. The
+// /projects/ exemption was removed in issue #77, the /contacts exemption
+// in issue #74 and the /ecliptica exemption in issue #79 (the hub is
+// shipped at /ecliptica.html) - those pages now exist and are checked
+// like every other local reference.
+const PENDING_ROUTE_PREFIXES = ['/devlog/'];
 function isPendingRoute(ref) {
     return ref.startsWith('/') && PENDING_ROUTE_PREFIXES.some((p) => ref.startsWith(p));
 }
 
-/** All HTML pages served by the site (home + /projects/{slug} + /about + /contacts). */
+/** All HTML pages served by the site (every root page + /projects/{slug} + /about + /contacts). */
 function listHtmlPages() {
-    const pages = [path.join(ROOT, 'index.html')];
+    const pages = listFiles(ROOT, ['.html']);
     const projectsDir = path.join(ROOT, 'projects');
     if (fs.existsSync(projectsDir)) {
         for (const slug of fs.readdirSync(projectsDir).sort()) {
@@ -79,7 +77,7 @@ function assertRefExists(ref, fromFile) {
 
 test('all local href/src references in every HTML page resolve to existing files', () => {
     const pages = listHtmlPages();
-    assert.ok(pages.length >= 10, 'expected the home page, seven project pages, the about page and the contacts page');
+    assert.ok(pages.length >= 11, 'expected the two root pages, seven project pages, the about page and the contacts page');
     for (const htmlFile of pages) {
         const rel = path.relative(ROOT, htmlFile);
         const refs = [...fs.readFileSync(htmlFile, 'utf8').matchAll(/(?:href|src)\s*=\s*["']([^"']+)["']/gi)]
@@ -116,6 +114,10 @@ test('every image in the repository root and assets/images is referenced somewhe
     }
     assert.ok(images.length > 0, 'no images found in the repository root or assets/images');
 
+    // Every HTML page at the repository root (index.html, ecliptica.html,
+    // ...) plus the shared css/ and js/ assets are scanned, so an image that
+    // is only used by a subpage (e.g. the full-size Ecliptica background)
+    // still counts as referenced.
     const sources = [
         ...listHtmlPages(),
         ...listFiles(path.join(ROOT, 'css'), ['.css']),

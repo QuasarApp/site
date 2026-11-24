@@ -40,8 +40,12 @@ jobs:
           node-version: '20'
 
       - name: Start static server
+        # `serve` compresses responses on the fly (gzip/brotli), like the
+        # production host (GitHub Pages) does. A plain uncompressed server
+        # overstates the text payload by ~70 KB and skews the Slow-4G mobile
+        # run (PR #91).
         run: |
-          nohup npx -y http-server -p 8080 --silent > /dev/null 2>&1 &
+          nohup npx -y serve -l 8080 . > /dev/null 2>&1 &
           for i in $(seq 1 30); do
             curl -sf http://127.0.0.1:8080/ > /dev/null && break
             sleep 1

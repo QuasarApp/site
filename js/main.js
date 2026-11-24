@@ -75,71 +75,133 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Floating particles effect (disabled if reduced motion is preferred).
-    // The rAF loop starts only after the page has fully loaded, so it does
-    // not compete with first paint / LCP for the main thread (issue #78).
+    // The particles are animated purely with CSS keyframes (see
+    // `.particle` in css/style.css): the previous per-frame rAF loop mutated
+    // 20 element styles on every animation frame, which forced a full style
+    // recalculation of the whole page per frame and produced long
+    // main-thread tasks (Lighthouse TBT failure, PR #91).
     if (!prefersReducedMotion) {
-        if (document.readyState === 'complete') {
-            createParticles();
-        } else {
-            window.addEventListener('load', createParticles, { once: true });
-        }
+        createParticles();
     }
 });
 
-// Create floating particle effects
+// Create floating particle effects (CSS-animated: no per-frame JavaScript)
 function createParticles() {
     const particleCount = 20;
-    const particles = [];
 
     for (let i = 0; i < particleCount; i++) {
-        particles.push(createParticle());
-    }
-
-    function createParticle() {
         const particle = document.createElement('div');
-        particle.style.cssText = `
-            position: fixed;
-            width: 4px;
-            height: 4px;
-            background: rgba(0, 188, 212, 0.5);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 0;
-        `;
-        document.body.appendChild(particle);
+        particle.className = 'particle';
 
-        const x = Math.random() * window.innerWidth;
-        const y = Math.random() * window.innerHeight;
         const size = Math.random() * 3 + 2;
-        const speed = Math.random() * 0.5 + 0.1;
-        const duration = Math.random() * 20 + 20;
-
-        particle.style.left = x + 'px';
-        particle.style.top = y + 'px';
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.top = Math.random() * 100 + 'vh';
         particle.style.width = size + 'px';
         particle.style.height = size + 'px';
+        // Random duration + negative delay: every particle floats with its
+        // own period and starts mid-cycle (no synchronized start).
+        particle.style.animationDuration = (Math.random() * 20 + 20) + 's';
+        particle.style.animationDelay = -(Math.random() * 20) + 's';
 
-        return {
-            element: particle,
-            x: x,
-            y: y,
-            speed: speed,
-            size: size,
-            offset: Math.random() * duration,
-            duration: duration
-        };
+        document.body.appendChild(particle);
     }
-
-    function animateParticles() {
-        particles.forEach(p => {
-            const time = Date.now() * 0.001 + p.offset;
-            p.y = Math.sin(time * p.speed) * 50 + p.y;
-            p.element.style.transform = `translateY(${p.y}px)`;
-        });
-
-        requestAnimationFrame(animateParticles);
-    }
-
-    animateParticles();
 }
 
+
+/* ============================================
+   ECLIPTICA PAGE FUNCTIONALITY
+   ============================================ */
+
+/**
+ * Mechanics Tabs Handler
+ * Tabbed interface for the core mechanics showcase
+ */
+(function() {
+    'use strict';
+    
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+    
+    if (tabBtns.length === 0) return;
+    
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetTab = btn.getAttribute('data-tab');
+            
+            // Remove active class from all tabs and panes
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabPanes.forEach(p => p.classList.remove('active'));
+            
+            // Add active class to clicked tab and corresponding pane
+            btn.classList.add('active');
+            document.getElementById(targetTab).classList.add('active');
+            
+            // Update URL hash (optional, for browser history)
+            history.pushState({ tab: targetTab }, '', '#' + targetTab);
+        });
+    });
+    
+    // Handle browser back/forward
+    window.addEventListener('popstate', (event) => {
+        if (event.state && event.state.tab) {
+            const targetTab = event.state.tab;
+            const targetBtn = document.querySelector(`.tab-btn[data-tab="${targetTab}"]`);
+            if (targetBtn) {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabPanes.forEach(p => p.classList.remove('active'));
+                targetBtn.classList.add('active');
+                document.getElementById(targetTab).classList.add('active');
+            }
+        }
+    });
+})();
+
+/**
+ * Lightbox Handler
+ * For the media gallery
+ */
+(function() {
+    'use strict';
+    
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox ? lightbox.querySelector('.lightbox-img') : null;
+    const lightboxClose = lightbox ? lightbox.querySelector('.lightbox-close') : null;
+    
+    if (!lightbox || !lightboxImg) return;
+    
+    // Open lightbox
+    galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const fullImageSrc = item.dataset.src || item.querySelector('img').src;
+            lightboxImg.src = fullImageSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    
+    // Close lightbox
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        lightboxImg.src = '';
+        document.body.style.overflow = '';
+    }
+    
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', closeLightbox);
+    }
+    
+    // Close on backdrop click
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+    
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+})();

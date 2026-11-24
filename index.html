@@ -28,12 +28,14 @@
       inline SVGs, so there are no external stylesheet/font requests.
     -->
     <!-- LCP hero image: preload the exact WebP variant the img resolves to
-         before first paint (issue #81). With the candidates capped at 768w
-         (see below), every realistic screen resolves to the 768w file, so a
-         plain `href` preload starts the fetch immediately at parse time.
+         before first paint (issue #81). Desktops resolve to the 768w file
+         (capped below), small screens resolve to the 480w file via the
+         <picture> <source> (PR #91), so each preload is media-scoped to
+         avoid fetching an unused variant.
          (An `imagesrcset`/`imagesizes="100vw"` preload cannot resolve its
          candidate before layout and delays the LCP fetch by ~0.7 s.) -->
-    <link rel="preload" as="image" href="assets/images/ecliptica_background-768.webp">
+    <link rel="preload" as="image" href="assets/images/ecliptica_background-768.webp" media="(min-width: 641px)">
+    <link rel="preload" as="image" href="assets/images/ecliptica_background-480.webp" media="(max-width: 640px)">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -95,7 +97,14 @@
         <section id="home" class="hero-section">
             <div class="parallax-bg">
             <div class="parallax-bg-overlay" style="background: linear-gradient(to bottom, rgba(10, 14, 23, 0.35), rgba(10, 14, 23, 0.55));"></div>
-            <img src="assets/images/ecliptica_background-768.webp" srcset="assets/images/ecliptica_background-480.webp 480w, assets/images/ecliptica_background-768.webp 768w" sizes="100vw" fetchpriority="high" class="parallax-bg-img blur-bg" alt="Ecliptica Background" style="position: absolute; top: 50%; left: 50%; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; transform: translate(-50%, -50%) scale(1.07);">
+            <picture>
+                <!-- Small screens get the 480w variant: it is displayed at the
+                     CSS viewport width, so the 6px blur hides the mild upscale
+                     on high-density screens while cutting the LCP decode/paint
+                     work (768x432 -> 480x270) on mobile (PR #91). -->
+                <source media="(max-width: 640px)" srcset="assets/images/ecliptica_background-480.webp 480w">
+                <img src="assets/images/ecliptica_background-768.webp" srcset="assets/images/ecliptica_background-480.webp 480w, assets/images/ecliptica_background-768.webp 768w" sizes="100vw" fetchpriority="high" class="parallax-bg-img blur-bg" alt="Ecliptica Background" style="position: absolute; top: 50%; left: 50%; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; transform: translate(-50%, -50%) scale(1.07);">
+            </picture>
         </div>
         <div class="hero-content">
             <!-- Ecliptica Featured Banner - Using Steam header image -->
@@ -104,24 +113,32 @@
                     <img src="assets/images/ecliptica_icon_logo.png.webp" srcset="assets/images/ecliptica_icon_logo-240.webp 240w, assets/images/ecliptica_icon_logo.png.webp 256w" sizes="150px" alt="Ecliptica Logo" class="ecliptica-logo" width="120" height="120">
                     <div class="ecliptica-header-info">
                         <h1 class="ecliptica-title">Ecliptica</h1>
-                        <p class="ecliptica-subtitle">Command the Final Space Station - Explore, Build, and Survive</p>
-                        <p class="ecliptica-description">Command the last space station and terraform distant planets. Build futuristic habitats, manage advanced resources, and lead your crew through deep space challenges. Your legacy among the stars awaits.</p>
+                        <p class="ecliptica-subtitle">Found Corporations. Fight for Resources. Build a Sustainable Future.</p>
+                        <p class="ecliptica-description">Ecliptica is a first-person open-world colony survival simulator with a fully dynamic economy. Set on a hostile alien planet, you'll found corporations, fight for resources, and build a sustainable future.</p>
                     </div>
                 </div>
 
                             <!-- Ecliptica Capsule Image on the Right -->
                 <div class="ecliptica-capsule">
-                    <img src="assets/images/ecliptica_capsule.jpg.webp" srcset="assets/images/ecliptica_capsule-308.webp 308w, assets/images/ecliptica_capsule.jpg.webp 616w, assets/images/ecliptica_capsule-924.webp 924w" sizes="(max-width: 640px) 100vw, 616px" alt="Ecliptica Capsule" class="ecliptica-capsule-img" loading="lazy" width="616" height="353">
+                    <picture>
+                        <!-- Small screens get the 616w capsule variant instead of
+                             the 924w one: the 924w file is only needed for
+                             large desktop screens, and decoding 924x524 in the
+                             LCP window produced long main-thread tasks on
+                             mobile (PR #91). -->
+                        <source media="(max-width: 640px)" srcset="assets/images/ecliptica_capsule.jpg.webp 616w">
+                        <img src="assets/images/ecliptica_capsule.jpg.webp" srcset="assets/images/ecliptica_capsule-308.webp 308w, assets/images/ecliptica_capsule.jpg.webp 616w, assets/images/ecliptica_capsule-924.webp 924w" sizes="(max-width: 640px) 100vw, 616px" alt="Ecliptica Capsule" class="ecliptica-capsule-img" loading="lazy" decoding="async" width="616" height="353">
+                    </picture>
                 </div>
                 
                 <div class="ecliptica-features">
-                    <div class="feature-item"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-send"></use></svg> Space Exploration</div>
-                    <div class="feature-item"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-globe"></use></svg> Planet Building</div>
-                    <div class="feature-item"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-settings"></use></svg> Resource Management</div>
+                    <div class="feature-item"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-send"></use></svg> Open-World Colony Survival</div>
+                    <div class="feature-item"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-globe"></use></svg> Dynamic NPC-Driven Economy</div>
+                    <div class="feature-item"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-settings"></use></svg> Found Corporations</div>
                 </div>
                 <div class="ecliptica-buttons">
                     <a href="https://store.steampowered.com/app/3723390/Ecliptica/" target="_blank" class="btn btn-steam-primary">
-                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-steam"></use></svg> Play on Steam
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-steam"></use></svg> View on Steam
                     </a>
                     <a href="https://store.steampowered.com/wishlist/add/item?appid=3723390" target="_blank" class="btn btn-wishlist">
                         <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-heart"></use></svg> Add to Wishlist
@@ -132,20 +149,22 @@
         </div>
     </section>
 
-    <!-- Featured Projects showcase (issue #78, TZ 2.1). Cards link to the
-         /projects/{slug} detail pages shipped by issue #77. -->
+    <!-- Featured Projects showcase (issue #78, TZ 2.1). The Ecliptica card
+         links to the shipped /ecliptica.html hub page (issue #79); the
+         remaining cards link to the /projects/{slug} detail pages shipped
+         by issue #77. -->
     <section id="featured" class="featured-section">
         <div class="container">
             <h2 class="section-title" data-lang="featured.title">Featured Projects</h2>
             <p class="section-subtitle" data-lang="featured.subtitle">The flagship products and open-source tools that define the QuasarApp stack.</p>
             <div class="featured-grid">
-                <a class="featured-card ecliptica-card" href="/projects/ecliptica">
+                <a class="featured-card ecliptica-card" href="/ecliptica.html">
                     <img src="assets/images/ecliptica_background-768.webp" srcset="assets/images/ecliptica_background-480.webp 480w, assets/images/ecliptica_background-768.webp 768w" sizes="(max-width: 640px) 100vw, 616px" alt="Ecliptica Background" class="ecliptica-card-bg blur-bg" loading="lazy">
                     <div class="ecliptica-card-content">
                         <img src="assets/images/ecliptica_icon_logo.png.webp" srcset="assets/images/ecliptica_icon_logo-240.webp 240w, assets/images/ecliptica_icon_logo.png.webp 256w" sizes="96px" alt="Ecliptica Logo" class="game-logo featured-logo" loading="lazy" width="96" height="96">
                         <h3>Ecliptica</h3>
                         <p class="lang-badge">Game</p>
-                        <p data-lang="projects.ecliptica">Ecliptica is a space exploration game where you command a space station and terraform planets. Build habitats, manage resources, and lead your crew through deep space challenges.</p>
+                        <p data-lang="projects.ecliptica">Ecliptica is a first-person open-world colony survival simulator with a fully dynamic economy. Set on a hostile alien planet, you'll found corporations, fight for resources, and build a sustainable future.</p>
                         <span class="featured-cta" data-lang="featured.details">View details</span>
                     </div>
                 </a>

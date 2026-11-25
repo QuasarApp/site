@@ -1,0 +1,47 @@
+{
+  "org": "QuasarApp",
+  "source": "https://github.com/QuasarApp",
+  "fetchedAt": "2026-11-21T22:15:42.134Z",
+  "projects": {
+    "ecliptica": {
+      "repo": "QuasarApp/EclipticaPage",
+      "repoUrl": "https://github.com/QuasarApp/EclipticaPage",
+      "stars": 1,
+      "archived": false,
+      "latestRelease": null,
+      "latestReleaseUrl": null
+    },
+    "cqtdeployer": {
+      "repo": "QuasarApp/CQtDeployer",
+      "repoUrl": "https://github.com/QuasarApp/CQtDeployer",
+      "stars": 657,
+      "archived": false,
+      "latestRelease": "v1.7.97.f63f2cff",
+      "latestReleaseUrl": "https://github.com/QuasarApp/CQtDeployer/releases/tag/v1.7.97.f63f2cff"
+    },
+    "cheatcard": {
+      "repo": "QuasarApp/CheatCard",
+      "repoUrl": "https://github.com/QuasarApp/CheatCard",
+      "stars": 5,
+      "archived": true,
+      "latestRelease": "v2.0",
+      "latestReleaseUrl": "https://github.com/QuasarApp/CheatCard/releases/tag/v2.0"
+    },
+    "qtssecret": {
+      "repo": "QuasarApp/Qt-Secret",
+      "repoUrl": "https://github.com/QuasarApp/Qt-Secret",
+      "stars": 269,
+      "archived": true,
+      "latestRelease": "1.3.2",
+      "latestReleaseUrl": "https://github.com/QuasarApp/Qt-Secret/releases/tag/1.3.2"
+    },
+    "heart": {
+      "repo": "QuasarApp/Heart",
+      "repoUrl": "https://github.com/QuasarApp/Heart",
+      "stars": 5,
+      "archived": false,
+      "latestRelease": "1.4.918",
+      "latestReleaseUrl": "https://github.com/QuasarApp/Heart/releases/tag/1.4.918"
+    }
+  }
+}

@@ -1,0 +1,150 @@
+'use strict';
+
+// Auto tests for the home page (issue #78, TZ section 2.1):
+// - featured cards: the Ecliptica card links to the shipped /ecliptica.html
+//   hub (issue #79), the rest to /projects/{slug}
+// - devlog feed: content collection JSON + documented empty state
+// - GitHub org metrics: build-time cache JSON + fetcher script
+// - js/home-data.js loads after the i18n -> parallax -> main chain
+// Run with: node --test tests/*.test.js
+
+const { test } = require('node:test');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+
+const ROOT = path.join(__dirname, '..');
+const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+
+// The Ecliptica flagship hub page is already shipped at /ecliptica.html
+// (issue #79), so its featured card links there directly. The remaining
+// cards link to the /projects/{slug} detail pages shipped by issue #77.
+const FEATURED_SLUGS = ['cqtdeployer', 'cheatcard', 'yourtimedelivery', 'qtssecret', 'heart'];
+
+test('featured cards link to the project pages (Ecliptica hub or /projects/{slug})', () => {
+    assert.match(
+        html,
+        /href=["']?\/ecliptica\.html["']?/,
+        'no featured card linking to the /ecliptica.html hub page'
+    );
+    for (const slug of FEATURED_SLUGS) {
+        assert.match(
+            html,
+            new RegExp(`href=["']?/projects/${slug}["']?`),
+            `no featured card linking to /projects/${slug}`
+        );
+    }
+});
+
+test('the home page links to the /about page (issue #73)', () => {
+    // The dedicated About page must be reachable from the home page
+    // (review of PR #97): the navbar "About" entry points to /about.
+    const aboutLinks = [...html.matchAll(/<a\b[^>]*href="\/about\/?"[^>]*>/g)];
+    assert.ok(
+        aboutLinks.length >= 1,
+        `expected the navbar to link to /about, found ${aboutLinks.length} link(s)`
+    );
+});
+
+test('the home page no longer duplicates the About Us copy (issue #73)', () => {
+    // The About Us information lives on the dedicated /about page
+    // (EndrII review of PR #97): the home page must not repeat the
+    // studio copy, only link to the page from the navbar.
+    assert.ok(
+        !/<section\b[^>]*id=["']about["']/.test(html),
+        'home page still has an #about section'
+    );
+    for (const key of ['about.title', 'about.text', 'about.text2', 'about.description']) {
+        assert.ok(
+            !html.includes(`data-lang="${key}"`),
+            `home page still duplicates the '${key}' copy that lives at /about`
+        );
+    }
+});
+
+test('the home page navbar links to the /contacts page (issue #74)', () => {
+    // The contact page must be reachable from the home page (EndrII
+    // review of PR #96): the navbar "Contact" entry points to /contacts
+    // instead of the removed #contact in-page anchor.
+    const contactLinks = [...html.matchAll(/<a\b[^>]*href="\/contacts\/?"[^>]*>/g)];
+    assert.ok(
+        contactLinks.length >= 1,
+        `expected the home page to link to /contacts, found ${contactLinks.length} link(s)`
+    );
+    assert.ok(
+        !/<a\b[^>]*href=["']#contact["']/.test(html),
+        'home page still links to the removed #contact anchor'
+    );
+});
+
+test('the "Our Projects" grid and "Get in Touch" sections were removed from the home page (issue #74 review)', () => {
+    // The "Our Projects" project-card grid (#projects) and the "Get in
+    // Touch" contact section (#contact) no longer live on the home page
+    // (EndrII review of PR #96): the projects are showcased in #featured
+    // and on the /projects/{slug} pages, the contact form lives on
+    // /contacts.
+    assert.ok(
+        !/<section\b[^>]*id=["']projects["']/.test(html),
+        'home page still has the #projects "Our Projects" section'
+    );
+    assert.ok(
+        !/<section\b[^>]*id=["']contact["']/.test(html),
+        'home page still has the #contact "Get in Touch" section'
+    );
+    for (const key of ['projects.title', 'projects.text', 'projects.empty', 'contact.title', 'contact.text']) {
+        assert.ok(
+            !html.includes(`data-lang="${key}"`),
+            `home page still duplicates the '${key}' copy`
+        );
+    }
+});
+
+test('the devlog content collection JSON exists and is a valid posts array', () => {
+    const file = path.join(ROOT, 'data', 'devlog.json');
+    assert.ok(fs.existsSync(file), 'data/devlog.json is missing');
+    const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+    assert.ok(Array.isArray(data.posts), 'data/devlog.json must contain a posts array');
+    for (const post of data.posts) {
+        assert.equal(typeof post.title, 'string', 'devlog post has no string title');
+        assert.equal(typeof post.slug, 'string', 'devlog post has no string slug');
+    }
+});
+
+test('the devlog feed keeps its documented empty state in the markup', () => {
+    assert.match(html, /id=["']devlog-feed["']/, 'no #devlog-feed container');
+    assert.match(html, /data-devlog-empty/, 'no explicit empty state marker');
+    assert.match(html, /data-lang=["']devlog\.empty["']/, 'empty state has no translated copy');
+});
+
+test('the GitHub org metrics cache JSON is valid and non-empty', () => {
+    const file = path.join(ROOT, 'data', 'github-org-metrics.json');
+    assert.ok(fs.existsSync(file), 'data/github-org-metrics.json is missing (run scripts/fetch-github-metrics.js)');
+    const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+    assert.equal(data.org, 'QuasarApp', 'metrics cache must target the QuasarApp org');
+    assert.equal(typeof data.source, 'string', 'metrics cache has no source URL');
+    assert.match(data.source, /^https:\/\/github\.com\/QuasarApp\/?$/, 'metrics source is not the org URL');
+    assert.equal(typeof data.fetchedAt, 'string', 'metrics cache has no fetchedAt timestamp');
+    assert.ok(!Number.isNaN(Date.parse(data.fetchedAt)), 'fetchedAt is not a valid date');
+    assert.ok(Number.isInteger(data.repoCount) && data.repoCount > 0, 'repoCount must be a positive integer');
+    assert.ok(Number.isInteger(data.totalStars) && data.totalStars >= 0, 'totalStars must be a non-negative integer');
+});
+
+test('the build-time metrics fetcher script exists and writes the cache', () => {
+    const script = path.join(ROOT, 'scripts', 'fetch-github-metrics.js');
+    assert.ok(fs.existsSync(script), 'scripts/fetch-github-metrics.js is missing');
+    const source = fs.readFileSync(script, 'utf8');
+    assert.match(source, /api\.github\.com/, 'fetcher must query the GitHub API');
+    assert.match(source, /data[\\\/]github-org-metrics\.json/, 'fetcher must write the cache JSON');
+});
+
+test('js/home-data.js is loaded after the i18n -> parallax -> main chain', () => {
+    const files = ['js/i18n.js', 'js/parallax.js', 'js/main.js', 'js/home-data.js'];
+    const offsets = files.map((file) => html.indexOf(`src="${file}"`));
+    assert.ok(offsets.every((i) => i !== -1), 'all four home page scripts must be referenced');
+    for (let i = 1; i < offsets.length; i++) {
+        assert.ok(
+            offsets[i - 1] < offsets[i],
+            `script order violated: ${files[i - 1]} must load before ${files[i]}`
+        );
+    }
+});

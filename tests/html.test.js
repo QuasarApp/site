@@ -30,11 +30,45 @@ test('document declares charset and viewport', () => {
     assert.match(html, /<meta[^>]+name=["']?viewport["']?/i);
 });
 
-for (const id of ['home', 'projects', 'about', 'contact']) {
+// The home page ships the hero, the featured projects showcase and the
+// devlog feed (issue #78). The "What We Do" verticals (#verticals), the
+// "Our Projects" project-card grid (#projects), the "Technology Stack &
+// open-source footprint" (#stack) and the "Get in Touch" (#contact)
+// sections were removed from the home page (EndrII review of PR #96):
+// the studio, services and GitHub org metrics live on /about (issue #73,
+// guarded by tests/about.test.js) and the contact form lives on /contacts
+// (issue #74, guarded by tests/contacts.test.js).
+for (const id of ['home', 'featured', 'devlog']) {
     test(`section #${id} exists`, () => {
         assert.match(html, new RegExp(`<section[^>]+id=["']${id}["']`, 'i'));
     });
 }
+
+test('home page renders the hero, featured projects and devlog feed (issue #78)', () => {
+    // 1. hero with the Ecliptica featured banner
+    assert.match(html, /class="ecliptica-featured"/, 'hero is missing the Ecliptica featured banner');
+    // 2. featured projects showcase linking to /projects/{slug}
+    assert.match(html, /id=["']featured["']/, 'featured projects section missing');
+    // 3. latest news / devlog feed with a documented empty state
+    assert.match(html, /id=["']devlog-feed["']/, 'devlog feed container missing');
+    assert.match(html, /data-devlog-empty/, 'documented devlog empty state missing');
+});
+
+test('the removed home sections stay removed (EndrII review of PR #96)', () => {
+    // "What We Do" (#verticals) and "Technology Stack & open-source
+    // footprint" (#stack) duplicate the /about page; "Our Projects"
+    // (#projects) duplicates the #featured showcase and the
+    // /projects/{slug} pages; "Get in Touch" (#contact) duplicates the
+    // /contacts page.
+    for (const id of ['verticals', 'projects', 'stack', 'contact']) {
+        assert.ok(
+            !new RegExp(`<section\\b[^>]*id=["']${id}["']`).test(html),
+            `home page still has the #${id} section`
+        );
+    }
+    assert.ok(!/id=["']gh-repo-count["']/.test(html), 'home page still renders the GitHub repo count metric');
+    assert.ok(!/id=["']gh-total-stars["']/.test(html), 'home page still renders the GitHub total stars metric');
+});
 
 test('navigation bar and footer exist', () => {
     assert.match(html, /<nav[\s>]/i);

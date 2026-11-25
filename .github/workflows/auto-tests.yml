@@ -24,3 +24,50 @@ jobs:
 
       - name: Run auto tests
         run: node --test tests/*.test.js
+
+  lighthouse:
+    name: Lighthouse (Desktop & Mobile, issue #81)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Start static server
+        # `serve` compresses responses on the fly (gzip/brotli), like the
+        # production host (GitHub Pages) does. A plain uncompressed server
+        # overstates the text payload by ~70 KB and skews the Slow-4G mobile
+        # run (PR #91).
+        run: |
+          nohup npx -y serve -l 8080 . > /dev/null 2>&1 &
+          for i in $(seq 1 30); do
+            curl -sf http://127.0.0.1:8080/ > /dev/null && break
+            sleep 1
+          done
+          curl -sf http://127.0.0.1:8080/ > /dev/null
+
+      - name: Lighthouse Desktop (Performance >= 90)
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: 'http://127.0.0.1:8080/'
+          configPath: ./lighthouserc.desktop.json
+          runs: 1
+          temporaryPublicStorage: true
+          uploadArtifacts: true
+          artifactName: lighthouse-desktop
+
+      - name: Lighthouse Mobile (Performance >= 90)
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: 'http://127.0.0.1:8080/'
+          configPath: ./lighthouserc.mobile.json
+          runs: 1
+          temporaryPublicStorage: true
+          uploadArtifacts: true
+          artifactName: lighthouse-mobile

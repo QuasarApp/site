@@ -115,12 +115,25 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
   18); same offline behavior as the org metrics fetcher (keeps the
   existing cache and exits 0, exits 1 only without any cache).
 - `data/devlog.json` — devlog content collection for the home feed:
-  `{"posts": [{ "slug", "title", "date", "tags": [], "excerpt" }]}`.
-  Seeded by the devlog issue (#75); while empty, the home page shows the
-  explicit empty state.
+  `{"posts": [{ "slug", "title", "date", "tags": [], "type", "excerpt" }]}`.
+  Generated from the Markdown posts in `devlog/posts/` by
+  `scripts/build-devlog.js` (issue #75); the home page shows the explicit
+  empty state only while the collection is empty.
+- `devlog/` — the `/devlog` section (issue #75), a Git-based Markdown CMS:
+  `devlog/posts/{slug}.md` are the single source of truth (frontmatter:
+  title, date, tags, type, excerpt). `scripts/build-devlog.js` generates
+  `data/devlog.json`, `devlog/index.html` (list + project-tag filter) and
+  one `devlog/{slug}/index.html` per post, and syncs `sitemap.xml`.
+  YouTube lines render lazy iframes; local video lines render
+  non-blocking `<video poster data-src preload="none">` (the clip and its
+  `-poster.webp` must be committed). `js/devlog.js` (list + post pages
+  only, loads after `js/main.js`) drives the tag filter, `?tag={slug}`
+  deep links and the IntersectionObserver video lazy-load; without JS
+  every post stays visible. `node scripts/build-devlog.js --check` fails
+  on artifact drift (run in CI via `tests/devlog.test.js`).
 - `scripts/` — dependency-free Node helper scripts (the two build-time
-  GitHub metrics fetchers above); they are build-time tools and are not
-  loaded by the browser.
+  GitHub metrics fetchers above plus `build-devlog.js`); they are
+  build-time tools and are not loaded by the browser.
 - `tests/` — dependency-free Node.js test suite run with
   `node --test tests/*.test.js`; executed on every pull request by the
   `.github/workflows/auto-tests.yml` GitHub Actions workflow
@@ -130,10 +143,13 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
   `/projects/{slug}` detail pages (issue #77); `tests/about.test.js`
   guards the `/about` page (issue #73); `tests/links.test.js` scans
   every HTML page (the root pages incl. the `/ecliptica.html` hub,
-  issue #79 + `/projects/{slug}` + `/about` + `/contacts`) for
-  resolvable local references and exempts only the upcoming
-  `/devlog/...` routes (issue #75) from the file-existence check until
-  they land;
+  issue #79 + `/projects/{slug}` + `/about` + `/contacts` + the
+  `/devlog` list and post pages, issue #75) for resolvable local
+  references;
+  `tests/devlog.test.js` guards the `/devlog` CMS (issue #75): manifest
+  vs. Markdown parity, list/post page content, non-blocking media
+  rendering, devlog i18n coverage, sitemap entries and the
+  `build-devlog.js --check` drift check;
   `tests/i18n.test.js` checks key parity plus every `data-lang` key of
   all HTML pages; `tests/contacts.test.js` guards the `/contacts`
   acceptance criteria (issue #74): form validation and states,

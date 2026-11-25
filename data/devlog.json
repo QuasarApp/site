@@ -1,3 +1,44 @@
 {
-  "posts": []
+  "posts": [
+    {
+      "slug": "ecliptica-predemo-1.5-milestone",
+      "title": "PreDemo 1.5: the road to the next playtest",
+      "date": "2026-11-24",
+      "tags": [
+        "ecliptica"
+      ],
+      "type": "patch-notes",
+      "excerpt": "What lands in the PreDemo 1.5 build: PR smoke-test CI, a rebuilt world generator, AI pathfinding, a headless server and the grenade launcher."
+    },
+    {
+      "slug": "fastnoise2-world-generation",
+      "title": "World generation, rebuilt: from OpenSimplex2 to FastNoise2",
+      "date": "2026-11-17",
+      "tags": [
+        "ecliptica"
+      ],
+      "type": "engine-insight",
+      "excerpt": "Ecliptica's terrain generator switches to FastNoise2 - SIMD (AVX2) batch generation, deterministic output across platforms, and a cross-platform test suite."
+    },
+    {
+      "slug": "ecliptica-server-headless-world",
+      "title": "Multiplayer foundations: EclipticaServer and the headless ServerWorld",
+      "date": "2026-11-15",
+      "tags": [
+        "ecliptica"
+      ],
+      "type": "engine-insight",
+      "excerpt": "The first step toward co-op: a dedicated EclipticaServer binary that runs the world headless - no renderer, no input, just the simulation."
+    },
+    {
+      "slug": "demo-1.0-grenade-launcher",
+      "title": "Demo 1.0 progress: the grenade launcher",
+      "date": "2026-11-10",
+      "tags": [
+        "ecliptica"
+      ],
+      "type": "devlog",
+      "excerpt": "A new tool for Demo 1.0: the grenade launcher - small bombs with a two-second fuse, manual and automatic fire modes, and bombs that detonate on damage."
+    }
+  ]
 }

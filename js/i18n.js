@@ -5,7 +5,8 @@ const translations = {
             home: 'Home',
             projects: 'Projects',
             about: 'About',
-            contact: 'Contact'
+            contact: 'Contact',
+            devlog: 'Devlog'
         },
         hero: {
             subtitle: 'Building the Future of Software',
@@ -133,7 +134,18 @@ const translations = {
         devlog: {
             title: 'Latest News & Devlog',
             subtitle: 'Development logs, patch notes and engine insights from the Ecliptica workspace.',
-            empty: 'No devlog posts yet. Development updates, patch notes and engine insights will appear here as soon as they are published on the devlog.'
+            empty: 'No devlog posts yet. Development updates, patch notes and engine insights will appear here as soon as they are published on the devlog.',
+            listTitle: 'Development Logs',
+            listSubtitle: 'Development diaries, patch notes and engine insights - written as the milestones ship.',
+            filterAll: 'All projects',
+            readPost: 'Read post',
+            noResults: 'No posts for this project yet.',
+            back: 'Back to devlog',
+            type: {
+                devlog: 'Development diary',
+                patchNotes: 'Patch notes',
+                engineInsight: 'Engine insight'
+            }
         },
         stack: {
             title: 'Technology Stack & Open-Source Footprint',
@@ -345,6 +357,11 @@ const translations = {
                 title: "Media Gallery",
                 subtitle: "Explore our screenshots and artwork",
                 overlay: "View Full Size"
+            },
+            devlog: {
+                title: "Development diary",
+                subtitle: "Follow the build: devlogs, patch notes and engine insights - updated with every milestone.",
+                cta: "Read the Ecliptica devlog"
             }
         }
     },
@@ -353,7 +370,8 @@ const translations = {
             home: 'Главная',
             projects: 'Проекты',
             about: 'О нас',
-            contact: 'Контакты'
+            contact: 'Контакты',
+            devlog: 'Дневник'
         },
         hero: {
             subtitle: 'Создаём будущее программного обеспечения',
@@ -481,7 +499,18 @@ const translations = {
         devlog: {
             title: 'Новости и журнал разработки',
             subtitle: 'Журналы разработки, патч-ноты и технические заметки — прямо из рабочего процесса Ecliptica.',
-            empty: 'Записей пока нет. Новости разработки, патч-ноты и технические заметки будут появляться здесь по мере публикации в журнале разработки.'
+            empty: 'Записей пока нет. Новости разработки, патч-ноты и технические заметки будут появляться здесь по мере публикации в журнале разработки.',
+            listTitle: 'Журнал разработки',
+            listSubtitle: 'Дневники разработки, патч-ноты и технические заметки — пишутся по мере выхода мейлстоунов.',
+            filterAll: 'Все проекты',
+            readPost: 'Читать запись',
+            noResults: 'Записей по этому проекту пока нет.',
+            back: 'Назад к журналу',
+            type: {
+                devlog: 'Дневник разработки',
+                patchNotes: 'Патч-ноты',
+                engineInsight: 'Техническая заметка'
+            }
         },
         stack: {
             title: 'Технологический стек и открытый код',
@@ -693,6 +722,11 @@ const translations = {
                 title: "Медиагалерея",
                 subtitle: "Смотрите наши скриншоты и арты",
                 overlay: "Посмотреть в полном размере"
+            },
+            devlog: {
+                title: "Дневник разработки",
+                subtitle: "Следите за сборкой: дневники, патч-ноты и технические заметки - обновляются с каждым мейлстоуном.",
+                cta: "Читать дневник Ecliptica"
             }
         }
     },
@@ -701,7 +735,8 @@ const translations = {
             home: 'Startseite',
             projects: 'Projekte',
             about: 'Über uns',
-            contact: 'Kontakt'
+            contact: 'Kontakt',
+            devlog: 'Devlog'
         },
         hero: {
             subtitle: 'Die Zukunft der Software gestalten',
@@ -829,7 +864,18 @@ const translations = {
         devlog: {
             title: 'Neueste News und Devlog',
             subtitle: 'Entwicklungs-Logs, Patch-Notes und Engine-Einblicke direkt aus dem Ecliptica-Entwicklungsalltag.',
-            empty: 'Noch keine Devlog-Beiträge. Entwicklungs-Updates, Patch-Notes und Engine-Einblicke erscheinen hier, sobald sie im Devlog veröffentlicht werden.'
+            empty: 'Noch keine Devlog-Beiträge. Entwicklungs-Updates, Patch-Notes und Engine-Einblicke erscheinen hier, sobald sie im Devlog veröffentlicht werden.',
+            listTitle: 'Entwicklungsprotokolle',
+            listSubtitle: 'Entwicklungs-Logs, Patch-Notes und Engine-Einblicke - geschrieben, sobald ein Meilenstein fertig ist.',
+            filterAll: 'Alle Projekte',
+            readPost: 'Beitrag lesen',
+            noResults: 'Noch keine Beiträge zu diesem Projekt.',
+            back: 'Zurück zum Devlog',
+            type: {
+                devlog: 'Entwicklungs-Log',
+                patchNotes: 'Patch-Notes',
+                engineInsight: 'Engine-Einblick'
+            }
         },
         stack: {
             title: 'Technologie-Stack und Open-Source-Fußabdruck',
@@ -1041,6 +1087,11 @@ const translations = {
                 title: "Medien-Galerie",
                 subtitle: "Entdecke unsere Screenshots und Artworks",
                 overlay: "In voller Größe anzeigen"
+            },
+            devlog: {
+                title: "Entwicklungs-Tagebuch",
+                subtitle: "Folge dem Build: Devlogs, Patch-Notes und Engine-Einblicke - aktualisiert mit jedem Meilenstein.",
+                cta: "Ecliptica-Devlog lesen"
             }
         }
     },
@@ -1049,7 +1100,8 @@ const translations = {
             home: 'Inicio',
             projects: 'Proyectos',
             about: 'Sobre nosotros',
-            contact: 'Contacto'
+            contact: 'Contacto',
+            devlog: 'Devlog'
         },
         hero: {
             subtitle: 'Construyendo el futuro del software',
@@ -1177,7 +1229,18 @@ const translations = {
         devlog: {
             title: 'Últimas noticias y devlog',
             subtitle: 'Registros de desarrollo, notas de parche e insights del motor directos del espacio de trabajo de Ecliptica.',
-            empty: 'Aún no hay publicaciones en el devlog. Las noticias de desarrollo, notas de parche e insights del motor aparecerán aquí en cuanto se publiquen en el devlog.'
+            empty: 'Aún no hay publicaciones en el devlog. Las noticias de desarrollo, notas de parche e insights del motor aparecerán aquí en cuanto se publiquen en el devlog.',
+            listTitle: 'Registros de desarrollo',
+            listSubtitle: 'Diarios de desarrollo, notas de parche e insights del motor - escritos a medida que llegan los hitos.',
+            filterAll: 'Todos los proyectos',
+            readPost: 'Leer entrada',
+            noResults: 'Aún no hay entradas de este proyecto.',
+            back: 'Volver al devlog',
+            type: {
+                devlog: 'Diario de desarrollo',
+                patchNotes: 'Notas de parche',
+                engineInsight: 'Insight del motor'
+            }
         },
         stack: {
             title: 'Stack tecnológico y huella open-source',
@@ -1389,6 +1452,11 @@ const translations = {
                 title: "Galería multimedia",
                 subtitle: "Explora nuestras capturas de pantalla y obras de arte",
                 overlay: "Ver en tamaño completo"
+            },
+            devlog: {
+                title: "Diario de desarrollo",
+                subtitle: "Sigue la construcción: diarios, notas de parche e insights del motor - actualizados con cada hito.",
+                cta: "Leer el devlog de Ecliptica"
             }
         }
     },
@@ -1397,7 +1465,8 @@ const translations = {
             home: 'Početna',
             projects: 'Projekti',
             about: 'O nama',
-            contact: 'Kontakt'
+            contact: 'Kontakt',
+            devlog: 'Devlog'
         },
         hero: {
             subtitle: 'Gradimo budućnost softvera',
@@ -1525,7 +1594,18 @@ const translations = {
         devlog: {
             title: 'Najnovije vijesti i devlog',
             subtitle: 'Dnevnik razvoja, napomene za patcheve i uvidi u engine - direktno iz radnog procesa Ecliptica.',
-            empty: 'Još nema zapisa u devlogu. Vijesti o razvoju, napomene za patcheve i uvidi u engine pojaviće se ovdje čim se objave u devlogu.'
+            empty: 'Još nema zapisa u devlogu. Vijesti o razvoju, napomene za patcheve i uvidi u engine pojaviće se ovdje čim se objave u devlogu.',
+            listTitle: 'Dnevnik razvoja',
+            listSubtitle: 'Dnevnici razvoja, napomene za patcheve i uvidi u engine - objavljuju se uz svaki mejlstoun.',
+            filterAll: 'Svi projekti',
+            readPost: 'Pročitaj zapis',
+            noResults: 'Još nema zapisa za ovaj projekat.',
+            back: 'Nazad na devlog',
+            type: {
+                devlog: 'Dnevnik razvoja',
+                patchNotes: 'Napomene za patcheve',
+                engineInsight: 'Uvid u engine'
+            }
         },
         stack: {
             title: 'Tehnološki stack i otvoreni trag',
@@ -1737,6 +1817,11 @@ const translations = {
                 title: "Medijska galerija",
                 subtitle: "Istražite naše snimke ekrana i umjetničke radove",
                 overlay: "Pogledaj u punoj veličini"
+            },
+            devlog: {
+                title: "Dnevnik razvoja",
+                subtitle: "Prati izgradnju: dnevnik, napomene za patcheve i uvidi u engine - ažurirano uz svaki mejlstoun.",
+                cta: "Pročitaj devlog Ecliptice"
             }
         }
     }

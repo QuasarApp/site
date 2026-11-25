@@ -38,9 +38,10 @@ The home page renders one data-driven section on top of the static
 markup:
 
 - **Latest News & Devlog feed** — the latest posts (max 5, newest first,
-  with date and tags) from the `data/devlog.json` content collection.
-  The devlog issue (#75) seeds the collection; while it is empty the
-  feed shows a documented explicit empty state.
+  with date and tags) from the `data/devlog.json` content collection,
+  which is generated from the Markdown posts in `devlog/posts/` by
+  `scripts/build-devlog.js` (see "Devlog (issue #75)" below). While the
+  collection is empty the feed shows a documented explicit empty state.
 
 The former **Technology stack & open-source footprint** section was
 removed from the home page (EndrII review of PR #96, together with the
@@ -59,6 +60,63 @@ node scripts/fetch-github-metrics.js
 
 If the GitHub API is unreachable, the script keeps the existing cache
 and exits 0; without any cache it exits 1 so the build fails loudly.
+
+## Devlog (issue #75)
+
+The `/devlog` section is a Git-based Markdown CMS. Posts are plain
+Markdown files in `devlog/posts/` with a small frontmatter block:
+
+```markdown
+---
+title: Your post title
+date: 2026-12-01          # YYYY-MM-DD, required
+tags: ecliptica            # comma-separated project tags (e.g. "ecliptica, cqtdeployer")
+type: devlog               # devlog | patch-notes | engine-insight
+excerpt: One-line summary used on the list page and the home feed.
+---
+
+Post body (Markdown subset: headings, lists, code, blockquotes, links,
+images and videos).
+```
+
+Run the generator after adding or editing a post (Node >= 18, no
+dependencies):
+
+```bash
+node scripts/build-devlog.js
+```
+
+It (re)generates, in deterministic order:
+
+- `data/devlog.json` — the manifest consumed by the home page feed
+  (`js/home-data.js`);
+- `devlog/index.html` — the list page (newest first, project-tag filter);
+- `devlog/{slug}/index.html` — one static page per post;
+- `sitemap.xml` — devlog entries are synced in place.
+
+`node scripts/build-devlog.js --check` re-runs the generation in memory
+and exits non-zero when the committed artifacts drift from the Markdown
+sources (the same check runs in CI via `tests/devlog.test.js`).
+
+Media rules:
+
+- **YouTube** — embed with a normal image-style line whose URL is a
+  `youtube.com` / `youtu.be` link; the generator renders a lazy,
+  privacy-friendly `<iframe>` (the video IDs must be verified via
+  oEmbed before use).
+- **Local video** — `![caption](/assets/devlog/videos/{name}.mp4)` (or
+  `.webm`). The clip **and** its static poster `{name}-poster.webp` must
+  be committed next to it; the build fails if either is missing. The
+  rendered `<video>` keeps the poster, sets `preload="none"` and defers
+  the real source to `data-src` (attached by `js/devlog.js` via
+  IntersectionObserver), so posts stay non-blocking for Lighthouse.
+- **Images** — reference committed files under `assets/`; remote images
+  are rejected by the generator.
+
+Browsing: `devlog/index.html` lists every post with the project-tag
+filter buttons; `js/devlog.js` handles filtering client-side, `?tag={slug}`
+deep links (the Ecliptica hub links to `/devlog/?tag=ecliptica`) and
+lazy-loads local videos. Without JavaScript every post stays visible.
 
 ## Contacts page (issue #74)
 

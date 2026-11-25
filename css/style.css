@@ -2158,3 +2158,317 @@ body {
         animation: none;
     }
 }
+
+/* ==========================================================================
+   Devlog (issue #75) - /devlog list + post pages and the Ecliptica hub
+   teaser section. Colors and surfaces reuse the :root design tokens.
+   ========================================================================== */
+
+/* --- List page ------------------------------------------------------------ */
+
+.devlog-list-hero {
+    padding: 90px 0 10px;
+}
+
+.devlog-list-section {
+    padding: 40px 0 70px;
+}
+
+/* Project tag filter (buttons are static, js/devlog.js only toggles
+   .active and hides non-matching items) */
+.devlog-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 28px 0 36px;
+    padding: 0;
+}
+
+.devlog-filter-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--text-color);
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.devlog-filter-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.devlog-filter-btn.active {
+    background: var(--gradient-1);
+    border-color: transparent;
+    color: #fff;
+}
+
+.devlog-filter-btn:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Post list */
+.devlog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.devlog-item {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.devlog-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.devlog-item .devlog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.devlog-date {
+    color: var(--muted-text);
+    font-size: 0.9rem;
+}
+
+.devlog-type-badge {
+    background: rgba(0, 188, 212, 0.14);
+    color: var(--primary-color);
+    border: 1px solid rgba(0, 188, 212, 0.35);
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.devlog-tags {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.devlog-meta-tags {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+.devlog-item .devlog-title {
+    font-size: 1.35rem;
+    margin-bottom: 10px;
+}
+
+.devlog-item .devlog-title a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.devlog-item .devlog-title a:hover {
+    color: var(--primary-color);
+}
+
+.devlog-excerpt {
+    color: var(--muted-text);
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+.devlog-cta {
+    color: var(--primary-color);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.devlog-cta:hover {
+    text-decoration: underline;
+}
+
+.devlog-no-results {
+    color: var(--muted-text);
+    font-size: 1.05rem;
+    padding: 24px 0;
+}
+
+/* --- Post page ------------------------------------------------------------- */
+
+.devlog-post-hero {
+    padding: 90px 0 40px;
+}
+
+.devlog-post-hero .devlog-post-title {
+    font-size: 2.2rem;
+    max-width: 900px;
+    margin: 16px 0 18px;
+}
+
+.devlog-post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.devlog-back {
+    display: inline-block;
+    color: var(--primary-color);
+    font-weight: 700;
+    text-decoration: none;
+    margin-bottom: 14px;
+}
+
+.devlog-back:hover {
+    text-decoration: underline;
+}
+
+.devlog-article {
+    padding-bottom: 70px;
+}
+
+.devlog-article > p {
+    line-height: 1.75;
+    margin-bottom: 18px;
+}
+
+.devlog-article > h2 {
+    font-size: 1.6rem;
+    margin: 40px 0 16px;
+}
+
+.devlog-article > h3 {
+    font-size: 1.3rem;
+    margin: 32px 0 14px;
+}
+
+.devlog-article > ul,
+.devlog-article > ol {
+    margin: 0 0 18px 24px;
+    line-height: 1.75;
+}
+
+.devlog-article > li {
+    margin-bottom: 8px;
+}
+
+.devlog-article > blockquote {
+    border-left: 3px solid var(--primary-color);
+    padding: 8px 20px;
+    margin: 24px 0;
+    color: var(--muted-text);
+    background: var(--darker-bg);
+    border-radius: 0 8px 8px 0;
+}
+
+.devlog-article > code {
+    background: var(--darker-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.9em;
+}
+
+.devlog-article > pre {
+    background: var(--darker-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    overflow-x: auto;
+    margin-bottom: 18px;
+}
+
+.devlog-article > pre code {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.devlog-article > a {
+    color: var(--primary-color);
+}
+
+.devlog-article > hr {
+    border: none;
+    border-top: 1px solid var(--card-border);
+    margin: 32px 0;
+}
+
+/* Media figures: YouTube embeds, local <video> (non-blocking contract) and
+   plain images. */
+.devlog-fig,
+.devlog-video {
+    margin: 28px 0;
+}
+
+.devlog-fig img.devlog-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid var(--card-border);
+}
+
+.devlog-video {
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000;
+}
+
+.devlog-video-youtube {
+    position: relative;
+    aspect-ratio: 16 / 9;
+}
+
+.devlog-video-youtube iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.devlog-video-local video {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #000;
+}
+
+/* Article section under the post hero */
+.devlog-post-section {
+    padding-top: 10px;
+    padding-bottom: 40px;
+}
+
+/* --- Ecliptica hub teaser (links into /devlog/?tag=ecliptica) --------------- */
+
+.ecliptica-devlog-section {
+    padding: 80px 0;
+    text-align: center;
+    background: var(--darker-bg);
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+}
+
+.devlog-hub-subtitle {
+    color: var(--muted-text);
+    max-width: 640px;
+    margin: 14px auto 28px;
+    line-height: 1.6;
+}

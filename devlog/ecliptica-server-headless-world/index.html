@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplayer foundations: EclipticaServer and the headless ServerWorld &mdash; QuasarApp Devlog</title>
+    <meta name="description" content="The first step toward co-op: a dedicated EclipticaServer binary that runs the world headless - no renderer, no input, just the simulation.">
+    <meta name="theme-color" content="#0a0e17">
+
+    <!-- Open Graph (per-post meta is extended by the SEO issue) -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://quasarapp.me/devlog/ecliptica-server-headless-world/">
+    <meta property="og:title" content="Multiplayer foundations: EclipticaServer and the headless ServerWorld">
+    <meta property="og:description" content="The first step toward co-op: a dedicated EclipticaServer binary that runs the world headless - no renderer, no input, just the simulation.">
+    <meta property="og:image" content="https://quasarapp.me/assets/images/banner.webp">
+    <meta property="article:published_time" content="2026-11-15">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+</head>
+<body data-devlog-page="post">
+    <!-- Inline SVG icon sprite (issue #81): subset of the index.html sprite. -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;" aria-hidden="true" focusable="false">
+        <symbol id="icon-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+        <symbol id="icon-steam" viewBox="0 0 24 24"><path fill="currentColor" d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></symbol>
+        <symbol id="icon-youtube" viewBox="0 0 24 24"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol>
+        <symbol id="icon-heart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+        <symbol id="icon-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></g></symbol>
+        <symbol id="icon-send" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
+        <symbol id="icon-tool" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+        <symbol id="icon-bell" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></g></symbol>
+    </svg>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="/">
+                    <img src="../../assets/images/logo.png.webp" srcset="../../assets/images/logo-100.webp 100w, ../../assets/images/logo.png.webp 512w" sizes="50px" alt="QuasarApp" class="nav-logo" width="50" height="50">
+                    <span>QuasarApp</span>
+                </a>
+            </div>
+            <ul class="nav-links" aria-label="Main navigation">
+                <li><a href="/" data-lang="nav.home">Home</a></li>
+                <li><a href="/devlog/" data-lang="nav.devlog">Devlog</a></li>
+                <li><a href="mailto:quasarappdevelop@gmail.com" data-lang="nav.contact">Contact</a></li>
+                <li>
+                    <select id="lang-select" class="lang-select" aria-label="Toggle language" onchange="selectLanguage(this.value)">
+                        <option value="en" selected>EN</option>
+                        <option value="ru">RU</option>
+                        <option value="me">ME</option>
+                        <option value="de">DE</option>
+                        <option value="es">ES</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <section class="devlog-post-hero">
+            <div class="container">
+                <a class="devlog-back" href="/devlog/" data-lang="devlog.back">Back to devlog</a>
+                <span class="devlog-type-badge badge-type-engine-insight">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-tool"></use></svg>
+                    <span data-lang="devlog.type.engineInsight">engine-insight</span>
+                </span>
+                <h1 class="devlog-post-title">Multiplayer foundations: EclipticaServer and the headless ServerWorld</h1>
+                <div class="devlog-post-meta">
+                    <time datetime="2026-11-15">November 15, 2026</time>
+                    <span class="devlog-meta-tags" aria-label="Projects">
+                        <span class="lang-badge">Ecliptica</span>
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <section class="devlog-post-section">
+            <div class="container">
+                <article class="devlog-article">
+<p>Co-op is one of the planned milestones on the <a href="/ecliptica.html#ecliptica-roadmap">Ecliptica roadmap</a>, and it starts with a question: can the world run without a client attached? The answer being built right now is <strong>yes</strong> - a dedicated <code>EclipticaServer</code> binary owns a headless <code>ServerWorld</code> that runs the full simulation with no renderer and no input.</p>
+<h3>What the headless world owns</h3>
+<ul><li><strong>Entities and state</strong> - colonists, NPCs, resources and colony state tick on the server clock.</li><li><strong>Economy and contracts</strong> - the dynamic, NPC-driven economy keeps running exactly as it does in singleplayer.</li><li><strong>World rules</strong> - terrain, biomes and destruction rules are evaluated server-side, so every client sees the same world.</li></ul>
+<h3>Why a separate process</h3>
+<p>Running the simulation in its own process keeps the client free to do what a client does best - render and accept input - and it mirrors how dedicated servers are operated in production. The implementation plan for the track lives in the Ecliptica repository&#39;s <code>docs/implementation-plans</code>; the current target branch is <code>multiplayer</code>.</p>
+<p>A sketch of the server loop the track is building toward:</p>
+<pre><code class="language-cpp">// EclipticaServer: headless simulation tick (simplified)
+ServerWorld world(config);
+while (running) {
+    world.tick(dt);            // entities, economy, world rules
+    network.broadcast(world);  // ship the tick results to clients
+}</code></pre>
+<figure class="devlog-video devlog-video-local">
+    <video class="devlog-video-el" controls playsinline preload="none" poster="/assets/devlog/videos/server-demo-poster.webp" data-src="/assets/devlog/videos/server-demo.webm"></video>
+</figure>
+<p><em>Placeholder clip - a capture of the server console will follow once the networking layer lands.</em></p>
+<figure class="devlog-fig">
+    <img class="devlog-img" src="/assets/images/ecliptica_ss2.webp" alt="The Ecliptica biosphere that the headless world simulates" loading="lazy" decoding="async">
+</figure>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-social">
+                <a href="https://github.com/QuasarApp" class="social-link">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg>
+                    <span data-lang="footer.github">GitHub</span>
+                </a>
+                <a href="mailto:quasarappdevelop@gmail.com" class="social-link">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-mail"></use></svg>
+                    <span data-lang="footer.email">Email</span>
+                </a>
+                <a href="https://www.youtube.com/@quasarappcore" class="social-link" target="_blank">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-youtube"></use></svg>
+                    <span data-lang="footer.youtube">YouTube</span>
+                </a>
+                <a href="https://store.steampowered.com/curator/45704880" class="social-link" target="_blank">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-steam"></use></svg>
+                    <span data-lang="footer.steam">Steam</span>
+                </a>
+            </div>
+            <div class="footer-bottom">
+                <p data-lang="footer.copyright">&copy; 2026 QuasarApp Group. All rights reserved.</p>
+                <p class="made-with"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-heart"></use></svg> Made with <span class="glow">passion</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/i18n.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/devlog.js"></script>
+</body>
+</html>

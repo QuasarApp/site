@@ -25,19 +25,15 @@ function isExternal(ref) {
     return ref.startsWith('#') || ref.startsWith('//') || /^[a-z][a-z0-9+.-]*:/i.test(ref);
 }
 
-// Upcoming routes: the /devlog/{slug} post pages (issue #75) are shipped
-// by their own issue, so references to them are expected to 404 until it
-// lands and are exempt from the file-existence check below. The
-// /projects/ exemption was removed in issue #77, the /contacts exemption
-// in issue #74 and the /ecliptica exemption in issue #79 (the hub is
-// shipped at /ecliptica.html) - those pages now exist and are checked
-// like every other local reference.
-const PENDING_ROUTE_PREFIXES = ['/devlog/'];
+// Upcoming routes: none at the moment. The /devlog/ post pages (issue #75)
+// are now shipped and checked like every other local reference, same as
+// /projects/ (issue #77), /contacts (issue #74) and /ecliptica (issue #79).
+const PENDING_ROUTE_PREFIXES = [];
 function isPendingRoute(ref) {
     return ref.startsWith('/') && PENDING_ROUTE_PREFIXES.some((p) => ref.startsWith(p));
 }
 
-/** All HTML pages served by the site (every root page + /projects/{slug} + /about + /contacts). */
+/** All HTML pages served by the site (every root page + /projects/{slug} + /about + /contacts + /devlog). */
 function listHtmlPages() {
     const pages = listFiles(ROOT, ['.html']);
     const projectsDir = path.join(ROOT, 'projects');
@@ -51,6 +47,15 @@ function listHtmlPages() {
     if (fs.existsSync(aboutPage)) pages.push(aboutPage);
     const contactsPage = path.join(ROOT, 'contacts', 'index.html');
     if (fs.existsSync(contactsPage)) pages.push(contactsPage);
+    const devlogDir = path.join(ROOT, 'devlog');
+    if (fs.existsSync(devlogDir)) {
+        const devlogIndex = path.join(devlogDir, 'index.html');
+        if (fs.existsSync(devlogIndex)) pages.push(devlogIndex);
+        for (const slug of fs.readdirSync(devlogDir).sort()) {
+            const page = path.join(devlogDir, slug, 'index.html');
+            if (fs.existsSync(page)) pages.push(page);
+        }
+    }
     return pages;
 }
 
@@ -77,7 +82,7 @@ function assertRefExists(ref, fromFile) {
 
 test('all local href/src references in every HTML page resolve to existing files', () => {
     const pages = listHtmlPages();
-    assert.ok(pages.length >= 11, 'expected the two root pages, seven project pages, the about page and the contacts page');
+    assert.ok(pages.length >= 16, 'expected the two root pages, seven project pages, the about page, the contacts page and the devlog list + post pages');
     for (const htmlFile of pages) {
         const rel = path.relative(ROOT, htmlFile);
         const refs = [...fs.readFileSync(htmlFile, 'utf8').matchAll(/(?:href|src)\s*=\s*["']([^"']+)["']/gi)]

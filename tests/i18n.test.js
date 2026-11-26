@@ -104,10 +104,34 @@ test('no translation value is empty', () => {
     }
 });
 
-test('every data-lang key used in index.html exists in all languages', () => {
-    const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
-    const keys = [...html.matchAll(/data-lang="([^"]+)"/g)].map((m) => m[1]);
-    assert.ok(keys.length > 0, 'no data-lang attributes found in index.html');
+test('every data-lang key used in any root HTML page exists in all languages', () => {
+    const htmlFiles = fs
+        .readdirSync(ROOT)
+        .filter((name) => name.toLowerCase().endsWith('.html') && fs.statSync(path.join(ROOT, name)).isFile())
+        .sort();
+    assert.ok(htmlFiles.length > 0, 'no HTML pages found in the repository root');
+    for (const file of htmlFiles) {
+        const html = fs.readFileSync(path.join(ROOT, file), 'utf8');
+        const keys = [...html.matchAll(/data-lang="([^"]+)"/g)].map((m) => m[1]);
+        for (const key of new Set(keys)) {
+            for (const lang of LANGS) {
+                const value = resolvePath(translations[lang], key);
+                assert.equal(
+                    typeof value,
+                    'string',
+                    `data-lang '${key}' in ${file} does not resolve to a string in '${lang}'`
+                );
+                assert.notEqual(value.trim(), '', `data-lang '${key}' in ${file} is empty in '${lang}'`);
+            }
+        }
+    }
+});
+
+test('every data-lang key used in contacts/index.html exists in all languages (issue #74)', () => {
+    const page = path.join(ROOT, 'contacts', 'index.html');
+    assert.ok(fs.existsSync(page), 'contacts/index.html is missing');
+    const keys = [...fs.readFileSync(page, 'utf8').matchAll(/data-lang="([^"]+)"/g)].map((m) => m[1]);
+    assert.ok(keys.length > 0, 'no data-lang attributes found in contacts/index.html');
     for (const key of new Set(keys)) {
         for (const lang of LANGS) {
             const value = resolvePath(translations[lang], key);

@@ -37,9 +37,11 @@ function isPendingRoute(ref) {
     return ref.startsWith('/') && PENDING_ROUTE_PREFIXES.some((p) => ref.startsWith(p));
 }
 
-/** All HTML pages served by the site (every root page + /projects/{slug} + /about + /contacts). */
+/** All HTML pages served by the site (every root page + the /projects/ catalog + /projects/{slug} + /about + /contacts). */
 function listHtmlPages() {
     const pages = listFiles(ROOT, ['.html']);
+    const catalogPage = path.join(ROOT, 'projects', 'index.html');
+    if (fs.existsSync(catalogPage)) pages.push(catalogPage);
     const projectsDir = path.join(ROOT, 'projects');
     if (fs.existsSync(projectsDir)) {
         for (const slug of fs.readdirSync(projectsDir).sort()) {
@@ -77,7 +79,7 @@ function assertRefExists(ref, fromFile) {
 
 test('all local href/src references in every HTML page resolve to existing files', () => {
     const pages = listHtmlPages();
-    assert.ok(pages.length >= 11, 'expected the two root pages, seven project pages, the about page and the contacts page');
+    assert.ok(pages.length >= 12, 'expected the two root pages, the /projects/ catalog, seven project pages, the about page and the contacts page');
     for (const htmlFile of pages) {
         const rel = path.relative(ROOT, htmlFile);
         const refs = [...fs.readFileSync(htmlFile, 'utf8').matchAll(/(?:href|src)\s*=\s*["']([^"']+)["']/gi)]

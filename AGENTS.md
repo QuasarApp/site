@@ -4,8 +4,9 @@ Guidance for AI agents (and humans) working in this repository.
 
 ## Description
 
-Static website for the QuasarApp organization (home page plus the
-`/contacts` page). Pure HTML5 +
+Static website for the QuasarApp organization (home page, the `/projects/`
+catalog, the `/projects/{slug}` detail pages, `/about` and the `/contacts`
+page). Pure HTML5 +
 CSS3 + vanilla JS — no framework, no build step, no dependencies.
 Multi-language: English (default), Russian, Montenegrin, German and
 Spanish. Hosted on GitHub Pages: the `main` branch root is served at
@@ -48,7 +49,23 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
   (stars, latest release, archived note, "updated" date) for the five
   open-source projects — YourTimeDelivery has no public repository and
   renders "No Public Repository" contact messaging instead. All copy is
-  localized via `data-lang` keys under `projectsDetail.{slug}`.
+  localized via `data-lang` keys under `projectsDetail.{slug}`. The
+  "Back to all projects" link points at the `/projects/` catalog.
+- `projects/index.html` — the `/projects/` project catalog (issue #76):
+  a directory of the 6 key projects, filterable client-side by the 4
+  categories (Games, Developer Tools, Desktop & Mobile Apps, Libraries).
+  `js/projects.js` (load 4th, after `js/i18n.js`, `js/parallax.js` and
+  `js/main.js`) renders the cards from the
+  `data/projects-catalog.json` content collection (the same pattern as
+  the devlog feed in `js/home-data.js`) and provides the
+  URL-updatable filtering: `?category=<category>` is read on load
+  (unknown values fall back to "all"), a filter click updates the URL
+  via `history.replaceState`, and popstate re-applies it — no full
+  reload. When the collection is empty or unreachable the documented
+  empty state stays. Navigation in both directions: the home page
+  reaches it from the "View all projects" link in the #featured
+  showcase and the detail pages link back to it; the navbar "Projects"
+  entry on the catalog page itself carries the active state.
 - `about/index.html` — the About Us & Services page (issue #73, TZ 2.5):
   studio background (QuasarApp Group d.o.o., Bar, Montenegro), team
   competencies (C++23, Qt/QML, CI/CD, cross-platform deployment) and B2B
@@ -114,6 +131,15 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
   with `node scripts/fetch-projects-github.js` (no token needed, Node >=
   18); same offline behavior as the org metrics fetcher (keeps the
   existing cache and exits 0, exits 1 only without any cache).
+- `data/projects-catalog.json` — content collection of the `/projects/`
+  catalog (issue #76): one entry per catalog card (`slug`, `title`,
+  `category`, `status`, `icon`, `descriptionKey`). `category`/`status`
+  are the keys of `projectsDetail.categories`/`projectsDetail.statuses`
+  in `js/i18n.js` (the labels render from there), `icon` is the inline
+  sprite symbol suffix (`icon-<icon>`) and `descriptionKey` is an i18n
+  key that must exist in all five languages (the site i18n content
+  model). Adding a new project = a new entry here plus its description
+  key — no code changes (AC4 of issue #76).
 - `data/devlog.json` — devlog content collection for the home feed:
   `{"posts": [{ "slug", "title", "date", "tags": [], "excerpt" }]}`.
   Seeded by the devlog issue (#75); while empty, the home page shows the
@@ -127,10 +153,15 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
   (`auto-tests` job plus a `lighthouse` job that enforces 90+ Performance
   on Desktop and Mobile, see below). `tests/home.test.js` guards the home
   sections (issue #78); `tests/projects.test.js` guards the
-  `/projects/{slug}` detail pages (issue #77); `tests/about.test.js`
+  `/projects/{slug}` detail pages (issue #77); `tests/projects-catalog.test.js`
+  guards the `/projects/` catalog (issue #76): the content collection,
+  the filter buttons + translated labels, both navigation directions,
+  the sitemap entry and the URL-updatable filtering behavior of
+  `js/projects.js` (VM sandbox with a minimal fake DOM); `tests/about.test.js`
   guards the `/about` page (issue #73); `tests/links.test.js` scans
   every HTML page (the root pages incl. the `/ecliptica.html` hub,
-  issue #79 + `/projects/{slug}` + `/about` + `/contacts`) for
+  issue #79 + the `/projects/` catalog + `/projects/{slug}` + `/about`
+  + `/contacts`) for
   resolvable local references and exempts only the upcoming
   `/devlog/...` routes (issue #75) from the file-existence check until
   they land;
@@ -154,7 +185,9 @@ Spanish. Hosted on GitHub Pages: the `main` branch root is served at
     must also satisfy the non-blocking contract (poster +
     IntersectionObserver + `prefers-reduced-motion` fallback).
 
-The script load order (i18n → parallax → main → home-data) matters — keep it.
+The script load order (i18n → parallax → main → home-data) matters — keep it;
+the catalog page follows the same order with `js/projects.js` last
+(i18n → parallax → main → projects).
 
 ## Workflow
 

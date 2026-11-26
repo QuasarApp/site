@@ -39,6 +39,22 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- JSON-LD Structured Data for Homepage (Organization) -->
+    <script type="application/ld+json" id="seo-jsonld">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "QuasarApp Group d.o.o.",
+        "url": "https://quasarapp.me/",
+        "logo": "https://quasarapp.me/logo.png.webp",
+        "sameAs": [
+            "https://github.com/QuasarApp",
+            "https://bsky.app/profile/quasarapp.bsky.social",
+            "https://www.youtube.com/@quasarappcore"
+        ]
+    }
+    </script>
+
 </head>
 <body>
     <!-- Inline SVG icon sprite (issue #81): replaces the Font Awesome CDN
@@ -265,6 +281,7 @@
 
     <script src="js/i18n.js"></script>
     <script src="js/parallax.js"></script>
+    <script src="js/seo.js"></script>
     <script src="js/main.js"></script>
     <script src="js/home-data.js"></script>
 </body>

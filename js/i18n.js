@@ -128,7 +128,12 @@ const translations = {
         featured: {
             title: 'Featured Projects',
             subtitle: 'The flagship products and open-source tools that define the QuasarApp stack.',
-            details: 'View details'
+            details: 'View details',
+            viewAll: 'View all projects'
+        },
+        catalog: {
+            all: 'All',
+            note: 'The catalog is content-driven: every card is rendered from the project content collection (data/projects-catalog.json), so adding a new project is a content-only change - a new entry in the collection plus a localized description, no code changes.'
         },
         devlog: {
             title: 'Latest News & Devlog',
@@ -476,7 +481,12 @@ const translations = {
         featured: {
             title: 'Ключевые проекты',
             subtitle: 'Флагманские продукты и открытые инструменты, определяющие стек QuasarApp.',
-            details: 'Подробнее'
+            details: 'Подробнее',
+            viewAll: 'Все проекты'
+        },
+        catalog: {
+            all: 'Все',
+            note: 'Каталог управляется контентом: каждая карточка рендерится из коллекции контента проектов (data/projects-catalog.json), поэтому добавление нового проекта - это только изменение контента: новая запись в коллекции и локализованное описание, без изменений кода.'
         },
         devlog: {
             title: 'Новости и журнал разработки',
@@ -824,7 +834,12 @@ const translations = {
         featured: {
             title: 'Ausgewählte Projekte',
             subtitle: 'Die Flaggschiff-Produkte und Open-Source-Tools, die den QuasarApp-Stack definieren.',
-            details: 'Details ansehen'
+            details: 'Details ansehen',
+            viewAll: 'Alle Projekte'
+        },
+        catalog: {
+            all: 'Alle',
+            note: 'Der Katalog ist inhaltsgetrieben: Jede Karte wird aus der Projekt-Inhaltssammlung (data/projects-catalog.json) gerendert, sodass ein neues Projekt nur eine Inhaltsänderung bedeutet - ein neuer Eintrag in der Sammlung plus eine lokalisierte Beschreibung, ohne Codeänderungen.'
         },
         devlog: {
             title: 'Neueste News und Devlog',
@@ -1172,7 +1187,12 @@ const translations = {
         featured: {
             title: 'Proyectos destacados',
             subtitle: 'Los productos insignia y las herramientas open-source que definen el stack de QuasarApp.',
-            details: 'Ver detalles'
+            details: 'Ver detalles',
+            viewAll: 'Ver todos los proyectos'
+        },
+        catalog: {
+            all: 'Todos',
+            note: 'El catálogo está impulsado por contenido: cada tarjeta se renderiza desde la colección de contenido de proyectos (data/projects-catalog.json), por lo que añadir un nuevo proyecto es solo un cambio de contenido: una nueva entrada en la colección más una descripción localizada, sin cambios de código.'
         },
         devlog: {
             title: 'Últimas noticias y devlog',
@@ -1520,7 +1540,12 @@ const translations = {
         featured: {
             title: 'Izdvojeni projekti',
             subtitle: 'Flagship proizvodi i otvoreni alati koji definišu QuasarApp stack.',
-            details: 'Pogledaj detalje'
+            details: 'Pogledaj detalje',
+            viewAll: 'Svi projekti'
+        },
+        catalog: {
+            all: 'Sve',
+            note: 'Katalog je vođen sadržajem: svaka kartica se renderuje iz kolekcije sadržaja projekata (data/projects-catalog.json), tako da je dodavanje novog projekta samo promjena sadržaja: novi unos u kolekciju i lokalizovani opis, bez promjena koda.'
         },
         devlog: {
             title: 'Najnovije vijesti i devlog',

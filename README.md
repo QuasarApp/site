@@ -22,9 +22,12 @@ The repository includes a dependency-free automated test suite in `tests/`
 that runs on every pull request via the `Auto Tests (PR)` GitHub Actions
 workflow (`.github/workflows/auto-tests.yml`). The tests cover i18n key
 parity across all five languages, local link and asset references (home
-page and every `/projects/{slug}` page), HTML structure, the project
-detail pages (sections, GitHub cache block, per-page i18n coverage,
-sitemap entries), JS/CSS syntax and repository hygiene.
+page, the `/projects/` catalog and every `/projects/{slug}` page), HTML
+structure, the project catalog (content collection, filter buttons,
+URL-updatable filtering behavior, both navigation directions, sitemap
+entries), the project detail pages (sections, GitHub cache block,
+per-page i18n coverage, sitemap entries), JS/CSS syntax and repository
+hygiene.
 
 Run the tests locally with Node.js (nothing to install):
 
@@ -86,6 +89,36 @@ removed.
 To enable direct submission once the endpoint exists, set
 `CONTACT_ENDPOINT` (and optionally `TURNSTILE_SITE_KEY`) at the top of
 `js/contacts.js` — no other changes are needed.
+## Projects catalog (issue #76)
+
+`/projects` (`projects/index.html`) is the filterable directory of the
+key projects: one card per project (title, icon, one-line description,
+category, status) linking to the `/projects/{slug}` detail pages.
+
+- **Client-side, URL-updatable filtering** — the 4 categories (Games,
+  Developer Tools, Desktop & Mobile Apps, Libraries) filter the cards
+  without a full reload. The active category is read from the URL on
+  load (`/projects/?category=games`; unknown values fall back to
+  "all"), a filter click updates the URL via `history.replaceState` so
+  the filtered state is shareable/bookmarkable, and back/forward
+  navigation re-applies the URL state.
+- **Content collection** — the cards are rendered by `js/projects.js`
+  from `data/projects-catalog.json` (the same pattern as the devlog
+  feed on the home page). Adding a new project is a content-only
+  change: a new collection entry plus the description i18n key in all
+  five languages — no code changes. Category/status labels and the
+  descriptions follow the site i18n content model (`js/i18n.js`). When
+  the collection is empty or unreachable, the documented empty state
+  is shown.
+- **Navigation in both directions** — the home page links to the
+  catalog from the "View all projects" link in the featured showcase,
+  and every detail page's "Back to all projects" link points back at
+  `/projects/`.
+
+`tests/projects-catalog.test.js` guards all of the above (content
+collection validity, filter buttons, per-page i18n coverage, sitemap
+entries and the filtering behavior of `js/projects.js`).
+
 ## Project detail pages (issue #77)
 
 Each key project has a detail page at `projects/{slug}/index.html`:

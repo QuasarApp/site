@@ -2158,3 +2158,226 @@ body {
         animation: none;
     }
 }
+
+/* Projects catalog (issue #76) - the /projects/ page (projects/index.html).
+   Class names are catalog-scoped on purpose: .project-card / .project-logo
+   are already used by the home page and the /projects/{slug} detail pages. */
+
+.catalog-section { padding: 80px 0 60px; background: var(--dark-bg); }
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.filter-btn {
+    padding: 12px 24px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 30px;
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: rgba(0, 188, 212, 0.1);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #ffffff;
+}
+
+/* The "Projects" nav entry points at the /projects/ catalog on the catalog
+   page itself - show the active state there. */
+.nav-links a[aria-current="page"] { color: var(--primary-color); }
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.catalog-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 35px 25px;
+    text-align: center;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.catalog-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gradient-1);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.catalog-card:hover::before { transform: scaleX(1); }
+
+.catalog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 188, 212, 0.15);
+    border-color: var(--primary-color);
+}
+
+.catalog-card-content { position: relative; z-index: 1; }
+
+.catalog-logo {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    border-radius: 16px;
+    background: rgba(0, 188, 212, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+}
+
+.catalog-logo .icon { width: 1.8rem; height: 1.8rem; }
+
+.catalog-card:hover .catalog-logo {
+    background: var(--primary-color);
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+.catalog-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-color);
+}
+
+.catalog-description {
+    font-size: 0.95rem;
+    color: var(--muted-text);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    min-height: 60px;
+}
+
+.catalog-meta {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.catalog-category {
+    padding: 6px 14px;
+    background: rgba(0, 188, 212, 0.15);
+    color: var(--primary-color);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.catalog-status {
+    padding: 6px 14px;
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.catalog-link {
+    display: inline-block;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.catalog-link:hover { color: var(--secondary-color); }
+
+/* Documented empty state of the catalog (the devlog-feed pattern, issue
+   #78): shown until the content collection loads or when a filter matches
+   nothing. */
+.catalog-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted-text);
+    background: rgba(0, 188, 212, 0.05);
+    border: 1px dashed var(--card-border);
+    border-radius: 16px;
+}
+
+.catalog-empty .icon { font-size: 2rem; margin-bottom: 12px; color: var(--primary-color); }
+
+.catalog-notice {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 188, 212, 0.05);
+    border: 1px dashed var(--card-border);
+    border-radius: 12px;
+    color: var(--muted-text);
+    font-size: 0.9rem;
+}
+
+.catalog-notice .icon { color: var(--primary-color); margin-right: 8px; }
+
+/* "View all projects" link of the home page #featured showcase. */
+.featured-view-all { text-align: center; margin-top: 40px; }
+
+.featured-view-all a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.featured-view-all a:hover { color: var(--secondary-color); }
+
+@media (max-width: 768px) {
+    .filter-buttons { gap: 8px; }
+
+    .filter-btn {
+        padding: 10px 18px;
+        font-size: 0.85rem;
+    }
+
+    .catalog-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .catalog-card { padding: 25px 20px; }
+
+    .catalog-logo {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .catalog-title { font-size: 1.2rem; }
+
+    .catalog-description {
+        font-size: 0.9rem;
+        min-height: 50px;
+    }
+}

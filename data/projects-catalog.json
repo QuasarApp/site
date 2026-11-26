@@ -1,0 +1,54 @@
+{
+  "source": "data/projects-catalog.json",
+  "description": "Project catalog content collection (issue #76): the /projects/ catalog (projects/index.html) renders one card per entry. To add a project, add an entry here plus the description i18n key in all five languages of js/i18n.js - no code changes. category/status values are the keys of projectsDetail.categories / projectsDetail.statuses in js/i18n.js; icon is a sprite symbol id suffix (icon-<icon>).",
+  "projects": [
+    {
+      "slug": "ecliptica",
+      "title": "Ecliptica",
+      "category": "games",
+      "status": "activeDevelopment",
+      "icon": "gamepad",
+      "descriptionKey": "projects.ecliptica"
+    },
+    {
+      "slug": "cqtdeployer",
+      "title": "CQtDeployer",
+      "category": "developerTools",
+      "status": "activeDevelopment",
+      "icon": "tool",
+      "descriptionKey": "projects.cqtdeployer"
+    },
+    {
+      "slug": "cheatcard",
+      "title": "CheatCard",
+      "category": "desktopApps",
+      "status": "released",
+      "icon": "credit-card",
+      "descriptionKey": "projects.cheat_card"
+    },
+    {
+      "slug": "yourtimedelivery",
+      "title": "YourTimeDelivery",
+      "category": "desktopApps",
+      "status": "released",
+      "icon": "send",
+      "descriptionKey": "projects.your_time_delivery"
+    },
+    {
+      "slug": "qtssecret",
+      "title": "Qt-Secret",
+      "category": "libraries",
+      "status": "released",
+      "icon": "lock",
+      "descriptionKey": "projects.qt_secret"
+    },
+    {
+      "slug": "heart",
+      "title": "Heart",
+      "category": "libraries",
+      "status": "activeDevelopment",
+      "icon": "heart",
+      "descriptionKey": "projects.heart"
+    }
+  ]
+}

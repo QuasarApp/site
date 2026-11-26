@@ -25,12 +25,29 @@ test('sitemap.xml exists and is valid XML', () => {
     assert.ok(sitemap.includes('<urlset'), 'sitemap has urlset element');
 });
 
-test('sitemap.xml lists the homepage only', () => {
+test('sitemap.xml lists every shipped page', () => {
     assert.ok(sitemap.includes('<loc>https://quasarapp.me/</loc>'), 'homepage URL in sitemap');
-    // Other URLs are not listed yet as they don't exist
-    assert.ok(!sitemap.includes('ecliptica'), 'ecliptica not in sitemap (page does not exist yet)');
-    assert.ok(!sitemap.includes('devlog'), 'devlog not in sitemap (page does not exist yet)');
-    assert.ok(!sitemap.includes('projects/'), 'projects/ not in sitemap (page does not exist yet)');
+    // All shipped pages are listed. The /projects/{slug} detail pages
+    // (issue #77) and /about/ (issue #73) are required in the sitemap by
+    // tests/projects.test.js and tests/about.test.js respectively; the
+    // /ecliptica.html hub (issue #79) and /contacts/ (issue #74) shipped
+    // with main.
+    for (const slug of ['ecliptica', 'cqtdeployer', 'cheatcard', 'yourtimedelivery', 'qtssecret', 'heart']) {
+        assert.match(sitemap, new RegExp(`https://quasarapp\\.me/projects/${slug}/`), `sitemap missing /projects/${slug}/`);
+    }
+    assert.match(sitemap, /https:\/\/quasarapp\.me\/about\//, 'sitemap missing /about/');
+    assert.match(sitemap, /https:\/\/quasarapp\.me\/contacts\//, 'sitemap missing /contacts/');
+    assert.match(sitemap, /https:\/\/quasarapp\.me\/ecliptica\.html/, 'sitemap missing /ecliptica.html');
+    // The qt-secret page is a noindex redirect stub - it must not be listed
+    assert.ok(
+        !sitemap.includes('https://quasarapp.me/projects/qt-secret/'),
+        'noindex qt-secret redirect stub must not be in sitemap'
+    );
+    // The devlog pages do not exist yet (issue #75, data/devlog.json is empty)
+    assert.ok(
+        !sitemap.includes('https://quasarapp.me/devlog/'),
+        'devlog not in sitemap (page does not exist yet)'
+    );
 });
 
 test('sitemap.xml has proper changefreq and priority', () => {
